@@ -1,0 +1,2245 @@
+Tiles: {
+	AlchemicalShelf.MapEntry: Alchemical Shelf
+	BlastFurnace.MapEntry: Blast Furnace
+	PeatBlock.MapEntry: Peat Block
+	OrcishBar.MapEntry: Orcish Bar
+	AltarOfWaters.MapEntry: Altar of Waters
+	AluminiumOre.MapEntry: Aluminium
+	BeggarsCasket.MapEntry: Casket
+	BeggarTent.MapEntry: Beggar's Tent
+	Bone1.MapEntry: Bone1
+	Bone4.MapEntry: Bone4
+	BookOfSecrets.MapEntry: Book of Secrets
+	BorealChairNoSettle.MapEntry: Chair
+	BorealTableNoSettle.MapEntry: Chair
+	Cinnabar.MapEntry: Cinnabar
+	DeadCourier.MapEntry: Dead Courier
+	Fern.MapEntry: Fern
+	Fern2.MapEntry: Fern
+	Fountain.MapEntry: Fountain
+	MagicPot.MapEntry: Magic Pot
+	OrcishCandelabra.MapEntry: Candelabra
+	OrcishCandle.MapEntry: Orcish Candle
+	OrcishChair.MapEntry: Chair
+	OrcishChandelier.MapEntry: Chandelier
+	OrcishChest.MapEntry1: Chest
+	OrcishCoatOfArms.MapEntry: Orcish Coat Of Arms
+	OrcishDoorClosed.MapEntry: Door
+	OrcishDoorOpen.MapEntry: Door
+	OrcishLamp.MapEntry: Lamp
+	OrcishLantern.MapEntry: Lantern
+	OrcishTable.MapEntry: Table
+	OrnamentalPlant.MapEntry: Ornamental Plant
+	PapuansBed.MapEntry: Papuan's Bed
+	PapuansCandle.MapEntry: Candle
+	PapuansChair.MapEntry: Chair
+	PapuansChest.MapEntry1: Chest
+	PapuansDoorClosed.MapEntry: Door
+	PapuansDoorOpen.MapEntry: Door
+	PapuansLamp.MapEntry: Lamp
+	PapuansLantern.MapEntry: Lantern
+	PapuansSofa.MapEntry: Sofa
+	PapuansTable.MapEntry: Table
+	PapuansWorkbench.MapEntry: Workbench
+	RuneTable.MapEntry: Rune Table
+	ShadewoodBedNoSettle.MapEntry: Bed
+	SunrisePicture.MapEntry: Picture
+	SwampChest.MapEntry1: Chest
+	SwampTreeSaplingTile.MapEntry: Sapling
+	TannedSkin.MapEntry: Tanned Skin
+	Target.MapEntry: Target
+	TotemOfCurse.MapEntry: Totem Of Curse
+	WallCarpet.MapEntry: Wall Carpet
+	WarriorsTombstone.MapEntry: Warriors Tombstone
+}
+
+Items: {
+	Aether: {
+		DisplayName: Aether
+		Tooltip: Used to charge philosopher stone
+	}
+
+	AirEssence: {
+		DisplayName: Air Essence
+		Tooltip: ""
+	}
+
+	EarthEssence: {
+		DisplayName: Earth Essence
+		Tooltip: ""
+	}
+
+	FireEssence: {
+		DisplayName: Fire Essence
+		Tooltip: ""
+	}
+
+	WaterEssence: {
+		DisplayName: Water Essence
+		Tooltip: ""
+	}
+
+	AnimalSkin: {
+		DisplayName: Animal Skin
+		Tooltip: ""
+	}
+
+	Cinnabar: {
+		DisplayName: Cinnabar
+		Tooltip: ""
+	}
+
+	DarkEngraving: {
+		DisplayName: Dark Engraving
+		Tooltip: ""
+	}
+
+	DarkEssence: {
+		DisplayName: Dark Essence
+		Tooltip: ""
+	}
+
+	DarkPartOfArchmagesAmulet: {
+		DisplayName: Dark Fragment of the Archmage's Amulet
+		Tooltip: ""
+	}
+
+	Elessar: {
+		DisplayName: Gaermire
+		Tooltip: Holds the hidden power of the sea folk
+	}
+
+	EmptyAmulet: {
+		DisplayName: Empty Amulet
+		Tooltip: ""
+	}
+
+	FernFlower: {
+		DisplayName: Fern Flower
+		Tooltip: ""
+	}
+
+	GalvornBar: {
+		DisplayName: Galvorn Bar
+		Tooltip: ""
+	}
+
+	PeatPowder: {
+		DisplayName: Peat Powder
+		Tooltip: ""
+	}
+
+	PeatBlock: {
+		DisplayName: Peat Block
+		Tooltip: ""
+	}
+
+	HerbalFeather: {
+		DisplayName: Herbal Feather
+		Tooltip: ""
+	}
+
+	IceCrystal: {
+		DisplayName: Ice Crystal
+		Tooltip: ""
+	}
+
+	LightPartOfArchmagesAmulet: {
+		DisplayName: Light Fragment of the Archmage's Amulet
+		Tooltip: ""
+	}
+
+	MirrorRim: {
+		DisplayName: Mirror Rim
+		Tooltip: ""
+	}
+
+	OrcishBar: {
+		DisplayName: Orcish Bar
+		Tooltip: ""
+	}
+
+	OrcishFragment: {
+		DisplayName: Orcish Fragment
+		Tooltip: ""
+	}
+
+	PieceOfTabula: {
+		DisplayName: Piece Of the Tabula
+		Tooltip: ""
+	}
+
+	PoisonFlask: {
+		DisplayName: Poison Flask
+		Tooltip: ""
+	}
+
+	Quicksilver: {
+		DisplayName: Quicksilver
+		Tooltip: ""
+	}
+
+	RingRim: {
+		DisplayName: Ring Rim
+		Tooltip: ""
+	}
+
+	RuneEssence: {
+		DisplayName: Runic Essence
+		Tooltip: ""
+	}
+
+	RuneRim: {
+		DisplayName: Rune Rim
+		Tooltip: ""
+	}
+
+	Sanguinem: {
+		DisplayName: Sanguinem
+		Tooltip: ""
+	}
+
+	SerpentsScale: {
+		DisplayName: The Scale of a Serpent
+		Tooltip: ""
+	}
+
+	TheMoldofaKeyOfTheSun: {
+		DisplayName: Mold of the Sun Key
+		Tooltip: ""
+	}
+
+	ToadsEye: {
+		DisplayName: Toad's Eye
+		Tooltip: ""
+	}
+
+	UnchargedSoulScythe: {
+		DisplayName: Uncharged Soul Scythe
+		Tooltip: ""
+	}
+
+	AlchemistsBelt: {
+		DisplayName: Alchemist's Belt
+		Tooltip:
+			'''
+			Buff duration of all potions is increased by 15%
+			Healing potions' cooldown is shortened by 5 seconds
+			'''
+	}
+
+	BottleOfIncense: {
+		DisplayName: Bottle Of Incense
+		Tooltip: +15 charm
+	}
+
+	DiceCup: {
+		DisplayName: Dice Cup
+		Tooltip: Gives you a bonus point in the dice games
+	}
+
+	DraculasCover: {
+		DisplayName: Dracula's Cover
+		Tooltip:
+			'''
+			Lets you transform into a bat regardless of satiety 
+			Increases assassin critical strike chance by 25%.
+			'''
+	}
+
+	GamblersBag: {
+		DisplayName: Gambrel's Bags
+		Tooltip: Increases the monetary prize in the dice game by 50%
+	}
+
+	HeartOfSwamp: {
+		DisplayName: Heart Of the Swamp
+		Tooltip:
+			'''
+			Increases maximum life by 60 and life regeneration
+			Grants immunity to swamp water
+			'''
+	}
+
+	HerosBoots: {
+		DisplayName: The Boots of a Hero
+		Tooltip: Doesn't give any bonuses
+	}
+
+	ImperianBanner: {
+		DisplayName: Imperian Banner
+		Tooltip:
+			'''
+			+15 charm. Increases life regeneration when you are in the city. 
+			More town NPCs - more defence.
+			'''
+	}
+
+	LichCrown: {
+		DisplayName: Crown of a Lich
+		Tooltip:
+			'''
+			You have from 20% to 120% of maximum health 
+			depending on the amount of killed enemies
+			'''
+	}
+
+	MagnesiumOxide: {
+		DisplayName: Magnesium Oxide
+		Tooltip: 40% increased thrown velosity, 8% decreased thrown damage.
+	}
+
+	MarbleMask: {
+		DisplayName: Marble Mask
+		Tooltip:
+			'''
+			Increases assassin damage by 10% and critical strike chance by 8%
+			Once a day you get absolutely invelnerability for 12 seconds
+			if you have less than 20% of your maximum health
+			'''
+	}
+
+	MidasGlove: {
+		DisplayName: Midas' Glove
+		Tooltip: 6% increased damage, 30% more coins dropped from enemies
+	}
+
+	OrcishBanner: {
+		DisplayName: Orcish Banner
+		Tooltip: More defense and life regeneration for every living town npc
+	}
+
+	PendantOfBlood: {
+		DisplayName: Pendant Of Blood
+		Tooltip: 20% hunger reduction, less satiety - more assassin damage
+	}
+
+	Sanctus: {
+		DisplayName: Sanctus
+		Tooltip: The more damage you take - the higher your defence and damage reflection
+	}
+
+	Scutum: {
+		DisplayName: Scutum
+		Tooltip: Reduces damage taken by 5%
+	}
+
+	SignOfUndead: {
+		DisplayName: Sign Of Undead
+		Tooltip:
+			'''
+			10% increased assassin damage 
+			20% increased critical strike chance.
+			'''
+	}
+
+	TheRingOfTheBlood: {
+		DisplayName: The Ring Of The Blood
+		Tooltip: Turns you into a vampire
+	}
+
+	TheRingOfTheSeas: {
+		DisplayName: The Ring Of The Seas
+		Tooltip: Turns you into a naga
+	}
+
+	ImperianHelmet: {
+		DisplayName: Imperian Helmet
+		Tooltip: Critical strike chance is increased by 3%.
+	}
+
+	KillersBoots: {
+		DisplayName: Killer's Boots
+		Tooltip: Movement speed is increased by 20%, critical damage is increased by 25%.
+	}
+
+	KillersHood: {
+		DisplayName: Killer's Hood
+		Tooltip: Critical strike chance is increased by 8%.
+	}
+
+	KillersJacket: {
+		DisplayName: Killer's Jacket
+		Tooltip:
+			'''
+			Assassin damage is increased by 10%
+			Critical strike chance is increased by 4%.
+			'''
+	}
+
+	Lorica: {
+		DisplayName: Lorica
+		Tooltip: ""
+	}
+
+	NomadsBoots: {
+		DisplayName: Nomad's Boots
+		Tooltip:
+			'''
+			Movement speed is increased by 25%. 
+			Assassin damage is increased by 9%.
+			'''
+	}
+
+	NomadsHood: {
+		DisplayName: Nomad's Hood
+		Tooltip:
+			'''
+			Assassin damage is increased by 5%. 
+			Critical strike chance is increased by 13%.
+			'''
+	}
+
+	NomadsJacket: {
+		DisplayName: Nomad's Jacket
+		Tooltip: Assassin damage is increased by 11%, critical strike damage is increased by 30%
+	}
+
+	Ocrea: {
+		DisplayName: Ocrea
+		Tooltip: Movement speed is increased by 8%.
+	}
+
+	PaladinsLeggings: {
+		DisplayName: Paladin's Leggings
+		Tooltip:
+			'''
+			Melee damage is increased by 8%, damage resistance is increased by 5%. 
+			Movement speed is decreased by 5%.
+			'''
+	}
+
+	PaladinsMask: {
+		DisplayName: Paladin's Mask
+		Tooltip:
+			'''
+			Melee damage is increased by 10%, damage resistance is increased by 5%. 
+			Movement speed is decreased by 5%.
+			'''
+	}
+
+	PaladinsShell: {
+		DisplayName: Paladin's Shell
+		Tooltip:
+			'''
+			Melee damage is increased by 12%, damage resistance is increased by 8%. 
+			Movement speed is decreased by 10%.
+			'''
+	}
+
+	ScalyBreastplate: {
+		DisplayName: Scaly Breastplate
+		Tooltip: Thrown damage is increased by 10%.
+	}
+
+	ScalyHelmet: {
+		DisplayName: Scaly Helmet
+		Tooltip:
+			'''
+			Increases throwing critical strike chance by 11%. 
+			You use any items 5% faster.
+			'''
+	}
+
+	ScalyLeggings: {
+		DisplayName: Scaly Leggings
+		Tooltip: Movement speed is increased by 9%.
+	}
+
+	Ushanka: {
+		DisplayName: Ushanka
+		Tooltip: ""
+	}
+
+	Valenki: {
+		DisplayName: Valenki
+		Tooltip: ""
+	}
+
+	WatersBreastplate: {
+		DisplayName: Water's Breastplate
+		Tooltip: More wetness - more damage and health regeneration
+	}
+
+	WatersHelmet: {
+		DisplayName: Water's Helmet
+		Tooltip: More wetness - higher critical strike chance
+	}
+
+	WatersLeggings: {
+		DisplayName: Water's Leggings
+		Tooltip: More wetness - higher movement speed
+	}
+
+	Alembic: {
+		DisplayName: Alembic
+		Tooltip: 33% chance to not consume potion crafting ingredients
+	}
+
+	BeggarsCasket: {
+		DisplayName: Beggar's Casket
+		Tooltip: Impossible to open without a lockpick
+	}
+
+	BismuthumCasket: {
+		DisplayName: Bismuthum Casket
+		Tooltip: There are dev items inside
+	}
+
+	BookOfMazarbul: {
+		DisplayName: Book Of Mazarbul
+		Tooltip: Gives you extra skill point
+	}
+
+	BookOfSecrets: {
+		DisplayName: The Book Of Secretss
+		Tooltip: Contains secret knowledge...
+	}
+
+	DwarvenBrokenArmor: {
+		DisplayName: Broken Dwarven Armor
+		Tooltip: ""
+	}
+
+	DwarvenCoin: {
+		DisplayName: Dwarven Coin
+		Tooltip: Currency for trading with the Blacksmith
+	}
+
+	EmpathyMirror: {
+		DisplayName: Empathy Mirror
+		Tooltip:
+			'''
+			Press left mouse button to add NPC in empathy net and right to remove
+			All received damage distributes between all net members
+			If one of the party members dies, net will be destroyed, as every member...
+			'''
+	}
+
+	FaithTreatise: {
+		DisplayName: Faith Treatise
+		Tooltip:
+			'''
+			Gives you permanent a life regeneration bonus on use
+			Once per day you can restore 40% of your HP, 
+			if it's under 20%
+			'''
+	}
+
+	FifthPartOfAmulet: {
+		DisplayName: Fifth Fragment of the Amulet
+		Tooltip: Piece of a powerful artifact
+	}
+
+	FirstPartOfAmulet: {
+		DisplayName: First Fragment of the Amulet
+		Tooltip: Piece of a powerful artifact
+	}
+
+	FourthPartOfAmulet: {
+		DisplayName: Fourth Fragment of the Amulet
+		Tooltip: Piece of a powerful artifact
+	}
+
+	GalvornScroll: {
+		DisplayName: Galvorn Scroll
+		Tooltip: You can create galvorn bars having this scroll
+	}
+
+	GlamdringBlueprint: {
+		DisplayName: Glamdring Blueprint
+		Tooltip: ""
+	}
+
+	Glamdring: {
+		DisplayName: Glamdring
+		Tooltip: Deals multiplied damage to goblins
+	}
+
+	GreenKey: {
+		DisplayName: Green Key
+		Tooltip: Opens the green maze chest and door
+	}
+
+	HolyGrail: {
+		DisplayName: The Holy Grail
+		Tooltip: ""
+	}
+
+	HornOfGondor: {
+		DisplayName: Battle Horn
+		Tooltip: Use to raise your battle spirit
+	}
+
+	ImprovedMiningPotion: {
+		DisplayName: Improved Mining Potion
+		Tooltip: Increases mining speed by 50%
+	}
+
+	InkBottle: {
+		DisplayName: Ink Bottle
+		Tooltip:
+			'''
+			Creates ink stain at your cursor's position
+			Right click to teleport at stain position
+			'''
+	}
+
+	Luceat: {
+		DisplayName: Luceat
+		Tooltip: Teleports you to Imperian town
+	}
+
+	MasterToolBox: {
+		DisplayName: Master Tool Box
+		Tooltip: Lets you destroy scructure tiles
+	}
+
+	MinotaurHorn: {
+		DisplayName: Horn of the Minotaur
+		Tooltip: ""
+	}
+
+	OpenedBeggarsCasket: {
+		DisplayName: Opened Beggar's Casket
+		Tooltip: Opened Beggar's Casket
+	}
+
+	OrcishKey: {
+		DisplayName: Orcish Key
+		Tooltip: Opens the orcish chest
+	}
+
+	Panacea: {
+		DisplayName: Panacea
+		Tooltip: Saves you from all negative effects
+	}
+
+	Pancakes: {
+		DisplayName: Pancakes
+		Tooltip: Minor improvements to all stats
+	}
+
+	PhoenixPendant: {
+		DisplayName: Phoenix Pendant
+		Tooltip:
+			'''
+			You get 50% damage resistance for 15 seconds
+			You can use it once per day
+			Special for Spinal111
+			'''
+	}
+
+	Picklock: {
+		DisplayName: Lockpick
+		Tooltip: A tool for prying locks open
+	}
+
+	PotionOfHumanity: {
+		DisplayName: Potion Of Humanity
+		Tooltip: Resets your race
+	}
+
+	PotionOfInvulnerability: {
+		DisplayName: Potion Of Invulnerability
+		Tooltip: Grants absolute invulnerability for a short while
+	}
+
+	PotionOfOblivion: {
+		DisplayName: Potion Of Oblivion
+		Tooltip: Resets all your skills and returns you skill points
+	}
+
+	ScoutsReport: {
+		DisplayName: Scout's Report
+		Tooltip: ""
+	}
+
+	SecondPartOfAmulet: {
+		DisplayName: Second Fragment of the Amulet
+		Tooltip: Piece of a powerful artifact
+	}
+
+	TabulaSmaragdina: {
+		DisplayName: Tabula Smaragdina
+		Tooltip: Ancient artifact needed to create aether
+	}
+
+	ThirdPartOfAmulet: {
+		DisplayName: Third Fragment of the Amulet
+		Tooltip: Piece of a powerful artifact
+	}
+
+	TruePhilosopherStone: {
+		DisplayName: True Philosopher Stone
+		Tooltip: Gives you a second chance...
+	}
+
+	UnchargedElessar: {
+		DisplayName: Gaermire
+		Tooltip: Needs something to be charged...
+	}
+
+	UnchargedLuceat: {
+		DisplayName: Uncharged Luceat
+		Tooltip: Has to be charged first
+	}
+
+	UnchargedTruePhilosopherStone: {
+		DisplayName: True Philosopher Stone
+		Tooltip: Has to be charged first
+	}
+
+	WarriorsRemains: {
+		DisplayName: The Remains of a Warrior
+		Tooltip: ""
+	}
+
+	AluminiumOre: {
+		DisplayName: Aluminium Ore
+		Tooltip: ""
+	}
+
+	FernSpore: {
+		DisplayName: Fern Spore
+		Tooltip: ""
+	}
+
+	MagicPot: {
+		DisplayName: Magic Pot
+		Tooltip: ""
+	}
+
+	OrcishCandelabra: {
+		DisplayName: Orcish Candelabra
+		Tooltip: ""
+	}
+
+	OrcishCandle: {
+		DisplayName: Orcish Candle
+		Tooltip: ""
+	}
+
+	OrcishChair: {
+		DisplayName: Orcish Chair
+		Tooltip: ""
+	}
+
+	OrcishChandelier: {
+		DisplayName: Orcish Chandelier
+		Tooltip: ""
+	}
+
+	OrcishChest: {
+		DisplayName: Orcish Chest
+		Tooltip: ""
+	}
+
+	OrcishCoatOfArms: {
+		DisplayName: Orcish Coat Of Arms
+		Tooltip: ""
+	}
+
+	OrcishDoor: {
+		DisplayName: Orcish Door
+		Tooltip: ""
+	}
+
+	OrcishLamp: {
+		DisplayName: Orcish Lamp
+		Tooltip: ""
+	}
+
+	OrcishLantern: {
+		DisplayName: Orcish Lantern
+		Tooltip: ""
+	}
+
+	OrcishPlatform: {
+		DisplayName: Orcish Platform
+		Tooltip: ""
+	}
+
+	OrcishTable: {
+		DisplayName: Orcish Table
+		Tooltip: ""
+	}
+
+	OrnamentalPlant: {
+		DisplayName: Ornamental Plant
+		Tooltip: ""
+	}
+
+	PapuansBed: {
+		DisplayName: Papuan's Bed
+		Tooltip: ""
+	}
+
+	PapuansCandle: {
+		DisplayName: Papuan's Candle
+		Tooltip: ""
+	}
+
+	PapuansChair: {
+		DisplayName: Papuan's Chair
+		Tooltip: ""
+	}
+
+	PapuansChest: {
+		DisplayName: Papuan's Chest
+		Tooltip: ""
+	}
+
+	PapuansDoor: {
+		DisplayName: Papuan's Door
+		Tooltip: ""
+	}
+
+	PapuansLamp: {
+		DisplayName: Papuan's Lamp
+		Tooltip: ""
+	}
+
+	PapuansLantern: {
+		DisplayName: Papuan's Lantern
+		Tooltip: ""
+	}
+
+	PapuansPlatform: {
+		DisplayName: Papuan's Platform
+		Tooltip: ""
+	}
+
+	PapuansSofa: {
+		DisplayName: Papuan's Sofa
+		Tooltip: ""
+	}
+
+	PapuansTable: {
+		DisplayName: Papuan's Table
+		Tooltip: ""
+	}
+
+	PapuansWorkbench: {
+		DisplayName: Papuan's Workbench
+		Tooltip: ""
+	}
+
+	RuneTable: {
+		DisplayName: Rune Table
+		Tooltip: ""
+	}
+
+	SunrisePicture: {
+		DisplayName: Sunrise
+		Tooltip: Unknown Author
+	}
+
+	SwampChest: {
+		DisplayName: Swamp Chest
+		Tooltip: ""
+	}
+
+	SwampWood: {
+		DisplayName: Swamp Wood
+		Tooltip: ""
+	}
+
+	SwampWoodWall: {
+		DisplayName: Swamp Wood Wall
+		Tooltip: ""
+	}
+
+	TannedSkin: {
+		DisplayName: Tanned Skin
+		Tooltip: ""
+	}
+
+	WallCarpet: {
+		DisplayName: Wall Carpet
+		Tooltip: ""
+	}
+
+	DirtyShovel: {
+		DisplayName: Dirty Shovel
+		Tooltip: ""
+	}
+
+	Baselard: {
+		DisplayName: Baselard
+		Tooltip: <right> to use as throwing weapon
+		Item.AssassinDamage: Mods.Bismuth.Items.Baselard.Item.AssassinDamage
+	}
+
+	BookOfTheDead: {
+		DisplayName: Book of the Dead
+		Tooltip:
+			'''
+			Uses 60 mana 
+			Summons bone hands on recenlty dead enemies' positions (up to 6 hands)
+			'''
+	}
+
+	WaveOfForce: {
+		DisplayName: Wave of Force
+		Tooltip: ""
+	}
+
+	WoodenStaff: {
+		DisplayName: Wooden Staff
+		Tooltip: ""
+	}
+
+	Doomhammer: {
+		DisplayName: Doomhammer
+		Tooltip:
+			'''
+			Creates small explosion on the ground
+			Lok Tar Ogar!
+			'''
+	}
+
+	Gladius: {
+		DisplayName: Gladius
+		Tooltip: ""
+	}
+
+	Narsil: {
+		DisplayName: Narsil
+		Tooltip: Is able to reflect projectiles
+	}
+
+	Ringril: {
+		DisplayName: Ringril
+		Tooltip: Creates five ice spikes after dealing damage
+	}
+
+	SoulScythe: {
+		DisplayName: Soul Scythe
+		Tooltip:
+			'''
+			Steals certain enemies' souls
+			Kill harpies, wyverns and angry nimbuses to get [i:Bismuth/AirEssence] 
+			Kill sharks, jellyfishes and pirahnas to get [i:Bismuth/WaterEssence]
+			Kill worms to get [i:Bismuth/EarthEssence]
+			Kill imps, lava slimes and demons to get [i:Bismuth/FireEssence]
+			'''
+	}
+
+	TheBladeOfWoe: {
+		DisplayName: The Blade Of Woe
+		Tooltip:
+			'''
+			Let you kill NPCs to get [i:Bismuth/DarkEssence]
+			You have no honor...
+			'''
+	}
+
+	TheseusSword: {
+		DisplayName: Theseus Sword
+		Tooltip: Creates eight projectiles flying in different directions after combo of strikes
+	}
+
+	BowOfOdysseus: {
+		DisplayName: Bow Of Odysseus
+		Tooltip: <right> to charge the bow with three powerfull arrows
+	}
+
+	WoodenCrossbow: {
+		DisplayName: Wooden Crossbow
+		Tooltip: ""
+	}
+
+	Aeglos: {
+		DisplayName: Aeglos
+		Tooltip: ""
+	}
+
+	Lancea: {
+		DisplayName: Lancea
+		Tooltip: ""
+	}
+
+	StarOfTheDunedain: {
+		DisplayName: Star Of The Dunedain
+		Tooltip: Creates two spinning discs
+	}
+
+	Key: {
+		DisplayName: Key
+		Tooltip: ""
+	}
+
+	CoatlsWings: {
+		DisplayName: Coatl's Wings
+		Tooltip: Allows flight and slow fall
+	}
+
+	ShellNecklace: {
+		DisplayName: Shell Necklace
+		Tooltip: +1% throwing damage and critical strike chance for every 5 wetness points
+	}
+
+	FuryOfWaters: {
+		DisplayName: Fury Of the Waters
+		Tooltip: Creates water quill after dealing damage
+	}
+
+	Typhoon: {
+		DisplayName: Typhoon
+		Tooltip: Creates water flower after dealing damage
+	}
+
+	AdventurersBook: {
+		DisplayName: Adventurer's Book
+		Tooltip: Contains useful information about player stats
+	}
+
+	ClassEngraving: {
+		Tooltip: ""
+		DisplayName: Class Engraving
+	}
+
+	RingOfOmnipotence: {
+		DisplayName: One Ring
+
+		TooltipLine2: {
+			RingOfOmnipotence5:
+				'''
+				All types of damage are increased by 25%, +100 HP, +8 HP/sec, 
+				damage reflection is increased by 20%, dodge and block 
+				chance are increased by 15%, all crit. 
+				strike chances are increased by 15%, all types of damage 
+				are increased by 10% for every equipped ring
+				'''
+			RingOfOmnipotence4:
+				'''
+				All types of damage are increased by 18%, +75 HP, +5 HP/sec, 
+				damage reflection is increased by 15%, dodge and block 
+				chance are increased by 10%, all crit. 
+				strike chances are increased by 12%, all types of damage 
+				are increased by 5% for every equipped ring
+				'''
+			RingOfOmnipotence3:
+				'''
+				+13% for all damages, +50 HP, +3 HP/sec, damage reflection 
+				is increased by 12%, dodge chance is increased by 
+				5%, all crit. strike chances are increased by 10%
+				'''
+			RingOfOmnipotence2:
+				'''
+				+10% for all damages, +25 HP, +1 HP/sec, damage reflection 
+				is increased by 8%
+				'''
+			RingOfOmnipotence1: All types of damage are increased by 7%, +15 HP
+			RingOfOmnipotence: All types of damage are increased by 3%
+			DivineEquipment: Divine Equipment
+		}
+
+		Tooltip: Doesn't give any bonuses
+	}
+
+	ArchmagesAmulet: {
+		Tooltip: ""
+		DisplayName: Archmages Amulet
+	}
+
+	WarriorsEngraving: {
+		Tooltip: ""
+		DisplayName: Warriors Engraving
+	}
+
+	WizardsEngraving: {
+		Tooltip: Use this to choose your class
+		DisplayName: Wizard's Engraving
+	}
+
+	AssasinsEngraving: {
+		DisplayName: Assassin's Engraving
+		Tooltip: Use this to choose your class
+	}
+
+	RangersEngraving: {
+		DisplayName: Ranger's Engraving
+		Tooltip: Use this to choose your class
+	}
+}
+
+Buffs: {
+	Absorption: {
+		DisplayName: Absorption
+		Description: Your damage reflection is increased
+	}
+
+	AuraOfEmpire: {
+		DisplayName: Aura Of Empire
+		Description: The town protects you
+	}
+
+	BansheesScream: {
+		DisplayName: Banshee's Scream
+		Description: Your movement speed is decreased
+	}
+
+	BismuthumPoisoningEnemy: {
+		DisplayName: Bismuthum Poisoning
+		Description: Frightened, the victim loses his life
+	}
+
+	BismuthumPoisoningPlayer: {
+		DisplayName: Bismuthum Poisoning
+		Description: Frightened, the victim loses his life
+	}
+
+	Blessing: {
+		DisplayName: Blessing
+		Description: Your max HP, mana and health regeneration are increased
+	}
+
+	BoneTrap: {
+		DisplayName: Bone Trap
+		Description: You can't move
+	}
+
+	DeathWish: {
+		DisplayName: Death Wish
+		Description: You get bonus stats, but you start dying without killing enemies
+	}
+
+	EnergyShield: {
+		DisplayName: Energy Shield
+		Description: You get shield around player, which will reflect projectiles
+	}
+
+	FearOfMaze: {
+		DisplayName: Fear of Maze
+		Description: You so scared, and you can't use the map, place torches and teleport
+	}
+
+	FightingSpirit: {
+		DisplayName: Fighting Spirit
+		Description: Your damage is increased, but your damage reflection is decreased
+	}
+
+	Glaciation: {
+		DisplayName: Glaciation
+		Description: You can't move, but your health regeneration is significantly increased
+	}
+
+	HealthDevourment: {
+		DisplayName: Health Devourment
+		Description: Your health decreases rapidly
+	}
+
+	HiddenInTheShadows: {
+		DisplayName: Hidden In The Shadows
+		Description: You are invisible
+	}
+
+	Hypersonic: {
+		DisplayName: Hypersonic
+		Description: Throwing weapons fly faster
+	}
+
+	Invulnerability: {
+		DisplayName: Invulnerability
+		Description: You are immortal!
+	}
+
+	KillingSpreeI: {
+		DisplayName: Killing Spree I
+		Description: You want to kill again and again
+	}
+
+	KillingSpreeII: {
+		DisplayName: Killing Spree II
+		Description: You want to kill again and again
+	}
+
+	KillingSpreeIII: {
+		DisplayName: Killing Spree III
+		Description: You want to kill again and again
+	}
+
+	MagicFreezing: {
+		DisplayName: Magic Freezing
+		Description: You can't move, but you regen your health rapidly using your mana
+	}
+
+	MagiciansAura: {
+		DisplayName: Magician's Aura
+		Description: Your damage reflection slightly increased
+	}
+
+	MiningII: {
+		DisplayName: Mining II
+		Description: Your mining speed significanlty increased
+	}
+
+	Paralisys: {
+		DisplayName: Paralisys
+		Description: Mods.Bismuth.Buffs.Paralisys.Description
+	}
+
+	Persecution: {
+		DisplayName: Prosecution
+		Description: After dealing damage, your speed increases
+	}
+
+	PhoenixBlessing: {
+		DisplayName: Phoenix Blessing
+		Description: Your damage reflection is increased by 50%
+	}
+
+	Reviving: {
+		DisplayName: Reviving
+		Description: Heroes never die
+	}
+
+	SkillCooldown: {
+		DisplayName: Skill Cooldown
+		Description: You can't use active skills
+	}
+
+	Specularity: {
+		DisplayName: Specularity
+		Description: You are immortal
+	}
+
+	Stealth: {
+		DisplayName: Cruelty
+		Description: Your assassin damage and crit. chance are increased, but you get more damage
+	}
+
+	SteelSkin: {
+		DisplayName: Steel Skin
+		Description: You get bonus stats when you stay
+	}
+
+	StunningWeapons: {
+		DisplayName: Stunning Weapons
+		Description: Your weapon can stun enemy
+	}
+
+	SwampQuagmire: {
+		DisplayName: Swamp Quagmire
+		Description: Your movement speed is decreased
+	}
+
+	TeleportCooldown: {
+		DisplayName: Teleport Cooldown
+		Description: You can't use teleportation
+	}
+
+	TribeCurse: {
+		DisplayName: Tribe Curse
+		Description: Ancient magic absorbs you from the inside...
+	}
+
+	VampireBat: {
+		DisplayName: Vampire Bat
+		Description: Na-na-na-na-na-na-na-na, Batmaaan, Batmaaan
+	}
+
+	WoundHealing: {
+		DisplayName: Wound Healing
+		Description: Your life regeneration is increased
+	}
+
+	AutoTargeting: {
+		DisplayName: Auto Targeting
+		Description: Your arrows, bullets and rockets aim on enemy
+	}
+
+	Converter: {
+		DisplayName: Magic Shield
+		Description: When you get damage, you spend your mana firstly
+	}
+
+	Crowd: {
+		DisplayName: Crowd
+		Description: Your max minions count is increased
+	}
+
+	EtherealProjectiles: {
+		DisplayName: Ethereal Projectiles
+		Description: All your projectiles can move through blocks
+	}
+
+	MoreEnergy: {
+		DisplayName: More Energy
+		Description: Your melee damage is increased by several times
+	}
+
+	Motionless: {
+		DisplayName: Motionless
+		Description: You get bonus stats, but you can't move
+	}
+
+	NoLimit: {
+		DisplayName: No Limit!
+		Description: You can cast spells for free!
+	}
+
+	Rage: {
+		DisplayName: Rage
+		Description: Your melee speed is increased
+	}
+
+	EthernalProjectiles: {
+		Description: All your projectiles can move through blocks
+		DisplayName: Ethernal Projectiles
+	}
+}
+
+NPCs: {
+	Alchemist: {
+		DisplayName: Alchemist
+
+		Name: {
+			Rizo: Paulo
+			Albert: Di
+			Bernando: Sen-Zhermen
+			Seefeld: Aranas
+			Robert: Abelle
+		}
+
+		TownNPCMood: {
+			Content: Я довольный.
+			NoHome: Терпеть не могу, когда у меня нет дома.
+			FarFromHome: Я слишком далеко от дома.
+			LoveSpace: Я люблю, когда так много пространства.
+			DislikeCrowded: Мне не нравится то, как здесь людно.
+			HateCrowded: Я ненавижу то, как здесь людно.
+			LikeNPC_Princess: Мне нравится {NPCName}.
+			Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			AlchemistButton_9: Dayblooms
+			AlchemistButton_7: Here are fern flowers
+			AlchemistButton_6: No problem
+			AlchemistButton_5: What's the next task?
+			AlchemistButton_4: It's not that easy to find the picture
+			AlchemistButton_3: Skies lost a picture
+			AlchemistButton_2: Got it
+			AlchemistButton_1: Tell me what do you need
+			Alchemist_4: In that case, I’ll wait. The shrine is somewhere up in the sky, by the way.
+			Alchemist_9: Keep up the search, I need just 5 of them.
+			Alchemist_12: Okay, then you bring me 30 of them so I can finish the brewing. Good luck!
+			Alchemist_14: You sure know what to do in your free time, huh. I’m waiting for the flowers.
+			Alchemist_20: No, sadly, I'm not done solving the mystery of aether yet. Come back later.
+			Alchemist_23: Cool, I’ll start charging the stone right now. Come back later.
+			AlchemistButton_8: I need more time to do this
+			AlchemistButton_10: Deathweed
+			AlchemistButton_11: Dayblooms, as you ordered
+			AlchemistButton_12: Give me a bit more time
+			AlchemistButton_13: But why do you need me?
+			AlchemistButton_14: There are no artifacts I won't find
+			AlchemistButton_15: Here is tabula
+			AlchemistButton_16: How's translation going?
+			AlchemistButton_17: I'd like to charge the stone
+			AlchemistButton_18: Is the stone ready?
+			Alchemist_16: You know, you've been a great help since I arrived to these lands. I think you deserve the knowledge of the greatest artifact of alchemy. For 400 years my family's kept the true philosopher's stone. Among its properties,there is a very fascinating one – it can save you when you’re at death's door, however, it has to be charged afterwards.
+			Alchemist_13: Dayblooms won’t gather themselves, friend. Have you got them yet?
+			Alchemist_11: Okay, in that case I’ll add some deathweed… Okay, it’s done, let’s check the result… Oh, something’s wrong, friend, I don’t feel so good…
+			Alchemist_8: Have you obtained the fern flowers yet?
+			Alchemist_3: In that case, I’ll wait. The shrine is somewhere up in the sky, by the way.
+			Alchemist_1: en Dear friend, do you have a minute to hear me out?
+			AlchemistNQ_4:
+				'''
+				en As my wise colleague once said: 
+				What happened once could never repeat. However, what happened twice is certain to happen again
+				'''
+			AlchemistNQ_3: If only you knew how I invented a weird potion.
+			AlchemistNQ_2: Don’t buy potions from {0}, his magic’s cheap tricks.
+			AlchemistNQ_1: Good news, everyone, the slime’s oozing again!
+		}
+	}
+
+	AlchemistDeath.DisplayName: Alchemist
+
+	BabaYaga: {
+		DisplayName: Swamp Witch
+
+		TownNPCMood: {
+			Content: Я довольный.
+			NoHome: Терпеть не могу, когда у меня нет дома.
+			FarFromHome: Я слишком далеко от дома.
+			LoveSpace: Я люблю, когда так много пространства.
+			DislikeCrowded: Мне не нравится то, как здесь людно.
+			HateCrowded: Я ненавижу то, как здесь людно.
+			LikeNPC_Princess: Мне нравится {NPCName}.
+			Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			SwampWitchNQ_4: Have you seen silver shoes around anywhere?
+			SwampWitchNQ_3: Who is {0}? His magic is strong.
+			SwampWitchNQ_2: Let the magic guide you, hero.
+			SwampWitchNQ_1: Pinch of deathcup, heel of shoe
+			SwampWitch_12: Excellent work, young hero! I stay true to my word – these potions will keep you safe from many poisons and diseases. If you need more – you can always buy them here.
+			SwampWitch_10: Bring me the stone – and you’ll be rewarded.
+			SwampWitch_9: Did you find the stone?
+			SwampWitch_7: Ah, if it isn’t the young hero! You’re right on time – I just finished reading the tome. Now nothing is going to stop you from getting the stone.
+			SwampWitch_6: My research is not yet over – come back later.
+			SwampWitch_4: I need the book to continue my research.
+			SwampWitch_3: Have you brought the book?
+			SwampWitch_1: Young hero… I knew you’d come… Hear me out, I swear - you will not regret it
+			SwampWitchAnsv_10: Be ready to lose your life!
+			SwampWitchAnsv_9: Yes, but you don't deserve it
+			SwampWitchAnsv_8: It is harder than it looks
+			SwampWitchAnsv_7: Yes, take it
+			SwampWitchAnsv_6: I'll get the stone!
+			SwampWitchAnsv_5: Where can I find the stone?
+			SwampWitchAnsv_4: How's research going?
+			SwampWitchAnsv_3_2: I'll continue my searches
+			SwampWitchAnsv_3: I found the book
+			SwampWitchAnsv_2: I think I can do it
+			SwampWitchAnsv_1: What do you need from me?
+			SwampWitchName_5: Flemet
+			SwampWitchName_4: Telsa
+			SwampWitchName_3: Whispera
+			SwampWitchName_2: Priaha
+			SwampWitchName_1: Hagata
+		}
+	}
+
+	Banshee.DisplayName: Banshee
+
+	Beggar: {
+		DisplayName: Beggar
+
+		Name: {
+			Rizo: Farham
+			Albert: Angrenor
+			Bernando: Oliver
+			Seefeld: Gotie
+			Robert: Walter
+		}
+
+		TownNPCMood: {
+			Content: Я довольный.
+			NoHome: Терпеть не могу, когда у меня нет дома.
+			FarFromHome: Я слишком далеко от дома.
+			LoveSpace: Я люблю, когда так много пространства.
+			DislikeCrowded: Мне не нравится то, как здесь людно.
+			HateCrowded: Я ненавижу то, как здесь людно.
+			LikeNPC_Princess: Мне нравится {NPCName}.
+			Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			BeggarAnsv_5: Play dice
+			BeggarAnsv_4: I was busy with other things
+			BeggarAnsv_3: Here is food for you
+			BeggarAnsv_2: I'll bring you food
+			BeggarAnsv_1: What do you need from me?
+			BeggarNQ_6: Now you have {0} victories at all and {1} in a row.
+			BeggarNQ_5: Sorry, but you don't have enough money to make a bet. Come back when you will earn at least one gold coin.
+			BeggarNQ_4: What a good day it is today… Do you have anything to drink?
+			BeggarNQ_3: "{0} – is more than he lets on. Keep a close eye on him."
+			BeggarNQ_2: Could you spare a coin?
+			BeggarNQ_1: "{0} – is the best dude in town."
+			Beggar_4: You have the food yet?
+			Beggar_3: I know a valiant warrior such as yourself wouldn’t refuse to aid a helpless old man. Bring me a snack, and then, perhaps I’ll reward you… A joke, obviously.
+			Beggar_1: E-he-he, you’re that newbie, aren’t you! I have a job for you, young’un!
+		}
+	}
+
+	BoneHand.DisplayName: Bone Hand
+
+	DwarfBlacksmith: {
+		DisplayName: Dwarf Blacksmith
+
+		Name: {
+			Rizo: Gimli
+			Albert: Balin
+			Bernando: Durin
+			Seefeld: Thrain
+			Robert: Alrobad
+			Gerald: Baruk
+		}
+
+		TownNPCMood: {
+			Content: Я довольный.
+			NoHome: Терпеть не могу, когда у меня нет дома.
+			FarFromHome: Я слишком далеко от дома.
+			LoveSpace: Я люблю, когда так много пространства.
+			DislikeCrowded: Мне не нравится то, как здесь людно.
+			HateCrowded: Я ненавижу то, как здесь людно.
+			LikeNPC_Princess: Мне нравится {NPCName}.
+			Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			Blacksmith_1: "{0}, I bet those filthy goblins piss you off as well, don’t they? Well I have a solution for that"
+			Blacksmith_3: There are far too many goblin snouts in the vicinity of this town, but that’s a solvable problem, if you bring me the blueprint, of course.
+			Blacksmith_5: The blade is not ready yet, come back later.
+			Blacksmith_7: I swear on my hammer, you’re right on time! I have an offer for you.
+			Blacksmith_9: It is time for the minotaur to lose one of its horns. Have you slain the beast yet?
+			Blacksmith_10: In that case don’t waste any more time, I’ll be waiting for you.
+			Blacksmith_12: You know, a long time ago I couldn’t be called the last survivor of the gnomes. Our civilization prospered, underground we were the kings, but a single powerful earthquake put an end to our entire history. Many of the deceased haven’t found peace yet, and are still roaming the mines as skeletons
+			Blacksmith_14: I can’t wait to start forging equipment from this alloy. Have you obtained 5 breastplates yet?
+			Blacksmith_15: In that case, don’t waste any more time – you know what to do.
+			BlacksmithNQ_1: What great potions our civilization had – children could drink those!
+			BlacksmithNQ_2: Sometimes I wonder if {0} is my distant relative.
+			BlacksmithNQ_3: You haven’t seen a pretty ring around, have you? No? Okay then.
+			BlacksmithNQ_4: A long time ago, before the earthquake, we were mining an ore of surprising quality. Perhaps, you could still find some deep underground.
+			BlacksmithAnsv_1: What solution?
+			BlacksmithAnsv_2: I'll bring you a blueprint
+			BlacksmithAnsv_3: Here is a blueprint, as you asked
+			BlacksmithAnsv_4: I haven't talked to {0} yet
+			BlacksmithAnsv_5: How is sword making going?
+			BlacksmithAnsv_6: I'm all ears
+			BlacksmithAnsv_7: One more beast to defeat?
+			BlacksmithAnsv_8: I killed it, my friend!
+			BlacksmithAnsv_9: Minotaur is still alive
+			BlacksmithAnsv_10: Get to the point
+			BlacksmithAnsv_11: Deal
+			BlacksmithAnsv_12: I'm working on it
+			BlacksmithAnsv_13: Here are breastplates
+			BlacksmithAnsv_14: Exchange breastplates
+		}
+	}
+
+	EvilBabaYaga.DisplayName: Swamp Witch
+	EvilNecromancer.DisplayName: Necromancer
+
+	ImperianCommander: {
+		DisplayName: Imperian Commander
+
+		Name: {
+			Rizo: Grahus
+			Albert: Ingoramus
+			Bernando: Caius
+			Seefeld: Claudius
+		}
+
+		TownNPCMood: {
+			Content: Я довольный.
+			NoHome: Терпеть не могу, когда у меня нет дома.
+			FarFromHome: Я слишком далеко от дома.
+			LoveSpace: Я люблю, когда так много пространства.
+			DislikeCrowded: Мне не нравится то, как здесь людно.
+			HateCrowded: Я ненавижу то, как здесь людно.
+			LikeNPC_Princess: Мне нравится {NPCName}.
+			Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			CommanderNQ_4: Ask {0}, he’ll make you decent equipment.
+			CommanderNQ_3: Roman soldiers are forbidden from dying without permission!
+			CommanderNQ_2: Legionaries, you are a disgrace to the Roman Empire!
+			CommanderNQ_1: Lock your shields!
+			Commander_5: Come back once you have the information.
+			Commander_4: Do you have any clues as to what happened near the castle?
+			Commander_2: I have a very important task for you, fighter.
+			CommanderAnsv_6: Where does that get us?
+			CommanderAnsv_5: I haven't found the scout yet
+			CommanderAnsv_4: Here is your report
+			CommanderAnsv_3: I'll bring you this report
+			CommanderAnsv_2: I'll do my best for Empire!
+			CommanderAnsv_1: Can you give me equipment?
+		}
+	}
+
+	ImperianConsul: {
+		DisplayName: Consul
+
+		Name: {
+			Rizo: Bonusmalus
+			Albert: Tiverius
+			Bernando: Lucius
+			Seefeld: Publicus
+			Sqt: Horatio
+		}
+
+		TownNPCMood: {
+			Content: Я довольный.
+			NoHome: Терпеть не могу, когда у меня нет дома.
+			FarFromHome: Я слишком далеко от дома.
+			LoveSpace: Я люблю, когда так много пространства.
+			DislikeCrowded: Мне не нравится то, как здесь людно.
+			HateCrowded: Я ненавижу то, как здесь людно.
+			LikeNPC_Princess: Мне нравится {NPCName}.
+			Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			ConsulAnsv_4: Yes, sir!
+			ConsulAnsv_3: Town needs new priest...
+			ConsulAnsv_2: I want to talk about {0}
+			ConsulAnsv_1: No, thanks (non-RPG gameplay)
+			ConsulNQ_3: If you need a quest – take one from our citizens
+			ConsulNQ_2: Every road leads to our city.
+			ConsulNQ_1: You came, you saw, you completed the quest!
+			Consul_1: Oh, we have a rookie! Welcome, fighter. You’re standing in the only safe haven for miles away – the Imperial city! I’m sure you’ll serve the Empire well, for now, take a look around. The class engraving will help you choose your path, visit the Commander to get your equipment once you’re done.
+		}
+	}
+
+	Minotaur.DisplayName: Minotaur
+	MinotaurDeath.DisplayName: Minotaur
+
+	NagaMerchant: {
+		DisplayName: Naga Merchant
+
+		Name: {
+			Rizo: Sirene
+			Albert: Medusa
+			Bernando: Slardarie
+			Seefeld: Azshara
+			Sqt: Lahlan
+		}
+
+		TownNPCMood: {
+			Content: Я довольный.
+			NoHome: Терпеть не могу, когда у меня нет дома.
+			FarFromHome: Я слишком далеко от дома.
+			LoveSpace: Я люблю, когда так много пространства.
+			DislikeCrowded: Мне не нравится то, как здесь людно.
+			HateCrowded: Я ненавижу то, как здесь людно.
+			LikeNPC_Princess: Мне нравится {NPCName}.
+			Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			NagaNQ_4: Remember – never bite your t-t-tongue.
+			NagaNQ_2: I’m glad you chos-s-se our great rac-c-ce over those bloods-s-suckers.
+			NagaNQ_1: Remember – never bite your t-t-tongue.
+		}
+	}
+
+	NecromancerDeath.DisplayName: Necromancer
+	NecromancersSkeleton.DisplayName: Necromancer's Skeleton
+
+	Necromant: {
+		DisplayName: Necromant
+
+		TownNPCMood: {
+			Content: Я довольный.
+			NoHome: Терпеть не могу, когда у меня нет дома.
+			FarFromHome: Я слишком далеко от дома.
+			LoveSpace: Я люблю, когда так много пространства.
+			DislikeCrowded: Мне не нравится то, как здесь людно.
+			HateCrowded: Я ненавижу то, как здесь людно.
+			LikeNPC_Princess: Мне нравится {NPCName}.
+			Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+	}
+
+	OldmanPriest: {
+		DisplayName: Old Man Priest
+
+		TownNPCMood: {
+			Content: Я довольный.
+			NoHome: Терпеть не могу, когда у меня нет дома.
+			FarFromHome: Я слишком далеко от дома.
+			LoveSpace: Я люблю, когда так много пространства.
+			DislikeCrowded: Мне не нравится то, как здесь людно.
+			HateCrowded: Я ненавижу то, как здесь людно.
+			LikeNPC_Princess: Мне нравится {NPCName}.
+			Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			OldmanPriestAnsv_1: Blessing
+			OldmanPriestNQ_1: Jupiter bless you, hero!
+			OldmanPriestNQ_2: Time heals, but the priests are faster.
+			OldmanPriestNQ_3: It's gotten a lot better here after the Necromancer got driven out. Just like the good old times.
+			OldmanPriestNQ_4: Don't you think that anthropomancy is the most precise forecasting method?
+			OldmanPriestNQ_6: I'm blessing you
+			OldmanPriestNQ_7: Sorry, but you can't be blessed more than once a day
+		}
+	}
+
+	Orc.DisplayName: Orc
+	OrcCrossbower.DisplayName: Orc Crossbower
+	OrcDefender.DisplayName: Orc Defender
+	OrcishPortal.DisplayName: Orcish Portal
+	OrcWizard.DisplayName: Orc Wizard
+	Papuan.DisplayName: Papuan
+	PapuanArcher.DisplayName: Papuan Archer
+	PapuanWarrior.DisplayName: Papuan Warrior
+	PapuanWizard.DisplayName: Papuan Wizard
+	PapuanWizardDeath.DisplayName: Papuan Wizard
+
+	Priest: {
+		DisplayName: Priest
+
+		Name: {
+			Rizo: Deckard Cain
+			Albert: Saruman
+			Bernando: Velen
+			Seefeld: Ferool Rahvel
+		}
+
+		TownNPCMood: {
+			Content: Я довольный.
+			NoHome: Терпеть не могу, когда у меня нет дома.
+			FarFromHome: Я слишком далеко от дома.
+			LoveSpace: Я люблю, когда так много пространства.
+			DislikeCrowded: Мне не нравится то, как здесь людно.
+			HateCrowded: Я ненавижу то, как здесь людно.
+			LikeNPC_Princess: Мне нравится {NPCName}.
+			Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			PriestAnsv_7: Did you charge it?
+			PriestAnsv_6: I'd like to charge scythe
+			PriestAnsv_5: I've broken tombstone
+			PriestAnsv_4: I haven't found tombstone yet
+			PriestAnsv_3: I got remains
+			PriestAnsv_2: Wish me luck
+			PriestAnsv_1: I'm listening
+			PriestNQ_4: The tomes from {0} are interesting..
+			PriestNQ_3: Death magic rewards the worthy and tortures the weak… Are you ready to pay such a price?
+			PriestNQ_2: What a sunny day it is… I hope the night is going to be just as clear.
+			PriestNQ_1: If you want to know more about the ruins – visit me at night.
+			Priest_5: I need the remains for a ritual. Come back once you have them.
+			Priest_4: Have you obtained the warrior’s remains yet?
+			Priest_2: Do you wish to lay your hands on a weapon of unseen power? Do you know how to keep secrets? If so – prepare to listen, for I have a task for you. You’ll, of course, be given a generous reward – nothing in this world should be done for free…
+			Priest_1: I need a person that won’t ask any questions. Come here when night falls upon this city – and you’ll not regret it
+		}
+	}
+
+	PriestTeleportation: {
+		DisplayName: Priest Teleportation
+
+		Name: {
+			Rizo: Deckard Cain
+			Albert: Saruman
+			Bernando: Velen
+			Seefeld: Ferool Rahvel
+		}
+
+		TownNPCMood: {
+			Content: Я довольный.
+			NoHome: Терпеть не могу, когда у меня нет дома.
+			FarFromHome: Я слишком далеко от дома.
+			LoveSpace: Я люблю, когда так много пространства.
+			DislikeCrowded: Мне не нравится то, как здесь людно.
+			HateCrowded: Я ненавижу то, как здесь людно.
+			LikeNPC_Princess: Мне нравится {NPCName}.
+			Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat.Priest_10: <{0}> You'll pay for this!
+	}
+
+	RestlessSoul.DisplayName: Restless Soul
+	RhinoOrc.DisplayName: Rhino Orc
+	RunicElemental.DisplayName: Runic Elemental
+	RunicElementalDeath.DisplayName: Runic Elemental Death
+	SandWormBody.DisplayName: Sand Worm
+	SandWormHead.DisplayName: Sand Worm
+	SandWormTail.DisplayName: Sand Worm
+
+	StrangeOldman: {
+		DisplayName: Strange Oldman
+
+		Name: {
+			Rizo: Egey
+			RizoZ: Alphus
+			RizoZZ: Avgur
+			RizoZZZ: Sulyvahn
+			RizoSZZZZ: Pepin
+		}
+
+		TownNPCMood: {
+			Content: Я довольный.
+			NoHome: Терпеть не могу, когда у меня нет дома.
+			FarFromHome: Я слишком далеко от дома.
+			LoveSpace: Я люблю, когда так много пространства.
+			DislikeCrowded: Мне не нравится то, как здесь людно.
+			HateCrowded: Я ненавижу то, как здесь людно.
+			LikeNPC_Princess: Мне нравится {NPCName}.
+			Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			OldmanName_1: Egey
+			OldmanName_2: Alphus
+			OldmanName_3: Avgur
+			OldmanName_4: Sulyvahn
+			OldmanName_5: Pepin
+			Oldman_1: A human! Thanks, Gods of Olympus! I need your help! I’ve been stuck in this cave without a chance for rescue for several months now – you’re my last hope!
+			Oldman_3: Have you found the stone?
+			Oldman_4: Don’t take too long, my life is in your hands!
+			Oldman_7: "{0}, may I ask something of you?"
+			OldmanNQ_1: I'm glad to have finally gotten out of that labyrinth - it was mighty dark in there.
+			OldmanNQ_2: Now that the Minotaur has been slain, the underground is going to calm down by a lot.
+			OldmanNQ_3: In the ancient times there was a hero who too defeated the Minotaur. Theseus was his name, I believe.
+			OldmanNQ_4: There's nothing better that once again being among the people of the Empire.
+			OldmanNQ_5: "{0} is an odd guy. I don't trust him."
+			OldmanAnsv_1: How did you get here?
+			OldmanAnsv_2: Just stay here and you'll be saved
+			OldmanAnsv_3: I found it!
+			OldmanAnsv_4: I'm searching for the stone
+			OldmanAnsv_5: About the reward...
+			OldmanAnsv_6: Sure!
+			OldmanAnsv_7: I'll talk to {0}
+		}
+	}
+
+	SwampHound.DisplayName: Swamp Hound
+	SwampWraith.DisplayName: Swamp Wraith
+
+	TravelingVampire: {
+		DisplayName: Traveling Vampire
+
+		Name: {
+			Rizo: Dracula
+			Albert: Regis
+			Bernando: Alucard
+			Seefeld: Nosferatu
+			Robert: Dio
+			Vlad: Cain
+		}
+
+		TownNPCMood: {
+			Content: Я довольный.
+			NoHome: Терпеть не могу, когда у меня нет дома.
+			FarFromHome: Я слишком далеко от дома.
+			LoveSpace: Я люблю, когда так много пространства.
+			DislikeCrowded: Мне не нравится то, как здесь людно.
+			HateCrowded: Я ненавижу то, как здесь людно.
+			LikeNPC_Princess: Мне нравится {NPCName}.
+			Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			TravelingVampireNQ_6: The Masquerade will help you to disguise.
+			TravelingVampireNQ_5: The time of people’s life is much too short, vampires are eternal.
+			TravelingVampireNQ_4: I hate Twillight.
+			TravelingVampireNQ_3: Carpe Jugulum!
+			TravelingVampireNQ_2: Who told you that he must become a guard of the swamp?
+			TravelingVampireNQ_1: Can you tell me why the tortoise lives more long than generations of men, why the elephant goes on and on till he have sees dynasties, and why the parrot never die only of bite of cat of dog or other complaint?
+		}
+	}
+
+	SwampWitchDeath.DisplayName: Swamp Witch Death
+}
+
+Projectiles: {
+	AeglosP.DisplayName: Aeglos P
+	AuraOrbital.DisplayName: Aura Orbital
+	BabaYagaBlast.DisplayName: Baba Yaga Blast
+	BabaYagaPreBlast.DisplayName: Baba Yaga Pre Blast
+	BabaYagaSphere.DisplayName: Baba Yaga Sphere
+	BaselardP.DisplayName: Baselard P
+	BladeOfWoeP.DisplayName: Blade Of Woe P
+	BoneHandP.DisplayName: Bone Hand P
+	DarkSkullP.DisplayName: Dark Skull P
+	DoomhammerP.DisplayName: Doomhammer P
+	FallingDagger.DisplayName: Falling Dagger
+	Fireball.DisplayName: Fireball
+	Fireball2.DisplayName: Fireball2
+	Fireball3.DisplayName: Fireball3
+	HeroBootsJumpEffect.DisplayName: Hero Boots Jump Effect
+	HerosBootsBlast.DisplayName: Heros Boots Blast
+	IceSpikeP.DisplayName: Ice Spike P
+	InkStainP.DisplayName: Ink Stain P
+	LanceaP.DisplayName: Lancea P
+	LichP.DisplayName: Lich P
+	LifestealP.DisplayName: Lifesteal P
+	ManaVamp.DisplayName: Mana Vamp
+	ManaVampEnemy.DisplayName: Mana Vamp Enemy
+	MarbleArrow.DisplayName: Marble Arrow
+	MinosBlastCallP.DisplayName: Minos Blast Call P
+	MinotaurAttack.DisplayName: Minotaur Attack
+	MinotaursAxeP.DisplayName: Minotaurs Axe P
+	MisericordeP.DisplayName: Misericorde P
+	OrcWizardOrbP.DisplayName: Orc Wizard Orb P
+	PhoenixP.DisplayName: Phoenix P
+	RevivingEagleP.DisplayName: Reviving Eagle P
+	SandSpike.DisplayName: Sand Spike
+	SandWaveEnemyP.DisplayName: Sand Wave Enemy P
+	ScytheSlashHitboxP.DisplayName: Scythe Slash Hitbox P
+	SphereOfLight.DisplayName: Sphere Of Light
+	StarOfTheDunedainBase.DisplayName: Star Of The Dunedain Base
+	StarOfTheDunedainP.DisplayName: Star Of The Dunedain P
+	TeleportTrail.DisplayName: Teleport Trail
+	TheseusWaveP.DisplayName: Theseus Wave P
+	UndeadRevivingP.DisplayName: Undead Reviving P
+	VampirismEnemy.DisplayName: Vampirism Enemy
+	WaveOfForceP.DisplayName: Wave Of Force P
+	WDFix1.DisplayName: W D Fix1
+	WoodenStaffP.DisplayName: Wooden Staff P
+	BreakwaterHitboxP.DisplayName: Breakwater Hitbox P
+	BreakwaterP.DisplayName: Breakwater P
+	FuryOfWatersP.DisplayName: Fury Of Waters P
+	FuryOfWatersP2.DisplayName: Fury Of Waters P2
+	TyphoonP.DisplayName: Typhoon P
+	TyphoonP2.DisplayName: Typhoon P2
+	Meteor1.DisplayName: Meteor1
+	Meteor2.DisplayName: Meteor2
+	Meteor3.DisplayName: Meteor3
+	MeteorBase.DisplayName: Meteor Base
+}
+
+Configs: {
+	BismuthConfig: {
+		DisplayName: Bismuth Config
+		BlacksmithForgingVolume.Tooltip: ""
+		XPMultiplier.Tooltip: ""
+	}
+}
+
+Config: {
+	AllowHealthBuffsTogether: XP Multiplier
+	AllowHealthBuffsTogetherTooltip: ""
+	AllowHealthBuffsTogether2: Blacksmith Forging Volume
+	AllowHealthBuffsTogetherTooltip2: ""
+}
+
+UI.ExampleResource: Mods.Bismuth.UI.ExampleResource
+
+Keybinds: {
+	"Activate Second Skill.DisplayName": Activate  Second  Skill
+	"Turn Into Bat.DisplayName": Turn  Into  Bat
+	"Activate Unique Ability.DisplayName": Activate  Unique  Ability
+	"Toggle Experience Panel.DisplayName": Toggle  Experience  Panel
+	"Activate First Skill.DisplayName": Activate  First  Skill
+}
+
+Biomes: {
+	ZoneSwamp: {
+		TownNPCDialogueName: the Zone Swamp
+		DisplayName: Zone Swamp
+	}
+
+	#Я не знаю почему оно здесь
+	"Bismuth:SwampSky": {
+		DisplayName: Bismuth: Swamp Sky
+		TownNPCDialogueName: the Bismuth: Swamp Sky
+	}
+}
+
+BismuthPlayerSystem: {
+	BismuthPlayer: {
+		Chat: {
+			Death: couldn't cope with the desire to kill
+			Death2: became mad
+			OnEnterText3: "[c/ff0000:Please regenerate your world]"
+			OnEnterText2: "[c/fc6735:Make sure you use certain character for certain world!]"
+			OnEnterText1: Thank you for playing [c/8936ff:Bismuth Mod]
+			Death4: became a victim of broken connections
+			Death3: drank the poison
+		}
+
+		Skill: {
+			Skill1Name: My choice is warrior!
+			PassiveSkill: Passive skill
+			Skill1Tooltip: +5% to melee but -20% to other types of damage
+			SPRequired: "{0} skill points required"
+			UpgratedSkill: This skill has already been learned
+			Skill2Name: Defender-Apprentice
+			Skill2Tooltip: +2 defence, +4% damage resistance.
+			SkillRequired: You need to learn '{0}' to unlock this skill
+			DefeatWoB: Defeat the Eater of Worlds or the Brain of Cthulhu to upgrade this skill
+			DefeatEoC: Defeat the Eye of Cthulhu to upgrade this skill
+			HPBonus: +{0} hp
+			SkillLevelBonus: "{0} on next level"
+			SkillLevel: Current skill level: {0}/{1}
+			Skill3Tooltip: Increased maximum HP
+			Skill3Name: Tenacious
+			DefeatGolem: Defeat the Golem to upgrade this skill
+			DefeatPlantera: Defeat Plantera to upgrade this skill
+			DefeatAnyMech: Defeat any mechanic boss to upgrade this skill
+			DefeatWoF: Defeat the Wall of Flesh to upgrade this skill
+			DefeatSkeletron: Defeat Skeletron to upgrade this skill
+			UpgratedSkillMaxLevel: You have reached the maximum level of this skill!
+			Skill4Name: Hold the Line!
+			Skill4Tooltip: +6 hp/sec and +6 defense, when standing still
+			ActiveSkill: Active skill
+			SecondsDuration: "{0} seconds"
+			ActileSkillText: Active skill
+			MinutesDuration: "{0} minutes"
+			Skill22Name: Rage Attack
+			CantUpgrade: You can't upgrade this skill, because you already have '{0}'
+			ActiveSkillUpgrade: Active skill upgrade
+			Skill5Name: Like a Stone Wall
+			Skill6Tooltip: +15 hp/sec, +20 defense and +10% damage resistance when standing still. Attacked mobs get ''On Fire!''
+			Skill5Tooltip: +10 hp/sec and +12 defense, when standing still
+			Skill7Name: Cold Revenge
+			Skill6Name: Hot Revenge
+			Skill7Tooltip: +15 hp/sec, +20 defense and +10% damage resistance when standing still. Attacked mobs get ''Frostburn''
+			DefenceBonus: +{0} defense
+			Skill8Tooltip: Increased defense
+			Skill8Name: Armored
+			Skill9Name: Thirst for Life
+			Skill9Tooltip: +15 hp/sec, +20 defense and +10% damage resistance when standing still. Attacked mobs get ''Frostburn''
+			Skill10Tooltip: +25% damage resistance in crimson or corruption.
+			Skill10Name: Protected from Evil
+			Skill11Name: To the Last Drop of Blood
+			Skill11Tooltip: +4 hp/sec on 4 seconds after getting damage
+			Skill12Tooltip: +5% block chance, +10% damage resistance
+			Skill12Name: You Can't Break Me!
+			Skill13Name: My Grandpa was a Vampire
+			Skill13Tooltip: 4% lifesteal at night
+			SkillOrRequired: You need to learn '{0}' or '{1}' to unlock this skill
+			Skill14Tooltip: You are invincible
+			Skill33Name: Surge of Energy
+			Skill14Name: Panacea from Damage
+			DefeatCultist: Defeat the Lunatic Cultist to upgrade this skill
+			Skill15Tooltip: You are invincible
+			Skill15Name: The Steadfastness itself
+			Skill16Name: Legendary Defender
+			Skill16Tooltip: +10 defence, +10% damage resistance, +6hp/sec, +50 HP, +7% block chance, -25% movement speed, healing potions cooldown is decreased by 10 seconds
+			FinalSkill: Final skill
+			Skill35Name: Legendary Fighter
+			Skill17Name: Spiky Guy
+			Skill17Tooltip: Increased damage reflection
+			DamageReflectionBonus: +{0}% damage reflection
+			Skill18Tooltip: +7% melee speed, +3% melee crit chance
+			Skill18Name: Course of a Young Fighter
+			Skill19Tooltip: 1% к урону ближнего боя за каждого НИПа (до +15%)
+			Skill20Name: Champion of Terraria
+			Skill19Name: Mr.Welcome
+			Skill20Tooltip: +1% melee damage for every slain boss (up to +15%)
+			MeleeSpeedBonus: +{0}% melee speed
+			Skill21Tooltip: Increased melee speed
+			Skill21Name: Fencer-Virtuoso
+			Skill22Tooltip: +30% melee speed, -15% damage resistance
+			Skill23Name: Berserker's Wrath
+			Skill23Tooltip: +40% melee speed, -10% damage resistance
+			Skill24Tooltip: +50% melee speed, +15% melee crit chance
+			Skill24Name: HYPERFURY!
+			Skill25Name: Strength Exercises
+			Skill25Tooltip: Increased melee damage
+			MeleeDamageBonus: +{0}% melee damage
+			Skill26Name: Death Agony
+			Skill26Tooltip: +10% melee crit chance, less HP - more melee crit chance
+			Skill2&Tooltip: +20% melee damage in the jungle
+			Skill27Name: Unity with Nature
+			Skill28Name: Born to Shred
+			Skill28Tooltip: +15% melee speed, +20% movement speed
+			Skill29Name: Bloodlust
+			Skill29Tooltip: 6% lifesteal, -15% melee damage
+			Skill30Tooltip: +10% melee damage, +10% melee crit chance, -25% melee speed
+			Skill30Name: Slow and Deadly
+			Skill31Name: The One Who Trusts in Luck
+			Skill31Tooltip:
+				'''
+				+10% melee crit chance, +50% melee crit 
+				damage, 1% chance of x3 damage
+				'''
+			Skill32Tooltip: Twofold melee knockback increase
+			Skill32Name: Titanic Power
+			Skill33Tooltip: x3 melee damages
+			Skill34Tooltip: x5 melee damage
+			Skill34Name: Like a nuke
+			Skill35Tooltip: 2% chance of x5 melee damage. +15% melee damage. +20% to melee crit chance, damage and speed after consuming any potion (except mana and healing potions)
+
+			Wizard: {
+				Skill36Name: My choice is wizard!
+				Skill36Tooltip: +5% to magic and minion but -20% to other types of damage
+				Skill37Tooltip: +4% to magic damage, +6% to minion damage
+				Skill37Name: Elementary Magic
+				Skill38Name: Secrets of Druids
+				Skill38Tooltip: +1 hp/sec for every minion when in the jungle
+				Skill39Tooltip: +4 to max amount of minions
+				Skill51Name: Magic Shield
+				Skill39Name: Strength is in Numbers!
+				Skill40Name: The Leader
+				Skill40Tooltip: x2 max amount of minions
+				Skill41Name: Minion collector
+				Skill41Tooltip: +9% to minion damage for every type of minions used
+				Skill42Tooltip: Mobs don't attack you, if you have a minion of the same type
+				Skill42Name: Nonaggression Pact
+				MinionDamageBonus: +{0}% minion damage
+				Skill43Tooltip: Increased minion damage
+				Skill43Name: Ancient Rituals
+				MinionNumberBonus: max minion amount +{0}
+				Skill44Tooltip: Increased maximum amount of minions
+				Skill44Name: Your Personal Army
+				Skill45Name: Minions-Doctors
+				Skill45Tooltip: +8 max HP per minion
+				Skill46Tooltip: +25% minion damage, -2 defense per minion
+				Skill47Name: Selfish
+				Skill46Name: Altruist
+				Skill47Tooltip: +1% damage resistance and +2 defence per minion, -20% minion damage
+				Skill48Tooltip: x2 minion knockback
+				Skill48Name: Battle Cry
+				Skill49Name: Magic Wellspring
+				Skill49Tooltip: Decreased mana cost
+				ManaCostBonus: -{0}% spell cost
+				Skill50Name: Wizard-Expert
+				Skill50Tooltip: -8% mana cost, +8% magic damage
+				Skill51Tooltip: Enemy attacks consume mp instead of hp as long as you have some
+				Skill53Name: Inner Strength
+				Skill53Tooltip: Increased magic damage
+				MagicDamageBonus: +{0}% magic damage
+				Skill54Tooltip: +10% magic crit chance, +25% magic crit damage
+				Skill54Name: Wizard-Assassin
+				Skill55Name: Magic Wellspring II
+				Skill55Tooltip: Increased mana regeneration
+				ManaRegenBonus: x{0} mana regeneration
+				Skill56Name: The One Who is Strong in Spirit
+				Skill56Tooltip: Convert 50% of received damage to mana
+				Skill57Tooltip: Magical critical hit restores 20% of your mana
+				Skill57Name: Critical Thinking
+				Skill58Tooltip: +15% magic damage and +15% magic crit chance during daytime
+				Skill58Name: Keep Calm and Praise the Sun
+				Skill59Name: No to Sicknesses!
+				Skill59Tooltip: Mana potions don't induce mana sickness
+				Skill60Tooltip: Your mana potions are used automatically
+				Skill60Name: Fully Automated
+				Skill61Name: Inner Balance
+				Skill61Tooltip: Spells don't consume mana
+				Skill62Tooltip: Spells don't consume mana, +25% magic crit chance
+				Skill62Name: The Astral State
+				Skill63Tooltip: 7% of your damage converts to mana
+				Skill63Name: Manasteal
+				Skill64Name: Legendary Wizard
+				Skill64Tooltip: +15% magic damage, +20% minion damage, +15% magic crit damage, +2 max amount of minions, +20% movement speed, you can pick up mana stars from a longer distance
+			}
+
+			Assassin: {
+				Skill65Tooltip: +5% to assassin but -20% to other types of damage, except melee
+				Skill65Name: My choice is assassin!
+				Skill66Name: I Prefer Shortswords
+				Skill66Tooltip: +5% to assassin damage, +5% to assassin crit \nchance, +40% to damage for shortswords
+				Skill67Name: The Killer in the Darkness
+				Skill67Tooltip: +20% to XP gained during nighttime
+				MoveSpeedBonus: +{0}% к скорости перемещения
+				Skill68Tooltip: Increased movement speed
+				Skill68Name: At the Speed of Light
+				Skill69Name: Hunter Reflexes
+				Skill69Tooltip: You get "Night Vision" and "Hunter"
+				Skill70Name: Predator Instincts
+				Skill70Tooltip: You get "Night Vision" and "Hunter"
+				Skill71Tooltip: You get "Night Vision" and "Hunter", +40% movement speed after dealing damage
+				Skill71Name: In Pursuit of the Prey
+				Skill72Name: Teleportation!
+				Skill72Tooltip:
+					'''
+					You can teleport by pressing a special key 
+					15 seconds cooldown
+					'''
+				Skill73Tooltip: -7 seconds to teleportation cooldown
+				Skill73Name: 7 Seconds of Advantag
+				Skill75Name: Master of Teleportation
+				Skill75Tooltip: Particles left behind after teleportation deal 500 damage to enemies and heal 50 HP for every killed one
+				AllCritBonus: +{0}% to critical strike chance of any class
+				Skill76Tooltip: Increased critical damage for all classes
+				Skill76Name: Accurate Blow
+				AssassinDamageBonus: +{0}% assassin damage
+				Skill77Tooltip: Increased assassin damage
+				Skill77Name: Professional Murderer
+				Skill78Tooltip: 1% chance of 5x damage
+				Skill78Name: Jackpot!
+				Skill79Name: (Non)Lethal Damage
+				Skill79Tooltip: 2% chance to reduce enemy HP to 1, this hit doesn't ignore defense (10x damage when fighting a boss
+				Skill80Tooltip: 5x damage hits restore 25% of your HP
+				Skill80Name: Shortest Path to the Heart
+				Skill81Name: Elusive
+				Skill81Tooltip: Lethal strike gives you a 100% chance to dodge the next hit
+				Skill82Tooltip: +10 HP/sec, +35% assassin damage and +20% critical strike chance when in water
+				Skill82Name: Amphibian Man
+				Skill83Name: Everyone Loves Discounts :)
+				Skill83Tooltip: A 35% discount in every store
+				Skill84Tooltip: You get 40% more money during nighttime
+				Skill84Name: A Thief in the Night
+				Skill85Name: Clinging to Life
+				Skill85Tooltip: Every critical hit increases your life regeneration
+				Skill86Tooltip: +66% to assassin damage, +30% assassin crit chance, +75% to assassin crit damage, -50% damage resistance, -25 defense
+				Skill89Name: Kill or Die
+				Skill86Name: A Stab in the Back
+				Skill87Name: Meanness
+				Skill87Tooltip: +40% chance to dodge, disregards previous bonuses
+				Skill88Tooltip: A 50% chance to inflict "Poison" on your enemy, disregards previous bonuses
+				Skill88Name: Snake Cruelty
+				Skill89Tooltip: +100% crit chance, +30% crit damage, x4 regen speed after killing an enemy, after 4 seconds without kills you start dying. -15% max HP
+				Skill90Tooltip: +15% to assassin damage and critical strike chance, +21% assassin damage and +30% to critical damage during nighttime, +20% damage under a full moon
+				Skill90Name: Legendary Assassin
+			}
+
+			UniqueAbility: Unique ability
+			UniqueAbilityUpgrade: Unique ability upgrade
+
+			Ranger: {
+				Skill91Name: My choice is ranger!
+				Skill91Tooltip: +5% ranged but -20 % to other types of damage
+				Skill92Tooltip: +4% ranged critical chance, +6% ranged damage
+				Skill92Name: Shooting Training
+				Skill93Name: Precise Shot
+				Skill93Tooltip: Increases ranged critical chance
+				RangedCritBonus: +{0}% ranged crit chance
+				Skill94Tooltip: Your ranged attacks stun enemies for 1.5 seconds, but their defense increases threefold
+				Skill94Name: Stop! Stun Time!
+				Skill106Name: The Energy Barrier
+				Skill95Tooltip: Your ranged attacks stun enemies for 2 seconds, but their defense increases 1.5 times
+				Skill95Name: Numbness
+				Skill96Name: Paralysis
+				Skill96Tooltip: Your ranged attacks stun enemies for 1.5 seconds and sets their defense to 0
+				Skill97Tooltip: All ranged weapons get binoculars effect
+				Skill97Name: Skilled Scout
+				Skill98Name: Deft Hands
+				Skill98Tooltip: You get more money for killing
+				MoneyBonus: +{0}% money after killing an enemy
+				Skill99Tooltip: +10% ranged critical chance, +25% ranged critical damage
+				Skill99Name: Ranger-Assassin
+				Skill100Name: Acrobat from Hell
+				Skill100Tooltip: +4% dodge chance and +23% ranged damage when in the underworld
+				RangedUsageBonus: "{0}% ranged weapon use speed"
+				Skill101Tooltip: Decreased use time of ranger weapons
+				Skill101Name: Storm of Projectiles
+				Skill102Name: Stopping Shells
+				Skill102Tooltip: 3% chance to stun an enemy for 2,5 seconds
+				Skill103Tooltip: +10% ranged damage after an killing enemy (up to 30%)
+				Skill103Name: Killing Spree
+				Skill104Name: DuelistAll ranged projectiles automatically lock onto the enemy
+				Skill104Tooltip: +6% dodge chance, +25% ranged damage, -15% max HPs
+				RangedDamageBonus: +{0}% ranged damage
+				Skill105Tooltip: Increased ranged damage
+				Skill105Name: Armor-Piercing
+				Skill106Tooltip: You’re surrounded by a shield that reflects projectiles (you also take damage), +25% damage resistance
+				Skill107Tooltip: +8 HP/sec, when the shield is active
+				Skill107Name: Health Boost
+				Skill108Name: Impenetrable
+				Skill108Tooltip: 100% chance to parry a projectile
+				Skill110Tooltip: 15% chance to not consume ammo
+				Skill110Name: Miser
+				Skill111Name: Additional Arrow
+				Skill111Tooltip: +1 arrow projectileLegendary Ranger
+				Skill112Tooltip: All bullets bounce two times before destruction
+				Skill112Name: Ricochet!
+				Skill113Name: Grenadier
+				Skill113Tooltip: +25% explosion damage (except rockets)
+				ArrowVelocityBonus: +{0}% arrow velocity
+				Skill114Tooltip: Increased arrow velocity
+				Skill114Name: Sturdy Bowstring
+				Skill115Name: Explosive Bullets
+				Skill115Tooltip: bullets explode on impact
+				Skill116Name: Call me a DoomGuy
+				Skill116Tooltip: +10 defense when holding a rocket launcher
+				Skill117Name: On the Edge
+				Skill117Tooltip: Increased arrow damage
+				ArrowDamageBonus: +{0}% arrow damage
+				BulletDamageBonus: +{0}% bullet damage
+				Skill118Tooltip: Increased bullet damage
+				Skill118Name: Hollow-point Bullets
+				Skill119Name: Shaped-Charge Rockets
+				Skill119Tooltip: Increased rocket damage
+				RocketDamageBonus: +{0}% rocket damage
+				Skill120Tooltip: All ranged projectiles automatically lock onto the enemy
+				Skill120Name: Aimbot
+				Skill121Name: Legendary Ranger
+				Skill121Tooltip: All ranged weapons have auto-attack. +30% ranged damage and critical damage, every shot freezes the enemy
+			}
+		}
+	}
+}
+
+DamageClasses.AssasinDamageType.DisplayName: assassin damage
+
+AssassinDamage: {
+	Baselard: {
+		Tooltip: ""
+		DisplayName: Baselard
+		Item.AssassinDamage: assassin damage
+	}
+}

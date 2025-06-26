@@ -1,0 +1,2262 @@
+Tiles: {
+	AlchemicalShelf.MapEntry: Алхимическая полка
+	BlastFurnace.MapEntry: Доменная печь
+	PeatBlock.MapEntry: Торф
+	OrcishBar.MapEntry: Металлический слиток
+	AltarOfWaters.MapEntry: Алтарь вод
+	AluminiumOre.MapEntry: Алюминиевая руда
+	BeggarsCasket.MapEntry: Шкатулка
+	BeggarTent.MapEntry: Палатка бедняка
+	// Bone1.MapEntry: Bone1
+	// Bone4.MapEntry: Bone4
+	BookOfSecrets.MapEntry: Книга секретов
+	BorealChairNoSettle.MapEntry: Стул
+	BorealTableNoSettle.MapEntry: Стул
+	Cinnabar.MapEntry: Киноварь
+	DeadCourier.MapEntry: Dead Courier
+	Fern.MapEntry: Папоротник
+	Fern2.MapEntry: Папоротник
+	Fountain.MapEntry: Fountain
+	MagicPot.MapEntry: Магический котел
+	OrcishCandelabra.MapEntry: Канделябр
+	OrcishCandle.MapEntry: Свеча
+	OrcishChair.MapEntry: Стул
+	OrcishChandelier.MapEntry: Люстра
+	OrcishChest.MapEntry1: Сундук
+	OrcishCoatOfArms.MapEntry: Орочий герб
+	OrcishDoorClosed.MapEntry: Дверь
+	OrcishDoorOpen.MapEntry: Дверь
+	OrcishLamp.MapEntry: Лампа
+	OrcishLantern.MapEntry: Фонарь
+	OrcishTable.MapEntry: Стол
+	OrnamentalPlant.MapEntry: OrnamentalPlant
+	PapuansBed.MapEntry: Кровать
+	PapuansCandle.MapEntry: Свеча
+	PapuansChair.MapEntry: Стул
+	PapuansChest.MapEntry1: Сундук
+	PapuansDoorClosed.MapEntry: Дверь
+	PapuansDoorOpen.MapEntry: Дверь
+	PapuansLamp.MapEntry: Лампа
+	PapuansLantern.MapEntry: Фонарь
+	PapuansSofa.MapEntry: Скамья
+	PapuansTable.MapEntry: Стол
+	PapuansWorkbench.MapEntry: Верстак
+	RuneTable.MapEntry: Рунический стол
+	ShadewoodBedNoSettle.MapEntry: Кровать
+	SunrisePicture.MapEntry: Картина
+	SwampChest.MapEntry1: Сундук
+	SwampTreeSaplingTile.MapEntry: Саженец
+	TannedSkin.MapEntry: Загорелая кожа
+	Target.MapEntry: Мишень
+	TotemOfCurse.MapEntry: Тотем проклятия
+	WallCarpet.MapEntry: Настенный ковер
+	WarriorsTombstone.MapEntry: Могила воина
+}
+
+Items: {
+	Aether: {
+		DisplayName: Эфир
+		Tooltip: Используется для зарядки филосовского камня
+	}
+
+	AirEssence: {
+		DisplayName: Эссенция воздуха
+		Tooltip: ""
+	}
+
+	EarthEssence: {
+		DisplayName: Эссенция земли
+		Tooltip: ""
+	}
+
+	FireEssence: {
+		DisplayName: Эссенция огня
+		Tooltip: ""
+	}
+
+	WaterEssence: {
+		DisplayName: Эссенция воды
+		Tooltip: ""
+	}
+
+	AnimalSkin: {
+		DisplayName: Шкура зверя
+		Tooltip: ""
+	}
+
+	Cinnabar: {
+		DisplayName: Киноварь
+		Tooltip: ""
+	}
+
+	DarkEngraving: {
+		DisplayName: Темная гравировка
+		Tooltip: ""
+	}
+
+	DarkEssence: {
+		DisplayName: Эссенция тьмы
+		Tooltip: ""
+	}
+
+	DarkPartOfArchmagesAmulet: {
+		DisplayName: Темный осколок амулета архимага
+		Tooltip: ""
+	}
+
+	Elessar: {
+		DisplayName: Гаэрмир
+		Tooltip: Хранит скрытую силу морского народа
+	}
+
+	EmptyAmulet: {
+		DisplayName: Пустой амулет
+		Tooltip: ""
+	}
+
+	FernFlower: {
+		DisplayName: Цветок папоротника
+		Tooltip: ""
+	}
+
+	GalvornBar: {
+		DisplayName: Галворновый слиток
+		Tooltip: ""
+	}
+
+	PeatPowder: {
+		DisplayName: Торфяной порошок
+		Tooltip: ""
+	}
+
+	PeatBlock: {
+		DisplayName: Блок торфа
+		Tooltip: ""
+	}
+
+	HerbalFeather: {
+		DisplayName: Травяное перо
+		Tooltip: ""
+	}
+
+	IceCrystal: {
+		DisplayName: Ледяной кристалл
+		Tooltip: ""
+	}
+
+	LightPartOfArchmagesAmulet: {
+		DisplayName: Светлый осколок амулета архимага
+		Tooltip: ""
+	}
+
+	MirrorRim: {
+		DisplayName: Оправа зеркала
+		Tooltip: ""
+	}
+
+	OrcishBar: {
+		DisplayName: Орочий слиток
+		Tooltip: ""
+	}
+
+	OrcishFragment: {
+		DisplayName: Орочий фрагмент
+		Tooltip: ""
+	}
+
+	PieceOfTabula: {
+		DisplayName: Осколок изумрудной скрижали
+		Tooltip: ""
+	}
+
+	PoisonFlask: {
+		DisplayName: Бутыль яда
+		Tooltip: ""
+	}
+
+	Quicksilver: {
+		DisplayName: Ртуть
+		Tooltip: ""
+	}
+
+	RingRim: {
+		DisplayName: Оправа кольца
+		Tooltip: ""
+	}
+
+	RuneEssence: {
+		DisplayName: Руническая эссенция
+		Tooltip: ""
+	}
+
+	RuneRim: {
+		DisplayName: Руническая оправа
+		Tooltip: ""
+	}
+
+	Sanguinem: {
+		DisplayName: Сангуинем
+		Tooltip: ""
+	}
+
+	SerpentsScale: {
+		DisplayName: Чешуйка змея
+		Tooltip: ""
+	}
+
+	TheMoldofaKeyOfTheSun: {
+		DisplayName: Слепок ключа солнца
+		Tooltip: ""
+	}
+
+	ToadsEye: {
+		DisplayName: Жабий глаз
+		Tooltip: ""
+	}
+
+	UnchargedSoulScythe: {
+		DisplayName: Незаряженная коса душ
+		Tooltip: ""
+	}
+
+	AlchemistsBelt: {
+		DisplayName: Пояс алхимика
+		Tooltip:
+			'''
+			Время действия всех зелий увеличено на 15%
+			Кулдаун использования лечебных зелий снижен на 5 секунд
+			'''
+	}
+
+	BottleOfIncense: {
+		DisplayName: Флакон благовоний
+		Tooltip: +15 обаяния
+	}
+
+	DiceCup: {
+		DisplayName: Игральный стакан
+		Tooltip: Увеличивает количество очков в игре в кости на 1
+	}
+
+	DraculasCover: {
+		DisplayName: Плащ дракулы
+		Tooltip:
+			'''
+			Позволяет превращаться в летучую мышь вне зависимости 
+			от количества сытости, увеличивает шанс критического урона головореза на 25%
+			'''
+	}
+
+	GamblersBag: {
+		DisplayName: Мешочек игрока
+		Tooltip: Увеличение денежного выигрыша в игре в кости на 50%
+	}
+
+	HeartOfSwamp: {
+		DisplayName: Сердце болота
+		Tooltip:
+			'''
+			Увеличивает максимальный запас здоровья на 60, а также 
+			регенерацию здоровья, игрок получает иммунитет к болотной воде
+			'''
+	}
+
+	HerosBoots: {
+		DisplayName: Ботинки героя
+		Tooltip: Не даёт никаких бонусов
+	}
+
+	ImperianBanner: {
+		DisplayName: Имперский штандарт
+		Tooltip:
+			'''
+			Увеличивает обаяние на 15. Увеличивает регенерацию здоровья,
+			если вы в городе. Больше заселенных НИПов - больше защиты.
+			'''
+	}
+
+	LichCrown: {
+		DisplayName: Корона лича
+		Tooltip:
+			'''
+			Ваше здоровье составляет от 20% до 120% от начального
+			в зависимости от количества убитых врагов
+			'''
+	}
+
+	MagnesiumOxide: {
+		DisplayName: Порошок оксида магния
+		Tooltip:
+			'''
+			Увеличивает скорость броска метательного снаряда на 40%
+			Снижает метательный урон на 8%
+			'''
+	}
+
+	MarbleMask: {
+		DisplayName: Мраморная маска
+		Tooltip:
+			'''
+			Увеличивает урон головореза на 10%, а также шанс критического 
+			урона на 8%. Раз в день вы становитесь неуязвимым на 12 секунд, 
+			если ваше здоровье составляет менее 20% от максимального
+			'''
+	}
+
+	MidasGlove: {
+		DisplayName: Перчатка Мидаса
+		Tooltip:
+			'''
+			Увеличивает любой урон на 6%, вы получаете на 30% 
+			больше денег при убийстве врагов
+			'''
+	}
+
+	OrcishBanner: {
+		DisplayName: Орочий баннер
+		Tooltip: Больше защиты и регенерации здоровья за каждого заселенного НИПа
+	}
+
+	PendantOfBlood: {
+		DisplayName: Кулон крови
+		Tooltip:
+			'''
+			Снижение скорости голодания на 33%. Чем меньше сытости - тем
+			больше урона головореза
+			'''
+	}
+
+	Sanctus: {
+		DisplayName: Санктус
+		Tooltip: Чем больше урона вы получили, тем больше ваша защита и поглощение урона
+	}
+
+	Scutum: {
+		DisplayName: Скутум
+		Tooltip: Снижение получаемого урона на 5%
+	}
+
+	SignOfUndead: {
+		DisplayName: Знак нежити
+		Tooltip:
+			'''
+			Увеличение урона головореза на 10% и критического урона на 20%
+			Вы похищаете здоровье у врагов ночью, однако ваше 
+			максимальное здоровье снижается на 10% после каждой смерти
+			'''
+	}
+
+	TheRingOfTheBlood: {
+		DisplayName: Кольцо крови
+		Tooltip: Превращает вас в вампира
+	}
+
+	TheRingOfTheSeas: {
+		DisplayName: Кольцо морей
+		Tooltip: Превращает вас в нагу
+	}
+
+	ImperianHelmet: {
+		DisplayName: Имперский шлем
+		Tooltip: Увеличивает шанс критического удара на 3%.
+	}
+
+	KillersBoots: {
+		DisplayName: Ботинки убийцы
+		Tooltip: Увеличивает скорость передвижения на 20%, увеличивает критический урон на 25%.
+	}
+
+	KillersHood: {
+		DisplayName: Капюшон убийцы
+		Tooltip: Увеличивает шанс критического удара на 8%.
+	}
+
+	KillersJacket: {
+		DisplayName: Куртка убийцы
+		Tooltip:
+			'''
+			Увеличивает урон головореза на 10%. 
+			Увеличивает шанс критического удара на 4%.
+			'''
+	}
+
+	Lorica: {
+		DisplayName: Лорика
+		Tooltip: ""
+	}
+
+	NomadsBoots: {
+		DisplayName: Ботинки кочевника
+		Tooltip:
+			'''
+			Увеличивает скорость передвижения на 25%. 
+			Увеличивает урон головореза на 9%.
+			'''
+	}
+
+	NomadsHood: {
+		DisplayName: Капюшон кочевника
+		Tooltip:
+			'''
+			Увеличивает урон головореза на 5%. 
+			Увеличивает шанс критического удара на 13%.
+			'''
+	}
+
+	NomadsJacket: {
+		DisplayName: Куртка кочевника
+		Tooltip: Увеличивает урон головореза на 11%, увеличивает критический урон на 30%.
+	}
+
+	Ocrea: {
+		DisplayName: Окреа
+		Tooltip: Увеличивает скорость передвижения на 8%.
+	}
+
+	PaladinsLeggings: {
+		DisplayName: Поножи паладина
+		Tooltip:
+			'''
+			Увеличивает урон в ближнем бою на 8%, увеличивает сопротивлению урону на 5%. 
+			Снижает скорость передвижения на 5%.
+			'''
+	}
+
+	PaladinsMask: {
+		DisplayName: Маска паладина
+		Tooltip:
+			'''
+			Увеличивает урон в ближнем бою на 10%, увеличивает сопротивляемость уронe на 5%. 
+			Снижает скорость передвижения на 5%.
+			'''
+	}
+
+	PaladinsShell: {
+		DisplayName: Панцирь паладина
+		Tooltip:
+			'''
+			Увеличивает урон в ближнем бою на 12%, увеличивает сопротивляемость урона на 8%. 
+			Снижает суорость передвижения на 10%.
+			'''
+	}
+
+	ScalyBreastplate: {
+		DisplayName: Нагрудник из чешуи
+		Tooltip: Увеличивает метательный урон на 10%.
+	}
+
+	ScalyHelmet: {
+		DisplayName: Шлем из чешуи
+		Tooltip:
+			'''
+			Увеличивает шанс критического удара метательным оружием на 11% 
+			Вы используете все предметы на 5% быстрее.
+			'''
+	}
+
+	ScalyLeggings: {
+		DisplayName: Поножи из чешуи
+		Tooltip: Увеличивает скорость передвижения на 9%.
+	}
+
+	Ushanka: {
+		// DisplayName: Ushanka
+		// Tooltip: ""
+	}
+
+	Valenki: {
+		// DisplayName: Valenki
+		// Tooltip: ""
+	}
+
+	WatersBreastplate: {
+		DisplayName: Нагрудник вод
+		Tooltip: Больше влажности - выше урон и восстановление здоровья.
+	}
+
+	WatersHelmet: {
+		DisplayName: Шлем вод
+		Tooltip: Больше влажности - выше шанс критического удара.
+	}
+
+	WatersLeggings: {
+		DisplayName: Поножи вод
+		Tooltip: Больше влажности - выше скорость передвижения.
+	}
+
+	Alembic: {
+		DisplayName: Перегонный куб
+		Tooltip: 33% шанс не потратить ингридиенты при создании зелий
+	}
+
+	BeggarsCasket: {
+		DisplayName: Шкатулка бедняка
+		Tooltip: Требует отмычку для взлома
+	}
+
+	BismuthumCasket: {
+		DisplayName: Висмутовая шкатулка
+		Tooltip: Содержит предметы разработчиков
+	}
+
+	BookOfMazarbul: {
+		DisplayName: Книга Мазарбул
+		Tooltip: Даёт вам дополнительное очко умений
+	}
+
+	BookOfSecrets: {
+		DisplayName: Книга секретов
+		Tooltip: Содержит секретные знания...
+	}
+
+	DwarvenBrokenArmor: {
+		DisplayName: Сломанная гномья броня
+		// Tooltip: ""
+	}
+
+	DwarvenCoin: {
+		DisplayName: Гномья монета
+		Tooltip: Валюта для торговли с кузнецом
+	}
+
+	EmpathyMirror: {
+		DisplayName: Зеркало эмпатии
+		Tooltip:
+			'''
+			Нажмите левую кнопку мыши, чтобы добавить НИПа в сеть эмпатии, и правую, чтобы удалить его.
+			Весь полученный урон распределяется между участниками сети
+			В случае гибели одного из участников сеть разорвется...
+			'''
+	}
+
+	FaithTreatise: {
+		DisplayName: Трактат веры
+		Tooltip:
+			'''
+			Увеличивает регенерацию здоровья после использования
+			Раз в день вы можете восстановить 40% здоровья, если
+			у вас его менее 20%
+			'''
+	}
+
+	FifthPartOfAmulet: {
+		DisplayName: Пятый фрагмент амулета
+		Tooltip: Часть могущественного артефакта
+	}
+
+	FirstPartOfAmulet: {
+		DisplayName: Первый фрагмент амулета
+		Tooltip: Часть могущественного артефакта
+	}
+
+	FourthPartOfAmulet: {
+		DisplayName: Четвертый фрагмент амулета
+		Tooltip: Часть могущественного артефакта
+	}
+
+	GalvornScroll: {
+		DisplayName: Галворновый свиток
+		Tooltip: Вы можете создавать галворновые слитки, имея этот свиток
+	}
+
+	GlamdringBlueprint: {
+		DisplayName: Чертеж гламдринга
+		// Tooltip: ""
+	}
+
+	Glamdring: {
+		DisplayName: Гламдринг
+		Tooltip: Наносит многократный урон гоблинам
+	}
+
+	GreenKey: {
+		DisplayName: Зеленый ключ
+		Tooltip: Открывает зеленые сундук и дверь лабиринта
+	}
+
+	HolyGrail: {
+		DisplayName: Святой грааль
+		// Tooltip: ""
+	}
+
+	HornOfGondor: {
+		DisplayName: Боевой рог
+		Tooltip: Повышает ваш боевой дух
+	}
+
+	ImprovedMiningPotion: {
+		DisplayName: Усиленное зелье шахтера
+		Tooltip: Увеличивает скорость копания на 50%
+	}
+
+	InkBottle: {
+		DisplayName: Флакон чернил
+		Tooltip:
+			'''
+			Создаёт чернильной пятно на месте курсора
+			Нажмите правую кнопку мыши, чтобы переместиться к пятну
+			'''
+	}
+
+	Luceat: {
+		DisplayName: Луцеат
+		Tooltip: Телепортирует вас в Имперский город
+	}
+
+	MasterToolBox: {
+		DisplayName: Ящик инструментов мастера
+		Tooltip: Позволяет разрушать блоки структур
+	}
+
+	MinotaurHorn: {
+		DisplayName: Рог минотавра
+		// Tooltip: ""
+	}
+
+	OpenedBeggarsCasket: {
+		DisplayName: Открытая шкатулка бедняка
+		Tooltip: Содержит полезные предметы
+	}
+
+	OrcishKey: {
+		DisplayName: Орочий ключ
+		Tooltip: Открывает орочий сундук
+	}
+
+	Panacea: {
+		DisplayName: Панацея
+		Tooltip: Исцеляет от всех негативных эффектов
+	}
+
+	Pancakes: {
+		DisplayName: Блины
+		Tooltip: Небольшое увеличение всех характеристик
+	}
+
+	PhoenixPendant: {
+		DisplayName: Ожерелье феникса
+		Tooltip:
+			'''
+			Вы получаете 50% поглощения урона на 15 секунд
+			Можно использовать раз в сутки
+			Специально для Spinal111
+			'''
+	}
+
+	Picklock: {
+		DisplayName: Отмычка
+		Tooltip: Инструмент для взлома замков
+	}
+
+	PotionOfHumanity: {
+		DisplayName: Зелье человечности
+		Tooltip: Превращает вас обратно в человека
+	}
+
+	PotionOfInvulnerability: {
+		DisplayName: Зелье неуязвимости
+		Tooltip: Даёт абсолютную неуязвимость на короткое время
+	}
+
+	PotionOfOblivion: {
+		DisplayName: Зелье забвения
+		Tooltip: Сбрасывает все изученные умения и возвращает очки умений
+	}
+
+	ScoutsReport: {
+		DisplayName: Отчет разведчика
+		// Tooltip: ""
+	}
+
+	SecondPartOfAmulet: {
+		DisplayName: Второй фрагмент амулета
+		Tooltip: Часть могущественного артефакта
+	}
+
+	TabulaSmaragdina: {
+		DisplayName: Изумрудная скрижаль
+		Tooltip: Древний артефакт, необходимый для создания эфира
+	}
+
+	ThirdPartOfAmulet: {
+		DisplayName: Третий фрагмент амулета
+		Tooltip: Часть могущественного артефакта
+	}
+
+	TruePhilosopherStone: {
+		DisplayName: Истинный филосовский камень
+		Tooltip: Даёт вам второй шанс...
+	}
+
+	UnchargedElessar: {
+		DisplayName: Незаряженный гаэрмир
+		Tooltip: Требует что-то для активации...
+	}
+
+	UnchargedLuceat: {
+		DisplayName: Незаряженный луцеат
+		Tooltip: Для начала должен быть заряжен
+	}
+
+	UnchargedTruePhilosopherStone: {
+		DisplayName: Незаряженный истинный филосовский камень
+		Tooltip: Для начала должен быть заряжен
+	}
+
+	WarriorsRemains: {
+		DisplayName: Останки воина
+		// Tooltip: ""
+	}
+
+	AluminiumOre: {
+		DisplayName: Алюминиевая руда
+		// Tooltip: ""
+	}
+
+	FernSpore: {
+		DisplayName: Споры папоротника
+		// Tooltip: ""
+	}
+
+	MagicPot: {
+		DisplayName: Магический котел
+		// Tooltip: ""
+	}
+
+	OrcishCandelabra: {
+		DisplayName: Орочий канделябр
+		// Tooltip: ""
+	}
+
+	OrcishCandle: {
+		DisplayName: Орочья свеча
+		// Tooltip: ""
+	}
+
+	OrcishChair: {
+		DisplayName: Орочий стул
+		// Tooltip: ""
+	}
+
+	OrcishChandelier: {
+		DisplayName: Орочья люстра
+		// Tooltip: ""
+	}
+
+	OrcishChest: {
+		DisplayName: Орочий сундук
+		// Tooltip: ""
+	}
+
+	OrcishCoatOfArms: {
+		DisplayName: Орочий герб
+		// Tooltip: ""
+	}
+
+	OrcishDoor: {
+		DisplayName: Орочья дверь
+		// Tooltip: ""
+	}
+
+	OrcishLamp: {
+		DisplayName: Орочья лампа
+		// Tooltip: ""
+	}
+
+	OrcishLantern: {
+		DisplayName: Орочий фонарь
+		// Tooltip: ""
+	}
+
+	OrcishPlatform: {
+		DisplayName: Орочья платформа
+		// Tooltip: ""
+	}
+
+	OrcishTable: {
+		DisplayName: Орочий стол
+		// Tooltip: ""
+	}
+
+	OrnamentalPlant: {
+		DisplayName: Декоративное растение
+		// Tooltip: ""
+	}
+
+	PapuansBed: {
+		DisplayName: Кровать папуасов
+		// Tooltip: ""
+	}
+
+	PapuansCandle: {
+		DisplayName: Свеча папуасов
+		// Tooltip: ""
+	}
+
+	PapuansChair: {
+		DisplayName: Стул папуасов
+		// Tooltip: ""
+	}
+
+	PapuansChest: {
+		DisplayName: Сундук папуасов
+		// Tooltip: ""
+	}
+
+	PapuansDoor: {
+		DisplayName: Дверь папуасов
+		// Tooltip: ""
+	}
+
+	PapuansLamp: {
+		DisplayName: Лампа папуасов
+		// Tooltip: ""
+	}
+
+	PapuansLantern: {
+		DisplayName: Фонарь папуасов
+		// Tooltip: ""
+	}
+
+	PapuansPlatform: {
+		DisplayName: Платформа папуасов
+		// Tooltip: ""
+	}
+
+	PapuansSofa: {
+		DisplayName: Диван папуасов
+		// Tooltip: ""
+	}
+
+	PapuansTable: {
+		DisplayName: Стол папуасов
+		// Tooltip: ""
+	}
+
+	PapuansWorkbench: {
+		DisplayName: Верстак папуасов
+		// Tooltip: ""
+	}
+
+	RuneTable: {
+		DisplayName: Рунический стол
+		// Tooltip: ""
+	}
+
+	SunrisePicture: {
+		DisplayName: Рассвет
+		Tooltip: Неизвестный автор
+	}
+
+	SwampChest: {
+		DisplayName: Болотный сундук
+		// Tooltip: ""
+	}
+
+	SwampWood: {
+		DisplayName: Болотная древесина
+		// Tooltip: ""
+	}
+
+	SwampWoodWall: {
+		DisplayName: Стена из болотной древесины
+		// Tooltip: ""
+	}
+
+	TannedSkin: {
+		DisplayName: Дубленая кожа
+		// Tooltip: ""
+	}
+
+	WallCarpet: {
+		// DisplayName: Wall Carpet
+		// Tooltip: ""
+	}
+
+	DirtyShovel: {
+		DisplayName: Грязная лопата
+		// Tooltip: ""
+	}
+
+	Baselard: {
+		DisplayName: Баселард
+		Tooltip: <right> чтобы использовать как метательное оружие
+		// Item.AssassinDamage: Mods.Bismuth.Items.Baselard.Item.AssassinDamage
+	}
+
+	BookOfTheDead: {
+		DisplayName: Книга мертвыхs
+		Tooltip:
+			'''
+			Использует 60 маны
+			Призывает костяные руки в места недавно умерших врагов (до 6 рук)
+			'''
+	}
+
+	WaveOfForce: {
+		DisplayName: Силовая волна
+		// Tooltip: ""
+	}
+
+	WoodenStaff: {
+		DisplayName: Деревянный посох
+		// Tooltip: ""
+	}
+
+	Doomhammer: {
+		DisplayName: Молот рокаs
+		Tooltip:
+			'''
+			Создаёт небольшой взрыв на твердой поверхности
+			Лок Тар Огар!
+			'''
+	}
+
+	Gladius: {
+		DisplayName: Гладиус
+		// Tooltip: ""
+	}
+
+	Narsil: {
+		DisplayName: Нарсил
+		Tooltip: Способен отражать снаряды
+	}
+
+	Ringril: {
+		DisplayName: Рингрил
+		Tooltip: Создаёт пять ледяных шипов после нанесения урона
+	}
+
+	SoulScythe: {
+		DisplayName: Коса душ
+		Tooltip:
+			'''
+			Крадёт души некоторых противников
+			Убивайте злые тучи, гарпий и виверн, чтобы получить [i:Bismuth/AirEssence] 
+			Убивайте акул, медуз и пираний, чтобы получить [i:Bismuth/WaterEssence]
+			Убивайте червей, чтобы получить [i:Bismuth/EarthEssence]
+			Убивайте импов, лавовых слизней и демонов, чтобы получить [i:Bismuth/FireEssence]
+			'''
+	}
+
+	TheBladeOfWoe: {
+		DisplayName: Клинок горя
+		Tooltip:
+			'''
+			Позволяет убивать НИПов для получения [i:Bismuth/DarkEssence]
+			У тебя нет чести...
+			'''
+	}
+
+	TheseusSword: {
+		DisplayName: Меч Тесея
+		Tooltip: Создаёт восемь летящих снарядов после серии ударов
+	}
+
+	BowOfOdysseus: {
+		DisplayName: Лук Одиссея
+		Tooltip: <right> чтобы зарядить лук тремя мощными стрелами
+	}
+
+	WoodenCrossbow: {
+		DisplayName: Деревянный арбалет
+		// Tooltip: ""
+	}
+
+	Aeglos: {
+		DisplayName: Аэглос
+		// Tooltip: ""
+	}
+
+	Lancea: {
+		DisplayName: Ланцея
+		// Tooltip: ""
+	}
+
+	StarOfTheDunedain: {
+		DisplayName: Звезда Дунедайн
+		Tooltip: Создаёт два вращающихся диска
+	}
+
+	Key: {
+		// DisplayName: Key
+		// Tooltip: ""
+	}
+
+	CoatlsWings: {
+		DisplayName: Крылья коатля
+		Tooltip: Позволяют вам летать и поглощают урон от падения
+	}
+
+	ShellNecklace: {
+		DisplayName: Ожерелье из ракушек
+		Tooltip: +1 к урону метателя и его шансу критического урона за каждые 5 влажности
+	}
+
+	FuryOfWaters: {
+		DisplayName: Ярость вод
+		Tooltip: Создаёт водяной лепесток после нанесения урона
+	}
+
+	Typhoon: {
+		DisplayName: Тайфун
+		Tooltip: Создаёт водный цветок после нанесения урона
+	}
+
+	AdventurersBook: {
+		DisplayName: Книга приключенца
+		Tooltip: Содержит полезную информацию о характеристиках игрока
+	}
+
+	ClassEngraving: {
+		Tooltip: ""
+		DisplayName: Гравировка класса
+	}
+
+	RingOfOmnipotence: {
+		DisplayName: Кольцо Всевластия
+
+		TooltipLine2: {
+			RingOfOmnipotence5:
+				'''
+				Увеличивает все виды урона на 25%, увеличивает 
+				максимальный запас здоровья на 100, восстановление здоровья 
+				на 8 ед/сек, увеличивает отражение урона на 20%, 
+				увеличивает шанс блока и уклонения на 15%, увеличивает шанс 
+				критического удара на 15%, увеличивает все виды урона 
+				на 10% за каждое надетое кольцо
+				'''
+			RingOfOmnipotence4:
+				'''
+				Увеличивает все виды урона на 18%, увеличивает
+				максимальный запас здоровья на 75, восстановление здоровья 
+				на 5 ед/сек, увеличивает отражение урона на 15%, 
+				увеличивает шанс блока и уклонения на 10%, увеличивает шанс 
+				критического удара на 12%, увеличивает все виды урона 
+				на 5% за каждое надетое кольцо
+				'''
+			RingOfOmnipotence3:
+				'''
+				Увеличивает все виды урона на 13%, увеличивает 
+				максимальный запас здоровья на 50, восстановление здоровья 
+				на 3 ед/сек, увеличивает отражение урона на 12%, 
+				увеличивает шанс уклонения на 5%, увеличивает шанс критического удара на 10%
+				'''
+			RingOfOmnipotence2:
+				'''
+				Увеличивает все виды урона на 10%, увеличивает 
+				максимальный запас здоровья на 25, восстановление здоровья 
+				на 8 ед/сек, увеличивает отражение урона на 8%
+				'''
+			RingOfOmnipotence1:
+				'''
+				Увеличивает все виды урона на 7%, увеличивает 
+				максимальный запас здоровья на 15
+				'''
+			RingOfOmnipotence: Увеличивает все виды урона на 3%
+			DivineEquipment: Божественная экипировка
+		}
+
+		Tooltip: Не даёт никаких бонусов
+	}
+
+	ArchmagesAmulet: {
+		// Tooltip: ""
+		// DisplayName: Archmages Amulet
+	}
+
+	WarriorsEngraving: {
+		// Tooltip: ""
+		// DisplayName: Warriors Engraving
+	}
+
+	WizardsEngraving: {
+		Tooltip: Используется для выбора класса
+		DisplayName: Гравировка мага
+	}
+
+	AssasinsEngraving: {
+		DisplayName: Гравировка головореза
+		Tooltip: Используется для выбора класса
+	}
+
+	RangersEngraving: {
+		DisplayName: Гравировка стрелка
+		Tooltip: Гравировка стрелка
+	}
+}
+
+Buffs: {
+	Absorption: {
+		DisplayName: Поглощение
+		Description: Поглощение урона увеличено
+	}
+
+	AuraOfEmpire: {
+		DisplayName: Аура империи
+		Description: Город защищает вас
+	}
+
+	BansheesScream: {
+		DisplayName: Крик банши
+		Description: Ваша скорость перемещения уменьшена
+	}
+
+	BismuthumPoisoningEnemy: {
+		DisplayName: Висмутовое отравление
+		Description: Цель теряет здоровье
+	}
+
+	BismuthumPoisoningPlayer: {
+		DisplayName: Bismuthum Poisoning
+		Description: Цель теряет здоровье
+	}
+
+	Blessing: {
+		DisplayName: Благословение
+		Description: Ваше макс. здоровье, регенерация маны и здоровья увеличены
+	}
+
+	BoneTrap: {
+		DisplayName: Костяная ловушка
+		Description: Вы не можете двигаться
+	}
+
+	DeathWish: {
+		DisplayName: Жажда смерти
+		Description: Ваши характеристики увеличены, но вы начинаете умирать, если никого не убиваете
+	}
+
+	EnergyShield: {
+		DisplayName: Энергетический щит
+		Description: Вокруг вас генерируется щит, отражающий снаряды
+	}
+
+	FearOfMaze: {
+		DisplayName: Страх лабиринта
+		Description: Вы так напуганы что не можете использовать карту, ставить факелы и телепортироваться
+	}
+
+	FightingSpirit: {
+		DisplayName: Боевой дух
+		Description: Ваш урон увеличивается, а поглощение урона снижается
+	}
+
+	Glaciation: {
+		DisplayName: Оледенение
+		Description: Вы не можете двигаться, однако ваша регенерация здоровья серьезно увеличена
+	}
+
+	HealthDevourment: {
+		DisplayName: Пожирание здоровья
+		Description: Важе здоровье быстро уменьшается
+	}
+
+	HiddenInTheShadows: {
+		DisplayName: Прячущийся в тенях
+		Description: Вы невидимы
+	}
+
+	Hypersonic: {
+		DisplayName: Сверхзвуковой
+		Description: Метательные оружия летят быстрее
+	}
+
+	Invulnerability: {
+		DisplayName: Неуязвимость
+		Description: Вы неубиваемы!
+	}
+
+	KillingSpreeI: {
+		DisplayName: Череда убийств I
+		Description: Вы хотите убивать снова и снова
+	}
+
+	KillingSpreeII: {
+		DisplayName: Череда убийств II
+		Description: Вы хотите убивать снова и снова
+	}
+
+	KillingSpreeIII: {
+		DisplayName: Череда убийств III
+		Description: Вы хотите убивать снова и снова
+	}
+
+	MagicFreezing: {
+		DisplayName: Магическая заморозка
+		Description: Вы не можете двигаться, однако ваше здоровья быстро восполняется за счёт маны
+	}
+
+	MagiciansAura: {
+		DisplayName: Магическая аура
+		Description: Ваше поглощение урона слегка увеличено
+	}
+
+	MiningII: {
+		DisplayName: Добыча II
+		Description: Ваша скорость копания серьезно увеличена
+	}
+
+	Paralisys: {
+		// DisplayName: Paralisys
+		// Description: Mods.Bismuth.Buffs.Paralisys.Description
+	}
+
+	Persecution: {
+		DisplayName: Преследование
+		Description: После нанесения урона ваша скорость увеличена
+	}
+
+	PhoenixBlessing: {
+		DisplayName: Благословление феникса
+		Description: Поглощение урона увеличено на 50%
+	}
+
+	Reviving: {
+		DisplayName: Возрождение
+		Description: Герои не умирают
+	}
+
+	SkillCooldown: {
+		DisplayName: Кулдаун умения
+		Description: Вы не можете использовать активные умения
+	}
+
+	Specularity: {
+		DisplayName: Зеркальность
+		Description: Вы неуязвимы
+	}
+
+	Stealth: {
+		DisplayName: Подлость
+		Description: Ваш урон и крит. шанс головореза увеличены, но вы получаете больше урона
+	}
+
+	SteelSkin: {
+		DisplayName: Стальная кожа
+		Description: Ваши характеристики увеличиваются, пока вы не двигаетесь
+	}
+
+	StunningWeapons: {
+		DisplayName: Оглушающее оружие
+		Description: Ваше оружие может парализовать врагов
+	}
+
+	SwampQuagmire: {
+		DisplayName: Болотная трясина
+		Description: Ваша скорость передвижения снижена
+	}
+
+	TeleportCooldown: {
+		DisplayName: Кулдаун телепортации
+		Description: Вы не можете телепортироваться
+	}
+
+	TribeCurse: {
+		DisplayName: Племенное проклятие
+		Description: Древняя магия пожирает вас изнутри
+	}
+
+	VampireBat: {
+		DisplayName: Летучая мышь
+		Description: На-на-на-на-на-на-на-на, Бэтмэээн, Бэтмэээн
+	}
+
+	WoundHealing: {
+		DisplayName: Лечение ранений
+		Description: Ваша регенерация здоровья увеличена
+	}
+
+	AutoTargeting: {
+		DisplayName: Автонаведение
+		Description: Стрелы, пули и ракеты наводятся на врага
+	}
+
+	Converter: {
+		DisplayName: Волшебный щит
+		Description: При получении урона сначала расходуется мана
+	}
+
+	Crowd: {
+		DisplayName: Толпа
+		Description: Максимальное количество миньонов увеличено
+	}
+
+	EtherealProjectiles: {
+		DisplayName: Призрачные снаряды
+		Description: Все ваши снаряды игнорируют блоки
+	}
+
+	MoreEnergy: {
+		DisplayName: Больше энергии
+		Description: Ваш урон ближнего боя увеличен в несколько раз
+	}
+
+	Motionless: {
+		DisplayName: Обездвиженный
+		Description: Ваши характеристики увеличены, но вы не можете двигаться
+	}
+
+	NoLimit: {
+		DisplayName: Без границ!
+		Description: Ваши заклинания не требуют маны
+	}
+
+	Rage: {
+		DisplayName: Злость
+		Description: Ваша скорость ближнего боя увеличена
+	}
+
+	EthernalProjectiles: {
+		Description: Призрачные снаряды
+		DisplayName: Все ваши снаряды игнорируют блоки
+	}
+}
+
+NPCs: {
+	Alchemist: {
+		DisplayName: Алхимик
+
+		Name: {
+			Rizo: Пауло
+			Albert: Ди
+			Bernando: Сен-Жермен
+			Seefeld: Аранас
+			Robert: Абелле
+		}
+
+		TownNPCMood: {
+			// Content: Я довольный.
+			// NoHome: Терпеть не могу, когда у меня нет дома.
+			// FarFromHome: Я слишком далеко от дома.
+			// LoveSpace: Я люблю, когда так много пространства.
+			// DislikeCrowded: Мне не нравится то, как здесь людно.
+			// HateCrowded: Я ненавижу то, как здесь людно.
+			// LikeNPC_Princess: Мне нравится {NPCName}.
+			// Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			AlchemistButton_9: Днецветы
+			AlchemistButton_7: Вот цветки папоротника
+			AlchemistButton_6: Без проблем
+			AlchemistButton_5: Нужно что-то ещё?
+			AlchemistButton_4: Картину непросто найти
+			AlchemistButton_3: Именно так
+			AlchemistButton_2: Понял
+			AlchemistButton_1: Говори, что тебе нужно
+			Alchemist_4: В таком случае я буду ждать. Это святилище находится где-то в небесах.
+			Alchemist_9: Продолжай поиски, мне нужно ровно 5 штук.
+			Alchemist_12: Тогда тебе придется принести 30 цветков, чтобы я смог завершить варку. Удачи!
+			Alchemist_14: Стало быть, ты знаешь, чем заняться в свободное время. Жду тебя с цветками.
+			Alchemist_20: Нет, к сожалению, мне пока не удалось раскрыть тайну эфира. Приходи позже.
+			Alchemist_23: Отлично, я сейчас же начну заряжать камень. Приходи позже.
+			AlchemistButton_8: Нужно больше времени
+			AlchemistButton_10: Смерть-траву
+			AlchemistButton_11: Днецветы, как по заказу
+			AlchemistButton_12: Дай ещё немного времени
+			AlchemistButton_13: Но зачем вам я?
+			AlchemistButton_14: Я отыщу любой артефакт!
+			AlchemistButton_15: Вот твоя скрижаль
+			AlchemistButton_16: Как идет перевод?
+			AlchemistButton_17: Я хочу зарядить камень
+			AlchemistButton_18: Камень готов?
+			Alchemist_16: Знаешь, ты сильно помог мне с тех пор, как появился в этих краях. Я думаю, ты заслужил узнать о величайшем артефакте алхимии. Вот уже 400 лет в моей семье хранится истинный филосовский камень. Среди прочих его свойств есть одно занимательное - он способен спасти тебя, когда ты уже одной ногой в могиле, однако после этого он разряжается.
+			Alchemist_13: Днецветы сами себя не соберут, мой друг. Ты уже добыл их?
+			Alchemist_11: Хорошо, в таком случае я добавлю смерть-травы...Готово, позволь мне проверить результат...Ох, что-то мне нехорошо...
+			Alchemist_8: Ты уже раздобыл цветы папоротника?
+			Alchemist_3: У тебя получилось достать картину?
+			Alchemist_1: Дорогой друг, не найдется ли у тебя минутки выслушать меня?
+			AlchemistNQ_4:
+				'''
+				Как говорил один мой мудрый коллега: 
+				Что случилось однажды, может никогда больше не случиться. Но то, что случилось два раза, непременно случится и в третий
+				'''
+			AlchemistNQ_3: Знал бы ты, как я изобрёл странное зелье...
+			AlchemistNQ_2: Не покупай зелий у {0}, вся его магия - детские фокусы.
+			AlchemistNQ_1: Хорошие новости, народ, слизь снова потекла!
+		}
+	}
+
+	AlchemistDeath.DisplayName: Алхимик
+
+	BabaYaga: {
+		DisplayName: Болотная ведьма
+
+		TownNPCMood: {
+			// Content: Я довольный.
+			// NoHome: Терпеть не могу, когда у меня нет дома.
+			// FarFromHome: Я слишком далеко от дома.
+			// LoveSpace: Я люблю, когда так много пространства.
+			// DislikeCrowded: Мне не нравится то, как здесь людно.
+			// HateCrowded: Я ненавижу то, как здесь людно.
+			// LikeNPC_Princess: Мне нравится {NPCName}.
+			// Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			SwampWitchNQ_4: Ты не видел нигде серебряных туфелек?
+			SwampWitchNQ_3: Кто такой {0}? Его магия сильна.
+			SwampWitchNQ_2: Да поможет тебе магия, герой..
+			SwampWitchNQ_1: Щепотка поганки, каблук башмака...
+			SwampWitch_12: Отличная работа, юный герой! Я держу своё слово - эти зелья помогут тебе уберечься от множества ядов и болезней. Если тебе понадобятся ещё - ты всегда можешь купить их у меня.
+			SwampWitch_10: Принеси мне камень - и ты будешь вознагражден
+			SwampWitch_9: Как продвигаются поиски камня?
+			SwampWitch_7: А, это ты! Как раз вовремя - я только закончила чтение манускрипта. Теперь ничто не помешает тебе заполучить камень.
+			SwampWitch_6: Мои исследования ещё не завершены - приходи позже.
+			SwampWitch_4: Мне нужна книга, чтобы продолжить мои исследования.
+			SwampWitch_3: Ты уже принес книгу?
+			SwampWitch_1: Юный герой... Я знала, что ты придешь... Остановись же и выслушай меня, и я клянусь - ты будешь вознагражден
+			SwampWitchAnsv_10: Я заберу твою жизнь!
+			SwampWitchAnsv_9: Я оставлю его себе
+			SwampWitchAnsv_8: Это сложнее, чем кажется
+			SwampWitchAnsv_7: Да, вот он
+			SwampWitchAnsv_6: Я достану камень!
+			SwampWitchAnsv_5: Где спрятан этот камень?
+			SwampWitchAnsv_4: Как продвигаются исследования?
+			SwampWitchAnsv_3_2: Я продолжу поиски
+			SwampWitchAnsv_3: Фолиант у меня
+			SwampWitchAnsv_2: Думаю, я справлюсь
+			SwampWitchAnsv_1: Что вам нужно от меня?
+			SwampWitchName_5: Флемет
+			SwampWitchName_4: Тельза
+			SwampWitchName_3: Шептуха
+			SwampWitchName_2: Пряха
+			SwampWitchName_1: Хагата
+		}
+	}
+
+	Banshee.DisplayName: Банши
+
+	Beggar: {
+		DisplayName: Бедняк
+
+		Name: {
+			Rizo: Фархам
+			Albert: Ангренор
+			Bernando: Оливер
+			Seefeld: Готье
+			Robert: Вальтер
+		}
+
+		TownNPCMood: {
+			// Content: Я довольный.
+			// NoHome: Терпеть не могу, когда у меня нет дома.
+			// FarFromHome: Я слишком далеко от дома.
+			// LoveSpace: Я люблю, когда так много пространства.
+			// DislikeCrowded: Мне не нравится то, как здесь людно.
+			// HateCrowded: Я ненавижу то, как здесь людно.
+			// LikeNPC_Princess: Мне нравится {NPCName}.
+			// Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			BeggarAnsv_5: Сыграть в кости
+			BeggarAnsv_4: Я был занят другими делами
+			BeggarAnsv_3: Я достал еду для тебя
+			BeggarAnsv_2: Что ж, я принесу тебе еду
+			BeggarAnsv_1: Что тебе нужно?
+			BeggarNQ_6: Сейчас у тебя {0} побед в сумме и {1} побед подряд
+			BeggarNQ_5: Извини, но у тебя не хватает денег, чтобы сделать ставку. Возвращайся, когда у тебя появится хотя-бы одна золотая монета.
+			BeggarNQ_4: Какой хороший сегодня день... Не найдётся чего-нибудь выпить?
+			BeggarNQ_3: "{0} - не тот, кем кажется."
+			BeggarNQ_2: Не найдется монетки?
+			BeggarNQ_1: "{0} - лучший человек в городе."
+			Beggar_4: Еда у тебя?
+			Beggar_3: Я знаю, что такой смелый и отважный воин, как ты, не откажет в помощи старому больному человеку. Принеси мне чего-нибудь пожевать, и тогда, возможно, я награжу тебя... Шучу, конечно
+			Beggar_1: Э-ге-ге, да ты же тот самый новенький! У меня есть к тебе дело, юнец!
+		}
+	}
+
+	BoneHand.DisplayName: Костяная рука
+
+	DwarfBlacksmith: {
+		DisplayName: Кузнец
+
+		Name: {
+			Rizo: Гимли
+			Albert: Балин
+			Bernando: Дурин
+			Seefeld: Траин
+			Robert: Алробад
+			Gerald: Барук
+		}
+
+		TownNPCMood: {
+			// Content: Я довольный.
+			// NoHome: Терпеть не могу, когда у меня нет дома.
+			// FarFromHome: Я слишком далеко от дома.
+			// LoveSpace: Я люблю, когда так много пространства.
+			// DislikeCrowded: Мне не нравится то, как здесь людно.
+			// HateCrowded: Я ненавижу то, как здесь людно.
+			// LikeNPC_Princess: Мне нравится {NPCName}.
+			// Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			Blacksmith_1: "{0}, готов поспорить, что тебя тоже выводят из себя эти мерзкие гоблины. Но у меня есть решение."
+			Blacksmith_3: В окрестностях города чересчур много гоблинских морд, не отделенных пока от туловища, но это дело поправимое, если ты принесешь мне чертеж.
+			Blacksmith_5: Меч ещё не готов, приходи позже.
+			Blacksmith_7: Клянусь своим молотом, ты пришел как раз вовремя! У меня есть предложение для тебя.
+			Blacksmith_9: Настало время минотавру лишиться одного из своих драгоценных рогов. Ты уже одержал верх над этим чудовищем?
+			Blacksmith_10: В таком случае не теряй времени, я буду ждать тебя.
+			Blacksmith_12: Знаешь, когда-то давно меня нельзя было назвать последним из выживших гномов. Наша цивилизация процветала, мы были королями подземелий, но одно сильное землетрясение перечеркнуло всю нашу историю. Душа многих умерших так и не нашли упокоения и они до сих пор бродят по шахтам в обличии костяных болванов.
+			Blacksmith_14: Мне не терпится начать ковать снаряжение из этого сплава. Ты уже достал 5 нагрудников?
+			Blacksmith_15: В таком случае не теряй времени даром, ты знаешь, что делать.
+			BlacksmithNQ_1: Какие у нашей цивилизации были зелья - можно было детей поить!
+			BlacksmithNQ_2: Иногда мне кажется, что {0} мой дальний родственник.
+			BlacksmithNQ_3: Ты не находил маленького красивого колечка? Нет? Ладно.
+			BlacksmithNQ_4: Когда-то давно, ещё до землетрясения, мы добывали руду удивительного качества. Возможно, ты ещё сможешь её отыскать глубоко под землёй.
+			BlacksmithAnsv_1: Какое решение?
+			BlacksmithAnsv_2: Я принесу этот чертеж
+			BlacksmithAnsv_3: Вот чертеж, как просил
+			BlacksmithAnsv_4: Я пока не разговаривал с {0}
+			BlacksmithAnsv_5: Меч готов?
+			BlacksmithAnsv_6: Я весь внимание
+			BlacksmithAnsv_7: Убить ещё одну тварь?
+			BlacksmithAnsv_8: Я убил его, мой друг!
+			BlacksmithAnsv_9: Минотавр пока ещё жив
+			BlacksmithAnsv_10: Ближе к делу
+			BlacksmithAnsv_11: По рукам
+			BlacksmithAnsv_12: Я работаю над этим
+			BlacksmithAnsv_13: Вот твои нагрудники
+			BlacksmithAnsv_14: Обменять нагрудники
+		}
+	}
+
+	EvilBabaYaga.DisplayName: Болотная ведьма
+	EvilNecromancer.DisplayName: Некромант
+
+	ImperianCommander: {
+		DisplayName: Имперский командир
+
+		Name: {
+			Rizo: Грахус
+			Albert: Игнорамус
+			Bernando: Каюс
+			Seefeld: Клавдиус
+		}
+
+		TownNPCMood: {
+			// Content: Я довольный.
+			// NoHome: Терпеть не могу, когда у меня нет дома.
+			// FarFromHome: Я слишком далеко от дома.
+			// LoveSpace: Я люблю, когда так много пространства.
+			// DislikeCrowded: Мне не нравится то, как здесь людно.
+			// HateCrowded: Я ненавижу то, как здесь людно.
+			// LikeNPC_Princess: Мне нравится {NPCName}.
+			// Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			CommanderNQ_4: Обратись к {0}, он сделает тебе достойное снаряжение.
+			CommanderNQ_3: Римским солдатам запрещено умирать без разрешения!
+			CommanderNQ_2: Легионеры, вы позор римской армии!
+			CommanderNQ_1: Сомкнуть щиты!
+			Commander_5: Возвращайтесь, как только добудете информацию
+			Commander_4: Есть какие-либо зацепки относительно того, что произошло возле замка?
+			Commander_2: У меня есть крайне важное задание для вас, боец.
+			CommanderAnsv_6: Что нам это даёт?
+			CommanderAnsv_5: Я пока не нашел разведчика
+			CommanderAnsv_4: Я смог достать отчет
+			CommanderAnsv_3: Считайте, что отчет уже у вас!
+			CommanderAnsv_2: Ради Империи я готов на всё!
+			CommanderAnsv_1: Вы можете выдать мне экипировку?
+		}
+	}
+
+	ImperianConsul: {
+		DisplayName: Консул
+
+		Name: {
+			Rizo: Бонусмалус
+			Albert: Тиверий
+			Bernando: Луций
+			Seefeld: Публий
+			Sqt: Гораций
+		}
+
+		TownNPCMood: {
+			// Content: Я довольный.
+			// NoHome: Терпеть не могу, когда у меня нет дома.
+			// FarFromHome: Я слишком далеко от дома.
+			// LoveSpace: Я люблю, когда так много пространства.
+			// DislikeCrowded: Мне не нравится то, как здесь людно.
+			// HateCrowded: Я ненавижу то, как здесь людно.
+			// LikeNPC_Princess: Мне нравится {NPCName}.
+			// Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			ConsulAnsv_4: Так точно!
+			ConsulAnsv_3: Городу нужен новый священник...
+			ConsulAnsv_2: Я хочу поговорить о {0}
+			ConsulAnsv_1: Нет, спасибо (без РПГ)
+			ConsulNQ_3: Если ты ищешь задание - поспрашивай жителей нашего города
+			ConsulNQ_2: Все дороги ведут в наш город.
+			ConsulNQ_1: Пришёл, увидел, сдал квест!
+			Consul_1: О, у нас пополнение! Добро пожаловать, боец, ты находишься в единственном оплоте спокойствия на многие километры вокруг - в Имперском городе! Я уверен, ты послужишь на благо Империи, а пока осмотрись вокруг. Гравировка класса поможет тебе выбрать свой путь, после наведайся к главнокомандующему за экипировкой
+		}
+	}
+
+	Minotaur.DisplayName: Минотавр
+	MinotaurDeath.DisplayName: Минотавр
+
+	NagaMerchant: {
+		DisplayName: Нага-торговец
+
+		Name: {
+			Rizo: Сирена
+			Albert: Медуза
+			Bernando: Слардария
+			Seefeld: Азшара
+			Sqt: Лахлан
+		}
+
+		TownNPCMood: {
+			// Content: Я довольный.
+			// NoHome: Терпеть не могу, когда у меня нет дома.
+			// FarFromHome: Я слишком далеко от дома.
+			// LoveSpace: Я люблю, когда так много пространства.
+			// DislikeCrowded: Мне не нравится то, как здесь людно.
+			// HateCrowded: Я ненавижу то, как здесь людно.
+			// LikeNPC_Princess: Мне нравится {NPCName}.
+			// Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			NagaNQ_4: Когда-то давно наша рас-с-са была низвергнута гномами. {0} - один из них.
+			NagaNQ_2: Я рада, что ты предпочел кровоссоссам нашу великую рас-с-су.
+			NagaNQ_1: Запомни, главное - никогда не прикуссывай с-с-свой язык.
+		}
+	}
+
+	NecromancerDeath.DisplayName: Некромант
+	NecromancersSkeleton.DisplayName: Скелет Некроманта
+
+	Necromant: {
+		DisplayName: Некромант
+
+		TownNPCMood: {
+			// Content: Я довольный.
+			// NoHome: Терпеть не могу, когда у меня нет дома.
+			// FarFromHome: Я слишком далеко от дома.
+			// LoveSpace: Я люблю, когда так много пространства.
+			// DislikeCrowded: Мне не нравится то, как здесь людно.
+			// HateCrowded: Я ненавижу то, как здесь людно.
+			// LikeNPC_Princess: Мне нравится {NPCName}.
+			// Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+	}
+
+	OldmanPriest: {
+		DisplayName: Старик-священник
+
+		TownNPCMood: {
+			// Content: Я довольный.
+			// NoHome: Терпеть не могу, когда у меня нет дома.
+			// FarFromHome: Я слишком далеко от дома.
+			// LoveSpace: Я люблю, когда так много пространства.
+			// DislikeCrowded: Мне не нравится то, как здесь людно.
+			// HateCrowded: Я ненавижу то, как здесь людно.
+			// LikeNPC_Princess: Мне нравится {NPCName}.
+			// Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			OldmanPriestAnsv_1: Благословение
+			OldmanPriestNQ_1: Да благословит тебя Юпитер, герой!
+			OldmanPriestNQ_2: Время лечит, но священники быстрее.
+			OldmanPriestNQ_3: После исчезновения некроманта в городе стало гораздо лучше.
+			OldmanPriestNQ_4: Ты хочешь сказать, что не считаешь антропомантию самым точным способом предсказывать погоду?
+			OldmanPriestNQ_6: Я благословляю тебя
+			OldmanPriestNQ_7: Извини, но ты можешь получить благословение лишь раз в сутки
+		}
+	}
+
+	Orc.DisplayName: Орк
+	OrcCrossbower.DisplayName: Орк-арбалетчик
+	OrcDefender.DisplayName: Орк-защитник
+	OrcishPortal.DisplayName: Орочий портал
+	OrcWizard.DisplayName: Орк-колдун
+	Papuan.DisplayName: Папуас
+	PapuanArcher.DisplayName: Папуас-стрелок
+	PapuanWarrior.DisplayName: Папуас-воин
+	PapuanWizard.DisplayName: Папуас-шаман
+	PapuanWizardDeath.DisplayName: Папуас-шаман
+
+	Priest: {
+		DisplayName: Священник
+
+		Name: {
+			Rizo: Декард Каинs
+			Albert: Саруман
+			Bernando: Велен
+			Seefeld: Ферул Равел
+		}
+
+		TownNPCMood: {
+			// Content: Я довольный.
+			// NoHome: Терпеть не могу, когда у меня нет дома.
+			// FarFromHome: Я слишком далеко от дома.
+			// LoveSpace: Я люблю, когда так много пространства.
+			// DislikeCrowded: Мне не нравится то, как здесь людно.
+			// HateCrowded: Я ненавижу то, как здесь людно.
+			// LikeNPC_Princess: Мне нравится {NPCName}.
+			// Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			PriestAnsv_7: Ты зарядил её?
+			PriestAnsv_6: Я хочу зарядить косу
+			PriestAnsv_5: Я сломал могильную плиту
+			PriestAnsv_4: Я пока не нашел могилу
+			PriestAnsv_3: Я достал мощи
+			PriestAnsv_2: Пожелай мне удачи
+			PriestAnsv_1: Я слушаю
+			PriestNQ_4: Фолианты {0} интересны...
+			PriestNQ_3: Магия смерти возвышает достойных и низвергает слабых... Готов ли ты заплатить такую цену?
+			PriestNQ_2: Какой солнечный день сегодня... Надеюсь, ночь тоже будет ясной.
+			PriestNQ_1: Если хочешь узнать больше о руинах, приходи ночью.
+			Priest_5: Мне нужны останки для проведения ритуала. Приходи, когда добудешь их.
+			Priest_4: Ты уже добыл мощи воина?
+			Priest_2: Желаешь ли ты заполучить в свои руки оружие невиданной силы? Умеешь ли ты хранить тайны? Если да - готовься слушать, ибо у меня есть задание для тебя. Я щедро награжу тебя, ведь ничто в нашем подлунном мире не должно делаться даром...
+			Priest_1: Мне нужен человек, который не будет задавать лишних вопросов. Приходи, когда покров тьмы сокроет нас - и ты не пожалеешь
+		}
+	}
+
+	PriestTeleportation: {
+		DisplayName: Священник
+
+		Name: {
+			Rizo: Декард Каинs
+			Albert: Саруман
+			Bernando: Велен
+			Seefeld: Ферул Равел
+		}
+
+		TownNPCMood: {
+			// Content: Я довольный.
+			// NoHome: Терпеть не могу, когда у меня нет дома.
+			// FarFromHome: Я слишком далеко от дома.
+			// LoveSpace: Я люблю, когда так много пространства.
+			// DislikeCrowded: Мне не нравится то, как здесь людно.
+			// HateCrowded: Я ненавижу то, как здесь людно.
+			// LikeNPC_Princess: Мне нравится {NPCName}.
+			// Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat.Priest_10: <{0}> Ты заплатишь за это!
+	}
+
+	RestlessSoul.DisplayName: Неупокоенный
+	RhinoOrc.DisplayName: Орк на носороге
+	RunicElemental.DisplayName: Рунический элементаль
+	RunicElementalDeath.DisplayName: Рунический элементаль
+	SandWormBody.DisplayName: Песчаный червь
+	SandWormHead.DisplayName: Песчаный червь
+	SandWormTail.DisplayName: Песчаный червь
+
+	StrangeOldman: {
+		DisplayName: Странный старик
+
+		Name: {
+			Rizo: Эгей
+			RizoZ: Альфус
+			RizoZZ: Авгур
+			RizoZZZ: Салливан
+			RizoSZZZZ: Пепин
+		}
+
+		TownNPCMood: {
+			// Content: Я довольный.
+			// NoHome: Терпеть не могу, когда у меня нет дома.
+			// FarFromHome: Я слишком далеко от дома.
+			// LoveSpace: Я люблю, когда так много пространства.
+			// DislikeCrowded: Мне не нравится то, как здесь людно.
+			// HateCrowded: Я ненавижу то, как здесь людно.
+			// LikeNPC_Princess: Мне нравится {NPCName}.
+			// Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			OldmanName_1: Эгей
+			OldmanName_2: Альфус
+			OldmanName_3: Авгур
+			OldmanName_4: Салливан
+			OldmanName_5: Пепин
+			Oldman_1: Человек! Слава богам Олимпа! Мне нужна помощь! Вот уже несколько месяцев я нахожусь в этой пещере без шанса на спасение, ты - моя последняя надежда!
+			Oldman_3: Тебе удалось найти камень?
+			Oldman_4: Не медли, моя жизнь зависит от тебя!
+			Oldman_7: "{0}, могу я попросить тебя кое о чем?"
+			OldmanNQ_1: Я так рад, что выбрался из лабиринта - там было очень темно.
+			OldmanNQ_2: Теперь, когда Минотавр повержен, в подземелье станет гораздо спокойнее.
+			OldmanNQ_3: В давние времена был герой вроде тебя, который тоже одолел Минотавра. Тесей, кажется так его звали.
+			OldmanNQ_4: Нет ничего приятнее, чем снова оказаться среди жителей Империи.
+			OldmanNQ_5: "{0} - странный тип. Я ему не доверяю."
+			OldmanAnsv_1: Как ты сюда попал?
+			OldmanAnsv_2: Оставайся тут, я спасу тебя
+			OldmanAnsv_3: Я нашел его!
+			OldmanAnsv_4: Я ищу этот камень
+			OldmanAnsv_5: По поводу награды...
+			OldmanAnsv_6: Конечно!
+			OldmanAnsv_7: Я поговорю с {0}
+		}
+	}
+
+	SwampHound.DisplayName: Болотная гончая
+	SwampWraith.DisplayName: Болотный дух
+
+	TravelingVampire: {
+		DisplayName: Странствующий вампир
+
+		Name: {
+			Rizo: Дракула
+			Albert: Регис
+			Bernando: Алукард
+			Seefeld: Носферату
+			Robert: Дио
+			Vlad: Каин
+		}
+
+		TownNPCMood: {
+			// Content: Я довольный.
+			// NoHome: Терпеть не могу, когда у меня нет дома.
+			// FarFromHome: Я слишком далеко от дома.
+			// LoveSpace: Я люблю, когда так много пространства.
+			// DislikeCrowded: Мне не нравится то, как здесь людно.
+			// HateCrowded: Я ненавижу то, как здесь людно.
+			// LikeNPC_Princess: Мне нравится {NPCName}.
+			// Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+
+		Chat: {
+			TravelingVampireNQ_6: Маскарад поможет тебе остаться незамеченным.
+			TravelingVampireNQ_5: Людской век краток, вампиры же вечны.
+			TravelingVampireNQ_4: Ненавижу сумерки.
+			TravelingVampireNQ_3: Carpe Jugulum!
+			TravelingVampireNQ_2: Кто сказал тебе, что обязательно становится Стражем Болота?
+			TravelingVampireNQ_1: Не объяснишь ли ты, почему черепаха живет дольше, нежели целые поколения людей; почему слон переживает целые династии и почему попугай умирает лишь от укуса кошки или собаки, а не от других недугов?
+		}
+	}
+
+	SwampWitchDeath.DisplayName: Болотная ведьма
+}
+
+Projectiles: {
+	// AeglosP.DisplayName: Aeglos P
+	// AuraOrbital.DisplayName: Aura Orbital
+	// BabaYagaBlast.DisplayName: Baba Yaga Blast
+	// BabaYagaPreBlast.DisplayName: Baba Yaga Pre Blast
+	// BabaYagaSphere.DisplayName: Baba Yaga Sphere
+	// BaselardP.DisplayName: Baselard P
+	// BladeOfWoeP.DisplayName: Blade Of Woe P
+	// BoneHandP.DisplayName: Bone Hand P
+	// DarkSkullP.DisplayName: Dark Skull P
+	// DoomhammerP.DisplayName: Doomhammer P
+	// FallingDagger.DisplayName: Falling Dagger
+	// Fireball.DisplayName: Fireball
+	// Fireball2.DisplayName: Fireball2
+	// Fireball3.DisplayName: Fireball3
+	// HeroBootsJumpEffect.DisplayName: Hero Boots Jump Effect
+	// HerosBootsBlast.DisplayName: Heros Boots Blast
+	// IceSpikeP.DisplayName: Ice Spike P
+	// InkStainP.DisplayName: Ink Stain P
+	// LanceaP.DisplayName: Lancea P
+	// LichP.DisplayName: Lich P
+	// LifestealP.DisplayName: Lifesteal P
+	// ManaVamp.DisplayName: Mana Vamp
+	// ManaVampEnemy.DisplayName: Mana Vamp Enemy
+	// MarbleArrow.DisplayName: Marble Arrow
+	// MinosBlastCallP.DisplayName: Minos Blast Call P
+	// MinotaurAttack.DisplayName: Minotaur Attack
+	// MinotaursAxeP.DisplayName: Minotaurs Axe P
+	// MisericordeP.DisplayName: Misericorde P
+	// OrcWizardOrbP.DisplayName: Orc Wizard Orb P
+	// PhoenixP.DisplayName: Phoenix P
+	// RevivingEagleP.DisplayName: Reviving Eagle P
+	// SandSpike.DisplayName: Sand Spike
+	// SandWaveEnemyP.DisplayName: Sand Wave Enemy P
+	// ScytheSlashHitboxP.DisplayName: Scythe Slash Hitbox P
+	// SphereOfLight.DisplayName: Sphere Of Light
+	// StarOfTheDunedainBase.DisplayName: Star Of The Dunedain Base
+	// StarOfTheDunedainP.DisplayName: Star Of The Dunedain P
+	// TeleportTrail.DisplayName: Teleport Trail
+	// TheseusWaveP.DisplayName: Theseus Wave P
+	// UndeadRevivingP.DisplayName: Undead Reviving P
+	// VampirismEnemy.DisplayName: Vampirism Enemy
+	// WaveOfForceP.DisplayName: Wave Of Force P
+	// WDFix1.DisplayName: W D Fix1
+	// WoodenStaffP.DisplayName: Wooden Staff P
+	// BreakwaterHitboxP.DisplayName: Breakwater Hitbox P
+	// BreakwaterP.DisplayName: Breakwater P
+	// FuryOfWatersP.DisplayName: Fury Of Waters P
+	// FuryOfWatersP2.DisplayName: Fury Of Waters P2
+	// TyphoonP.DisplayName: Typhoon P
+	// TyphoonP2.DisplayName: Typhoon P2
+	// Meteor1.DisplayName: Meteor1
+	// Meteor2.DisplayName: Meteor2
+	// Meteor3.DisplayName: Meteor3
+	// MeteorBase.DisplayName: Meteor Base
+}
+
+Configs: {
+	BismuthConfig: {
+		DisplayName: Bismuth Config
+		// BlacksmithForgingVolume.Tooltip: ""
+		// XPMultiplier.Tooltip: ""
+	}
+}
+
+Config: {
+	AllowHealthBuffsTogether: XP Multiplier
+	AllowHealthBuffsTogetherTooltip: AllowHealthBuffsTogetherTooltip2:
+	AllowHealthBuffsTogether2: Blacksmith Forging Volume
+	// AllowHealthBuffsTogetherTooltip2: ""
+}
+
+// UI.ExampleResource: Mods.Bismuth.UI.ExampleResource
+
+Keybinds: {
+	// "Activate Second Skill.DisplayName": Activate  Second  Skill
+	// "Turn Into Bat.DisplayName": Turn  Into  Bat
+	// "Activate Unique Ability.DisplayName": Activate  Unique  Ability
+	// "Toggle Experience Panel.DisplayName": Toggle  Experience  Panel
+	// "Activate First Skill.DisplayName": Activate  First  Skill
+}
+
+Biomes: {
+	ZoneSwamp: {
+		// TownNPCDialogueName: the Zone Swamp
+		// DisplayName: Zone Swamp
+	}
+
+	#Я не знаю почему оно здесь
+	"Bismuth:SwampSky": {
+		// DisplayName: Bismuth: Swamp Sky
+		// TownNPCDialogueName: the Bismuth: Swamp Sky
+	}
+}
+
+BismuthPlayerSystem: {
+	BismuthPlayer: {
+		Chat: {
+			Death: не смог справиться с желанием убивать
+			Death2: обезумел
+			OnEnterText3: Спасибо, что играете с [c/8936ff:Bismuth Mod]!
+			OnEnterText2: "[c/fc6735:Убедитесь, что вы используете конкретного персонажа для игры в] [c/fc6735:конкретном мире!]"
+			OnEnterText1: Спасибо, что играете с [c/8936ff:Bismuth Mod]!
+			Death4: стал жертвой разорванных уз
+			Death3: выпил яд
+		}
+
+		Skill: {
+			Skill1Name: Воин - мой выбор!
+			PassiveSkill: Пассивное умение
+			Skill1Tooltip: +5% к урону ближнего боя, -20% к иным типам урона
+			SPRequired: Требуется {0} очков умений
+			UpgratedSkill: Умение уже было изучено
+			Skill2Name: Защитник-ученик
+			Skill2Tooltip: +2 защиты, +4% к поглощению урона
+			SkillRequired: Требуется изучить '{0}', чтобы разблокировать это умение
+			DefeatWoB: Убейте Пожирателя Миров или мозг Ктулху, чтобы изучить это умение
+			DefeatEoC: Убейте Глаз Ктулху, чтобы изучить это умение
+			HPBonus: +{0} макс. здоровья
+			SkillLevelBonus: "{0} на следующем уровне"
+			SkillLevel: Текущий уровень умения: {0}/{1}
+			Skill3Tooltip: Увеличение максимального здоровья
+			Skill3Name: Стойкий
+			DefeatGolem: Убейте Голема, чтобы изучить это умение
+			DefeatPlantera: Убейте Плантеру, чтобы изучить это умение
+			DefeatAnyMech: Убейте любого механического босса, чтобы изучить это умение
+			DefeatWoF: Убейте Стену Плоти, чтобы изучить это умение
+			DefeatSkeletron: Убейте Скелетрона, чтобы изучить это умение
+			UpgratedSkillMaxLevel: Вами изучен последний уровень умения!
+			Skill4Name: Держать строй!
+			Skill4Tooltip: +6 хп/сек и +6 защиты, если игрок стоит
+			ActiveSkill: Активное умение
+			SecondsDuration: "{0} секунд"
+			ActileSkillText: Длительность - {0}, откат - {1}
+			MinutesDuration: "{0} минут"
+			Skill22Name: Приступ злости
+			CantUpgrade: Вы не можете изучить это умение, так как вы уже изучили '{0}'
+			ActiveSkillUpgrade: Улучшение активного умения
+			Skill5Name: Как за каменной стеной
+			Skill6Tooltip: +15 хп/сек, +20 защиты и +10% поглощения урона, если игрок стоит. Атакованные мобы получают дебафф ''В огне''
+			Skill5Tooltip: +10 хп/сек и +12 защиты, если игрок стоит
+			Skill7Name: Холодная месть
+			Skill6Name: Горячая месть
+			Skill7Tooltip: +15 хп/сек, +20 защиты и +10% поглощения урона, если игрок стоит. Атакованные мобы получают дебафф ''Ледяной огонь''
+			DefenceBonus: +{0} защиты
+			Skill8Tooltip: Увеличение защиты
+			Skill8Name: Бронированный
+			Skill9Name: Жажда жизни
+			Skill9Tooltip: +4 хп/сек, меньше здоровья - выше регенерация
+			Skill10Tooltip: +25% поглощения урона, если игрок находится в искажении или кримзоне
+			Skill10Name: Защищенный от зла
+			Skill11Name: До последней капли крови
+			Skill11Tooltip: +8 хп/сек на 4 секундs после получения урона
+			Skill12Tooltip: +5% к шансу блокирования, +10% к поглощению урона
+			Skill12Name: Меня не сломить!
+			Skill13Name: Мой дед был вампиром
+			Skill13Tooltip: 4% высасывания здоровья ночью
+			SkillOrRequired: Требуется изучить '{0}' или '{1}', чтобы разблокировать это умение
+			Skill14Tooltip: Вы неуязвимы
+			Skill33Name: Всплеск энергии
+			Skill14Name: Панацея от урона
+			DefeatCultist: Убейте Культиста-лунатика, чтобы изучить это умение
+			Skill15Tooltip: Вы неуязвимы
+			Skill15Name: Сама стойкость
+			Skill16Name: Легендарный защитник
+			Skill16Tooltip: +10 защиты, +10% поглощения урона, +6хп/сек, +50 макс. здоровья, +7% к шансу блокирования, -25% к скорости перемещения, кулдаун использования зелий лечения уменьшен на 10 секунд
+			FinalSkill: Заключительное умение
+			Skill35Name: Легендарный боец
+			Skill17Name: Колючий парень
+			Skill17Tooltip: Увеличение отражения урона
+			DamageReflectionBonus: +{0}% отражения урона
+			Skill18Tooltip: +7% к скоростии +3% к крит. шансу ближнего боя
+			Skill18Name: Курс молодого бойца
+			Skill19Tooltip: 1% к урону ближнего боя за каждого НИПа (до +15%)
+			Skill20Name: Чемпион Террарии
+			Skill19Name: Мистер Гостеприимство
+			Skill20Tooltip: 1% к урону ближнего боя за каждого убитого босса (до +15%)
+			MeleeSpeedBonus: +{0}% скорости ближнего боя
+			Skill21Tooltip: Увеличение скорости ближнего боя
+			Skill21Name: Фехтовальщик-виртуоз
+			Skill22Tooltip: +30% к скорости ближнего боя, -15% к поглощению урона
+			Skill23Name: Гнев берсерка
+			Skill23Tooltip: +40% к скорости ближнего боя, -10% к поглощению урона
+			Skill24Tooltip: +50% к скорости ближнего боя, +15% к крит. шансу ближнего боя
+			Skill24Name: ГИПЕРЯРОСТЬ!
+			Skill25Name: Силовые тренировки
+			Skill25Tooltip: Увеличение урона ближнего боя
+			MeleeDamageBonus: +{0}% к урону в ближнем бою
+			Skill26Name: Предсмертная агония
+			Skill26Tooltip: +10% к крит. шансу ближнего боя, меньше здоровья - больше крит. шанса ближнего боя
+			Skill2&Tooltip: +20% к урону ближнего боя, если игрок в джунглях
+			Skill27Name: Единение с природой
+			Skill28Name: Рожденный кромсать
+			Skill28Tooltip: +15% к скорости ближнего боя, +20% к скорости перемещения
+			Skill29Name: Жажда крови
+			Skill29Tooltip: 6% высасывания здоровья, -15% к урону ближнего боя
+			Skill30Tooltip: +10% к урону ближнего боя, +10% к крит. шансу ближнего боя, -25% к скорости ближнего боя
+			Skill30Name: Медленный и смертоносный
+			Skill31Name: Тот, кто верит в удачу
+			Skill31Tooltip: 10% к крит. шансу ближнего боя, +50% к крит. урону ближнего боя, 1% шанс нанести трехкратный урон
+			Skill32Tooltip: Увеличение отбрасывания оружием ближнего боя в два раза
+			Skill32Name: Титаническая сила
+			Skill33Tooltip: Увеличение урона ближнего боя в 3 раза
+			Skill34Tooltip: Увеличение урона ближнего боя в 5 раз
+			Skill34Name: Словно атомный взрыв
+			Skill35Tooltip: 2% шанс пятикратного урона, +15% к урону ближнего боя, +20% к крит. шансу, урону и скорости ближнего боя после использования любого зелья, кроме зелий лечения и маны
+
+			Wizard: {
+				Skill36Name: Маг - мой выбор!
+				Skill36Tooltip: +5% к магическому урону и урону прислужников, -20% к иным типам урона
+				Skill37Tooltip: +4% к магическому урону, +6% к урону прислужников
+				Skill37Name: Начальная магия
+				Skill38Name: Секреты друидов
+				Skill38Tooltip: +1 хп/сек за каждого прислужников, если вы в джунглях
+				Skill39Tooltip: +4 к максимальному числу прислужников
+				Skill51Name: Волшебный щит
+				Skill39Name: Сила - в количестве!
+				Skill40Name: Лидер
+				Skill40Tooltip: Увеличение максимального числа прислужников в два раза
+				Skill41Name: Собиратель миньонов
+				Skill41Tooltip: +9% к урону миньонов за каждый уникальный тип прислужников
+				Skill42Tooltip: Мобы не атакуют вас, если призван прислужник того же типа
+				Skill42Name: Пакт о ненападении
+				MinionDamageBonus: +{0}% к урону миньонов
+				Skill43Tooltip: Увеличение урона прислужников
+				Skill43Name: Древние ритуалы
+				MinionNumberBonus: +{0} к максимальному числу миньонов
+				Skill44Tooltip: Увеличение максимального числа прислужников
+				Skill44Name: Твоя личная армия
+				Skill45Name: Прислужники-доктора
+				Skill45Tooltip: +8 к максимальному здоровью за каждого прислужника
+				Skill46Tooltip: +25% к урону прислужников, -2 защиты за каждого прислужникf
+				Skill47Name: Эгоист
+				Skill46Name: Альтруист
+				Skill47Tooltip: +1% к поглощению урона и +2 защиты за каждого прислужника, -20% к урону прислужников
+				Skill48Tooltip: Увеличение отбрасывания прислужников в 2 раза
+				Skill48Name: Боевой клич
+				Skill49Name: Магический источник
+				Skill49Tooltip: Снижение стоимости заклинаний
+				ManaCostBonus: -{0}% к стоимости заклинаний
+				Skill50Name: Маг-Эксперт
+				Skill50Tooltip: -8% к стоимости заклинаний, +8% к магическому урону
+				Skill51Tooltip: Вражеские атаки сначала отнимают ману, а затем здоровье
+				Skill53Name: Внутренняя сила
+				Skill53Tooltip: Увеличение магического урона
+				MagicDamageBonus: +{0}% к магическому урону
+				Skill54Tooltip: +10% к магическому крит. шансу, +25% к магическому крит. урону
+				Skill54Name: Волшебник-ассасин
+				Skill55Name: Магический Источник II
+				Skill55Tooltip: Увеличение регенерации маны
+				ManaRegenBonus: x{0} к регенерации маны
+				Skill56Name: Тот, кто силён духом
+				Skill56Tooltip: Преобразование 50% полученного урона в ману
+				Skill57Tooltip: Восстановление 20% маны после магического крит. удара
+				Skill57Name: Критическое мышление
+				Skill58Tooltip: +15% к магическому урону и крит. шансу во время дня
+				Skill58Name: Сохраняй спокойствие и восславь солнце
+				Skill59Name: Нет болезням!
+				Skill59Tooltip: Зелья маны не накладывают ослабление волшебства
+				Skill60Tooltip: Зелья маны используются автоматически
+				Skill60Name: Полностью автоматический
+				Skill61Name: Внутренний баланс
+				Skill61Tooltip: Заклинания не требуют маны
+				Skill62Tooltip: Заклинания не требуют маны, +25% к магическому крит. шансу
+				Skill62Name: Астральное состояние
+				Skill63Tooltip: 7% урона преобразуется в ману
+				Skill63Name: Похищение маны
+				Skill64Name: Легендарный маг
+				Skill64Tooltip: +15% к магическому урону, +20% к урону прислужников, +15% к магическому крит. шансу, +2 к макс. числу прислужников, +20% к скорости передвижения, радиус подъема звезд маны выше
+			}
+
+			Assassin: {
+				Skill65Tooltip: +5% к урону головореза, -20% к иным типам урона, кроме ближнего
+				Skill65Name: Головорез - мой выбор!
+				Skill66Name: Предпочитаю кинжалы
+				Skill66Tooltip: +5% к урону и +5% к крит. шансу головореза, +40% к урону кинжалов
+				Skill67Name: Убийца во тьме
+				Skill67Tooltip: Увеличение получаемого опыта на 20% ночью
+				MoveSpeedBonus: +{0}% к скорости перемещения
+				Skill68Tooltip: Увеличение скорости перемещения
+				Skill68Name: Со скоростью света
+				Skill69Name: Охотничьи рефлексы
+				Skill69Tooltip: Вы получаете эффекты "Ночное зрение" и "Охотник"
+				Skill70Name: Инстинкты хищника
+				Skill70Tooltip: Вы получаете эффекты "Ночное зрение" и "Охотник"
+				Skill71Tooltip: Вы получаете эффекты "Ночное зрение" и "Охотник", +40% к скорости передвижения после нанесения урона
+				Skill71Name: В погоне за добычей
+				Skill72Name: Телепортация!
+				Skill72Tooltip:
+					'''
+					Вы можете телепортироваться при помощи специальной клавиши 
+					откат 15 секунд
+					'''
+				Skill73Tooltip: Снижение отката телепортации на 7 секунд
+				Skill73Name: 7 секунд преимущества
+				Skill75Name: Мастер телепортации
+				Skill75Tooltip: Частицы после телепортации наносят 500 урона врагам и лечат вас на 50 здоровья за каждого убитого
+				AllCritBonus: +{0}% к шансу крит. урона любого класса
+				Skill76Tooltip: Увеличение шанса критического удара для любого типа урона
+				Skill76Name: Точный удар
+				AssassinDamageBonus: +{0}% к урону головореза
+				Skill77Tooltip: Увеличение урона головореза
+				Skill77Name: Профессиональный убийца
+				Skill78Tooltip: 1% шанс пятикратного урона
+				Skill78Name: Джекпот!
+				Skill79Name: (Не)Летальный урон
+				Skill79Tooltip: 2% шанс снизить здоровье противника до 1 хп, удар не игнорирует защиту (10x урон при битве с боссом)
+				Skill80Tooltip: Удар с пятикратным уроном восстанавливает 25% вашего здоровья
+				Skill80Name: К сердцу путь найдем ножом...
+				Skill81Name: Неуловимый
+				Skill81Tooltip: Летальный удар даёт вам 100% шанс увернуться от следующей атаки
+				Skill82Tooltip: +10 хп/сек, +35% к урону головореза и +20% ко всем крит. шансам, если игрок находится в воде
+				Skill82Name: Человек-амфибия
+				Skill83Name: Все любят скидки :)
+				Skill83Tooltip: Скидка 35% на все цены в магазинах
+				Skill84Tooltip: Увеличение получаемых за убийство противников денег на 40% ночью
+				Skill84Name: Вор в ночи
+				Skill85Name: Цепляясь за жизнь
+				Skill85Tooltip: Критический удар ускоряет регенерацию здоровья
+				Skill86Tooltip: +66% к урону головореза, +30% к крит. шансу головореза, +75% к крит. урону головореза, -50% к поглощению урона, -25 защиты
+				Skill89Name: Убей или умри
+				Skill86Name: Удар в спину
+				Skill87Name: Подлость
+				Skill87Tooltip: Увеличение шанса увернуться от удара на 40% помимо прочих бонусов
+				Skill88Tooltip: 50% шанс отравить врагов помимо прочих бонусов
+				Skill88Name: Змеиная жестокость
+				Skill89Tooltip: +100% к крит. шансу, +30% к крит. урону, увеличение регенерации здоровья в 4 раза после убийства, после 4 секунд бездействия вы начинаете умирать, -15% к макс. здоровью
+				Skill90Tooltip: +15% к урону и крит. шансу головореза, +21% к урону и +30% к крит шансу ночью, +20% к любому типу урона в полнолуние
+				Skill90Name: Легендарный головорез
+			}
+
+			UniqueAbility: Уникальная способность
+			UniqueAbilityUpgrade: Улучшение уникальной способности
+
+			Ranger: {
+				Skill91Name: Стрелок - мой выбор!
+				Skill91Tooltip: +5% к урону стрелка, -20% к иным типам урона
+				Skill92Tooltip: +4% к шансу крит. урона стрелка, +6% к урону стрелка
+				Skill92Name: Тренировка стрельбы
+				Skill93Name: Точный выстрел
+				Skill93Tooltip: Увеличение шанса крит. урона стрелка
+				RangedCritBonus: +{0}% к шансу крит. урона стрелка
+				Skill94Tooltip: Ваши атаки оружием дальнего боя замораживают врагов на 1.5 секунды, но их защита увеличивается в 3 раза
+				Skill94Name: Стоп! Время оглушения!
+				Skill106Name: Энергетический барьер
+				Skill95Tooltip: Ваши атаки оружием дальнего боя замораживают врагов на 2 секунды, но их защита увеличивается в 1.5 раза
+				Skill95Name: Онемевший
+				Skill96Name: Паралич
+				Skill96Tooltip: Ваши атаки оружием дальнего боя замораживают врагов на 3 секунды и снижают их защиту до нуля
+				Skill97Tooltip: Все оружия дальнего боя получают эффект бинокля
+				Skill97Name: Тренированный разведчик
+				Skill98Name: Ловкие руки
+				Skill98Tooltip: Увеличение получаемых денег при убийстве врагов
+				MoneyBonus: +{0}% больше денег после убийства
+				Skill99Tooltip: +10% к шансу крит. урона и +25% к крит. урону стрелка
+				Skill99Name: Стрелок-ассассин
+				Skill100Name: Акробат из ада
+				Skill100Tooltip: +4% к шансу уворота от атаки и +23% к урону стрелка, если игрок находится в аду
+				RangedUsageBonus: Использование оружия стрелка на {0}% быстрее
+				Skill101Tooltip: Снижение времени использования оружия дальнего боя
+				Skill101Name: Шторм из снарядов
+				Skill102Name: Останавливающие снаряды
+				Skill102Tooltip: 3% шанс заморозить противника на 2.5 секунды
+				Skill103Tooltip: +10% к урону стрелка за каждого убитого противника (до 30%)
+				Skill103Name: Череда убийств
+				Skill104Name: Дуэлянт
+				Skill104Tooltip: +6% к шансу уворота от атаки, +25% к урону стрелка, -15% к максимальному здоровью
+				RangedDamageBonus: +{0}% к урону стрелка
+				Skill105Tooltip: Увеличение урона стрелка
+				Skill105Name: Бронебойный
+				Skill106Tooltip: Вы окружаетесь щитом, отражающим снаряды (вы также получаете урон), +25% к поглощению урона
+				Skill107Tooltip: +8 хп/сек, когда щит активен
+				Skill107Name: Здоровее не бывает
+				Skill108Name: Непробиваемый
+				Skill108Tooltip: 100% шанс отразить снаряд
+				Skill110Tooltip: 15% шанс не потратить патроны
+				Skill110Name: Скряга
+				Skill111Name: Дополнительная стрела
+				Skill111Tooltip: Дополнительная стрела при стрельбе из лука
+				Skill112Tooltip: Все пули дважды отражаются от поверхностей перед уничтожением
+				Skill112Name: Рикошет!
+				Skill113Name: Гренадер
+				Skill113Tooltip: +25% к урону взрывчаткой (не ракетами)
+				ArrowVelocityBonus: +{0}% к скорости полета стрел
+				Skill114Tooltip: Увеличение скорости полета стрел
+				Skill114Name: Крепкая тетива
+				Skill115Name: Взрывные пули
+				Skill115Tooltip: Все пули взрываются при попадании
+				Skill116Name: Зови меня ДумГаем
+				Skill116Tooltip: +10 защиты, если у игрока в руках ракетница
+				Skill117Name: На острие
+				Skill117Tooltip: Увеличение урона от стрел
+				ArrowDamageBonus: +{0}% к урону стрел
+				BulletDamageBonus: +{0}% к урону пуль
+				Skill118Tooltip: Увеличение урона от пуль
+				Skill118Name: Экспансивные пули
+				Skill119Name: Кумулятивные ракеты
+				Skill119Tooltip: Увеличение урона от ракет
+				RocketDamageBonus: +{0}% к урону ракет
+				Skill120Tooltip: Все снаряды стрелка самонаводятся на врагов
+				Skill120Name: Аим бот
+				Skill121Name: Легендарный стрелок
+				Skill121Tooltip: Все снаряды стрелка самонаводятся на врагов
+			}
+		}
+	}
+}
+
+DamageClasses.AssasinDamageType.DisplayName: урона головореза
+
+AssassinDamage: {
+	Baselard: {
+		// Tooltip: ""
+		// DisplayName: Baselard
+		Item.AssassinDamage: урона головореза
+	}
+}

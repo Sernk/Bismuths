@@ -1,0 +1,140 @@
+using Microsoft.Xna.Framework;
+using ReLogic.Graphics;
+using System;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.GameContent.UI;
+using Terraria.ModLoader;
+using Bismuth.Utilities;
+using Bismuth.Content.Items.Other;
+using Bismuth.Content.Items.Armor;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace Bismuth
+{
+	// Please read https://github.com/tModLoader/tModLoader/wiki/Basic-tModLoader-Modding-Guide#mod-skeleton-contents for more information about the various files in a mod.
+	public class Bismuth : Mod
+    {
+        public static int ImperianHelmetID;
+        public static int OcreaID;
+        public static int LoricaID;
+        public static int DwarvenCoinID;
+        public static Texture2D VampireMaleFace;
+        public static Texture2D VampireFemaleFace;
+        public static Texture2D VampireArms;
+        public static Texture2D VampireMaleBody;
+        public static Texture2D VampireFemaleBody;
+        public static Texture2D VampireMaleLegs;
+        public static Texture2D VampireFemaleLegs;
+        public static Texture2D NagaFace;
+        public static Texture2D NagaArm;
+        public static Texture2D NagaBody;
+        public static Texture2D NagaLegs;
+        public static Texture2D NagaHeadMap;
+        public static Texture2D VampireMaleHeadMap;
+        public static Texture2D VampireFemaleHeadMap;
+        public static DynamicSpriteFont Adonais;
+        public static Vector2 cameraShakeOffset;
+        private static List<ScreenShake> screenShakes;
+        public class ScreenShake
+        {
+            public float strength;
+            public int time;
+            public int timeMax;
+            public string id;
+
+            public ScreenShake(float strength, int time, string id = null)
+            {
+                this.strength = strength;
+                this.time = time;
+                this.timeMax = time;
+                this.id = id;
+            }
+        }
+
+        public Bismuth()
+        {
+            screenShakes = new List<ScreenShake>();
+        }
+        public override void Load()
+        {
+            if (!Main.dedServ)
+            {
+                ImperianHelmetID = CustomCurrencyManager.RegisterCurrency(new ImperianHelmetExchangeData(ModContent.ItemType<ImperianHelmet>(), 999L));
+                LoricaID = CustomCurrencyManager.RegisterCurrency(new LoricaExchangeData(ModContent.ItemType<Lorica>(), 999L));
+                OcreaID = CustomCurrencyManager.RegisterCurrency(new OcreaExchangeData(ModContent.ItemType<Ocrea>(), 999L));
+                DwarvenCoinID = CustomCurrencyManager.RegisterCurrency(new DwarvenCoinData(ModContent.ItemType<DwarvenCoin>(), 999L));
+                Adonais = ModContent.Request<DynamicSpriteFont>("Bismuth/Fonts/Adonaisxnb").Value;
+                VampireArms = ModContent.Request<Texture2D>("Bismuth/RacesTextures/Vampire_Arms").Value;
+                VampireMaleBody = ModContent.Request<Texture2D>("Bismuth/RacesTextures/Vampire_Body").Value;
+                VampireFemaleBody = ModContent.Request<Texture2D>("Bismuth/RacesTextures/Vampire_FemaleBody").Value;
+                VampireMaleFace = ModContent.Request<Texture2D>("Bismuth/RacesTextures/VampireMale_Head").Value;
+                VampireFemaleFace = ModContent.Request<Texture2D>("Bismuth/RacesTextures/VampireFemale_Head").Value;
+                VampireMaleLegs = ModContent.Request<Texture2D>("Bismuth/RacesTextures/Vampire_Legs").Value;
+                VampireFemaleLegs = ModContent.Request<Texture2D>("Bismuth/RacesTextures/VampireFemale_Legs").Value;
+                NagaArm = ModContent.Request<Texture2D>("Bismuth/RacesTextures/Naga_Arms").Value;
+                NagaBody = ModContent.Request<Texture2D>("Bismuth/RacesTextures/Naga_Body").Value;
+                NagaLegs = ModContent.Request<Texture2D>("Bismuth/RacesTextures/Naga_Tail").Value;
+                NagaFace = ModContent.Request<Texture2D>("Bismuth/RacesTextures/Naga_Head").Value;
+                NagaHeadMap = ModContent.Request<Texture2D>("Bismuth/RacesTextures/NagaMapHead").Value;
+                VampireMaleHeadMap = ModContent.Request<Texture2D>("Bismuth/RacesTextures/VampireMaleMapHead").Value;
+                VampireFemaleHeadMap = ModContent.Request<Texture2D>("Bismuth/RacesTextures/VampireFemaleMapHead").Value;
+            }
+        }
+        public override void Unload()
+        {
+            Adonais = null;
+        }
+        public static Vector2 Random2(float max)
+        {
+            return Bismuth.Random2(-max, max, -max, max);
+        }
+        public static Vector2 Random2(float minX, float maxX, float minY, float maxY)
+        {
+            return new Vector2(Main.rand.NextFloat(minX, maxX), Main.rand.NextFloat(minY, maxY));
+        }
+        public static void CameraUpdate(bool setValues = true)
+        {
+            Player player = Main.player[Main.myPlayer];
+            if (Bismuth.screenShakes.Count > 0)
+            {
+                for (int index = 0; index < Bismuth.screenShakes.Count; ++index)
+                {
+                    ScreenShake screenShake = Bismuth.screenShakes[index];
+                    float f = screenShake.strength;
+                    Vector2 vector2_3 = Bismuth.Random2(f * 0.5f) * ((float)screenShake.time / (float)screenShake.timeMax) * 1;
+                    Bismuth.cameraShakeOffset = new Vector2((float)(int)((double)vector2_3.X / (double)Main.GameZoomTarget), (float)(int)((double)vector2_3.Y / (double)Main.GameZoomTarget));
+                    Main.screenPosition += cameraShakeOffset;
+                    Main.screenPosition = new Vector2((float)Math.Round((double)Main.screenPosition.X), (float)Math.Round((double)Main.screenPosition.Y));
+                    if (setValues)
+                    {
+                        --screenShake.time;
+                        if ((double)screenShake.time <= 0.0)
+                        {
+                            Bismuth.screenShakes.RemoveAt(index);
+                            --index;
+                        }
+                        else
+                            Bismuth.screenShakes[index] = screenShake;
+                    }
+                }
+            }
+        }
+        public static void ShakeScreen(float strength, int time, string id = null)
+        {
+            int index = id == null ? -1 : screenShakes.FindIndex(q => q.id == id);
+            if (id == null || index == -1)
+            {
+                screenShakes.Add(new ScreenShake(strength, time, id));
+            }
+            else
+            {
+                ScreenShake screenShake = screenShakes[index];
+                screenShake.strength = strength;
+                screenShake.time = time;
+                screenShakes[index] = screenShake;
+            }
+        }
+
+    }
+}
