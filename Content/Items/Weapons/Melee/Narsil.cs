@@ -18,7 +18,7 @@ namespace Bismuth.Content.Items.Weapons.Melee
             Item.height = 20;
             Item.useTime = 22;
             Item.useAnimation = 22;
-            Item.reuseDelay = 8;
+            //Item.reuseDelay = 8;
             Item.knockBack = 5;
             Item.value = Item.buyPrice(0, 6, 0, 0);
             Item.rare = 0;

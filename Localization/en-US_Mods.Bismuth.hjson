@@ -264,6 +264,57 @@ Items: {
 	HerosBoots: {
 		DisplayName: The Boots of a Hero
 		Tooltip: Doesn't give any bonuses
+
+		Quests: {
+			HerosBoots6:
+				'''
+				The wearer can run super fast, movement speed is increased by 
+				60%, provides the ability to walk on water and lava, grants 
+				immunity to fire blocks, slightly increases jump 
+				height, increases life regeneration while walking, allows 
+				you to triple-jump, negates fall damage, 
+				creates a blast after falling
+				'''
+			HerosBoots5:
+				'''
+				The wearer can run super fast, movement speed is increased by 
+				45%, provides the ability to walk on water and lava, grants 
+				immunity to fire blocks, slightly increases jump 
+				height, increases life regeneration while walking, 
+				allows you to triple-jump
+				'''
+			HerosBoots4:
+				'''
+				The wearer can run super fast, movement speed is increased by 
+				30%, provides the ability to walk on water and lava, grants 
+				immunity to fire blocks, slightly increases jump 
+				height, increases life regeneration while walking, 
+				allows you to double-jump
+				'''
+			HerosBoots3:
+				'''
+				The wearer can run super fast, movement speed is increased by 
+				20%, provides the ability to walk on water and lava, grants 
+				immunity to fire blocks, slightly increases jump 
+				height, increases life regeneration while walking, 
+				allows you to double-jump
+				'''
+			HerosBoots2:
+				'''
+				The wearer can run super fast, movement speed is increased by 
+				15%, provides the ability to walk on water, grants 
+				immunity to fire blocks, 
+				slightly increases jump height
+				'''
+			HerosBoots1:
+				'''
+				The wearer can run super fast, movement speed is increased by 
+				10%, provides the ability to walk on water, slightly 
+				increases jump height.
+				'''
+			HerosBoots: The wearer can run super fast.
+			DivineEquipment: Divine Equipment
+		}
 	}
 
 	ImperianBanner: {
@@ -1040,13 +1091,39 @@ Items: {
 	}
 
 	ArchmagesAmulet: {
-		Tooltip: ""
-		DisplayName: Archmages Amulet
+		Tooltip: Doesn't give any bonuses
+		DisplayName: Amulet of the Archmage
+
+		Quests: {
+			ArchmagesAmulet5:
+				'''
+				+120 MP, -19% mana cost, +13% magic critical strike chance 
+				+16% magic damage, gives you a special 
+				nmagician's aura you get +1% manasteal for each 10 seconds 
+				nof not taking damage. Saves you from death once a day
+				'''
+			ArchmagesAmulet4:
+				'''
+				+120 MP, -19% mana cost, +13% magic critical strike chance 
+				+16% magic damage, gives you a special 
+				magician's aura you get +1% manasteal for each 10 seconds 
+				of not taking damage.
+				'''
+			ArchmagesAmulet3:
+				'''
+				+80 MP, -14% mana cost, +9% magic critical strike chance +12% magic damage, gives you a special 
+				magician's aura when your HP is under 75%.
+				'''
+			ArchmagesAmulet2: +50 MP, -8% mana cost, +5% magic critical strike chance, +5% magic damage
+			ArchmagesAmulet1: +30 MP, -5% mana cost, +3% magic critical strike chance
+			ArchmagesAmulet: +20 MP, -3% mana cost
+			DivineEquipment: Divine Equipment
+		}
 	}
 
 	WarriorsEngraving: {
-		Tooltip: ""
-		DisplayName: Warriors Engraving
+		Tooltip: Warrior's Engraving
+		DisplayName: Use this to choose your class
 	}
 
 	WizardsEngraving: {
@@ -1062,6 +1139,16 @@ Items: {
 	RangersEngraving: {
 		DisplayName: Ranger's Engraving
 		Tooltip: Use this to choose your class
+	}
+
+	ThrowersEngraving: {
+		DisplayName: Thrower's Engraving
+		Tooltip: Use this to choose your class
+	}
+
+	NagaSkin: {
+		Tooltip: ""
+		DisplayName: Naga Skin
 	}
 }
 
@@ -1289,6 +1376,11 @@ Buffs: {
 	EthernalProjectiles: {
 		Description: All your projectiles can move through blocks
 		DisplayName: Ethernal Projectiles
+	}
+
+	DicePlaying: {
+		DisplayName: Dice Game
+		Description: Prepare your money and just enjoy...
 	}
 }
 
@@ -2230,6 +2322,61 @@ BismuthPlayerSystem: {
 				Skill121Name: Legendary Ranger
 				Skill121Tooltip: All ranged weapons have auto-attack. +30% ranged damage and critical damage, every shot freezes the enemy
 			}
+
+			Thrower: {
+				Skill122Name: My choice is thrower!
+				Skill122Tooltip: +5% to thrown but -20% to other types of damage
+				Skill123Tooltip: +6% thrown damage, +3% thrown critical strike chance
+				Skill123Name: Serrated Tips
+				Skill124Name: Ethereal Projectiles
+				Skill124Tooltip: All projectiles can pass through blocks
+				Skill125Tooltip: Wallhack
+				Skill125Name: All projectiles can pass through blocks
+				Skill127Name: I will not budge!
+				Skill126Tooltip: All projectiles can pass through blocks
+				Skill126Name: Turn off Your Cheats!
+				Skill127Tooltip: +60% thrown damage, +30% thrown crit. +35% damage resistance, but you can't move
+				Skill128Tooltip: +60% thrown damage, +30% thrown crit, +50% thrown speed, +45% damage resistance, but you can't move
+				Skill128Name: Steadfast Hero
+				Skill129Name: Turretman
+				Skill129Tooltip: +60% thrown damage, +30% thrown crit, +50% thrown speed, +65% damage resistance, but you can't move
+				ThrownVelocityBonus: +{0}% throwing velocity
+				Skill130Tooltip: Increased velocity of thrown projectiles
+				Skill130Name: Olympian
+				Skill131Name: Thunderer
+				Skill131Tooltip: Increased thrown damage
+				ThrownDamageBonus: +{0}% thrown damage
+				Skill132Tooltip: +20% explosive damage. Explosives cost 40% less
+				Skill132Name: Pyrotechnist
+				Skill133Name: Apt Pupil
+				Skill133Tooltip: 15% experience bonus
+				Skill134Tooltip: +25% MP and HP from potions
+				Skill134Name: Alchemist
+				Skill135Name: Buffed
+				Skill136Name: Mirror Armor
+				Skill135Tooltip: 2 HP/sec, +10HP for every buff
+				Skill136Tooltip: 35% chance to reflect projectiles
+				Skill137Name: On the Road to Infinity
+				Skill137Tooltip: 20% chance to not consume thrown item
+				Skill138Tooltip: Activating this skill summons a rain of 15 meteorites
+				Skill138Name: Meteor Rain
+				Skill139Tooltip: +15% thrown critical chance, +30% thrown critical damage
+				Skill139Name: Thrower-Assassin
+				Skill140Name: Darts or Die
+				Skill140Tooltip: All consumable thrown weapons get +25% damage
+				Skill141Name: FIRESTORM!
+				Skill141Tooltip: Activating this skill summons a rain of 35 meteorites
+				Skill142Tooltip: x2 thrown velocity for 5 sec after a critical hit
+				Skill142Name: Hypersonics
+				Skill144Tooltip: Three daggers will fly in the place you dealt damage
+				Skill143Tooltip: Consumable thrown weapons can punch through an infinite number of enemies and get a +40% thrown velocity bonus
+				Skill144Name: Death from the Sky
+				Skill143Name: Right Through
+				Skill146Tooltip: +1 accessory slot
+				Skill146Name: Fashion is My Profession
+				Skill147Name: Legendary Thrower
+				Skill147Tooltip: +25% thrown damage, crit chance and crit damage, 30% chance to not consume thrown item, +10 defences
+			}
 		}
 	}
 }
@@ -2241,5 +2388,249 @@ AssassinDamage: {
 		Tooltip: ""
 		DisplayName: Baselard
 		Item.AssassinDamage: assassin damage
+	}
+}
+
+DiceGameSystem: {
+	DiceGame: {
+		DiceGame: {
+			EnterBet: Enter your bet:
+			YourScore: Your Score:
+			YourBet: Your Bet:
+			Winstreak: Wins in a Row:
+			DiceVicTotal: Total Wins:
+			EnemyScore: Enemy Score:
+		}
+	}
+}
+
+QuestsSystem: {
+	Quests: {
+		Quests: {
+			Quest14Short: Deliver documents to commander
+			Quest13Short: Make a present for leader
+			Quest12Short: Gain the trust of beggar
+			Quest11Short: Get the most powerful artefact
+			Quest10Short: Bring components for potion to alchemist
+			Quest9Short: Persuade leader to approve a new priest
+			Quest8Short: Choose, which side you are on...
+			Quest7Short: Bring armor plates to blacksmith
+			Quest6Short: Help blacksmith to create battle horn
+			Quest5Short: Get powerful weapon against goblins
+			Quest4Short: Help wanderer to return home
+			Quest3Short: Determine the fate of mysterious stone
+			Quest2Short: Help witch get an ancient tome
+			Quest1Short: Get start equipment
+			Quest14Name: Important report
+			Quest13Name: Art connoisseur
+			Quest12Name: Feed the world
+			Quest11Name: The greatest alchemist
+			Quest10Name: Immortality in a bottle
+			Quest9Name: New priest
+			Quest8Name: Gravedigger
+			Quest7Name: Undead's armors
+			Quest6Name: At the call of the horn
+			Quest5Name: Goblin slayer
+			Quest4Name: Maze treasure
+			Quest3Name: Mystery of swamp
+			Quest2Name: Searching the secrets
+			Quest1Name: The beginning of an adventure
+			Oldman_8: I heard you exposed a necromancer, who poisoned our peace with his presence. I’m glad, of course, but now the city has lost its only priest. In my younger years, I was quite into theology, so maybe I could become his replacement? Could you talk to the Consul about this, please? I’d appreciate that.
+			Oldman_6: I’m glad you had a minute to talk. You saved my life, so take this stone as a sign of my appreciation, with its help you can instantly teleport to the city. Don’t thank me, this is the least I can do to repay you.
+			Oldman_5: I can’t put into words how grateful I am! This stone will help me go home. Visit me in the city when you have a spare moment.
+			Oldman_4: Don’t take too long, my life is in your hands!
+			Oldman_2: Unfortunately, when I came here searching for treasures I’ve heard of in the rumors, an avalanche cut off my path to the surface. I also lost a magical stone without which I can’t return home. It is somewhere in the labyrinth, find it for me, please, you can keep everything else. By the way, this key was lying among the rubble, take it, might come in handy. Good luck!
+			SwampWitch_2: Somewhere within this swamp is an ancient treasure – a stone imbued with the might of the water folk. It is not easy to get to – the artifact is protected by a powerful curse, killing anyone unprepared for the adventure, but there might be a solution to that - bring me a tome from the city in the Great Desert, from what I’ve heard, the knowledge it holds could help.
+			SwampWitch_4: I need the book to continue my research.
+			SwampWitch_5: Do you have the tome? Excellent… Huh, it seems to be written in a language even I know little of, very unusual… Sorry, but you’ll have to come back in a short while – I need some time to decypher it.
+			SwampWitch_6: My research is not yet over – come back later.
+			SwampWitch_8: The chest with the stone is hidden somewhere underground. It shouldn’t be hard to get there, but you still need to read the tome to bypass whatever has killed all the adventurers before you. Good luck!
+			SwampWitch_10: Bring me the stone – and you’ll be rewarded.
+			SwampWitch_13: What?! It seems I was wrong about you, scoundrel! You’re no hero, and I’ll make sure you pay for this!
+			Blacksmith_2: I knew you weren’t some coward! This is the deal. Some time ago, I heard of Glamdring – a blade of elven craft, which slices those goblin skulls open with remarkable ease. I’m aware that {0} has a blueprint of this weapon. Want to screw them over? Bring it to me, and I’ll forge it for you
+			Blacksmith_3: There are far too many goblin snouts in the vicinity of this town, but that’s a solvable problem, if you bring me the blueprint, of course.
+			Blacksmith_4: Great, now I can forge the blade. Come back in a short while to pick it up.
+			Blacksmith_5: The blade is not ready yet, come back later.
+			Blacksmith_6: Yes, I forged it! Take the blade and kick their asses in my name!
+			Blacksmith_8: Somewhere under our city lies an ancient labyrinth, holding a bunch of useful stuff, it is, however, protected by a minotaur. I could forge an excellent musical instrument for you if you get me a horn of that beast.
+			Blacksmith_10: In that case don’t waste any more time, I’ll be waiting for you.
+			Blacksmith_11: So, the keeper of the labyrinth has been defeated? Excellent, give me a few minutes… Done! Take this battle horn as a present, it will inspire you to perform many heroic deeds, I’m sure!
+			Blacksmith_13: Ok, ok. Every gnome was equipped with a precious breastplate, forged from a rare alloy. I’m sure, the armor can still be saved. If you bring me, say, 5 plates, I’ll reward you, and my brothers will finally find peace. Deal?
+			Blacksmith_15: In that case, don’t waste any more time – you know what to do.
+			Blacksmith_16: So, you have the stuff? Perfect job, {0}. You might know that some of the items in my shop are sold for a special kind of currency. I think you deserve a gnomish coin for each breastplate. If you have any spare in the future – bring them to me, and I’ll pay for your efforts.
+			Priest_7: Truly, there is no end to human foolishness! You messed up every one of my plans! Begone, and forget about the reward!
+			Priest_6: Marvelous, my brother! Know that I, {0}, am a man of my word. Once upon a time Death itself granted me this scythe – now I eagerly share it with you. It’ll help you separate the souls of fallen enemies from their bodies and use them to your ends. However, the scythe loses its power over time, so if you need it charged – come to me.
+			Priest_5: I need the remains for a ritual. Come back once you have them.
+			Priest_3: Not far away from the ocean, where the jungle lies, there is a grave of a once great warrior. I need his remains for a ritual. Get them without disturbing his spirit – and you’ll be rewarded. This shovel will help you recover what’s left without damaging the tombstone. And don’t you dare tell anyone about this meeting - I swear upon the dark itself, you’ll regret it.
+			Consul_2: Oh, I’m glad we finally have a volunteer. Yes, {0} can take on the job today onwards.
+			Consul_3: You're telling me that the priest tasked you with desecrating a grave? This is simply unbelievable! But… All of the evidence you've presented seems viable. Try to arrest him while he still hasn’t gotten away. And yes – here is the reward for your honesty.
+			Consul_4: That is a very serious accusation, do you have proof of his guilt? I am not ready prosecute the priest based on just the words of some newcomer, especially taking into account {0}'s flawless reputation over the years.
+			Commander_6_3: I don’t have a slightest clue what this could mean, however, the scout gave his life for these notes, so you better be careful around that castle. Also, I have something for you. Take some gold, it could help you in your travels.
+			Commander_6_2: I don’t have a slightest clue what this could mean, however, the scout gave his life for these notes, so you better be careful around that castle. Also, I have something for you. Take this book, it holds knowledge that could help you in your travels.
+			Commander_6: So the scout is dead, but you’ve recovered his report? Give it here, it could hold information crucial to the Empire… Okay… So that’s how it is, huh… This report contains his observations of the castle. It says here that during nighttime the chest in there is seems to be shaking, then the writing ends…
+			Commander_5: Come back once you have the information.
+			Commander_3: One of our scouts has been sent to check the situation in the area of a deserted castle – an ancient relic of a lost civilization. It’s been two days already, and he hasn’t come back yet. Check it out and report to me when you’re done.
+			Commander_1: You’re that recruit who arrived recently? Good, I have some equipment to keep you alive for a little longer. And no – this is not camp Navarro, so you don't have to work yourself to the bone to repay this.
+			Alchemist_2: Our Consul is having an anniversary soon and we, the grateful citizens, want to show him our appreciation with a present – an ancient piece of art. I’ll cut to the chase – we are interested in a certain picture stored in the shrine of the Sun God Helios. Bring it to me, and you’ll be rewarded.
+			Alchemist_4: In that case, I’ll wait. The shrine is somewhere up in the sky, by the way.
+			Alchemist_5: Just what we needed, the consul will love this. You will not leave emptyhanded too – this potion will help you to reset your race and return to human form
+			Alchemist_7: Right now, I’m making a potion to make the consumer immortal for a short period of time. It has a highly complex composition, which includes fern leaves. You get me 5 of those, and I’ll share some of the stuff with you. Are you in?
+			Alchemist_9: Keep up the search, I need just 5 of them.
+			Alchemist_10: Perfect, my friend. The final thing left is some dayblooms. Sadly, my stock of those is empty, but I heard they could be replaced with deathweed. I’ll trust you to make that decision. What do you think?
+			Alchemist_14: You sure know what to do in your free time, huh. I’m waiting for the flowers.
+			Alchemist_15: And so, the last ingredient is here! Thanks for your help – take these potions as a sign of my appreciation. I’m confident they’ll help you in a time of need!
+			Alchemist_17: To charge it I need an extremely exotic substance – aether. It’s recipe is kept on a certain emerald tablet – an ancient repository of wisdom. If you bring it to me, I might be able to charge the stone. Deal?
+			Alchemist_19: Oh Gods, yes, this is it! You've done it! This tablet describes the method of creating aether. I'll need some time to decypher the symbols, visit me in a short while, I'll try to think something up.
+			Alchemist_20: No, sadly, I'm not done solving the mystery of aether yet. Come back later.
+			Alchemist_21: Yes, my friend, I've succeed in decyphering the tablet. To create aether we'll need the essences of four elements: fire, earth, water and wind. Using those it’s possible to create the substance, but first, read the translation of this tablet to avoid making a mistake in manufacturing. Aside from this, I'll need all seven celestial metals. Come back once you've obtained every ingredient.
+			Beggar_5: Thanks friend, you did me a big favor! You know, gambling is forbidden in this city, but I’ll make an exception just for you. Come here anytime you want to try your luck at game of dice with me, as well as lighten that wallet of yours!
+			Beggar_4: Come back once you have something nice and tasty!
+			Beggar_2: I know a valiant warrior such as yourself wouldn’t refuse to aid a helpless old man. Bring me a snack, and then, perhaps I’ll reward you… A joke, obviously.
+			Blacksmith_17: Excellent work, here is your reward.
+			Priest_9: I see you came to take the scythe? Well, I’ve just finished. It should help you in many dark affaires.
+			Priest_8: Yes, my brother, I will charge the scythe. Come back later.
+			Alchemist_22:
+				'''
+				Unfortunately, you do not have enough materials. To charge the stone you’ll need:
+				30[i:12], 30[i:699], 30[i:11], 30[i:700], 30[i:14], 30[i:19], 30[i:Bismuth/Quicksilver]
+				10[i:Bismuth/Aether]
+				[i:Bismuth/UnchargedTruePhilosopherStone]
+				'''
+			Alchemist_23: Cool, I’ll start charging the stone right now. Come back later.
+			Alchemist_24: Yeah, the stone is ready. Take it and may it protect you!
+			BackToTitle: Back to title page
+			TitleText:
+				'''
+				Welcome to the Bismuth Mod - a modification for Terraria, adding a large amount of new game mechanics. All of the information the player might need to learn the ropes can be found in the Adventurer's Book. Its pages contain: a list of active/completed quests, the stats of your character, as well as the skill tree (unlocked once you choose your class).
+				Also check Mod Controls and Mod Config options and configure it as you like!
+				'''
+			ActiveQuests: Active Quests:
+			LinksText: Useful Links
+			CompletedQuests: Completed Quests:
+			Stages: Stages:
+			QuestDiary1: Curiously, the last thing I remember - me talking to a guy in a white robe, almost as if I hadn’t existed before then. If I remember correctly, his name is {0}, and the place I found myself in – Imperial city. It’s pretty good here, moslty due to it’s the safest place in these lands. Looks like {0} is the leader. He told me to meet the commander and pick up my equipment. I should follow his advice, however, first I must decide which fighting style suits me the most and use class engraving.
+			Quest1Stage2: Take start equipment from commander
+			Quest1Stage1: Choose your class
+			QuestDiary2: Эти болота – гиблое место. Ядовитые топи и местные обитатели – не лучшее, что со мной случалось. Странно, но даже в таких заброшенных окраинах не угас очаг цивилизации. В центре болота я нашел избу, в которой живет старая ведьма. Она рассказала мне историю о сокровище, спрятанном где-то в недрах болота, и попросила принести ей фолиант, который поможет достать его. Эта старуха выглядит подозрительно, однако рискнуть стоит. Эта книга хранится где-то в заброшенном пустынном городе – стоит начать поиски там.
+			Quest2Stage1: Найдите фолиант в пустынном городе
+			QuestDiary3: At last, the witch is done deciphering the tome. I should read the result, before setting of to get the artifact, lest the ancient curse kill me. The hag's obviously hiding the true power of this relic – one of the pages states that with it, I could attain the powers of the water folk – for that, I should charge the stone at an altar in a temple somewhere on the  seabed. Now I must decide how to act – take it for myself or keep my promise.
+			Quest3Stage1_2: Keep it
+			Quest3Stage1_1: Bring Gaermire to witch
+			QuestOr: Or
+			Quest4Stage1: Bring magic stone to oldman
+			Quest4Stage2: Get reward
+			QuestDiary4: And here I thought nothing could be worse than losing your memories only to find yourself in a foreign city, today’s meeting showed me otherwise. Searching for ore underground, I heard a plea for help. Behind the rubble, I found an old man, who, by the looks of it, had been living here for a while. He told me that the door further down the corridor is an entrance to a labyrinth. Somewhere inside is a magic stone that could help him return home. He gave me a key to said door. Now it’s time to free him, as well as check out the goods kept inside.
+			QuestDiary4_2: I succeeded in recovering the man's stone. Turned out, it was a teleporting device, immediately bringing the owner to the Imperial city. The old man told me to come by, in case I want a reward for my efforts.
+			QuestDiary5: The goblins turned out to be a tough bunch, it’s clear I need something more effective against these beasts. {0} told me that with the right blueprint, I could forge a weapon specifically for that purpose. From his words, the scroll is in {1}'s – our goblin tinkerer's possession. Ironic.
+			Quest5Stage2: Mods.Bismuth.QuestsSystem.Quests.Quests.Quest5Stage2
+			Quest5Stage1: Wait for new sword
+			Quest6Stage1: Bring minotaur horn to blacksmith
+			QuestDiary6: Today I again spoke to {0} – he told me of a labyrinth somewhere beneath the city, deep inside of which is a Minotaur. The blacksmith is interested only in its horn, out of which he could make a musical instrument, therefore, the rest of the treasure is mine. I should take some time to prepare before battling the beast.
+			Quest7Stage1: Bring remains of dwarven armor
+			QuestDiary7: Now that I actually think about it, I've never met a gnome besides {0}. His tale of a once great dwarf civilisation explains everything. Perhaps he pities his fallen comrades, but their fate is not of much importance to me. On the other hand, {0} is willing to pay for their breastplates, so I must now assume the role of an undead Hunter, if I want some of those dwarven coins.
+			QuestDiary8: Last night I spoke to {0} – this place's priest. He is obviously more than he lets on. I was told to recover remains from a warrior’s grave somewhere beside the ocean on the side of the jungle, and bring them to him for a ritual. Necromancy is forbidden here on pain of death, however, {0} promised me a “weapon of unseen power” and promised a bitter end should I betray him. Now I must decide, do I reveal his schemes to the consul or break the law to get that weapon?
+			Quest8Stage1_2: Report to leader
+			Quest8Stage1_1: Dig tombstone
+			Quest9Stage1: Talk to leader about priest job
+			QuestDiary9: The old man I freed from the labyrinth told md, that he once dabbled in theology and knows that {0} – the necromancer, escaped. He wants to take his place and asked me to speak to {1} on the matter. I don’t see a reason to refuse him.
+			Quest10Stage1: Bring fern flowers to alchemist
+			Quest10Stage2_1: Choose dayblooms
+			Quest10Stage3: Bring dayblooms to alchemist
+			QuestDiary10: Finally, {0} asked me for something interesting. He told me of work-in-progress potion, that should make the user invincible for a short period of time. To create it he needs fern flowers, the spores of which I can find in the swamp. I should plant those spores in a pot and wait for them to bloom.
+			Quest11Stage1: Make Tabula from parts
+			Quest11Stage2: Wait for translation
+			QuestDiary11: Looks like {0} is satisfied with my help, and that’s why he told me of the true philosopher's stone – an artefact that helps the used escape death's grasp. It's a family relic of {0}'s, the issue is it has to be charged to work. And the only way to do that is to use aether – a substance, the recipe of which is described in Tabula Smaragdina – an ancient alchemical tract. The shards of said tract are kept in caskets scattered all over the world, the only way to find those is to use Quicksilver mirrors. I should bring the Tabula to {0} once it’s assembled.
+			QuestDiary12: There’s a wide assortment of people in here. Take {0}, the local crazy gambler living in a tent near the smithy. He asked me to bring me some food. The task's not rocket science, and he has some useful info to boot, so I probably should fulfill his request.
+			Quest12Stage1: Bring food to beggar
+			Quest13Stage1: Bring picture to alchemist
+			QuestDiary13: "{0} – is this place’s alchemist. The man is a big enthusiast, and not only in the field of potion-making, so I was not surprised, when he asked me to help him make a gift for the consul's anniversary. {0} wants to present him with a rare picture, found in the shrine of the Sun God Helios. It should be somewhere in the skies above the city."
+			QuestDiary14: The commander tasked me with an important mission – check the situation in the vicinity of a forsaken fort. His Intel tells that the scout previously sent to those lands disappeared without a trace, and his report is of utmost importance to the city. I must find the castle and recover the document.
+			Quest14Stage2: Bring report to commander
+			Quest14Stage1: Find scout
+			QuestDiary1_2: Curiously, the last thing I remember - me talking to a guy in a white robe, almost as if I hadn’t existed before then. If I remember correctly, his name is {0}, and the place I found myself in - Imperial city. Right from the start, this guy expects me to follow his orders, I don’t think so! I refused his offer of equipment - he should find someone else to toy with!
+			QuestDiary2_2: I succeeded in recovering the tome the swamp hag asked of me. Now, I must wait while she’s busy deciphering it.
+			Quest8Stage1_3: Destroy the tombstone
+			Quest10Stage2_2: Choose deathweed
+		}
+
+		Player: {
+			ManaCostStat: Spells cost: {0}%
+			MPStat: Max mana: {0}
+			RegenStat: Life regeneration: {0}{1} hp
+			HPStat: Max health: {0}
+			PlayerStat: Player Stats:
+			DefenceStat: Defence: {0}
+			EnduranceStat: Damage resistance: {0}%
+			BlockStat: Block chance: {0}%
+			DodgeStat: Dodge chance: {0}%
+			MeleeSpeedStat: Melee speed: {0}%
+			MeleeCritStat: Melee critical strike chance: {0}%
+			MeleeDmgStat: Melee damage: {0}%
+			MSStat: Movement speed: {0}%
+			ParryStat: Parry chance: {0}%
+			MagicDmgStat: Magical damage: {0}%
+			MagicCritStat: Magical critical strike chance: {0}%
+			MinionDmgStat: Minion damage: {0}%
+			MaxMinionStat: Max minion number: {0}
+			ThrownVelStat: Throwing projectiles speed: {0}%
+			ThrownCritStat: Throwing critical strike chance: {0}%
+			ThrownDmgStat: Метательный урон: {0}%
+			RangedCritStat: Шанс крита в дальнем бою: {0}%
+			RangedDmgStat: Урон в дальнем бою: {0}%
+			SkillsTree: Skills tree:
+			CharmStat: Charm: {0}
+			CritDmgStat: Critical strike damage: {0}%
+			AssassinCritStat: Assassin critical strike chance: {0}%
+			AssassinDmgStat: Assassin damage: {0}%
+		}
+	}
+}
+
+LevelsLocalization: {
+	Levels: {
+		Levels: {
+			SPs: SKILL POINTS:
+			CurXP: XP:
+			Level: LEVEL:
+		}
+	}
+}
+
+CoinSystem: {
+	CoinLocalization: {
+		CoinSystem: {
+			DwarvenCoin: Dwarven Coin
+			Ocrea: Ocrea
+			ImperianHelmet: Imperian Helmet
+			Lorica: Lorica
+			AetherRecipe: Aether Recipe
+			GalvornRecipe: Galvorn Recipe
+			PoisonRecipe: Poison Recipe
+			PanaceaRecipe: Panacea Recipe
+		}
+	}
+
+	LocalizationSystem: {
+		CoinSystem: {
+			DwarvenCoin: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.DwarvenCoin
+			Ocrea: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.Ocrea
+			ImperianHelmet: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.ImperianHelmet
+			Lorica: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.Lorica
+			AetherRecipe: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.AetherRecipe
+			GalvornRecipe: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.GalvornRecipe
+			PoisonRecipe: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.PoisonRecipe
+			PanaceaRecipe: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.PanaceaRecipe
+		}
+	}
+}
+
+BismuthPlayerLayerSystem: {
+	BismuthPlayerLayer: {
+		Layer: {
+			OrcishInvasionName: Orcish Invasion
+			DefeatedPortals: Defeated Portals:
+			Wetness: Wetness:
+			Hunger: Satiety:
+		}
 	}
 }

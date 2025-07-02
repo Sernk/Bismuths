@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Bismuth.Utilities.Recipes;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -29,6 +30,7 @@ namespace Bismuth.Content.Items.Materials
             Recipe recipe = CreateRecipe();
             recipe.AddCondition(Condition.NearWater);
             recipe.AddIngredient(ItemID.Bottle);
+            recipe.AddCondition(PoisonRecipe.PoisonRecipes);
             recipe.Register();
         }
     }

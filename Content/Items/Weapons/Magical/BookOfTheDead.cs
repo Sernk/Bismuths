@@ -1,9 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Utilities;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Bismuth.Utilities;
 using Bismuth.Content.NPCs;
 
 namespace Bismuth.Content.Items.Weapons.Magical
@@ -12,27 +12,16 @@ namespace Bismuth.Content.Items.Weapons.Magical
     {
         public override void SetDefaults()
         {
-            Item.damage = 10;
-            Item.noMelee = true;
             Item.DamageType = DamageClass.Magic;
             Item.width = 20;
             Item.height = 20;
             Item.useTime = 25;
             Item.useAnimation = 25;
-            Item.mana = 60;
             Item.value = Item.buyPrice(0, 6, 0, 0);
             Item.rare = 8;
             Item.UseSound = SoundID.Item69;
             Item.autoReuse = false;
             Item.useStyle = 5;
-        }
-      
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Book of the Dead");
-            // Tooltip.SetDefault("Uses 60 mana \nSummons bone hands on recenlty dead enemies' positions (up to 6 hands)");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Книга мертвых");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Использует 60 маны\nПризывает костяные руки в места недавно умерших врагов (до 6 рук)");
         }
         public override bool CanUseItem(Player player)
         {
@@ -43,10 +32,10 @@ namespace Bismuth.Content.Items.Weapons.Magical
             player.statMana -= 60;
             foreach (Vector2 pos in player.GetModPlayer<BismuthPlayer>().BOTDPlaces)
             {
-                NPC.NewNPC(player.GetSource_FromThis(), (int)pos.X, (int)pos.Y, ModContent.NPCType<BoneHand>());
+                NPC.NewNPC(player.GetSource_FromThis(),(int)pos.X, (int)pos.Y, ModContent.NPCType<BoneHand>());
             }
-            player.GetModPlayer<BismuthPlayer>().BOTDPlaces.Clear();         
-            return true;
+            player.GetModPlayer<BismuthPlayer>().BOTDPlaces.Clear();
+            return false;
         }
     }
 }

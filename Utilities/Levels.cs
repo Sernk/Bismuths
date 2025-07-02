@@ -1,17 +1,23 @@
-﻿using Terraria.ModLoader;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 using Terraria;
-using System.Collections.Generic;
-using System;
-using Terraria.ModLoader.IO;
 using Terraria.Localization;
+using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 
 namespace Bismuth.Utilities
 {
-	public class Levels : ModPlayer
+	public class Levels : ModPlayer, ILocalizedModType
 	{
-		#region FIELDS
+        public string LocalizationCategory => "LevelsLocalization";
+
+        public override void Load()
+        {
+            _ = this.GetLocalization("Levels.Level").Value; // Ru: УРОВЕНЬ: En: LEVEL:
+            _ = this.GetLocalization("Levels.CurXP").Value; // Ru: ОПЫТ: En: XP:
+            _ = this.GetLocalization("Levels.SPs").Value; // Ru: ОЧКИ УМЕНИЙ: En: SKILL POINTS:
+        }
+        #region FIELDS
         public static bool xpbaropened = false;
 		public Texture2D xp = ModContent.Request<Texture2D>("Bismuth/UI/xp").Value;
         public Texture2D xp_back = ModContent.Request<Texture2D>("Bismuth/UI/xp_back").Value;
@@ -29,6 +35,9 @@ namespace Bismuth.Utilities
                 return new Vector2((Main.screenWidth / 2) - (xp.Width / 2), 112);
             }
         }
+
+        
+
         public static void HotKeyPressed2()
         {
             if (!Main.LocalPlayer.GetModPlayer<BismuthPlayer>().NoRPGGameplay)
@@ -51,14 +60,6 @@ namespace Bismuth.Utilities
             tag["Xp"] = XP;
             tag["MaxXp"] = MAXXP;
         }
-        //public override void SaveData(TagCompound tag)
-        //{
-        //    TagCompound save_data = new TagCompound();
-        //    save_data.Add("Level", LEVEL);
-        //    save_data.Add("Xp", XP);
-        //    save_data.Add("MaxXp", MAXXP);
-        //    return;
-        //}
         public override void LoadData(TagCompound tag)
         {
             XP = tag.GetInt("Xp");
@@ -83,11 +84,11 @@ namespace Bismuth.Utilities
                     LEVELUP();
                 else
                     XP = MAXXP - 1;
-			}
-		}
-       
-		public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
-		{
+            }
+        }
+
+        public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
+        {
             if (!Main.LocalPlayer.GetModPlayer<BismuthPlayer>().NoRPGGameplay)
             {
                 if (target.life < 0 && !target.SpawnedFromStatue)
@@ -107,9 +108,10 @@ namespace Bismuth.Utilities
                     }
                 }
 
-            }        }
+            }
+        }
 
-		public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (!Main.LocalPlayer.GetModPlayer<BismuthPlayer>().NoRPGGameplay)
             {
@@ -134,15 +136,18 @@ namespace Bismuth.Utilities
 
         public void DRAW(SpriteBatch spriteBatch)
         {
-            if (xpbaropened && !Main.LocalPlayer.GetModPlayer<BismuthPlayer>().NoRPGGameplay)
+            string Level = this.GetLocalization("Levels.Level").Value;
+            string CurXP = this.GetLocalization("Levels.CurXP").Value;
+            string SPs = this.GetLocalization("Levels.SPs").Value;
 
+            if (xpbaropened && !Main.LocalPlayer.GetModPlayer<BismuthPlayer>().NoRPGGameplay)
             {
                 spriteBatch.Draw(xp_back, position, Color.White);
                 spriteBatch.Draw(xp, position2, new Rectangle(0, 0, (int)(xp.Width * (XP / (float)MAXXP)), xp.Height), Color.White);
                 var font = Bismuth.Adonais;
-                string level_ = Language.GetTextValue("Mods.Bismuth.Level") + " " + LEVEL;
-                string xp_ = Language.GetTextValue("Mods.Bismuth.CurXP") + " " + XP + "/" + MAXXP;
-                string SP = Language.GetTextValue("Mods.Bismuth.SPs") + " " + Player.GetModPlayer<BismuthPlayer>().SkillPoints;
+                string level_ = Level + " " + LEVEL;
+                string xp_ = CurXP + " " + XP + "/" + MAXXP;
+                string SP = SPs + " " + Player.GetModPlayer<BismuthPlayer>().SkillPoints;
 
                 Vector2 level_s = font.MeasureString(level_);
                 Vector2 xp_s = font.MeasureString(xp_);

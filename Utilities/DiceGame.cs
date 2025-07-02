@@ -1,33 +1,25 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using Terraria.GameInput;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using ReLogic.Graphics;
-using Terraria.DataStructures;
-using System.IO;
-using Bismuth.Content.NPCs;
-using Bismuth.UI;
 using Terraria.Localization;
 using Terraria.Audio;
-using Bismuth.Content.Items.Other;
-using Bismuth.Content.Items.Materials;
 using Bismuth.Content.Items.Accessories;
-
+using Bismuth.Content.Buffs;
 
 namespace Bismuth.Utilities
 {
-    public class DiceGame : ModPlayer
+    public class DiceGame : ModPlayer, ILocalizedModType
     {
+        public string LocalizationCategory => "DiceGameSystem";
+
         public bool IsTableOpened = false;
         bool IsBetMade = false;
         int bet = 0;
@@ -65,14 +57,29 @@ namespace Bismuth.Utilities
         bool flag = false;
         bool Backflag = false;
         int changebettimer = 0;
-
+        public override void Load()
+        {
+            _ = this.GetLocalization("DiceGame.EnterBet").Value; // Ru: Введите размер ставки: En: Enter your bet:
+            _ = this.GetLocalization("DiceGame.YourScore").Value; // Ru: Ваши очки: En: Your Score:
+            _ = this.GetLocalization("DiceGame.YourBet").Value; // Ru: Ваша ставка: En: Your Bet: 
+            _ = this.GetLocalization("DiceGame.Winstreak").Value; // Ru: Побед подряд: En: Wins in a Row:
+            _ = this.GetLocalization("DiceGame.DiceVicTotal").Value; // Ru: Побед всего: En: Total Wins:
+            _ = this.GetLocalization("DiceGame.EnemyScore").Value; // Ru: Очки противника: En: Enemy Score:
+        }
         public void DrawTable(SpriteBatch sb)
         {
+            string EnterBet = this.GetLocalization("DiceGame.EnterBet").Value;
+            string YourScore = this.GetLocalization("DiceGame.YourScore").Value;
+            string YourBet = this.GetLocalization("DiceGame.YourBet").Value;
+            string Winstreak = this.GetLocalization("DiceGame.Winstreak").Value;
+            string DiceVicTotal = this.GetLocalization("DiceGame.DiceVicTotal").Value;
+            string EnemyScore = this.GetLocalization("DiceGame.EnemyScore").Value;
+
             if (IsTableOpened)
             {
-                DynamicSpriteFont curfont = Language.ActiveCulture.CultureInfo.Name == "ru-RU" ? FontAssets.MouseText.Value : Bismuth.Adonais;
+                //DynamicSpriteFont curfont = Language.ActiveCulture.CultureInfo.Name == "ru-RU" ? FontAssets.MouseText.Value : Bismuth.Adonais;
                 //Player.talkNPC = -1;
-                Player.AddBuff(Mod.Find<ModBuff>("DicePlaying").Type, 60);
+                Player.AddBuff(ModContent.BuffType<DicePlaying>(), 60);
                 sb.Draw(tabletex, new Vector2(Main.screenWidth / 2 - 425, Main.screenHeight / 2 - 267), Color.White);
                 if(buttontex != null)
                     sb.Draw(buttontex, new Vector2(Main.screenWidth / 2 - buttontex.Width / 2, Main.screenHeight / 2 + 130), Color.White);
@@ -83,7 +90,7 @@ namespace Bismuth.Utilities
                     {
                         IsTableOpened = false;
                     }
-                    Utils.DrawBorderStringFourWay(sb, curfont, Language.GetTextValue("Mods.Bismuth.EnterBet"), Main.screenWidth / 2 - curfont.MeasureString(Language.GetTextValue("Mods.Bismuth.EnterBet")).X / 2, Main.screenHeight / 2 - 30, Color.White, Color.Black, new Vector2(), 1f);
+                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, EnterBet, Main.screenWidth / 2 - Bismuth.Adonais.MeasureString(EnterBet).X / 2, Main.screenHeight / 2 - 30, Color.White, Color.Black, new Vector2(), 1f);
                     changebettimer--;
                     sb.Draw(betfieldtex, new Vector2(Main.screenWidth / 2 - betfieldtex.Width / 2, Main.screenHeight / 2), Color.White);
                     if (Main.mouseX > Main.screenWidth / 2 - betfieldtex.Width / 2 && Main.mouseX < Main.screenWidth / 2 + betfieldtex.Width / 2 && Main.mouseY > Main.screenHeight / 2 && Main.mouseY < Main.screenHeight / 2 + betfieldtex.Height && Main.mouseLeft && Main.mouseLeftRelease)
@@ -191,14 +198,14 @@ namespace Bismuth.Utilities
                 else
                 {
                     if (Player.GetModPlayer<BismuthPlayer>().IsEquippedDiceCup && myscore != 0)
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.YourScore") + (myscore - 1) + " + 1", Main.screenWidth / 2 + 160, Main.screenHeight / 2 - 160, Color.White, Color.Black, new Vector2(), 1.2f);
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, YourScore + (myscore - 1) + " + 1", Main.screenWidth / 2 + 160, Main.screenHeight / 2 - 160, Color.White, Color.Black, new Vector2(), 1.2f);
                     else
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.YourScore") + myscore, Main.screenWidth / 2 + 160, Main.screenHeight / 2 - 160, Color.White, Color.Black, new Vector2(), 1.2f);
-                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.EnemyScore") + enemyscore, Main.screenWidth / 2 + 160, Main.screenHeight / 2 - 130, Color.White, Color.Black, new Vector2(), 1.2f);
-                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.YourBet") + bet, Main.screenWidth / 2 + 160, Main.screenHeight / 2 - 100, Color.White, Color.Black, new Vector2(), 1.2f);
-                    sb.Draw(TextureAssets.Item[73].Value, new Vector2(Main.screenWidth / 2 + 160 + curfont.MeasureString(Language.GetTextValue("Mods.Bismuth.YourBet") + bet).X * 1.2f + 4, Main.screenHeight / 2 - 98), Color.White);
-                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Winstreak") + VictoryInARow, Main.screenWidth / 2 + 160, Main.screenHeight / 2 - 70, Color.White, Color.Black, new Vector2(), 1.2f);
-                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.DiceVicTotal") + VictoryTotal, Main.screenWidth / 2 + 160, Main.screenHeight / 2 - 40, Color.White, Color.Black, new Vector2(), 1.2f);
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, YourScore + myscore, Main.screenWidth / 2 + 160, Main.screenHeight / 2 - 160, Color.White, Color.Black, new Vector2(), 1.2f);
+                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, EnemyScore + enemyscore, Main.screenWidth / 2 + 160, Main.screenHeight / 2 - 130, Color.White, Color.Black, new Vector2(), 1.2f);
+                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, YourBet + bet, Main.screenWidth / 2 + 160, Main.screenHeight / 2 - 100, Color.White, Color.Black, new Vector2(), 1.2f);
+                    sb.Draw(TextureAssets.Item[73].Value, new Vector2(Main.screenWidth / 2 + 160 + Bismuth.Adonais.MeasureString(YourBet + bet).X * 1.2f + 4, Main.screenHeight / 2 - 98), Color.White);
+                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Winstreak + VictoryInARow, Main.screenWidth / 2 + 160, Main.screenHeight / 2 - 70, Color.White, Color.Black, new Vector2(), 1.2f);
+                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, DiceVicTotal + VictoryTotal, Main.screenWidth / 2 + 160, Main.screenHeight / 2 - 40, Color.White, Color.Black, new Vector2(), 1.2f);
                     if (!IsThrownDices && !IsEnemyTurn && Main.mouseX > Main.screenWidth / 2 - buttontex.Width / 2 && Main.mouseX < Main.screenWidth / 2 + buttontex.Width / 2 && Main.mouseY > Main.screenHeight / 2 + 143 && Main.mouseY < Main.screenHeight / 2 + 143 + buttontex.Height && Main.mouseLeft && Main.mouseLeftRelease)
                     {
                         firstvalue = Main.rand.Next(1, 7);
@@ -454,7 +461,7 @@ namespace Bismuth.Utilities
                 needtopay = 0;
                 IsBetMade = false;
                 betkeys.Clear();
-               // buttontex = ModContent.Request<Texture2D>("Bismuth/UI/ThrowingButton");
+                buttontex = ModContent.Request<Texture2D>("Bismuth/UI/ThrowingButton").Value;
                 firstdice = ModContent.Request<Texture2D>("Bismuth/UI/ClosedSkill").Value;
                 seconddice = ModContent.Request<Texture2D>("Bismuth/UI/ClosedSkill").Value;
             }
@@ -470,11 +477,11 @@ namespace Bismuth.Utilities
         //public override void SaveData(TagCompound tag)
         //{
         //    TagCompound save_data = new TagCompound();
-        //    save_data.Add("ThirdRow", ThirdRow);
-        //    save_data.Add("FourthRow", FourthRow);
-        //    save_data.Add("FifthRow", FifthRow);
-        //    save_data.Add("VictoryTotal", VictoryTotal);
-        //    save_data.Add("VictoryInARow", VictoryInARow);
+        //    tag("ThirdRow", ThirdRow);
+        //    tag("FourthRow", FourthRow);
+        //    tag("FifthRow", FifthRow);
+        //    tag("VictoryTotal", VictoryTotal);
+        //    tag("VictoryInARow", VictoryInARow);
 
         //    return;
         //}

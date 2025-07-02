@@ -4,13 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
 using Terraria.Localization;
-using System.IO;
 using ReLogic.Graphics;
 using Bismuth.Content.NPCs;
 using Terraria.ModLoader.IO;
@@ -33,6 +31,10 @@ namespace Bismuth.Utilities
     public class BismuthPlayer : ModPlayer, ILocalizedModType
     {
         public string LocalizationCategory => "BismuthPlayerSystem";
+
+        int count = 0;
+        int fallTime = 0;
+        bool canTrigger = false;
 
         public static int alphabanshee = 0;
         public static int growbanshee = 1;
@@ -178,6 +180,79 @@ namespace Bismuth.Utilities
                 }
             }
             return a;
+        }
+        public override void PreUpdateMovement() // код не идеальный
+        {
+            if (NPC.downedGolemBoss)
+            {
+                count = 7;
+            }
+            if (count >= 7)
+            {
+                for (int k = 3; k < 8 + Player.extraAccessorySlots; k++)
+                {
+                    if (NPC.downedGolemBoss)
+                    {
+                        if (Player.armor[k].type == ModContent.ItemType<HerosBoots>())
+                        {
+                            if (Player.velocity.Y > 0)
+                            {
+                                bootstimer++;
+                            }
+                            if (bootstimer < 30 && Player.velocity.Y <= 0)
+                            {
+                                bootstimer = 0;
+                            }
+                            if (Player.velocity.Y < 0)
+                            {
+                                fallTime++;
+                            }
+                            if (fallTime >= 5)
+                            {
+                                canTrigger = true;
+                            }
+
+                            if (canTrigger && bootstimer >= 30)
+                            {
+                                bootstimer = 30;
+                                if (WorldGen.SolidTile(Player.position.ToTileCoordinates().X, Player.position.ToTileCoordinates().Y + 3) || WorldGen.SolidTile(Player.position.ToTileCoordinates().X, Player.position.ToTileCoordinates().Y + 3))
+                                {
+                                    Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 20), Vector2.Zero, ModContent.ProjectileType<HerosBootsBlast>(), 60, 5f, Main.myPlayer);
+                                    SoundEngine.PlaySound(SoundID.Item14, Player.Center);
+                                    bootstimer = 0;
+                                    fallTime = 0;
+                                    canTrigger = false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        public override void FrameEffects()
+        {
+            if (IsNaga)
+            {
+                Player.head = EquipLoader.GetEquipSlot(Mod, "TheRingOfTheSeas", EquipType.Head);
+                Player.body = EquipLoader.GetEquipSlot(Mod, "TheRingOfTheSeas", EquipType.Body);
+                Player.legs = EquipLoader.GetEquipSlot(Mod, "TheRingOfTheSeas", EquipType.Legs);
+            }
+            if (IsVampire)
+            {
+                string headName = Player.Male ? "TheRingOfTheBlood_Head_Male" : "TheRingOfTheBlood_Head_Female";
+                Player.head = EquipLoader.GetEquipSlot(Mod, headName, EquipType.Head);
+                Player.body = EquipLoader.GetEquipSlot(Mod, "TheRingOfTheBlood", EquipType.Body);
+                Player.legs = EquipLoader.GetEquipSlot(Mod, "TheRingOfTheBlood", EquipType.Legs);
+            }
+        }
+        public override void ModifyDrawInfo(ref PlayerDrawSet drawInfo)
+        {
+            if (IsNaga)
+            {
+                drawInfo.hideEntirePlayer = false;
+                drawInfo.hidesTopSkin = true;
+                drawInfo.hidesBottomSkin = true;
+            }
         }
 
         #region ItemsSpecVars
@@ -742,211 +817,211 @@ namespace Bismuth.Utilities
         /*public override void SaveData(TagCompound tag)
         {
             TagCompound save_data = new TagCompound();
-            save_data.Add("witchsecondatt", witchsecondatt);
-            save_data.Add("OneRingTimer", OneRingTimer);
-            save_data.Add("TabulaResearch", TabulaResearch);
-            save_data.Add("WaitStoneCharging", WaitStoneCharging);
-            save_data.Add("BosWait", BosWait);
-            save_data.Add("SoulScytheCharge", SoulScytheCharge);
-            save_data.Add("WaitPhilosopherStone", WaitPhilosopherStone);
-            save_data.Add("WaitTabula", WaitTabula);
-            save_data.Add("WaitSoulScythe", WaitSoulScythe);
-            save_data.Add("WaitGlamdring", WaitGlamdring);           
-            save_data.Add("PlayerClass", PlayerClass);
-            save_data.Add("SkillPoints", SkillPoints);
-            save_data.Add("SpendedPoints", SpendedPoints);
-            save_data.Add("cursepts", cursepts);
-            save_data.Add("DeathPos", DeathPos);
-            save_data.Add("PhoenixDaily", PhoenixDaily);
-            save_data.Add("CanBeFrozenByElemental", CanBeFrozenByElemental);
-            save_data.Add("InkPos", InkPos);
-            save_data.Add("downedMinotaur", downedMinotaur);
-            save_data.Add("downedWitch", downedWitch);
-            save_data.Add("IsBoSRead", IsBoSRead);
-            save_data.Add("IsReadMazarbul", IsReadMazarbul);
-            save_data.Add("IsFTRead", IsFTRead);
-            save_data.Add("FTDaily", FTDaily);
-            save_data.Add("LichPoints", LichPoints);
-            save_data.Add("mirrordaily", mirrordaily);
-            save_data.Add("amuletdaily", amuletdaily);
-            save_data.Add("IsNaga", IsNaga);
-            save_data.Add("IsVampire", IsVampire);
-            save_data.Add("Wetness", Wetness);
-            save_data.Add("Hunger", Hunger);
-            save_data.Add("NoRPGGameplay", NoRPGGameplay);
-            save_data.Add("PhoenixPendantWasSpawned", PhoenixPendantWasSpawned);
+            tag("witchsecondatt", witchsecondatt);
+            tag("OneRingTimer", OneRingTimer);
+            tag("TabulaResearch", TabulaResearch);
+            tag("WaitStoneCharging", WaitStoneCharging);
+            tag("BosWait", BosWait);
+            tag("SoulScytheCharge", SoulScytheCharge);
+            tag("WaitPhilosopherStone", WaitPhilosopherStone);
+            tag("WaitTabula", WaitTabula);
+            tag("WaitSoulScythe", WaitSoulScythe);
+            tag("WaitGlamdring", WaitGlamdring);           
+            tag("PlayerClass", PlayerClass);
+            tag("SkillPoints", SkillPoints);
+            tag("SpendedPoints", SpendedPoints);
+            tag("cursepts", cursepts);
+            tag("DeathPos", DeathPos);
+            tag("PhoenixDaily", PhoenixDaily);
+            tag("CanBeFrozenByElemental", CanBeFrozenByElemental);
+            tag("InkPos", InkPos);
+            tag("downedMinotaur", downedMinotaur);
+            tag("downedWitch", downedWitch);
+            tag("IsBoSRead", IsBoSRead);
+            tag("IsReadMazarbul", IsReadMazarbul);
+            tag("IsFTRead", IsFTRead);
+            tag("FTDaily", FTDaily);
+            tag("LichPoints", LichPoints);
+            tag("mirrordaily", mirrordaily);
+            tag("amuletdaily", amuletdaily);
+            tag("IsNaga", IsNaga);
+            tag("IsVampire", IsVampire);
+            tag("Wetness", Wetness);
+            tag("Hunger", Hunger);
+            tag("NoRPGGameplay", NoRPGGameplay);
+            tag("PhoenixPendantWasSpawned", PhoenixPendantWasSpawned);
             #region bossessave
-            save_data.Add("KilledBossesCount", KilledBossesCount);
-            save_data.Add("KilledKingSlime", KilledKingSlime);
-            save_data.Add("KilledEoC", KilledEoC);
-            save_data.Add("KilledEoW", KilledEoW);
-            save_data.Add("KilledBoC", KilledBoC);
-            save_data.Add("KilledWormorBrain", KilledWormorBrain);
-            save_data.Add("KilledSkeletron", KilledSkeletron);
-            save_data.Add("KilledQoB", KilledQoB);
-            save_data.Add("KilledWoF", KilledWoF);
-            save_data.Add("KilledSkeletronPrime", KilledSkeletronPrime);
-            save_data.Add("KilledDestroyer", KilledDestroyer);
-            save_data.Add("KilledAnyMechBoss", KilledAnyMechBoss);
-            save_data.Add("KilledPlantera", KilledPlantera);
-            save_data.Add("KilledGolem", KilledGolem);
-            save_data.Add("KilledFishron", KilledFishron);
-            save_data.Add("KilledCultist", KilledCultist);
-            save_data.Add("KilledMoonLord", KilledMoonLord);
-            save_data.Add("KilledMourningWood", KilledMourningWood);
-            save_data.Add("KilledPumpking", KilledPumpking);
-            save_data.Add("KilledSantaNK1", KilledSantaNK1);
-            save_data.Add("KilledEverscream", KilledEverscream);
-            save_data.Add("KilledIceQueen", KilledIceQueen);
-            save_data.Add("KilledFlyingDutchman", KilledFlyingDutchman);
-            save_data.Add("KilledMartianSaucer", KilledMartianSaucer);
-            save_data.Add("KilledBetsy", KilledBetsy);
-            save_data.Add("KilledTwins", KilledTwins);
+            tag("KilledBossesCount", KilledBossesCount);
+            tag("KilledKingSlime", KilledKingSlime);
+            tag("KilledEoC", KilledEoC);
+            tag("KilledEoW", KilledEoW);
+            tag("KilledBoC", KilledBoC);
+            tag("KilledWormorBrain", KilledWormorBrain);
+            tag("KilledSkeletron", KilledSkeletron);
+            tag("KilledQoB", KilledQoB);
+            tag("KilledWoF", KilledWoF);
+            tag("KilledSkeletronPrime", KilledSkeletronPrime);
+            tag("KilledDestroyer", KilledDestroyer);
+            tag("KilledAnyMechBoss", KilledAnyMechBoss);
+            tag("KilledPlantera", KilledPlantera);
+            tag("KilledGolem", KilledGolem);
+            tag("KilledFishron", KilledFishron);
+            tag("KilledCultist", KilledCultist);
+            tag("KilledMoonLord", KilledMoonLord);
+            tag("KilledMourningWood", KilledMourningWood);
+            tag("KilledPumpking", KilledPumpking);
+            tag("KilledSantaNK1", KilledSantaNK1);
+            tag("KilledEverscream", KilledEverscream);
+            tag("KilledIceQueen", KilledIceQueen);
+            tag("KilledFlyingDutchman", KilledFlyingDutchman);
+            tag("KilledMartianSaucer", KilledMartianSaucer);
+            tag("KilledBetsy", KilledBetsy);
+            tag("KilledTwins", KilledTwins);
             #endregion
             #region skillssave
-            save_data.Add("skill1lvl", skill1lvl);
-            save_data.Add("skill2lvl", skill2lvl);
-            save_data.Add("skill3lvl", skill3lvl);
-            save_data.Add("skill4lvl", skill4lvl);
-            save_data.Add("skill5lvl", skill5lvl);
-            save_data.Add("skill6lvl", skill6lvl);
-            save_data.Add("skill7lvl", skill7lvl);
-            save_data.Add("skill8lvl", skill8lvl);
-            save_data.Add("skill9lvl", skill9lvl);
-            save_data.Add("skill10lvl", skill10lvl);
-            save_data.Add("skill11lvl", skill11lvl);
-            save_data.Add("skill12lvl", skill12lvl);
-            save_data.Add("skill13lvl", skill13lvl);
-            save_data.Add("skill14lvl", skill14lvl);
-            save_data.Add("skill15lvl", skill15lvl);
-            save_data.Add("skill16lvl", skill16lvl);
-            save_data.Add("skill17lvl", skill17lvl);
-            save_data.Add("skill18lvl", skill18lvl);
-            save_data.Add("skill19lvl", skill19lvl);
-            save_data.Add("skill20lvl", skill20lvl);
-            save_data.Add("skill21lvl", skill21lvl);
-            save_data.Add("skill22lvl", skill22lvl);
-            save_data.Add("skill23lvl", skill23lvl);
-            save_data.Add("skill24lvl", skill24lvl);
-            save_data.Add("skill25lvl", skill25lvl);
-            save_data.Add("skill26lvl", skill26lvl);
-            save_data.Add("skill27lvl", skill27lvl);
-            save_data.Add("skill28lvl", skill28lvl);
-            save_data.Add("skill29lvl", skill29lvl);
-            save_data.Add("skill30lvl", skill30lvl);
-            save_data.Add("skill31lvl", skill31lvl);
-            save_data.Add("skill32lvl", skill32lvl);
-            save_data.Add("skill33lvl", skill33lvl);
-            save_data.Add("skill34lvl", skill34lvl);
-            save_data.Add("skill35lvl", skill35lvl);
-            save_data.Add("skill36lvl", skill36lvl);
-            save_data.Add("skill37lvl", skill37lvl);
-            save_data.Add("skill38lvl", skill38lvl);
-            save_data.Add("skill39lvl", skill39lvl);
-            save_data.Add("skill40lvl", skill40lvl);
-            save_data.Add("skill41lvl", skill41lvl);
-            save_data.Add("skill42lvl", skill42lvl);
-            save_data.Add("skill43lvl", skill43lvl);
-            save_data.Add("skill44lvl", skill44lvl);
-            save_data.Add("skill45lvl", skill45lvl);
-            save_data.Add("skill46lvl", skill46lvl);
-            save_data.Add("skill47lvl", skill47lvl);
-            save_data.Add("skill48lvl", skill48lvl);
-            save_data.Add("skill49lvl", skill49lvl);
-            save_data.Add("skill50lvl", skill50lvl);
-            save_data.Add("skill51lvl", skill51lvl);
-            save_data.Add("skill53lvl", skill53lvl);
-            save_data.Add("skill54lvl", skill54lvl);
-            save_data.Add("skill55lvl", skill55lvl);
-            save_data.Add("skill56lvl", skill56lvl);
-            save_data.Add("skill57lvl", skill57lvl);
-            save_data.Add("skill58lvl", skill58lvl);
-            save_data.Add("skill59lvl", skill59lvl);
-            save_data.Add("skill60lvl", skill60lvl);
-            save_data.Add("skill61lvl", skill61lvl);
-            save_data.Add("skill62lvl", skill62lvl);
-            save_data.Add("skill63lvl", skill63lvl);
-            save_data.Add("skill64lvl", skill64lvl);
-            save_data.Add("skill65lvl", skill65lvl);
-            save_data.Add("skill66lvl", skill66lvl);
-            save_data.Add("skill67lvl", skill67lvl);
-            save_data.Add("skill68lvl", skill68lvl);
-            save_data.Add("skill69lvl", skill69lvl);
-            save_data.Add("skill70lvl", skill70lvl);
-            save_data.Add("skill71lvl", skill71lvl);
-            save_data.Add("skill72lvl", skill72lvl);
-            save_data.Add("skill73lvl", skill73lvl);
-            save_data.Add("skill75lvl", skill75lvl);
-            save_data.Add("skill76lvl", skill76lvl);
-            save_data.Add("skill77lvl", skill77lvl);
-            save_data.Add("skill78lvl", skill78lvl);
-            save_data.Add("skill79lvl", skill79lvl);
-            save_data.Add("skill80lvl", skill80lvl);
-            save_data.Add("skill81lvl", skill81lvl);
-            save_data.Add("skill82lvl", skill82lvl);
-            save_data.Add("skill83lvl", skill83lvl);
-            save_data.Add("skill84lvl", skill84lvl);
-            save_data.Add("skill85lvl", skill85lvl);
-            save_data.Add("skill86lvl", skill86lvl);
-            save_data.Add("skill87lvl", skill87lvl);
-            save_data.Add("skill88lvl", skill88lvl);
-            save_data.Add("skill89lvl", skill89lvl);
-            save_data.Add("skill90lvl", skill90lvl);
-            save_data.Add("skill91lvl", skill91lvl);
-            save_data.Add("skill92lvl", skill92lvl);
-            save_data.Add("skill93lvl", skill93lvl);
-            save_data.Add("skill94lvl", skill94lvl);
-            save_data.Add("skill95lvl", skill95lvl);
-            save_data.Add("skill96lvl", skill96lvl);
-            save_data.Add("skill97lvl", skill97lvl);
-            save_data.Add("skill98lvl", skill98lvl);
-            save_data.Add("skill99lvl", skill99lvl);
-            save_data.Add("skill100lvl", skill100lvl);
-            save_data.Add("skill101lvl", skill101lvl);
-            save_data.Add("skill102lvl", skill102lvl);
-            save_data.Add("skill103lvl", skill103lvl);
-            save_data.Add("skill104lvl", skill104lvl);
-            save_data.Add("skill105lvl", skill105lvl);
-            save_data.Add("skill106lvl", skill106lvl);
-            save_data.Add("skill107lvl", skill107lvl);
-            save_data.Add("skill108lvl", skill108lvl);
-            save_data.Add("skill110lvl", skill110lvl);
-            save_data.Add("skill111lvl", skill111lvl);
-            save_data.Add("skill112lvl", skill112lvl);
-            save_data.Add("skill113lvl", skill113lvl);
-            save_data.Add("skill114lvl", skill114lvl);
-            save_data.Add("skill115lvl", skill115lvl);
-            save_data.Add("skill116lvl", skill116lvl);
-            save_data.Add("skill117lvl", skill117lvl);
-            save_data.Add("skill118lvl", skill118lvl);
-            save_data.Add("skill119lvl", skill119lvl);
-            save_data.Add("skill120lvl", skill120lvl);
-            save_data.Add("skill121lvl", skill121lvl);
-            save_data.Add("skill122lvl", skill122lvl);
-            save_data.Add("skill123lvl", skill123lvl);
-            save_data.Add("skill124lvl", skill124lvl);
-            save_data.Add("skill125lvl", skill125lvl);
-            save_data.Add("skill126lvl", skill126lvl);
-            save_data.Add("skill127lvl", skill127lvl);
-            save_data.Add("skill128lvl", skill128lvl);
-            save_data.Add("skill129lvl", skill129lvl);
-            save_data.Add("skill130lvl", skill130lvl);
-            save_data.Add("skill131lvl", skill131lvl);
-            save_data.Add("skill132lvl", skill132lvl);
-            save_data.Add("skill133lvl", skill133lvl);
-            save_data.Add("skill134lvl", skill134lvl);
-            save_data.Add("skill135lvl", skill135lvl);
-            save_data.Add("skill136lvl", skill136lvl);
-            save_data.Add("skill137lvl", skill137lvl);
-            save_data.Add("skill138lvl", skill138lvl);
-            save_data.Add("skill139lvl", skill139lvl);
-            save_data.Add("skill140lvl", skill140lvl);
-            save_data.Add("skill141lvl", skill141lvl);
-            save_data.Add("skill142lvl", skill142lvl);
-            save_data.Add("skill143lvl", skill143lvl);
-            save_data.Add("skill144lvl", skill144lvl);
-            save_data.Add("skill146lvl", skill146lvl);
-            save_data.Add("skill147lvl", skill147lvl);
+            tag("skill1lvl", skill1lvl);
+            tag("skill2lvl", skill2lvl);
+            tag("skill3lvl", skill3lvl);
+            tag("skill4lvl", skill4lvl);
+            tag("skill5lvl", skill5lvl);
+            tag("skill6lvl", skill6lvl);
+            tag("skill7lvl", skill7lvl);
+            tag("skill8lvl", skill8lvl);
+            tag("skill9lvl", skill9lvl);
+            tag("skill10lvl", skill10lvl);
+            tag("skill11lvl", skill11lvl);
+            tag("skill12lvl", skill12lvl);
+            tag("skill13lvl", skill13lvl);
+            tag("skill14lvl", skill14lvl);
+            tag("skill15lvl", skill15lvl);
+            tag("skill16lvl", skill16lvl);
+            tag("skill17lvl", skill17lvl);
+            tag("skill18lvl", skill18lvl);
+            tag("skill19lvl", skill19lvl);
+            tag("skill20lvl", skill20lvl);
+            tag("skill21lvl", skill21lvl);
+            tag("skill22lvl", skill22lvl);
+            tag("skill23lvl", skill23lvl);
+            tag("skill24lvl", skill24lvl);
+            tag("skill25lvl", skill25lvl);
+            tag("skill26lvl", skill26lvl);
+            tag("skill27lvl", skill27lvl);
+            tag("skill28lvl", skill28lvl);
+            tag("skill29lvl", skill29lvl);
+            tag("skill30lvl", skill30lvl);
+            tag("skill31lvl", skill31lvl);
+            tag("skill32lvl", skill32lvl);
+            tag("skill33lvl", skill33lvl);
+            tag("skill34lvl", skill34lvl);
+            tag("skill35lvl", skill35lvl);
+            tag("skill36lvl", skill36lvl);
+            tag("skill37lvl", skill37lvl);
+            tag("skill38lvl", skill38lvl);
+            tag("skill39lvl", skill39lvl);
+            tag("skill40lvl", skill40lvl);
+            tag("skill41lvl", skill41lvl);
+            tag("skill42lvl", skill42lvl);
+            tag("skill43lvl", skill43lvl);
+            tag("skill44lvl", skill44lvl);
+            tag("skill45lvl", skill45lvl);
+            tag("skill46lvl", skill46lvl);
+            tag("skill47lvl", skill47lvl);
+            tag("skill48lvl", skill48lvl);
+            tag("skill49lvl", skill49lvl);
+            tag("skill50lvl", skill50lvl);
+            tag("skill51lvl", skill51lvl);
+            tag("skill53lvl", skill53lvl);
+            tag("skill54lvl", skill54lvl);
+            tag("skill55lvl", skill55lvl);
+            tag("skill56lvl", skill56lvl);
+            tag("skill57lvl", skill57lvl);
+            tag("skill58lvl", skill58lvl);
+            tag("skill59lvl", skill59lvl);
+            tag("skill60lvl", skill60lvl);
+            tag("skill61lvl", skill61lvl);
+            tag("skill62lvl", skill62lvl);
+            tag("skill63lvl", skill63lvl);
+            tag("skill64lvl", skill64lvl);
+            tag("skill65lvl", skill65lvl);
+            tag("skill66lvl", skill66lvl);
+            tag("skill67lvl", skill67lvl);
+            tag("skill68lvl", skill68lvl);
+            tag("skill69lvl", skill69lvl);
+            tag("skill70lvl", skill70lvl);
+            tag("skill71lvl", skill71lvl);
+            tag("skill72lvl", skill72lvl);
+            tag("skill73lvl", skill73lvl);
+            tag("skill75lvl", skill75lvl);
+            tag("skill76lvl", skill76lvl);
+            tag("skill77lvl", skill77lvl);
+            tag("skill78lvl", skill78lvl);
+            tag("skill79lvl", skill79lvl);
+            tag("skill80lvl", skill80lvl);
+            tag("skill81lvl", skill81lvl);
+            tag("skill82lvl", skill82lvl);
+            tag("skill83lvl", skill83lvl);
+            tag("skill84lvl", skill84lvl);
+            tag("skill85lvl", skill85lvl);
+            tag("skill86lvl", skill86lvl);
+            tag("skill87lvl", skill87lvl);
+            tag("skill88lvl", skill88lvl);
+            tag("skill89lvl", skill89lvl);
+            tag("skill90lvl", skill90lvl);
+            tag("skill91lvl", skill91lvl);
+            tag("skill92lvl", skill92lvl);
+            tag("skill93lvl", skill93lvl);
+            tag("skill94lvl", skill94lvl);
+            tag("skill95lvl", skill95lvl);
+            tag("skill96lvl", skill96lvl);
+            tag("skill97lvl", skill97lvl);
+            tag("skill98lvl", skill98lvl);
+            tag("skill99lvl", skill99lvl);
+            tag("skill100lvl", skill100lvl);
+            tag("skill101lvl", skill101lvl);
+            tag("skill102lvl", skill102lvl);
+            tag("skill103lvl", skill103lvl);
+            tag("skill104lvl", skill104lvl);
+            tag("skill105lvl", skill105lvl);
+            tag("skill106lvl", skill106lvl);
+            tag("skill107lvl", skill107lvl);
+            tag("skill108lvl", skill108lvl);
+            tag("skill110lvl", skill110lvl);
+            tag("skill111lvl", skill111lvl);
+            tag("skill112lvl", skill112lvl);
+            tag("skill113lvl", skill113lvl);
+            tag("skill114lvl", skill114lvl);
+            tag("skill115lvl", skill115lvl);
+            tag("skill116lvl", skill116lvl);
+            tag("skill117lvl", skill117lvl);
+            tag("skill118lvl", skill118lvl);
+            tag("skill119lvl", skill119lvl);
+            tag("skill120lvl", skill120lvl);
+            tag("skill121lvl", skill121lvl);
+            tag("skill122lvl", skill122lvl);
+            tag("skill123lvl", skill123lvl);
+            tag("skill124lvl", skill124lvl);
+            tag("skill125lvl", skill125lvl);
+            tag("skill126lvl", skill126lvl);
+            tag("skill127lvl", skill127lvl);
+            tag("skill128lvl", skill128lvl);
+            tag("skill129lvl", skill129lvl);
+            tag("skill130lvl", skill130lvl);
+            tag("skill131lvl", skill131lvl);
+            tag("skill132lvl", skill132lvl);
+            tag("skill133lvl", skill133lvl);
+            tag("skill134lvl", skill134lvl);
+            tag("skill135lvl", skill135lvl);
+            tag("skill136lvl", skill136lvl);
+            tag("skill137lvl", skill137lvl);
+            tag("skill138lvl", skill138lvl);
+            tag("skill139lvl", skill139lvl);
+            tag("skill140lvl", skill140lvl);
+            tag("skill141lvl", skill141lvl);
+            tag("skill142lvl", skill142lvl);
+            tag("skill143lvl", skill143lvl);
+            tag("skill144lvl", skill144lvl);
+            tag("skill146lvl", skill146lvl);
+            tag("skill147lvl", skill147lvl);
             #endregion
             return;
         }*/
@@ -1569,11 +1644,11 @@ namespace Bismuth.Utilities
                 lichvisual = false;
                 LichPoints = 0;
             }
-            if (OneRingTimer > 3600 && Main.HoverItem.type == ModContent.ItemType<RingOfOmnipotence>()) // dsa
-            {
-                Main.mouseLeft = false;
-                Main.mouseLeftRelease = false;
-            }
+            //if (OneRingTimer > 3600 && Main.HoverItem.type == ModContent.ItemType<RingOfOmnipotence>()) // dsa
+            //{
+            //    Main.mouseLeft = false;
+            //    Main.mouseLeftRelease = false;
+            //}
             if (cursepts > 0 && Player.lifeRegen > 0)
             {
                 Player.lifeRegen = 0;
@@ -1687,7 +1762,7 @@ namespace Bismuth.Utilities
             {
                 for (int k = 3; k < 8 + Player.extraAccessorySlots; k++)
                 {
-                    if (Player.armor[k].type == ModContent.ItemType<ArchmagesAmulet>()) // времено отключено
+                    if (Player.armor[k].type == ModContent.ItemType<ArchmagesAmulet>()) 
                     {
                         flag = true;
                         if (KilledBossesCount == 4)
@@ -2395,26 +2470,6 @@ namespace Bismuth.Utilities
                 count++;
             if (count >= 7)
             {
-                for (int k = 3; k < 8 + Player.extraAccessorySlots; k++)
-                {
-                    if (Player.armor[k].type == ModContent.ItemType<HerosBoots>())
-                    {
-                        if (Player.velocity.Y > 0)
-                            bootstimer++;
-                        if (bootstimer < 30 && Player.velocity.Y <= 0)
-                            bootstimer = 0;
-                        if (bootstimer >= 30)
-                        {
-                            bootstimer = 30;
-                            if (WorldGen.SolidTile(Player.position.ToTileCoordinates().X, Player.position.ToTileCoordinates().Y + 3) || WorldGen.SolidTile(Player.position.ToTileCoordinates().X, Player.position.ToTileCoordinates().Y + 3))
-                            {
-                                Projectile.NewProjectile(Player.GetSource_FromThis(), new Vector2(Player.Center.X, Player.Center.Y - 20), Vector2.Zero, ModContent.ProjectileType<HerosBootsBlast>(), 60, 5f, Main.myPlayer);
-                                SoundEngine.PlaySound(SoundID.Item14, Player.Center);
-                                bootstimer = 0;
-                            }
-                        }
-                    }
-                }
             }
             #endregion
             #endregion
@@ -5838,6 +5893,33 @@ namespace Bismuth.Utilities
             _ = this.GetLocalization("Skill.Ranger.Skill120Name").Value; // Ru: Аим бот En: Aimbot
             _ = this.GetLocalization("Skill.Ranger.Skill121Name").Value; // Ru: Легендарный стрелок En: Legendary Ranger
             #endregion
+			#region Thrower's skills
+			_ = this.GetLocalization("Skill.Thrower.Skill122Name").Value; // Ru: Метатель - мой выбор! En: My choice is thrower!
+            _ = this.GetLocalization("Skill.Thrower.Skill123Name").Value; // Ru: Зазубренные наконечники En: Serrated Tips
+            _ = this.GetLocalization("Skill.Thrower.Skill124Name").Value; // Ru: Призрачные снаряды En: Ethereal Projectiles
+            _ = this.GetLocalization("Skill.Thrower.Skill125Name").Value; // Ru: Волл-хак En: Wallhack
+            _ = this.GetLocalization("Skill.Thrower.Skill126Name").Value; // Ru: Выключи свои читы! En: Turn off Your Cheats!
+            _ = this.GetLocalization("Skill.Thrower.Skill127Name").Value; // Ru: Я не сдвинусь En: I will not budge!
+            _ = this.GetLocalization("Skill.Thrower.Skill128Name").Value; // Ru: Неколебимый герой En: Steadfast Hero
+            _ = this.GetLocalization("Skill.Thrower.Skill129Name").Value; // Ru: Человек-турель En: Turretman
+            _ = this.GetLocalization("Skill.Thrower.Skill130Name").Value; // Ru: Олимпиец En: Olympian
+            _ = this.GetLocalization("Skill.Thrower.Skill131Name").Value; // Ru: Громовержец En: Thunderer
+            _ = this.GetLocalization("Skill.Thrower.Skill132Name").Value; // Ru: Пиротехник En: Pyrotechnist
+            _ = this.GetLocalization("Skill.Thrower.Skill133Name").Value; // Ru: Способный ученик En: Apt Pupil
+            _ = this.GetLocalization("Skill.Thrower.Skill134Name").Value; // Ru: Алхимик En: Alchemist
+            _ = this.GetLocalization("Skill.Thrower.Skill135Name").Value; // Ru: Баффнутый En: BuffedBuffed
+            _ = this.GetLocalization("Skill.Thrower.Skill136Name").Value; // Ru: Зеркальная броня En: Mirror Armor
+            _ = this.GetLocalization("Skill.Thrower.Skill137Name").Value; // Ru: По дороге в бесконечность En: On the Road to Infinity
+            _ = this.GetLocalization("Skill.Thrower.Skill138Name").Value; // Ru: Метеоритный дождь En: Meteor Rain
+            _ = this.GetLocalization("Skill.Thrower.Skill139Name").Value; // Ru: Метатель-ассассин En: Thrower-Assassin
+            _ = this.GetLocalization("Skill.Thrower.Skill140Name").Value; // Ru: Дартс на выживание En: Darts or Die
+            _ = this.GetLocalization("Skill.Thrower.Skill141Name").Value; // Ru: Огненный шторм! En: FIRESTORM!
+            _ = this.GetLocalization("Skill.Thrower.Skill142Name").Value; // Ru: Сверхзвуковой En: Hypersonic
+            _ = this.GetLocalization("Skill.Thrower.Skill143Name").Value; // Ru: Насквозь En: Right Through
+            _ = this.GetLocalization("Skill.Thrower.Skill144Name").Value; // Ru: Смерть с небес En: Death from the Sky
+            _ = this.GetLocalization("Skill.Thrower.Skill146Name").Value; // Ru: Мода - моё призвание En: Fashion is My Profession
+            _ = this.GetLocalization("Skill.Thrower.Skill147Name").Value; // Ru: Легендарный метатель En: Legendary Thrower
+            #endregion
             #region Warrior's skills tooltips
             _ = this.GetLocalization("Skill.Skill1Tooltip").Value; // Ru: +5% к урону ближнего боя, -20% к иным типам урона En: +5% to melee but -20% to other types of damage
             _ = this.GetLocalization("Skill.Skill2Tooltip").Value; // Ru: +2 защиты, +4% к поглощению урона En: +2 defence, +4% damage resistance.
@@ -5963,6 +6045,33 @@ namespace Bismuth.Utilities
             _ = this.GetLocalization("Skill.Ranger.Skill119Tooltip").Value; // Ru: Увеличение урона от ракет En: Increased rocket damage
             _ = this.GetLocalization("Skill.Ranger.Skill120Tooltip").Value; // Ru: Все снаряды стрелка самонаводятся на врагов En: All ranged projectiles automatically lock onto the enemy
             _ = this.GetLocalization("Skill.Ranger.Skill121Tooltip").Value; // Ru: Все оружия стрелка имеют автоатаку, +30% к урону и крит. шансу стрелка, каждый выстрел замораживает противника En: All ranged weapons have auto-attack. +30% ranged damage and critical damage, every shot freezes the enemy
+			#endregion
+			#region Thrower's tooltips
+			_ = this.GetLocalization("Skill.Thrower.Skill122Tooltip").Value; // Ru: +5% к урону метателя, -20% к иным типам урона En: +5% to thrown but -20% to other types of damages
+            _ = this.GetLocalization("Skill.Thrower.Skill123Tooltip").Value; // Ru: +6% к урону метателя, +3% к крит. шансу метателя En: +6% thrown damage, +3% thrown critical strike chance
+            _ = this.GetLocalization("Skill.Thrower.Skill124Tooltip").Value; // Ru: Все снаряды могут проходить сквозь блоки En: All projectiles can pass through blocks
+            _ = this.GetLocalization("Skill.Thrower.Skill125Tooltip").Value; // Ru: Все снаряды могут проходить сквозь блоки En: All projectiles can pass through blocks
+            _ = this.GetLocalization("Skill.Thrower.Skill126Tooltip").Value; // Ru: Все снаряды могут проходить сквозь блоки En: All projectiles can pass through blocks
+            _ = this.GetLocalization("Skill.Thrower.Skill127Tooltip").Value; // Ru: +60% к урону и +30% к крит. шансу метателя, +35% к поглощению урона, но вы не можете двигаться En: +60% thrown damage, +30% thrown crit. +35% damage resistance, but you can't move
+            _ = this.GetLocalization("Skill.Thrower.Skill128Tooltip").Value; // Ru: +50% к скорости броска, +60% к урону и +30% к крит. шансу метателя, +45% к поглощению урона, но вы не можете двигаться En: +60% thrown damage, +30% thrown crit, +50% thrown speed, +45% damage resistance, but you can't move
+            _ = this.GetLocalization("Skill.Thrower.Skill129Tooltip").Value; // Ru: +50% к скорости броска, +60% к урону и +30% к крит. шансу метателя, +65% к поглощению урона, но вы не можете двигаться En: +60% thrown damage, +30% thrown crit, +50% thrown speed, +65% damage resistance, but you can't move
+            _ = this.GetLocalization("Skill.Thrower.Skill130Tooltip").Value; // Ru: Увеличение скорости броска снарядов En: Increased velocity of thrown projectiles
+            _ = this.GetLocalization("Skill.Thrower.Skill131Tooltip").Value; // Ru: Увеличение урона метателя En: Increased thrown damage
+            _ = this.GetLocalization("Skill.Thrower.Skill132Tooltip").Value; // Ru: +20% к урону взрывами, Взрывчатка стоит на 40% дешевле En: +20% explosive damage. Explosives cost 40% less
+            _ = this.GetLocalization("Skill.Thrower.Skill133Tooltip").Value; // Ru: 15%-й бонус к получаемому опыту En: 15% experience bonus
+            _ = this.GetLocalization("Skill.Thrower.Skill134Tooltip").Value; // Ru: Увеличение количества восстанавливаемой маны и здоровья на 25% En: +25% MP and HP from potions
+            _ = this.GetLocalization("Skill.Thrower.Skill135Tooltip").Value; // Ru: +2 хп/сек и +10 к макс. здоровью за каждый бафф En: 2 HP/sec, +10HP for every buff
+            _ = this.GetLocalization("Skill.Thrower.Skill136Tooltip").Value; // Ru: 35% шанс отразить снаряд En: 35% chance to reflect projectiles
+            _ = this.GetLocalization("Skill.Thrower.Skill137Tooltip").Value; // Ru: 20% шанс не потратить метательный снаряд En: 20% chance to not consume thrown item
+            _ = this.GetLocalization("Skill.Thrower.Skill138Tooltip").Value; // Ru: После активации этого умения начинается метеоритный дождь из 15 метеоритов En: Activating this skill summons a rain of 15 meteorites
+            _ = this.GetLocalization("Skill.Thrower.Skill139Tooltip").Value; // Ru: +15% к крит. шансу и +30% к крит. урону метателя En: +15% thrown critical chance, +30% thrown critical damage
+            _ = this.GetLocalization("Skill.Thrower.Skill140Tooltip").Value; // Ru: Увеличение урона одноразового метательного оружия на 25% En: All consumable thrown weapons get +25% damage
+            _ = this.GetLocalization("Skill.Thrower.Skill141Tooltip").Value; // Ru: После активации этого умения начинается метеоритный дождь из 35 метеоритов En: Activating this skill summons a rain of 35 meteorites
+            _ = this.GetLocalization("Skill.Thrower.Skill142Tooltip").Value; // Ru: Увеличение скорости метательных снарядов на 5 секунд после крита En: x2 thrown velocity for 5 sec after a critical hit
+            _ = this.GetLocalization("Skill.Thrower.Skill143Tooltip").Value; // Ru: Увеличение скорости броска одноразового метательного оружия на 40%, такое оружие может пробивать неограниченное число врагов En: Consumable thrown weapons can punch through an infinite number of enemies and get a +40% thrown velocity bonus
+            _ = this.GetLocalization("Skill.Thrower.Skill144Tooltip").Value; // Ru: Три кинжала летят в место нанесения урона En: Three daggers will fly in the place you dealt damage
+            _ = this.GetLocalization("Skill.Thrower.Skill146Tooltip").Value; // Ru: Дополнительный слот для аксессуара En: +1 accessory slot
+            _ = this.GetLocalization("Skill.Thrower.Skill147Tooltip").Value; // Ru: +25% к урону, крит. шансу и крит. урону метателя, 30% шанс не потратить снаряд, +10 защиты En: +25% thrown damage, crit chance and crit damage, 30% chance to not consume thrown item, +10 defence
             #endregion
             #region skill's tooltips
             _ = this.GetLocalization("Skill.ActiveSkill").Value; // Ru: Активное умение En: Active skill
@@ -6003,6 +6112,8 @@ namespace Bismuth.Utilities
             _ = this.GetLocalization("Skill.Ranger.ArrowDamageBonus").Value; // Ru: +{0}% к урону стрел En: +{0}% arrow damages
             _ = this.GetLocalization("Skill.Ranger.BulletDamageBonus").Value; // Ru: +{0}% к урону пуль En: +{0}% bullet damage
             _ = this.GetLocalization("Skill.Ranger.RocketDamageBonus").Value; // Ru: +{0}% к урону ракет En: +{0}% rocket damage
+            _ = this.GetLocalization("Skill.Thrower.ThrownVelocityBonus").Value; // Ru: +{0}% к скорости броска снарядов En: +{0}% throwing velocity
+            _ = this.GetLocalization("Skill.Thrower.ThrownDamageBonus").Value; // Ru: +{0}% к урону метателя En: +{0}% thrown damage
             _ = this.GetLocalization("Skill.FinalSkill").Value; // Ru: Заключительное умение En: Final skill
 
             _ = this.GetLocalization("Skill.DefeatEoC").Value; // Ru: Убейте Глаз Ктулху, чтобы изучить это умение En: Defeat the Eye of Cthulhu to upgrade this skill
@@ -10950,7 +11061,6 @@ namespace Bismuth.Utilities
             string fullText28 = string.Format(SkillRequired, Skill60Name);
             string fullText29 = string.Format(SkillOrRequired, Skill48Name, Skill63Name);
             #endregion
-
             bool MouseInFrame = Main.mouseX > Quests.FrameStart.X && Main.mouseX < Quests.FrameStart.X + Quests.FrameWidth && Main.mouseY > Quests.FrameStart.Y && Main.mouseY < Quests.FrameStart.Y + Quests.FrameHeight;
             #region update position
             skill36X = (int)(Quests.treecoord.X + 336);
@@ -12842,6 +12952,59 @@ namespace Bismuth.Utilities
         }
         public void DrawThrowerTree(SpriteBatch sb)
         {
+			#region Thrower's String
+			string Skill122Name = this.GetLocalization("Skill.Thrower.Skill122Name").Value;
+            string Skill123Name = this.GetLocalization("Skill.Thrower.Skill123Name").Value;
+            string Skill124Name = this.GetLocalization("Skill.Thrower.Skill124Name").Value;
+            string Skill125Name = this.GetLocalization("Skill.Thrower.Skill125Name").Value;
+            string Skill126Name = this.GetLocalization("Skill.Thrower.Skill126Name").Value;
+            string Skill127Name = this.GetLocalization("Skill.Thrower.Skill127Name").Value;
+            string Skill128Name = this.GetLocalization("Skill.Thrower.Skill128Name").Value;
+            string Skill129Name = this.GetLocalization("Skill.Thrower.Skill129Name").Value;
+            string Skill130Name = this.GetLocalization("Skill.Thrower.Skill130Name").Value;
+            string Skill131Name = this.GetLocalization("Skill.Thrower.Skill131Name").Value;
+            string Skill132Name = this.GetLocalization("Skill.Thrower.Skill132Name").Value;
+            string Skill133Name = this.GetLocalization("Skill.Thrower.Skill133Name").Value;
+            string Skill134Name = this.GetLocalization("Skill.Thrower.Skill134Name").Value;
+            string Skill135Name = this.GetLocalization("Skill.Thrower.Skill135Name").Value;
+            string Skill136Name = this.GetLocalization("Skill.Thrower.Skill136Name").Value;
+            string Skill137Name = this.GetLocalization("Skill.Thrower.Skill137Name").Value;
+            string Skill138Name = this.GetLocalization("Skill.Thrower.Skill138Name").Value;
+            string Skill139Name = this.GetLocalization("Skill.Thrower.Skill139Name").Value;
+            string Skill140Name = this.GetLocalization("Skill.Thrower.Skill140Name").Value;
+            string Skill141Name = this.GetLocalization("Skill.Thrower.Skill141Name").Value;
+            string Skill142Name = this.GetLocalization("Skill.Thrower.Skill142Name").Value;
+            string Skill143Name = this.GetLocalization("Skill.Thrower.Skill143Name").Value;
+            string Skill144Name = this.GetLocalization("Skill.Thrower.Skill144Name").Value;
+            string Skill146Name = this.GetLocalization("Skill.Thrower.Skill146Name").Value;
+            string Skill147Name = this.GetLocalization("Skill.Thrower.Skill147Name").Value;
+
+            string Skill122Tooltip = this.GetLocalization("Skill.Thrower.Skill122Tooltip").Value;
+            string Skill123Tooltip = this.GetLocalization("Skill.Thrower.Skill123Tooltip").Value;
+            string Skill124Tooltip = this.GetLocalization("Skill.Thrower.Skill124Tooltip").Value;
+            string Skill125Tooltip = this.GetLocalization("Skill.Thrower.Skill125Tooltip").Value;
+            string Skill126Tooltip = this.GetLocalization("Skill.Thrower.Skill126Tooltip").Value;
+            string Skill127Tooltip = this.GetLocalization("Skill.Thrower.Skill127Tooltip").Value;
+            string Skill128Tooltip = this.GetLocalization("Skill.Thrower.Skill128Tooltip").Value;
+            string Skill129Tooltip = this.GetLocalization("Skill.Thrower.Skill129Tooltip").Value;
+            string Skill130Tooltip = this.GetLocalization("Skill.Thrower.Skill130Tooltip").Value;
+            string Skill131Tooltip = this.GetLocalization("Skill.Thrower.Skill131Tooltip").Value;
+            string Skill132Tooltip = this.GetLocalization("Skill.Thrower.Skill132Tooltip").Value;
+            string Skill133Tooltip = this.GetLocalization("Skill.Thrower.Skill133Tooltip").Value;
+            string Skill134Tooltip = this.GetLocalization("Skill.Thrower.Skill134Tooltip").Value;
+            string Skill135Tooltip = this.GetLocalization("Skill.Thrower.Skill135Tooltip").Value;
+            string Skill136Tooltip = this.GetLocalization("Skill.Thrower.Skill136Tooltip").Value;
+            string Skill137Tooltip = this.GetLocalization("Skill.Thrower.Skill137Tooltip").Value;
+            string Skill138Tooltip = this.GetLocalization("Skill.Thrower.Skill138Tooltip").Value;
+            string Skill139Tooltip = this.GetLocalization("Skill.Thrower.Skill139Tooltip").Value;
+            string Skill140Tooltip = this.GetLocalization("Skill.Thrower.Skill140Tooltip").Value;
+            string Skill141Tooltip = this.GetLocalization("Skill.Thrower.Skill141Tooltip").Value;
+            string Skill142Tooltip = this.GetLocalization("Skill.Thrower.Skill142Tooltip").Value;
+            string Skill143Tooltip = this.GetLocalization("Skill.Thrower.Skill143Tooltip").Value;
+            string Skill144Tooltip = this.GetLocalization("Skill.Thrower.Skill144Tooltip").Value;
+            string Skill146Tooltip = this.GetLocalization("Skill.Thrower.Skill146Tooltip").Value;
+            string Skill147Tooltip = this.GetLocalization("Skill.Thrower.Skill147Tooltip").Value;
+
             string CantUpgrade = this.GetLocalization("Skill.CantUpgrade").Value;
             string ActiveSkillUpgrade = this.GetLocalization("Skill.ActiveSkillUpgrade").Value;
             string PassiveSkill = this.GetLocalization("Skill.PassiveSkill").Value;
@@ -12851,7 +13014,8 @@ namespace Bismuth.Utilities
             string SkillRequired = this.GetLocalization("Skill.SkillRequired").Value;
             string UpgratedSkillMaxLevel = this.GetLocalization("Skill.UpgratedSkillMaxLevel").Value;
             string SkillOrRequired = this.GetLocalization("Skill.SkillOrRequired").Value;
-            string RangedCritBonus = this.GetLocalization("Skill.Ranger.RangedCritBonus").Value;
+            string ThrownVelocityBonus = this.GetLocalization("Skill.Thrower.ThrownVelocityBonus").Value;
+            string ThrownDamageBonus = this.GetLocalization("Skill.Thrower.ThrownDamageBonus").Value;
             string FinalSkill = this.GetLocalization("Skill.FinalSkill").Value;
 
             string ActiveSkill = this.GetLocalization("Skill.ActiveSkill").Value;
@@ -12869,6 +13033,31 @@ namespace Bismuth.Utilities
             string DefeatPlantera = this.GetLocalization("Skill.DefeatPlantera").Value;
             string DefeatGolem = this.GetLocalization("Skill.DefeatGolem").Value;
             string DefeatCultist = this.GetLocalization("Skill.DefeatCultist").Value;
+
+            string fullText2 = string.Format(SkillRequired, Skill122Name);
+            string fullText3 = string.Format(SkillRequired, Skill123Name);
+            string fullText4 = string.Format(SkillRequired, Skill124Name);
+            string fullText5 = string.Format(SkillRequired, Skill125Name);
+            string fullText4_1 = string.Format(CantUpgrade, Skill127Name);
+            string fullText6 = string.Format(SkillRequired, Skill123Name);
+            string fullText6_1 = string.Format(CantUpgrade, Skill124Name);
+            string fullText7 = string.Format(SkillRequired, Skill127Name);
+            string fullText8 = string.Format(SkillRequired, Skill128Name);
+            string fullText9 = string.Format(SkillLevel, skill130lvl, skill130lvlmax);
+            string fullText10 = string.Format(SkillLevel, skill131lvl, skill131lvlmax);
+            string fullText11 = string.Format(SkillOrRequired, Skill130Name, Skill131Name);
+            string fullText12 = string.Format(SkillRequired, Skill132Name);
+            string fullText13 = string.Format(SkillRequired, Skill133Name);
+            string fullText14 = string.Format(SkillOrRequired, Skill134Name, Skill135Name);
+            string fullText15 = string.Format(SkillRequired, Skill136Name);
+            string fullText16 = string.Format(SkillRequired, Skill137Name);
+            string fullText17 = string.Format(SkillRequired, Skill138Name);
+            string fullText18 = string.Format(SkillRequired, Skill139Name);
+            string fullText19 = string.Format(SkillRequired, Skill140Name);
+            string fullText20 = string.Format(SkillRequired, Skill142Name);
+            string fullText21 = string.Format(SkillRequired, Skill136Name);
+            string fullText22 = string.Format(SkillOrRequired, Skill143Name, Skill144Name);
+            #endregion
             bool MouseInFrame = Main.mouseX > Quests.FrameStart.X && Main.mouseX < Quests.FrameStart.X + Quests.FrameWidth && Main.mouseY > Quests.FrameStart.Y && Main.mouseY < Quests.FrameStart.Y + Quests.FrameHeight;
             #region update position
             skill122X = (int)(Quests.treecoord.X + 168);
@@ -13207,9 +13396,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill122X, skill122Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill122Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill122Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill122Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill122Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill122Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill122Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
 
@@ -13236,9 +13425,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill123X, skill123Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill123Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill123Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill123Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill123Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill123Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill123Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
 
@@ -13248,8 +13437,8 @@ namespace Bismuth.Utilities
                     offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(1))).Y * 0.9f;
                     if (skill122lvl < 1)
                     {
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill122Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill122Name")), maxwidth)).Y * 0.9f;
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText2, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText2, maxwidth)).Y * 0.9f;
                     }               
                 }
                 else
@@ -13270,9 +13459,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill124X, skill124Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill124Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill124Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill124Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill124Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, ActiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(ActiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.DarkOrange, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill124Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill124Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.ActileSkillText").Value, string.Format(this.GetLocalization("Skill.MinutesDuration").Value, Convert.ToString(1)), string.Format(this.GetLocalization("Skill.MinutesDuration").Value, Convert.ToString(4)) + " " + string.Format(this.GetLocalization("Skill.SecondsDuration").Value, Convert.ToString(30))), maxwidth), Main.mouseX + 44, offset + 4, Color.LightSkyBlue, Color.Black, new Vector2(), 0.9f);
@@ -13289,8 +13478,8 @@ namespace Bismuth.Utilities
                         offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(2))).Y * 0.9f;
                         if (skill123lvl < skill123lvlmax)
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill123Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill123Name")), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText3, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText3, maxwidth)).Y * 0.9f;
                         }
                         if (!KilledEoC)
                         {
@@ -13313,16 +13502,16 @@ namespace Bismuth.Utilities
                     }
                 }
                 else
-                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.CantUpgrade", Language.GetTextValue("Mods.Bismuth.Skill127Name")), maxwidth), Main.mouseX + 44, cantupgradepos + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText4_1, maxwidth), Main.mouseX + 44, cantupgradepos + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
             }
             #endregion
             #region skill125
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill125X, skill125Y), 56, 56))
             {
                  sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill125Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill125Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill125Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill125Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, ActiveSkillUpgrade, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(ActiveSkillUpgrade).X / 2) * 0.85f, Main.mouseY + 44, Color.OrangeRed, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill125Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill125Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.ActileSkillText").Value, string.Format(this.GetLocalization("Skill.MinutesDuration").Value, Convert.ToString(1)) + " " + string.Format(this.GetLocalization("Skill.SecondsDuration").Value, Convert.ToString(30)), string.Format(this.GetLocalization("Skill.MinutesDuration").Value, Convert.ToString(5))), maxwidth), Main.mouseX + 44, offset + 4, Color.LightSkyBlue, Color.Black, new Vector2(), 0.9f);
@@ -13339,8 +13528,8 @@ namespace Bismuth.Utilities
                         offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(1))).Y * 0.9f;
                         if (skill124lvl < skill124lvlmax)
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill124Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill124Name")), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText4, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText4, maxwidth)).Y * 0.9f;
                         }
                         if (!KilledWormorBrain)
                         {
@@ -13361,7 +13550,7 @@ namespace Bismuth.Utilities
                     }
                 }
                 else
-                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.CantUpgrade", Language.GetTextValue("Mods.Bismuth.Skill127Name")), maxwidth), Main.mouseX + 44, cantupgradepos + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText4_1, maxwidth), Main.mouseX + 44, cantupgradepos + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
 
              
             }
@@ -13370,9 +13559,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill126X, skill126Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill126Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill126Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill126Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill126Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, ActiveSkillUpgrade, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(ActiveSkillUpgrade).X / 2) * 0.85f, Main.mouseY + 44, Color.OrangeRed, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill126Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill126Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.ActileSkillText").Value, string.Format(this.GetLocalization("Skill.MinutesDuration").Value, Convert.ToString(2)), string.Format(this.GetLocalization("Skill.MinutesDuration").Value, Convert.ToString(6))), maxwidth), Main.mouseX + 44, offset + 4, Color.LightSkyBlue, Color.Black, new Vector2(), 0.9f);
@@ -13389,8 +13578,8 @@ namespace Bismuth.Utilities
                         offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(1))).Y * 0.9f;
                         if (skill125lvl < skill125lvlmax)
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill125Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill125Name")), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText5, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText5, maxwidth)).Y * 0.9f;
                         }
                         if (!KilledWoF)
                         {
@@ -13413,7 +13602,7 @@ namespace Bismuth.Utilities
                     }
                 }
                 else
-                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.CantUpgrade", Language.GetTextValue("Mods.Bismuth.Skill94Name")), maxwidth), Main.mouseX + 44, cantupgradepos + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText4_1, maxwidth), Main.mouseX + 44, cantupgradepos + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
 
               
             }
@@ -13422,9 +13611,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill127X, skill127Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill127Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill127Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill127Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill127Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, ActiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(ActiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.DarkOrange, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill127Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill127Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.ActileSkillText").Value, string.Format(this.GetLocalization("Skill.SecondsDuration").Value, Convert.ToString(12)), string.Format(this.GetLocalization("Skill.MinutesDuration").Value, Convert.ToString(2)) + " " + string.Format(this.GetLocalization("Skill.SecondsDuration").Value, Convert.ToString(30))), maxwidth), Main.mouseX + 44, offset + 4, Color.LightSkyBlue, Color.Black, new Vector2(), 0.9f);
@@ -13439,8 +13628,8 @@ namespace Bismuth.Utilities
                         offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(3))).Y * 0.9f;
                         if (skill123lvl < skill123lvlmax)
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill123Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill123Name")), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText6, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText6, maxwidth)).Y * 0.9f;
                         }
                         if (!KilledEoC)
                         {
@@ -13460,16 +13649,16 @@ namespace Bismuth.Utilities
                     }
                 }
                 else
-                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.CantUpgrade", Language.GetTextValue("Mods.Bismuth.Skill127Name")), maxwidth), Main.mouseX + 44, cantupgradepos + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);              
+                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText6_1, maxwidth), Main.mouseX + 44, cantupgradepos + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);              
             }
             #endregion
             #region skill128
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill128X, skill128Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill128Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill128Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill128Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill128Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, ActiveSkillUpgrade, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(ActiveSkillUpgrade).X / 2) * 0.85f, Main.mouseY + 44, Color.OrangeRed, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill128Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill128Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.ActileSkillText").Value, string.Format(this.GetLocalization("Skill.SecondsDuration").Value, Convert.ToString(20)), string.Format(this.GetLocalization("Skill.MinutesDuration").Value, Convert.ToString(2)) + " " + string.Format(this.GetLocalization("Skill.SecondsDuration").Value, Convert.ToString(30))), maxwidth), Main.mouseX + 44, offset + 4, Color.LightSkyBlue, Color.Black, new Vector2(), 0.9f);
@@ -13485,8 +13674,8 @@ namespace Bismuth.Utilities
                         offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(2))).Y * 0.9f;
                         if (skill127lvl < skill127lvlmax)
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill127Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill127Name")), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText7, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText7, maxwidth)).Y * 0.9f;
                         }
                         if (!KilledSkeletron)
                         {
@@ -13507,7 +13696,7 @@ namespace Bismuth.Utilities
                     }
                 }
                 else
-                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.CantUpgrade", Language.GetTextValue("Mods.Bismuth.Skill124Name")), maxwidth), Main.mouseX + 44, cantupgradepos + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText6_1, maxwidth), Main.mouseX + 44, cantupgradepos + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
 
               
             }
@@ -13516,9 +13705,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill129X, skill129Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill129Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill129Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill129Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill129Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, ActiveSkillUpgrade, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(ActiveSkillUpgrade).X / 2) * 0.85f, Main.mouseY + 44, Color.OrangeRed, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill129Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill129Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.ActileSkillText").Value, string.Format(this.GetLocalization("Skill.SecondsDuration").Value, Convert.ToString(28)), string.Format(this.GetLocalization("Skill.MinutesDuration").Value, Convert.ToString(2)) + " " + string.Format(this.GetLocalization("Skill.SecondsDuration").Value, Convert.ToString(30))), maxwidth), Main.mouseX + 44, offset + 4, Color.LightSkyBlue, Color.Black, new Vector2(), 0.9f);
@@ -13534,8 +13723,8 @@ namespace Bismuth.Utilities
                         offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(4))).Y * 0.9f;
                         if (skill128lvl < skill128lvlmax)
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill128Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill128Name")), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText8, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText8, maxwidth)).Y * 0.9f;
                         }
                         if (!KilledPlantera)
                         {
@@ -13556,7 +13745,7 @@ namespace Bismuth.Utilities
                     }
                 }
                 else
-                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.CantUpgrade", Language.GetTextValue("Mods.Bismuth.Skill124Name")), maxwidth), Main.mouseX + 44, cantupgradepos + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                    Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText6_1, maxwidth), Main.mouseX + 44, cantupgradepos + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
 
              
             }
@@ -13565,25 +13754,25 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill130X, skill130Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill130Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill130Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill130Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill130Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill130Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill130Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillLevel", skill130lvl, skill130lvlmax), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                offset += 4 + Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.SkillLevel", skill130lvl, skill130lvlmax)).Y * 0.9f;
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, fullText9, Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                offset += 4 + Bismuth.Adonais.MeasureString(fullText9).Y * 0.9f;
                 switch (skill130lvl)
                 {
                     case 0:
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownVelocityBonus", Convert.ToString(5))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownVelocityBonus", Convert.ToString(5))), maxwidth)).Y * 0.9f;
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 1), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 1 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 1), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Thrower.ThrownVelocityBonus").Value, Convert.ToString(5))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Thrower.ThrownVelocityBonus").Value, Convert.ToString(5))), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(1)), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 1 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(1)), maxwidth)).Y * 0.9f;
                             if (skill123lvl < skill123lvlmax)
                             {
-                                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill123Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                                offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill123Name")), maxwidth)).Y * 0.9f;
+                                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText3, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                                offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText3, maxwidth)).Y * 0.9f;
                             }
                             if (!KilledEoC)
                             {
@@ -13593,10 +13782,10 @@ namespace Bismuth.Utilities
                         }
                     case 1:
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownVelocityBonus", Convert.ToString(7))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownVelocityBonus", Convert.ToString(7))), maxwidth)).Y * 0.9f;
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 1), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 1 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 1), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Thrower.ThrownVelocityBonus").Value, Convert.ToString(7))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Thrower.ThrownVelocityBonus").Value, Convert.ToString(7))), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(1)), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 1 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(1)), maxwidth)).Y * 0.9f;
                             if (!KilledWormorBrain)
                             {
                                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, DefeatWoB, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
@@ -13605,10 +13794,10 @@ namespace Bismuth.Utilities
                         }
                     case 2:
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownVelocityBonus", Convert.ToString(8))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownVelocityBonus", Convert.ToString(8))), maxwidth)).Y * 0.9f;
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 1), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 1 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 1), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Thrower.ThrownVelocityBonus").Value, Convert.ToString(8))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Thrower.ThrownVelocityBonus").Value, Convert.ToString(8))), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(1)), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 1 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(1)), maxwidth)).Y * 0.9f;
                             if (!KilledSkeletron)
                             {
                                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, DefeatSkeletron, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
@@ -13617,10 +13806,10 @@ namespace Bismuth.Utilities
                         }
                     case 3:
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownVelocityBonus", Convert.ToString(10))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownVelocityBonus", Convert.ToString(10))), maxwidth)).Y * 0.9f;
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 2), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 2 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 2), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Thrower.ThrownVelocityBonus").Value, Convert.ToString(10))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Thrower.ThrownVelocityBonus").Value, Convert.ToString(10))), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(2)), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 2 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(2)), maxwidth)).Y * 0.9f;
                             if (!KilledWoF)
                             {
                                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, DefeatWoF, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
@@ -13629,10 +13818,10 @@ namespace Bismuth.Utilities
                         }
                     case 4:
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownVelocityBonus", Convert.ToString(12))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownVelocityBonus", Convert.ToString(12))), maxwidth)).Y * 0.9f;
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 2), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 2 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 2), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Thrower.ThrownVelocityBonus").Value, Convert.ToString(12))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Thrower.ThrownVelocityBonus").Value, Convert.ToString(12))), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(2)), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 2 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(2)), maxwidth)).Y * 0.9f;
                             if (!KilledAnyMechBoss)
                             {
                                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, DefeatAnyMech, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
@@ -13641,10 +13830,10 @@ namespace Bismuth.Utilities
                         }
                     case 5:
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownVelocityBonus", Convert.ToString(15))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownVelocityBonus", Convert.ToString(15))), maxwidth)).Y * 0.9f;
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 3), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 3 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 3), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Thrower.ThrownVelocityBonus").Value, Convert.ToString(15))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Thrower.ThrownVelocityBonus").Value, Convert.ToString(15))), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(3)), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 3 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(3)), maxwidth)).Y * 0.9f;
                             if (!KilledPlantera)
                             {
                                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, DefeatPlantera, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
@@ -13653,10 +13842,10 @@ namespace Bismuth.Utilities
                         }
                     case 6:
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownVelocityBonus", Convert.ToString(18))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownVelocityBonus", Convert.ToString(18))), maxwidth)).Y * 0.9f;
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 3), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 3 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 3), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Thrower.ThrownVelocityBonus").Value, Convert.ToString(18))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Thrower.ThrownVelocityBonus").Value, Convert.ToString(18))), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(3)), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 3 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(3)), maxwidth)).Y * 0.9f;
                             if (!KilledGolem)
                             {
                                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, DefeatGolem, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
@@ -13723,27 +13912,27 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill131X, skill131Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill131Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill131Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill131Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill131Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill131Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill131Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
 
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillLevel", skill131lvl, skill131lvlmax), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                offset += 4 + Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.SkillLevel", skill131lvl, skill131lvlmax)).Y * 0.9f;
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, fullText10, Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                offset += 4 + Bismuth.Adonais.MeasureString(fullText10).Y * 0.9f;
 
                 switch (skill131lvl)
                 {
                     case 0:
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownDamageBonus", Convert.ToString(2))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownDamageBonus", Convert.ToString(2))), maxwidth)).Y * 0.9f;
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 1), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 1 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 1), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Thrower.ThrownDamageBonus").Value, Convert.ToString(2))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value,  string.Format(this.GetLocalization("Skill.Thrower.ThrownDamageBonus").Value, Convert.ToString(2))), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(1)), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 1 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(1)), maxwidth)).Y * 0.9f;
                             if (skill123lvl < skill123lvlmax)
                             {
-                                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill123Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                                offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill123Name")), maxwidth)).Y * 0.9f;
+                                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText3, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                                offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText3, maxwidth)).Y * 0.9f;
                             }
                             if (!KilledEoC)
                             {
@@ -13753,10 +13942,10 @@ namespace Bismuth.Utilities
                         }
                     case 1:
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownDamageBonus", Convert.ToString(3))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownDamageBonus", Convert.ToString(3))), maxwidth)).Y * 0.9f;
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 1), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 1 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 3), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value,  string.Format(this.GetLocalization("Skill.Thrower.ThrownDamageBonus").Value, Convert.ToString(3))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value,  string.Format(this.GetLocalization("Skill.Thrower.ThrownDamageBonus").Value, Convert.ToString(3))), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(1)), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 1 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(1)), maxwidth)).Y * 0.9f;
                             if (!KilledSkeletron)
                             {
                                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, DefeatSkeletron, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
@@ -13765,10 +13954,10 @@ namespace Bismuth.Utilities
                         }
                     case 2:
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownDamageBonus", Convert.ToString(3))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownDamageBonus", Convert.ToString(3))), maxwidth)).Y * 0.9f;
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 1), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 1 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 1), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value,  string.Format(this.GetLocalization("Skill.Thrower.ThrownDamageBonus").Value, Convert.ToString(3))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value,  string.Format(this.GetLocalization("Skill.Thrower.ThrownDamageBonus").Value, Convert.ToString(3))), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(1)), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 1 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(1)), maxwidth)).Y * 0.9f;
                             if (!KilledWoF)
                             {
                                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, DefeatWoF, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
@@ -13777,10 +13966,10 @@ namespace Bismuth.Utilities
                         }
                     case 3:
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownDamageBonus", Convert.ToString(4))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownDamageBonus", Convert.ToString(4))), maxwidth)).Y * 0.9f;
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 2), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 2 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 2), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value,  string.Format(this.GetLocalization("Skill.Thrower.ThrownDamageBonus").Value, Convert.ToString(4))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value,  string.Format(this.GetLocalization("Skill.Thrower.ThrownDamageBonus").Value, Convert.ToString(4))), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(2)), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 2 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(2)), maxwidth)).Y * 0.9f;
                             if (!KilledAnyMechBoss)
                             {
                                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, DefeatAnyMech, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
@@ -13789,10 +13978,10 @@ namespace Bismuth.Utilities
                         }
                     case 4:
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownDamageBonus", Convert.ToString(5))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownDamageBonus", Convert.ToString(5))), maxwidth)).Y * 0.9f;
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 3), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 3 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 3), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value,  string.Format(this.GetLocalization("Skill.Thrower.ThrownDamageBonus").Value, Convert.ToString(5))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value,  string.Format(this.GetLocalization("Skill.Thrower.ThrownDamageBonus").Value, Convert.ToString(5))), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(3)), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 3 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(3)), maxwidth)).Y * 0.9f;
                             if (!KilledPlantera)
                             {
                                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, DefeatPlantera, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
@@ -13801,10 +13990,10 @@ namespace Bismuth.Utilities
                         }
                     case 5:
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownDamageBonus", Convert.ToString(5))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.ThrownDamageBonus", Convert.ToString(5))), maxwidth)).Y * 0.9f;
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 3), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 3 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, 3), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value,  string.Format(this.GetLocalization("Skill.Thrower.ThrownDamageBonus").Value, Convert.ToString(5))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value,  string.Format(this.GetLocalization("Skill.Thrower.ThrownDamageBonus").Value, Convert.ToString(5))), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(3)), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 3 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(3)), maxwidth)).Y * 0.9f;
                             if (!KilledGolem)
                             {
                                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, DefeatGolem, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
@@ -13864,9 +14053,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill132X, skill132Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill132Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill132Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill132Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill132Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill132Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill132Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
 
@@ -13877,8 +14066,8 @@ namespace Bismuth.Utilities
                     offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(2))).Y * 0.9f;
                     if (!check)
                     {
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillOrRequired", Language.GetTextValue("Mods.Bismuth.Skill130Name"), Language.GetTextValue("Mods.Bismuth.Skill131Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill130Name"), Language.GetTextValue("Mods.Bismuth.Skill131Name")), maxwidth)).Y * 0.9f;
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText11, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText11, maxwidth)).Y * 0.9f;
                     }
                     if (!KilledWormorBrain)
                     {
@@ -13903,9 +14092,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill133X, skill133Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill133Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill133Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill133Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill133Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill133Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill133Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
 
@@ -13915,8 +14104,8 @@ namespace Bismuth.Utilities
                     offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(2))).Y * 0.9f;
                     if (skill132lvl < 1)
                     {
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill132Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill132Name")), maxwidth)).Y * 0.9f;
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText12, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText12, maxwidth)).Y * 0.9f;
                     }
                     if (!KilledSkeletron)
                     {
@@ -13941,9 +14130,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill134X, skill134Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill134Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill134Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill134Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill134Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill134Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill134Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
 
@@ -13953,8 +14142,8 @@ namespace Bismuth.Utilities
                     offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(3))).Y * 0.9f;
                     if (skill133lvl < 1)
                     {
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill133Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill133Name")), maxwidth)).Y * 0.9f;
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText13, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText13, maxwidth)).Y * 0.9f;
                     }
                     if (!KilledWoF)
                     {
@@ -13979,9 +14168,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill135X, skill135Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill135Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill135Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill135Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill135Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill135Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill135Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
 
@@ -13991,8 +14180,8 @@ namespace Bismuth.Utilities
                     offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(4))).Y * 0.9f;
                     if (skill133lvl < 1)
                     {
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill133Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill133Name")), maxwidth)).Y * 0.9f;
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText13, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText13, maxwidth)).Y * 0.9f;
                     }
                     if (!KilledWoF)
                     {
@@ -14017,9 +14206,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill136X, skill136Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill136Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill136Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill136Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill136Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill136Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill136Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
 
@@ -14030,8 +14219,8 @@ namespace Bismuth.Utilities
                     offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(4))).Y * 0.9f;
                     if (!check)
                     {
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillOrRequired", Language.GetTextValue("Mods.Bismuth.Skill134Name"), Language.GetTextValue("Mods.Bismuth.Skill135Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillOrRequired", Language.GetTextValue("Mods.Bismuth.Skill134Name"), Language.GetTextValue("Mods.Bismuth.Skill135Name")), maxwidth)).Y * 0.9f;
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText14, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText14, maxwidth)).Y * 0.9f;
                     }
                     if (!KilledWoF)
                     {
@@ -14057,9 +14246,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill137X, skill137Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill137Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill137Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill137Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill137Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill137Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill137Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
 
@@ -14069,8 +14258,8 @@ namespace Bismuth.Utilities
                     offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(1))).Y * 0.9f;
                     if (skill136lvl < 1)
                     {
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill136Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill136Name")), maxwidth)).Y * 0.9f;
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText15, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText15, maxwidth)).Y * 0.9f;
                     }
                     if (!KilledAnyMechBoss)
                     {
@@ -14095,9 +14284,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill138X, skill138Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill138Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill138Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill138Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill138Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, ActiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(ActiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.DarkOrange, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill138Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill138Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
 
@@ -14107,8 +14296,8 @@ namespace Bismuth.Utilities
                     offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(5))).Y * 0.9f;
                     if (skill136lvl < skill136lvlmax)
                     {
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill136Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill136Name")), maxwidth)).Y * 0.9f;
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText15, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText15, maxwidth)).Y * 0.9f;
                     }
                     if (!KilledPlantera)
                     {
@@ -14135,9 +14324,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill139X, skill139Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill139Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill139Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill139Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill139Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill139Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill139Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
                 if (skill139lvl < 1)
@@ -14146,8 +14335,8 @@ namespace Bismuth.Utilities
                     offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(3))).Y * 0.9f;
                     if (skill136lvl < 1)
                     {
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill136Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill136Name")), maxwidth)).Y * 0.9f;
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText15, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText15, maxwidth)).Y * 0.9f;
                     }
                     if (!KilledAnyMechBoss)
                     {
@@ -14172,9 +14361,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill140X, skill140Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill140Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill140Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill140Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill140Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill140Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill140Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
 
@@ -14184,8 +14373,8 @@ namespace Bismuth.Utilities
                     offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(2))).Y * 0.9f;
                     if (skill137lvl < 1)
                     {
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill137Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill137Name")), maxwidth)).Y * 0.9f;
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText16, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText16, maxwidth)).Y * 0.9f;
                     }
                     if (!KilledPlantera)
                     {
@@ -14210,9 +14399,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill141X, skill141Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill141Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill141Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill141Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill141Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, ActiveSkillUpgrade, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(ActiveSkillUpgrade).X / 2) * 0.85f, Main.mouseY + 44, Color.OrangeRed, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill141Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill141Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
 
@@ -14222,8 +14411,8 @@ namespace Bismuth.Utilities
                     offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(5))).Y * 0.9f;
                     if (skill138lvl < skill138lvlmax)
                     {
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill138Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill138Name")), maxwidth)).Y * 0.9f;
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText17, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText17, maxwidth)).Y * 0.9f;
                     }
                     if (!KilledGolem)
                     {
@@ -14235,27 +14424,21 @@ namespace Bismuth.Utilities
                     Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, UpgratedSkill, Main.mouseX + 44, offset + 4, Color.ForestGreen, Color.Black, new Vector2(), 0.9f);
                     offset += 4 + Bismuth.Adonais.MeasureString(UpgratedSkill).Y * 0.9f;
                 }
-
-
-
                 if (Main.mouseLeft && Main.mouseLeftRelease && skill141lvl < skill141lvlmax && skill138lvl >= 1 && KilledGolem && SkillPoints >= 5)
                 {
                     SoundEngine.PlaySound(SoundID.MenuOpen);
                     skill141lvl++;
                     SkillPoints -= 5; SpendedPoints += 5;
                 }
-
-
-              
             }
             #endregion
             #region skill142
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill142X, skill142Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill142Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill142Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill142Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill142Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill142Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill142Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
                 if (skill142lvl < 1)
@@ -14264,8 +14447,8 @@ namespace Bismuth.Utilities
                     offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(2))).Y * 0.9f;
                     if (skill139lvl < 1)
                     {
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill139Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill139Name")), maxwidth)).Y * 0.9f;
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText18, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText18, maxwidth)).Y * 0.9f;
                     }
                     if (!KilledPlantera)
                     {
@@ -14290,9 +14473,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill143X, skill143Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill143Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill143Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill143Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill143Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill143Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill143Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
 
@@ -14302,8 +14485,8 @@ namespace Bismuth.Utilities
                     offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(2))).Y * 0.9f;
                     if (skill140lvl < 1)
                     {
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill140Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill140Name")), maxwidth)).Y * 0.9f;
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText19, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText19, maxwidth)).Y * 0.9f;
                     }
                     if (!KilledGolem)
                     {
@@ -14328,9 +14511,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill144X, skill144Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill144Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill144Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill144Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill144Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill144Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill144Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
 
@@ -14340,8 +14523,8 @@ namespace Bismuth.Utilities
                     offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(4))).Y * 0.9f;
                     if (skill142lvl < 1)
                     {
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill142Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill142Name")), maxwidth)).Y * 0.9f;
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText20, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText20, maxwidth)).Y * 0.9f;
                     }
                     if (!KilledGolem)
                     {
@@ -14366,9 +14549,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill146X, skill146Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill146Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill146Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill146Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill146Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill146Tooltip"), maxwidth);
+                string info = StringBreak(Bismuth.Adonais, Skill146Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
                 if (skill146lvl < 1)
@@ -14377,8 +14560,8 @@ namespace Bismuth.Utilities
                     offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(8))).Y * 0.9f;
                     if (skill136lvl < 1)
                     {
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill136Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillRequired", Language.GetTextValue("Mods.Bismuth.Skill136Name")), maxwidth)).Y * 0.9f;
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText21, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText21, maxwidth)).Y * 0.9f;
                     }
                     if (!KilledGolem)
                     {
@@ -14403,9 +14586,9 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill147X, skill147Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill147Name"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill147Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.FinalSkill"), Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.FinalSkill")).X / 2) * 0.85f, Main.mouseY + 44, Color.Yellow, Color.Black, new Vector2(), 0.85f);
-                string info = StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.Skill147Tooltip"), maxwidth);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill147Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill147Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, FinalSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(FinalSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.Yellow, Color.Black, new Vector2(), 0.85f);
+                string info = StringBreak(Bismuth.Adonais, Skill147Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
 
@@ -14416,8 +14599,8 @@ namespace Bismuth.Utilities
                     offset += 4 + Bismuth.Adonais.MeasureString(string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(9))).Y * 0.9f;
                     if (!check)
                     {
-                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillOrRequired", Language.GetTextValue("Mods.Bismuth.Skill143Name"), Language.GetTextValue("Mods.Bismuth.Skill144Name")), maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
-                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillOrRequired", Language.GetTextValue("Mods.Bismuth.Skill143Name"), Language.GetTextValue("Mods.Bismuth.Skill144Name")), maxwidth)).Y * 0.9f;
+                        Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, fullText22, maxwidth), Main.mouseX + 44, offset + 4, Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
+                        offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, fullText22, maxwidth)).Y * 0.9f;
                     }
                     if (!KilledCultist)
                     {

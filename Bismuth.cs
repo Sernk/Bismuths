@@ -20,10 +20,6 @@ namespace Bismuth
 {
     public class Bismuth : Mod
     {
-        //public override void AddRecipes()/* tModPorter Note: Removed. Use ModSystem.AddRecipes */
-        //{
-        //    base.AddRecipes();
-        //}
         static internal Bismuth instance;
         public static Texture2D VampireFemaleLegs;
         internal static ModKeybind FirstSkillActivate;

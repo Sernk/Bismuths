@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.GameContent.UI;
 using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace Bismuth.Utilities
 {
@@ -24,7 +25,7 @@ namespace Bismuth.Utilities
                     color.B,
                     Lang.tip[50],
                     price,
-                    "Dwarven Coin"
+                    Language.GetTextValue(ModContent.GetInstance<LocalizationSystem>().DwarvenCoin)
             });
         }
     }

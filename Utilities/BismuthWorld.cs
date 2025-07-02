@@ -1,10 +1,9 @@
 ﻿using Bismuth.Content.Items.Accessories;
+using Bismuth.Content.Items.Materials;
 using Bismuth.Content.Items.Other;
-using Bismuth.Content.Items.Weapons.Assassin;
-using Bismuth.Content.Items.Weapons.Magical;
+using Bismuth.Content.Items.Weapons;
 using Bismuth.Content.NPCs;
 using Bismuth.Content.Tiles;
-using Bismuth.Content.Walls;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -13,9 +12,16 @@ using Terraria;
 using Terraria.GameContent.Generation;
 using Terraria.ID;
 using Terraria.IO;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.WorldBuilding;
+using Bismuth.Content.Walls;
+using Bismuth.Content.Items.Weapons.Melee;
+using Bismuth.Content.Items.Weapons.Ranged;
+using Bismuth.Content.Items.Weapons.Magical;
+using Bismuth.Content.Items.Weapons.Throwing;
+using Bismuth.Content.Items.Weapons.Assassin;
 
 namespace Bismuth.Utilities
 {
@@ -119,13 +125,14 @@ namespace Bismuth.Utilities
 
         public static void CallOrcishInvasion()
         {
+            var source = Main.LocalPlayer.GetSource_FromThis();
             Bismuth.ShakeScreen(50f, 180);
             Mod mod = ModLoader.GetMod("Bismuth");
             OrcishInvasionStage = 1;
-            NPC.NewNPC(Main.LocalPlayer.GetSource_FromThis(), CastleSpawnX * 16 + 482, CastleSpawnY * 16 + 438, ModContent.NPCType<OrcishPortal>());
-            NPC.NewNPC(Main.LocalPlayer.GetSource_FromThis(), CastleSpawnX * 16 + 120, CastleSpawnY * 16 + 438, ModContent.NPCType<OrcishPortal>());
-            NPC.NewNPC(Main.LocalPlayer.GetSource_FromThis(), CastleSpawnX * 16 + 280, CastleSpawnY * 16 + 170, ModContent.NPCType<OrcishPortal>());
-            NPC.NewNPC(Main.LocalPlayer.GetSource_FromThis(), CastleSpawnX * 16 + 650, CastleSpawnY * 16 + 60, ModContent.NPCType<OrcishPortal>());
+            NPC.NewNPC(source, CastleSpawnX * 16 + 482, CastleSpawnY * 16 + 438, ModContent.NPCType<OrcishPortal>());
+            NPC.NewNPC(source, CastleSpawnX * 16 + 120, CastleSpawnY * 16 + 438, ModContent.NPCType<OrcishPortal>());
+            NPC.NewNPC(source, CastleSpawnX * 16 + 280, CastleSpawnY * 16 + 170, ModContent.NPCType<OrcishPortal>());
+            NPC.NewNPC(source, CastleSpawnX * 16 + 650, CastleSpawnY * 16 + 60, ModContent.NPCType<OrcishPortal>());
         }
         public static void RevealAroundPoint(int x, int y)
         {
@@ -391,7 +398,7 @@ namespace Bismuth.Utilities
             }
             #endregion
             if (Main.LocalPlayer.GetModPlayer<Quests>().NewPriestQuest == 100 && !NPC.AnyNPCs(ModContent.NPCType<OldmanPriest>()))
-                NPC.NewNPC(source, (Main.spawnTileX + 29) * 16, (Main.spawnTileY + 2) * 16 - 2, ModContent.NPCType<OldmanPriest>());
+                NPC.NewNPC(source,(Main.spawnTileX + 29) * 16, (Main.spawnTileY + 2) * 16 - 2, ModContent.NPCType<OldmanPriest>());
             if (!downedBanshee)
             {
                 Main.tile[WaterTempleX + 9, WaterTempleY + 17].TileFrameX = 72;
@@ -420,7 +427,7 @@ namespace Bismuth.Utilities
                 Main.tile[WaterTempleX + 31, WaterTempleY + 13].TileFrameX = 0;
             }
         }
-        public override void OnWorldLoad()
+        public override void OnWorldLoad()/* tModPorter Suggestion: Also override OnWorldUnload, and mirror your worldgen-sensitive data initialization in PreWorldGen */
         {
             IsTotemActive = true;
             FirstTotemDeactivation = false;
@@ -659,17 +666,17 @@ namespace Bismuth.Utilities
             {
                 int x = 0;
                 int y = 0;
-                //while (!WorldMethods.CheckLiquid(x, y, 255))
-                //    y++;
-                //while (!WorldGen.SolidTile(x, y))
-                //    x++;
+                while (!WorldMethods.CheckLiquid(x, y, 255))
+                    y++;
+                while (!WorldGen.SolidTile(x, y))
+                    x++;
                 BeachEndLeft = x;
                 x = Main.maxTilesX - 1;
                 y = 0;
-                //while (!WorldMethods.CheckLiquid(x, y, 255))//ddd
-                //    y++;
-                //while (!WorldGen.SolidTile(x, y))
-                //    x--;
+                while (!WorldMethods.CheckLiquid(x, y, 255))//ddd
+                    y++;
+                while (!WorldGen.SolidTile(x, y))
+                    x--;
                 BeachEndRight = x;
             }));
             int WaterTempleIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Surface Chests"));
@@ -760,14 +767,13 @@ namespace Bismuth.Utilities
                                 WorldGen.KillTile(WaterTempleX + i, WaterTempleY + j);
                                 WorldGen.PlaceTile(WaterTempleX + i, WaterTempleY + j, TileID.LeafBlock);
                                 Main.tile[WaterTempleX + i, WaterTempleY + j].LiquidAmount = 0;
+                                Tile WaterTemple = Main.tile[WaterTempleX + i, WaterTempleY + j];
+                                WaterTemple.IsActuated = true;
                                 WorldGen.paintTile(WaterTempleX + i, WaterTempleY + j, 4);
                                 break;
                             case 8:
-
                                 WorldGen.KillTile(WaterTempleX + i, WaterTempleY + j);
                                 WorldGen.PlaceTile(WaterTempleX + i, WaterTempleY + j, TileID.Chain);
-                                Tile WaterTempletile = Main.tile[WaterTempleX + i, WaterTempleY + j];
-                                WaterTempletile.IsActuated = true;
                                 Main.tile[WaterTempleX + i, WaterTempleY + j].LiquidAmount = 0;
                                 break;
                             case 9:
@@ -906,8 +912,8 @@ namespace Bismuth.Utilities
                                 WorldGen.SlopeTile(WaterTempleX + i, WaterTempleY + j, 4);
                                 break;
                             case 5:
-                                Tile WaterTempletile = Main.tile[WaterTempleX + i, WaterTempleY + j];
-                                WaterTempletile.IsHalfBlock = true;
+                                Tile WaterTemple = Main.tile[WaterTempleX + i, WaterTempleY + j];
+                                WaterTemple.IsHalfBlock = true;
                                 break;
                         }
                     }
@@ -1114,7 +1120,7 @@ namespace Bismuth.Utilities
                         {
                             if (Main.tile[i, j].HasTile && Main.tile[i, j].TileType == swamptile)
                                 WorldGen.KillTile(i, j);
-                            if (Main.tile[i, j].WallType == Mod.Find<ModWall>("SwampWall").Type)
+                            if (Main.tile[i, j].WallType == ModContent.WallType<SwampWall>())
                                 WorldGen.KillWall(i, j);
                         }
                     }
@@ -1128,7 +1134,7 @@ namespace Bismuth.Utilities
                         {
                             if (Main.tile[i, j].HasTile && Main.tile[i, j].TileType == swamptile)
                                 WorldGen.KillTile(i, j);
-                            if (Main.tile[i, j].WallType == Mod.Find<ModWall>("SwampWall").Type)
+                            if (Main.tile[i, j].WallType == ModContent.WallType<SwampWall>())
                                 WorldGen.KillWall(i, j);
                         }
                     }
@@ -1139,7 +1145,7 @@ namespace Bismuth.Utilities
                     {
                         if (Main.tile[EndX + 1 + i, EndY - 50 + j].HasTile && Main.tile[EndX + 1 + i, EndY - 50 + j].TileType == swamptile)
                             WorldGen.KillTile(EndX + 1 + i, EndY - 50 + j);
-                        if (Main.tile[EndX + 1 + i, EndY - 50 + j].WallType == Mod.Find<ModWall>("SwampWall").Type)
+                        if (Main.tile[EndX + 1 + i, EndY - 50 + j].WallType == ModContent.WallType<SwampWall>())
                             WorldGen.KillWall(EndX + 1 + i, EndY - 50 + j);
                     }
                 }
@@ -1179,7 +1185,7 @@ namespace Bismuth.Utilities
                     {
                         if (Main.tile[SwampStartX - 1 - i, EndY - 50 + j].HasTile && Main.tile[SwampStartX - 1 - i, EndY - 50 + j].TileType == swamptile)
                             WorldGen.KillTile(SwampStartX - 1 - i, EndY - 50 + j);
-                        if (Main.tile[SwampStartX - 1 - i, EndY - 50 + j].WallType == Mod.Find<ModWall>("SwampWall").Type)
+                        if (Main.tile[SwampStartX - 1 - i, EndY - 50 + j].WallType == ModContent.WallType<SwampWall>())
                             WorldGen.KillWall(SwampStartX - 1 - i, EndY - 50 + j);
                     }
                 }
@@ -1205,13 +1211,13 @@ namespace Bismuth.Utilities
                     CavesStartY++;
                 int FirstPointX = CavesStartX + Main.rand.Next(-10, 10);
                 int FirstPointY = CavesStartY + Main.rand.Next(20, 30);
-                //WorldMethods.BresenhamLineTunnel(CavesStartX, CavesStartY, FirstPointX, FirstPointY, Main.rand.Next(3, 5));
+                WorldMethods.BresenhamLineTunnel(CavesStartX, CavesStartY, FirstPointX, FirstPointY, Main.rand.Next(3, 5));
                 int SecondPointX = Main.rand.Next(0, 2) == 0 ? FirstPointX + Main.rand.Next(20, 30) : FirstPointX - Main.rand.Next(20, 30);
                 int SecondPointY = FirstPointY + Main.rand.Next(10, 15);
-                //WorldMethods.BresenhamLineTunnel(FirstPointX, FirstPointY, SecondPointX, SecondPointY, Main.rand.Next(2, 4));
+                WorldMethods.BresenhamLineTunnel(FirstPointX, FirstPointY, SecondPointX, SecondPointY, Main.rand.Next(2, 4));
                 int ThirdPointX = SecondPointX > CavesStartX ? SecondPointX - Main.rand.Next(6, 12) : SecondPointX + Main.rand.Next(6, 12);
                 int ThirdPointY = SecondPointY + Main.rand.Next(10, 20);
-                //WorldMethods.BresenhamLineTunnel(SecondPointX, SecondPointY, ThirdPointX, ThirdPointY, Main.rand.Next(2, 3));
+                WorldMethods.BresenhamLineTunnel(SecondPointX, SecondPointY, ThirdPointX, ThirdPointY, Main.rand.Next(2, 3));
                 int FourthPointX = ThirdPointX + Main.rand.Next(15, 20);
                 int FourthPointY = ThirdPointY + Main.rand.Next(10, 15);
                 int FifthPointX = ThirdPointX - (FourthPointX - ThirdPointX);
@@ -1464,7 +1470,7 @@ namespace Bismuth.Utilities
                 if (CheckLeftHillY - HighestYPoint > 4)
                     for (int i = 0; i < 100; i++)
                     {
-                        //WorldMethods.BresenhamLineTunnel(CheckLeftHillX, CheckLeftHillY - 4 - i, CheckLeftHillX - 70, CheckLeftHillY - 10 - i, 3);
+                        WorldMethods.BresenhamLineTunnel(CheckLeftHillX, CheckLeftHillY - 4 - i, CheckLeftHillX - 70, CheckLeftHillY - 10 - i, 3);
                     }
                 int CheckRightHillX = Main.spawnTileX + 101;
                 int CheckRightHillY = (int)GenVars.worldSurfaceLow;
@@ -1620,8 +1626,8 @@ namespace Bismuth.Utilities
                                 if (!WorldGen.SolidTile(StartHutX + i, StartHutY + j))
                                     WorldGen.KillTile(StartHutX + i, StartHutY + j);
                                 WorldGen.PlaceTile(StartHutX + i, StartHutY + j, ModContent.TileType<SwampMud>());
-                                Tile StartHuttile = Main.tile[WaterTempleX + i, WaterTempleY + j];
-                                StartHuttile.IsHalfBlock = false;
+                                Tile StartHut = Main.tile[StartHutX + i, StartHutY + j];
+                                StartHut.IsHalfBlock = false;
                                 WorldGen.SlopeTile(StartHutX + i, StartHutY + j, 0);
                                 break;
                         }
@@ -1718,7 +1724,7 @@ namespace Bismuth.Utilities
                 DesertVillageRightBorderY = 0;
                 for (int i = 0; i < Main.maxTilesX; i++)
                 {
-                    for (int j = (int)GenVars.worldSurfaceLow; j < Main.maxTilesY; j++) // Работает
+                    for (int j = (int)GenVars.worldSurfaceLow; j < Main.maxTilesY; j++)
                     {
                         if (!WorldGen.TileEmpty(i, j))
                         {
@@ -1731,16 +1737,16 @@ namespace Bismuth.Utilities
                             goto Exit;
                         }
                     }
-                    while (WorldGen.TileEmpty(StartDesertVillageX, StartDesertVillageY))
-                    {
-                        StartDesertVillageY++;
-                        if (WorldMethods.CheckWall(StartDesertVillageX, StartDesertVillageY, WallID.HardenedSand))
-                            break;
-                    }
-                    if (WorldMethods.CheckWall(StartDesertVillageX, StartDesertVillageY, WallID.HardenedSand))
-                        break;
-                    StartDesertVillageX++;
-                    //StartDesertVillageY = (int)WorldGen.worldSurfaceLow;
+                    /*  while (WorldGen.TileEmpty(StartDesertVillageX, StartDesertVillageY))
+                      {
+                          StartDesertVillageY++;
+                          if (WorldMethods.CheckWall(StartDesertVillageX, StartDesertVillageY, WallID.HardenedSand))
+                              break;
+                      }
+                      if (WorldMethods.CheckWall(StartDesertVillageX, StartDesertVillageY, WallID.HardenedSand))
+                          break;
+                      StartDesertVillageX++;
+                      StartDesertVillageY = (int)WorldGen.worldSurfaceLow;*/
                 }
             Exit:
                 for (int i = 0; i < Main.maxTilesX; i++)
@@ -1755,8 +1761,8 @@ namespace Bismuth.Utilities
                         }
                     }
                 }
-            Exit2:
-                while (DesertVillageLeftBorderX < Main.maxTilesX) // mushroms error
+            Exit2:/*
+                    while (DesertVillageLeftBorderX < Main.maxTilesX)
                 {
                     while (DesertVillageLeftBorderY < Main.maxTilesY)
                     {
@@ -1769,36 +1775,35 @@ namespace Bismuth.Utilities
                     DesertVillageLeftBorderX++;
                     DesertVillageLeftBorderY = 0;
                 }
-
+                */
                 for (int i = Main.maxTilesX; i > 0; i--)
                 {
                     for (int j = (int)GenVars.worldSurfaceLow; j < Main.maxTilesY; j++)
                     {
-                        goto Exit3;
-                        //if (WorldMethods.CheckWall(i, j, WallID.HardenedSand)) // mushroms error
-                        //{
-                        //    DesertVillageRightBorderX = i;
-                        //    DesertVillageRightBorderY = j;
-                        //    goto Exit3;
-                        //}
+                        if (WorldMethods.CheckWall(i, j, WallID.HardenedSand))
+                        {
+                            DesertVillageRightBorderX = i;
+                            DesertVillageRightBorderY = j;
+                            goto Exit3;
+                        }
                     }
                 }
-            Exit3:
-                while (DesertVillageRightBorderX > 0) // работает
+            Exit3:/*
+                while (DesertVillageRightBorderX > 0)
                 {
                     while (DesertVillageRightBorderY < Main.maxTilesY)
                     {
                         DesertVillageRightBorderY++;
                         Tile tile = Framing.GetTileSafely(DesertVillageRightBorderX, DesertVillageRightBorderY);
-                        if (tile.WallType == WallID.HardenedSand)
+                        if (tile.wall == WallID.HardenedSand)
                             break;
                     }
                     Tile tile1 = Framing.GetTileSafely(DesertVillageRightBorderX, DesertVillageRightBorderY);
-                    if (tile1.WallType == WallID.HardenedSand)
+                    if (tile1.wall == WallID.HardenedSand)
                         break;
                     DesertVillageRightBorderX--;
                     DesertVillageRightBorderY = 0;
-                }
+                }     */
 
                 TempY = StartDesertVillageY;
                 while (WorldMethods.CheckWall(StartDesertVillageX, StartDesertVillageY, WallID.Sandstone) || WorldMethods.CheckWall(StartDesertVillageX, StartDesertVillageY, WallID.HardenedSand))
@@ -1870,7 +1875,7 @@ namespace Bismuth.Utilities
                     WorldGen.SlopeTile(StartBridgeX + 1, BridgeY, 1);
                     for (int i = 0; i < 2; i++)
                         WorldGen.PlaceTile(EndBridgeX - i, BridgeY, ModContent.TileType<PapuansPlatform>());
-                    //WorldGen.SlopeTile(EndBridgeX - 1, BridgeY, 2);
+                    WorldGen.SlopeTile(EndBridgeX - 1, BridgeY, 2);
                     for (int i = 0; i < 3; i++)
                         WorldGen.PlaceTile(StartBridgeX + 1 + i, BridgeY + 1, ModContent.TileType<PapuansPlatform>());
                     WorldGen.SlopeTile(StartBridgeX + 3, BridgeY + 1, 1);
@@ -1978,11 +1983,11 @@ namespace Bismuth.Utilities
                     int n = 0;
                     for (int i = 0; i < 24; i++)
                     {
-                        //while (!WorldMethods.CheckTile(MainBuildingX + i, MainBuildingY + n, TileID.Sand)) // БАГ NUOVA - discord
-                        //{
-                        //    WorldGen.PlaceTile(MainBuildingX + i, MainBuildingY + n, TileID.Sand);
-                        //    n++;
-                        //}
+                        while (!WorldMethods.CheckTile(MainBuildingX + i, MainBuildingY + n, TileID.Sand)) // БАГ NUOVA - discord
+                        {
+                            WorldGen.PlaceTile(MainBuildingX + i, MainBuildingY + n, TileID.Sand);
+                            n++;
+                        }
                         n = 0;
                     }
 
@@ -2283,18 +2288,19 @@ namespace Bismuth.Utilities
                                     WorldGen.SlopeTile(MainBuildingX + i, MainBuildingY + j, 4);
                                     break;
                                 case 5:
-                                    Tile MainBuildtile = Main.tile[MainBuildingX + i, MainBuildingY + j];
-                                    MainBuildtile.IsHalfBlock = false;
+                                    Tile MainBuilding  = Main.tile[MainBuildingX + i, MainBuildingY + j];
+                                    MainBuilding.IsHalfBlock = true;
+
                                     break;
                             }
                         }
                     }
                     WorldGen.PlaceObject(MainBuildingX + 19, UnderY + 2, TileID.Lever);
-                    //for (int j = 0; j < 5; j++)
-                    //{
-                    //    WorldMethods.BresenhamLineTunnel(MainBuildingX + 25, MainBuildingY + 22 - j, StartBridgeX - 2, BridgeY - 1 - j, 1);
-                    //    WorldMethods.BresenhamLineTile(MainBuildingX + 25, MainBuildingY + 23 + j, StartBridgeX - 2, BridgeY + j, 1, TileID.Sand, 0);
-                    //}
+                    for (int j = 0; j < 5; j++)
+                    {
+                        WorldMethods.BresenhamLineTunnel(MainBuildingX + 25, MainBuildingY + 22 - j, StartBridgeX - 2, BridgeY - 1 - j, 1);
+                        WorldMethods.BresenhamLineTile(MainBuildingX + 25, MainBuildingY + 23 + j, StartBridgeX - 2, BridgeY + j, 1, TileID.Sand, 0);
+                    }
                     #endregion
                     #region Well
                     int StartWellX = MainBuildingX - 7;
@@ -2378,14 +2384,14 @@ namespace Bismuth.Utilities
                             }
                         }
                     }
-                    Tile StartWelltile = Main.tile[StartWellX + 1, StartWellY];
-                    StartWelltile.IsHalfBlock = true;
-                    Tile StartWelltile1 = Main.tile[StartWellX + 2, StartWellY];
-                    StartWelltile1.IsHalfBlock = true;
-                    Tile StartWelltile2 = Main.tile[StartWellX + 3, StartWellY];
-                    StartWelltile2.IsHalfBlock = true;
-                    Tile StartWelltile3 = Main.tile[StartWellX + 4, StartWellY];
-                    StartWelltile3.IsHalfBlock = true;
+                    Tile StartWell = Main.tile[StartWellX + 1, StartWellY];
+                    StartWell.IsHalfBlock = true;
+                    Tile StartWell2 = Main.tile[StartWellX + 2, StartWellY];
+                    StartWell2.IsHalfBlock = true;
+                    Tile StartWell3 = Main.tile[StartWellX + 3, StartWellY];
+                    StartWell3.IsHalfBlock = true;
+                    Tile StartWell4 = Main.tile[StartWellX + 4, StartWellY];
+                    StartWell4.IsHalfBlock = true;
                     WorldGen.SlopeTile(StartWellX, StartWellY + 1, 4);
                     WorldGen.SlopeTile(StartWellX + 5, StartWellY + 1, 3);
                     Main.tile[StartWellX + 2, StartWellY + 11].LiquidAmount = 255;
@@ -2557,6 +2563,8 @@ namespace Bismuth.Utilities
                                     WorldGen.SlopeTile(TailorBuildingX + i, TailorBuildingY + j, 4);
                                     break;
                                 case 5:
+                                    Tile TailorBuilding = Main.tile[TailorBuildingX + i, TailorBuildingY + j];
+                                    TailorBuilding.IsHalfBlock = true;
                                     break;
                             }
                         }
@@ -2598,12 +2606,10 @@ namespace Bismuth.Utilities
                                     break;
                                 case 1:
                                     WorldGen.PlaceTile(TreeStartX + i, TreeStartY + j, TileID.LivingMahogany);
-                                    Tile TreeStarttile_1 = Main.tile[TreeStartX + i, TreeStartY + j];
-                                    TreeStarttile_1.IsActuated = true;
+                                    Tile TreeStart = Main.tile[TreeStartX + i, TreeStartY +j];
+                                    TreeStart.IsActuated = true;
                                     break;
                                 case 2:
-                                    Tile TreeStarttile = Main.tile[TreeStartX + i, TreeStartY + j];
-                                    TreeStarttile.IsActuated = true;
                                     WorldGen.PlaceTile(TreeStartX + i, TreeStartY + j, TileID.Sand);
                                     break;
                             }
@@ -2634,27 +2640,15 @@ namespace Bismuth.Utilities
                                     break;
                                 case 1:
                                     WorldGen.SlopeTile(TreeStartX + i, TreeStartY + j, 1);
-                                    Tile TreeStarttile_1 = Main.tile[TreeStartX + i, TreeStartY + j];
-                                    TreeStarttile_1.IsActuated = true;
                                     break;
                                 case 2:
                                     WorldGen.SlopeTile(TreeStartX + i, TreeStartY + j, 2);
-                                    Tile TreeStarttile_2 = Main.tile[TreeStartX + i, TreeStartY + j];
-                                    TreeStarttile_2.IsActuated = true;
                                     break;
                                 case 3:
-                                    Tile TreeStarttile_3 = Main.tile[TreeStartX + i, TreeStartY + j];
-                                    TreeStarttile_3.IsActuated = true;
                                     WorldGen.SlopeTile(TreeStartX + i, TreeStartY + j, 3);
                                     break;
                                 case 4:
-                                    Tile TreeStarttile_4 = Main.tile[TreeStartX + i, TreeStartY + j];
-                                    TreeStarttile_4.IsActuated = true;
                                     WorldGen.SlopeTile(TreeStartX + i, TreeStartY + j, 4);
-                                    break;
-                                case 5:
-                                    Tile TailorBuildingtile = Main.tile[TailorBuildingX + i, TailorBuildingY + j];
-                                    TailorBuildingtile.IsHalfBlock = true;
                                     break;
                             }
                         }
@@ -2969,8 +2963,8 @@ namespace Bismuth.Utilities
                                     WorldGen.SlopeTile(ForgeStartX + i, ForgeStartY + j, 4);
                                     break;
                                 case 5:
-                                    Tile ForgeStarttile = Main.tile[ForgeStartX + i, ForgeStartY + j];
-                                    ForgeStarttile.IsHalfBlock = true;
+                                    Tile ForgeStar = Main.tile[ForgeStartX + i, ForgeStartY + j];
+                                    ForgeStar.IsHalfBlock = true;
                                     break;
                             }
                         }
@@ -3069,8 +3063,8 @@ namespace Bismuth.Utilities
                                 WorldGen.KillTile(LeaderHouseX + i, LeaderHouseY + j);
                                 WorldGen.PlaceTile(LeaderHouseX + i, LeaderHouseY + j, TileID.EbonstoneBrick);
                                 WorldGen.paintTile(LeaderHouseX + i, LeaderHouseY + j, 27);
-                                Tile LeaderHousetile = Main.tile[LeaderHouseX + i, LeaderHouseY + j];
-                                LeaderHousetile.IsHalfBlock = true;
+                                Tile LeaderHouses = Main.tile[LeaderHouseX + i, LeaderHouseY + j];
+                                LeaderHouses.IsHalfBlock = true;
                                 break;
 
 
@@ -3177,7 +3171,7 @@ namespace Bismuth.Utilities
                 #endregion
                 #region Forge
                 int ForgeX = Main.spawnTileX - 38;
-                int ForgeY = Main.spawnTileY - 14;
+                int ForgeY = (int)GenVars.worldSurfaceLow;
                 while (!WorldGen.SolidTile(ForgeX, ForgeY) || WorldMethods.CheckTile(ForgeX, ForgeY, TileID.Trees) || WorldMethods.CheckTile(ForgeX, ForgeY, TileID.Sunflower) || WorldMethods.CheckTile(ForgeX, ForgeY, TileID.Pumpkins))
                     ForgeY++;
                 ForgeY -= 13;
@@ -3239,8 +3233,8 @@ namespace Bismuth.Utilities
                             case 7:
                                 WorldGen.KillTile(ForgeX + i, ForgeY + j);
                                 WorldGen.PlaceTile(ForgeX + i, ForgeY + j, 415);
-                                Tile Forgetile = Main.tile[ForgeX + i, ForgeY + j];
-                                Forgetile.IsHalfBlock = true;
+                                Tile Forge1 = Main.tile[ForgeX + i, ForgeY + j];
+                                Forge1.IsHalfBlock = true;
                                 break;
                             case 8:
                                 WorldGen.KillTile(ForgeX + i, ForgeY + j);
@@ -3381,8 +3375,8 @@ namespace Bismuth.Utilities
                                 WorldGen.SlopeTile(ForgeX + i, ForgeY + j, 4);
                                 break;
                             case 5:
-                                Tile Forgetile = Main.tile[ForgeX + i, ForgeY + j];
-                                Forgetile.IsHalfBlock = true;
+                                Tile Forge2 = Main.tile[ForgeX + i, ForgeY + j];
+                                Forge2.IsHalfBlock = true;
                                 break;
                         }
                     }
@@ -3473,8 +3467,8 @@ namespace Bismuth.Utilities
                                 WorldGen.KillTile(TempleX + i, TempleY + j);
                                 WorldGen.PlaceTile(TempleX + i, TempleY + j, 175);
                                 WorldGen.KillWall(TempleX + i, TempleY + j);
-                                Tile Templetile = Main.tile[TempleX + i, TempleY + j];
-                                Templetile.IsHalfBlock = true;
+                                Tile Temples = Main.tile[TempleX + i, TempleY + j];
+                                Temples.IsHalfBlock = true;
                                 break;
                             case 9:
                                 WorldGen.KillTile(TempleX + i, TempleY + j);
@@ -3505,7 +3499,7 @@ namespace Bismuth.Utilities
                 #endregion               
                 #region Alchemist House
                 int AlchemistHouseX = Main.spawnTileX - 70;
-                int AlchemistHouseY = Main.spawnTileY - 14;
+                int AlchemistHouseY = (int)GenVars.worldSurfaceLow;
                 while (!WorldGen.SolidTile(AlchemistHouseX, AlchemistHouseY) || WorldMethods.CheckTile(AlchemistHouseX, AlchemistHouseY, TileID.Trees) || WorldMethods.CheckTile(AlchemistHouseX, AlchemistHouseY, TileID.Sunflower) || WorldMethods.CheckTile(AlchemistHouseX, AlchemistHouseY, TileID.Pumpkins))
                     AlchemistHouseY++;
                 AlchemistHouseY -= 13;
@@ -3679,7 +3673,7 @@ namespace Bismuth.Utilities
                 #endregion
                 #region Fountain
                 int FountainX = Main.spawnTileX + 42;
-                int FountainY = Main.spawnTileY - 14;
+                int FountainY = (int)GenVars.worldSurfaceLow;
                 while (!WorldGen.SolidTile(FountainX, FountainY) || WorldMethods.CheckTile(FountainX, FountainY, TileID.Trees) || WorldMethods.CheckTile(FountainX, FountainY, TileID.Sunflower) || WorldMethods.CheckTile(FountainX, FountainY, TileID.Pumpkins))
                     FountainY++;
 
@@ -3702,7 +3696,7 @@ namespace Bismuth.Utilities
                 #endregion
                 #region Casern
                 int CasernX = Main.spawnTileX + 49;
-                int CasernY = Main.spawnTileY - 14;
+                int CasernY = (int)GenVars.worldSurfaceLow;
                 while (!WorldGen.SolidTile(CasernX, CasernY) || WorldMethods.CheckTile(CasernX, CasernY, TileID.Trees) || WorldMethods.CheckTile(CasernX, CasernY, TileID.Sunflower) || WorldMethods.CheckTile(CasernX, CasernY, TileID.Pumpkins))
                     CasernY++;
                 CasernY -= 13;
@@ -3817,7 +3811,7 @@ namespace Bismuth.Utilities
                 #endregion
                 #region Beggar Region
                 int TreeX = Main.spawnTileX - 48;
-                int TreeY = Main.spawnTileY - 14;
+                int TreeY = (int)GenVars.worldSurfaceLow;
                 while (!WorldGen.SolidTile(TreeX, TreeY) || WorldMethods.CheckTile(TreeX, TreeY, TileID.Trees) || WorldMethods.CheckTile(TreeX, TreeY, TileID.Sunflower) || WorldMethods.CheckTile(TreeX, TreeY, TileID.Pumpkins))
                     TreeY++;
                 TreeY -= 14;
@@ -3851,57 +3845,57 @@ namespace Bismuth.Utilities
                             case 1:
                                 WorldGen.KillTile(TreeX + i, TreeY + j);
                                 WorldGen.PlaceTile(TreeX + i, TreeY + j, TileID.LivingMahogany);
-                                Tile Tree1 = Main.tile[TreeX + i, TreeY + j];
-                                Tree1.IsActuated = true;
+                                Tile Trees = Main.tile[TreeX + i, TreeY + j];
+                                Trees.IsActuated = true;
                                 WorldGen.SlopeTile(TreeX + i, TreeY + j, 1);
                                 break;
                             case 2:
                                 WorldGen.KillTile(TreeX + i, TreeY + j);
-                                Tile Tree2 = Main.tile[TreeX + i, TreeY + j];
-                                Tree2.IsActuated = true;
                                 WorldGen.PlaceTile(TreeX + i, TreeY + j, TileID.LivingMahogany);
+                                Tile Trees1 = Main.tile[TreeX + i, TreeY + j];
+                                Trees1.IsActuated = true;
                                 WorldGen.SlopeTile(TreeX + i, TreeY + j, 2);
                                 break;
                             case 3:
                                 WorldGen.KillTile(TreeX + i, TreeY + j);
-                                Tile Tree3 = Main.tile[TreeX + i, TreeY + j];
-                                Tree3.IsActuated = true;
                                 WorldGen.PlaceTile(TreeX + i, TreeY + j, TileID.LivingMahogany);
+                                Tile Trees2 = Main.tile[TreeX + i, TreeY + j];
+                                Trees2.IsActuated = true;
                                 WorldGen.SlopeTile(TreeX + i, TreeY + j, 3);
                                 break;
                             case 4:
                                 WorldGen.KillTile(TreeX + i, TreeY + j);
-                                Tile Tree4 = Main.tile[TreeX + i, TreeY + j];
-                                Tree4.IsActuated = true;
                                 WorldGen.PlaceTile(TreeX + i, TreeY + j, TileID.LivingMahogany);
+                                Tile Trees3 = Main.tile[TreeX + i, TreeY + j];
+                                Trees3.IsActuated = true;
                                 WorldGen.SlopeTile(TreeX + i, TreeY + j, 4);
                                 break;
                             case 5:
-                                Tile Tree5 = Main.tile[TreeX + i, TreeY + j];
-                                Tree5.IsActuated = true;
                                 WorldGen.KillTile(TreeX + i, TreeY + j);
                                 WorldGen.PlaceTile(TreeX + i, TreeY + j, TileID.LivingMahogany);
+                                Tile Trees4 = Main.tile[TreeX + i, TreeY + j];
+                                Trees4.IsActuated = true;
                                 break;
                             case 6:
-                                Tile Tree6 = Main.tile[TreeX + i, TreeY + j];
-                                Tree6.IsActuated = true;
                                 WorldGen.KillTile(TreeX + i, TreeY + j);
                                 WorldGen.PlaceTile(TreeX + i, TreeY + j, TileID.LivingMahogany);
-                                Tile Tree61 = Main.tile[TreeX + i, TreeY + j];
-                                Tree61.IsHalfBlock = true;
+                                Tile Trees5 = Main.tile[TreeX + i, TreeY + j];
+                                Trees5.IsActuated = true;
+                                Tile Trees6 = Main.tile[TreeX + i, TreeY + j];
+                                Trees6.IsHalfBlock = true;
                                 break;
                             case 7:
-                                Tile Tree7 = Main.tile[TreeX + i, TreeY + j];
-                                Tree7.IsActuated = true;
                                 WorldGen.KillTile(TreeX + i, TreeY + j);
                                 WorldGen.PlaceTile(TreeX + i, TreeY + j, TileID.LeafBlock);
                                 WorldGen.paintTile(TreeX + i, TreeY + j, 16);
+                                Tile Trees7 = Main.tile[TreeX + i, TreeY + j];
+                                Trees7.IsActuated = true;
                                 break;
                             case 8:
-                                Tile Tree8 = Main.tile[TreeX + i, TreeY + j];
-                                Tree8.IsActuated = true;
                                 WorldGen.KillTile(TreeX + i, TreeY + j);
                                 WorldGen.PlaceTile(TreeX + i, TreeY + j, TileID.LeafBlock);
+                                Tile Trees8 = Main.tile[TreeX + i, TreeY + j];
+                                Trees8.IsActuated = true;
                                 break;
                         }
                     }
@@ -3958,7 +3952,7 @@ namespace Bismuth.Utilities
                 #endregion
                 #region Left Tower
                 int TowerLeftX = Main.spawnTileX - 89;
-                int TowerLeftY = Main.spawnTileY - 14; ;
+                int TowerLeftY = (int)GenVars.worldSurfaceLow;
                 while (!WorldGen.SolidTile(TowerLeftX, TowerLeftY) || WorldMethods.CheckTile(TowerLeftX, TowerLeftY, TileID.Trees) || WorldMethods.CheckTile(TowerLeftX, TowerLeftY, TileID.Sunflower) || WorldMethods.CheckTile(TowerLeftX, TowerLeftY, TileID.Pumpkins))
                     TowerLeftY++;
                 TowerLeftY -= 23;
@@ -4014,8 +4008,8 @@ namespace Bismuth.Utilities
                                 WorldGen.KillTile(TowerLeftX + i, TowerLeftY + j);
                                 WorldGen.PlaceTile(TowerLeftX + i, TowerLeftY + j, 152);
                                 WorldGen.paintTile(TowerLeftX + i, TowerLeftY + j, 26);
-                                Tile Towertile = Main.tile[TowerLeftX + i, TowerLeftY + j];
-                                Towertile.IsHalfBlock = true;
+                                Tile TowerLef = Main.tile[TowerLeftX + i, TowerLeftY + j];
+                                TowerLef.IsHalfBlock = true;
                                 break;
                             case 5:
                                 WorldGen.KillTile(TowerLeftX + i, TowerLeftY + j);
@@ -4115,7 +4109,7 @@ namespace Bismuth.Utilities
                 #endregion
                 #region Right Tower
                 int TowerRightX = Main.spawnTileX + 82;
-                int TowerRightY = Main.spawnTileY - 14;
+                int TowerRightY = (int)GenVars.worldSurfaceLow;
                 while (!WorldGen.SolidTile(TowerRightX, TowerRightY) || WorldMethods.CheckTile(TowerRightX, TowerRightY, TileID.Trees) || WorldMethods.CheckTile(TowerRightX, TowerRightY, TileID.Sunflower) || WorldMethods.CheckTile(TowerRightX, TowerRightY, TileID.Pumpkins))
                     TowerRightY++;
                 TowerRightY -= 23;
@@ -4171,8 +4165,8 @@ namespace Bismuth.Utilities
                                 WorldGen.KillTile(TowerRightX + i, TowerRightY + j);
                                 WorldGen.PlaceTile(TowerRightX + i, TowerRightY + j, 152);
                                 WorldGen.paintTile(TowerRightX + i, TowerRightY + j, 26);
-                                Tile Towertile = Main.tile[TowerRightX + i, TowerRightY + j];
-                                Towertile.IsHalfBlock = true;
+                                Tile TowerRigh = Main.tile[TowerRightX + i, TowerRightY + j];
+                                TowerRigh.IsHalfBlock = true;
                                 break;
                             case 5:
                                 WorldGen.KillTile(TowerRightX + i, TowerRightY + j);
@@ -4457,7 +4451,7 @@ namespace Bismuth.Utilities
                 {
                     for (int j = 0; j < 60; j++)
                     {
-                        if (Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.IceBlock || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.SnowBlock || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.BlueDungeonBrick || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.GreenDungeonBrick || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.PinkDungeonBrick || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.Cloud || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.RainCloud || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.Ebonstone || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.Crimstone || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.SandstoneBrick || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.HardenedSand || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.Mud || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.LivingWood || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.LeafBlock || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == ModContent.TileType<SwampMud>())
+                        if (Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.IceBlock || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.SnowBlock || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.BlueDungeonBrick || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.GreenDungeonBrick || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.PinkDungeonBrick || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.Cloud || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.RainCloud || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.Ebonstone || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.Crimstone || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.SandstoneBrick || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.HardenedSand || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.Mud || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.LivingWood || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == TileID.LeafBlock || Main.tile[CastleSpawnX + i, CastleSpawnY + j].TileType == Mod.Find<ModTile>("SwampMud").Type)
                         {
                             failcount2++;
                             goto IL_23;
@@ -4627,7 +4621,7 @@ namespace Bismuth.Utilities
                 WorldGen.Place2x2(CastleSpawnX + 33, CastleSpawnY + 33, TileID.CookingPots, 0);
                 WorldGen.Place3x2(CastleSpawnX + 35, CastleSpawnY + 33, TileID.Furnaces);
                 WorldGen.PlaceTile(CastleSpawnX + 19, CastleSpawnY + 26, (ushort)ModContent.TileType<OrcishLamp>());
-                //int orcishchest = WorldGen.PlaceChest(CastleSpawnX + 20, CastleSpawnY + 27, (ushort)ModContent.TileType<OrcishChest>(), false, 2);
+                int orcishchest = WorldGen.PlaceChest(CastleSpawnX + 20, CastleSpawnY + 27, (ushort)ModContent.TileType<OrcishChest>(), false, 2);
                 int orcishchestIndex = Chest.FindChest(CastleSpawnX + 20, CastleSpawnY + 26);
                 if (orcishchestIndex != -1)
                 {
@@ -4864,14 +4858,14 @@ namespace Bismuth.Utilities
         void GenerateBiomeOrcishChestLoot(Item[] chestInventory)
         {
             int OrcishcurrentIndex = 0;
-            chestInventory[OrcishcurrentIndex].SetDefaults(Utils.SelectRandom(WorldGen.genRand, ModContent.ItemType<Content.Items.Weapons.Melee.Doomhammer>(), ModContent.ItemType<OrcishBanner>(), ModContent.ItemType<MagnesiumOxide>(), ModContent.ItemType<WaveOfForce>())); OrcishcurrentIndex++;
+            chestInventory[OrcishcurrentIndex].SetDefaults(Utils.SelectRandom(WorldGen.genRand, ModContent.ItemType<Doomhammer>(), ModContent.ItemType<OrcishBanner>(), ModContent.ItemType<MagnesiumOxide>(), ModContent.ItemType<WaveOfForce>())); OrcishcurrentIndex++;
             chestInventory[OrcishcurrentIndex].SetDefaults(ModContent.ItemType<Content.Items.Materials.OrcishBar>()); chestInventory[OrcishcurrentIndex].stack = Main.rand.Next(7, 20); OrcishcurrentIndex++;
             chestInventory[OrcishcurrentIndex].SetDefaults(Utils.SelectRandom(WorldGen.genRand, ItemID.TitanPotion, ItemID.RagePotion)); chestInventory[OrcishcurrentIndex].stack = Main.rand.Next(2, 4); OrcishcurrentIndex++;
             chestInventory[OrcishcurrentIndex].SetDefaults(ItemID.GoldCoin); chestInventory[OrcishcurrentIndex].stack = Main.rand.Next(4, 7); OrcishcurrentIndex++;
             chestInventory[OrcishcurrentIndex].SetDefaults(ItemID.SilverCoin); chestInventory[OrcishcurrentIndex].stack = Main.rand.Next(1, 100); OrcishcurrentIndex++;
         }
         #endregion
-        public override void SaveWorldData(TagCompound tag)
+        public override void SaveWorldData(TagCompound tag)/* tModPorter Suggestion: Edit tag parameter instead of returning new TagCompound */
         {
             tag["TotemX"] = TotemX;
             tag["TotemY"] = TotemY;
@@ -4893,7 +4887,6 @@ namespace Bismuth.Utilities
             tag["CastleSpawnY"] = CastleSpawnY;
             tag["TombstoneX"] = TombstoneX;
             tag["TombstoneY"] = TombstoneY;
-            tag["CasketCoords"] = CasketCoords;
             tag["IsSwampSuccess"] = IsSwampSuccess;
             tag["IsDesertSuccess"] = IsDesertSuccess;
             tag["GeneratedCaslte"] = GeneratedCaslte;
@@ -4909,7 +4902,6 @@ namespace Bismuth.Utilities
             tag["DownedRhino"] = DownedRhino;
             tag["DownedPapuanWizard"] = DownedPapuanWizard;
             tag["VampireShop"] = VampShop;
-            tag["KilledBossesInWorld"] = KilledBossesInWorld;
             tag["WizardDay"] = WizardDay;
             tag["downedWoF"] = downedWoF;
             tag["downedPlantera"] = downedPlantera;
@@ -4917,9 +4909,8 @@ namespace Bismuth.Utilities
             tag["SunriseX"] = SunriseX;
             tag["SunriseY"] = SunriseY;
             tag["RemovePriest"] = RemovePriest;
+            tag["DownedNecromancer"] = DownedNecromancer;
         }
-
-
         public override void LoadWorldData(TagCompound tag)
         {
             TotemX = tag.GetInt("TotemX");

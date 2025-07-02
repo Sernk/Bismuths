@@ -18,7 +18,7 @@ namespace Bismuth.Content.Items.Weapons.Melee
             Item.height = 20;
             Item.useTime = 26;
             Item.useAnimation = 26;
-            Item.reuseDelay = 8;
+            //Item.reuseDelay = 8;
             Item.knockBack = 5.5f;
             Item.rare = 0;
             Item.UseSound = SoundID.Item1;

@@ -1,12 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.UI;
+using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace Bismuth.Utilities
 {
     public class ImperianHelmetExchangeData : CustomCurrencySingleCoin
     {
-        public Color CustomCurrencytextcolor = Color.LightGray; //this defines the Custom Currency Buy Price color when shown in the shoop
+        public Color CustomCurrencytextcolor = Color.LightGray; 
 
         public ImperianHelmetExchangeData(int coinItemID, long currencyCap) : base(coinItemID, currencyCap)
         {
@@ -23,7 +25,7 @@ namespace Bismuth.Utilities
                     color.B,
                     Lang.tip[50],
                     price,
-                    "Imperian Helmet" //this is the Currency name when shown in the shop
+                    Language.GetTextValue(ModContent.GetInstance<LocalizationSystem>().ImperianHelmet)
                 });
         }
     }

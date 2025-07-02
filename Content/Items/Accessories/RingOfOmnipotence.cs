@@ -22,8 +22,6 @@ namespace Bismuth.Content.Items.Accessories
                                                                                                        // En: All types of damage are increased by 18%, +75 HP, +5 HP/sec, \ndamage reflection is increased by 15%, dodge and block \nchance are increased by 10%, all crit. \nstrike chances are increased by 12%, all types of damage \nare increased by 5% for every equipped ring
             string RingOfOmnipotence5 = this.GetLocalization("TooltipLine2.RingOfOmnipotence5").Value; // Ru: Увеличивает все виды урона на 25%, увеличивает \nмаксимальный запас здоровья на 100, восстановление здоровья \nна 8 ед/сек, увеличивает отражение урона на 20%, \nувеличивает шанс блока и уклонения на 15%, увеличивает шанс \nкритического удара на 15%, увеличивает все виды урона \nна 10% за каждое надетое кольцо
                                                                                                        // En: All types of damage are increased by 25%, +100 HP, +8 HP/sec, \ndamage reflection is increased by 20%, dodge and block \nchance are increased by 15%, all crit. \nstrike chances are increased by 15%, all types of damage \nare increased by 10% for every equipped ring
-
-
         }
         public override void SetStaticDefaults()
         {
@@ -49,29 +47,39 @@ namespace Bismuth.Content.Items.Accessories
             string RingOfOmnipotence4 = this.GetLocalization("TooltipLine2.RingOfOmnipotence4").Value;
             string RingOfOmnipotence5 = this.GetLocalization("TooltipLine2.RingOfOmnipotence5").Value;
 
-            tooltips.Add(new TooltipLine(Mod, "ItemName", DivineEquipment)
-            {
-                OverrideColor = new Color?(new Color(0, 239, 239))
-            });
-       
-            if (Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledBossesCount == 1)
-                tooltips[3].Text = RingOfOmnipotence;
-            if (Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledBossesCount == 2)
-                tooltips[3].Text = RingOfOmnipotence1;
-            if (Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledBossesCount == 3)
-                tooltips[3].Text = RingOfOmnipotence2;
-            if (Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledBossesCount == 4)
-                tooltips[3].Text = RingOfOmnipotence3;
-            if (Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledBossesCount == 5)
-                tooltips[3].Text = RingOfOmnipotence4;
-            if (Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledBossesCount == 6)
-                tooltips[3].Text = RingOfOmnipotence5;
+            tooltips.Add(new TooltipLine(Mod, "ItemName", DivineEquipment) { OverrideColor = new Color?(new Color(0, 239, 239)) });
+
+            int progress = 0;
+
+            if (NPC.downedBoss1) { progress++; }
+            if (NPC.downedBoss2) { progress++; }
+            if (NPC.downedBoss3) { progress++; }
+            if (Main.hardMode) { progress++; }
+            if (NPC.downedMechBossAny) { progress++; }
+            if (NPC.downedPlantBoss) { progress++; }
+
+            if (progress == 1) { tooltips[3].Text = RingOfOmnipotence; }
+            if (progress == 2) { tooltips[3].Text = RingOfOmnipotence1; }
+            if (progress == 3) { tooltips[3].Text = RingOfOmnipotence2; }
+            if (progress == 4) { tooltips[3].Text = RingOfOmnipotence3; }
+            if (progress == 5) { tooltips[3].Text = RingOfOmnipotence4; }
+            if (progress == 6) { tooltips[3].Text = RingOfOmnipotence5; }
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<BismuthPlayer>().IsEquippedOneRing = true;
-           
-            if (player.GetModPlayer<BismuthPlayer>().KilledBossesCount == 1)
+
+            int progress = 0;
+
+            if (NPC.downedBoss1) { progress++; }
+            if (NPC.downedBoss2) { progress++; }
+            if (NPC.downedBoss3) { progress++; }
+            if (Main.hardMode) { progress++; }
+            if (NPC.downedMechBossAny) { progress++; }
+            if (NPC.downedPlantBoss) { progress++; }
+            if (NPC.downedGolemBoss) { progress++; }
+
+            if (progress == 1)
             {
                 player.GetDamage(DamageClass.Melee) += 0.03f;
                 player.GetDamage(DamageClass.Magic) += 0.03f;
@@ -81,7 +89,7 @@ namespace Bismuth.Content.Items.Accessories
                 player.GetModPlayer<ModP>().assassinDamage += 0.03f;
                 Item.defense = 1;
             }
-            if (player.GetModPlayer<BismuthPlayer>().KilledBossesCount == 2)
+            if (progress == 2)
             {
                 player.GetDamage(DamageClass.Melee) += 0.07f;
                 player.GetDamage(DamageClass.Magic) += 0.07f;
@@ -92,7 +100,7 @@ namespace Bismuth.Content.Items.Accessories
                 Item.defense = 1;
                 player.statLifeMax2 += 15;
             }
-            if (player.GetModPlayer<BismuthPlayer>().KilledBossesCount == 3)
+            if (progress == 3)
             {
                 player.GetDamage(DamageClass.Melee) += 0.1f;
                 player.GetDamage(DamageClass.Magic) += 0.1f;
@@ -105,7 +113,7 @@ namespace Bismuth.Content.Items.Accessories
                 player.statLifeMax2 += 25;
                 player.lifeRegen += 2;
             }
-            if (player.GetModPlayer<BismuthPlayer>().KilledBossesCount == 4)
+            if (progress == 4)
             {
                 player.GetDamage(DamageClass.Melee) += 0.13f;
                 player.GetDamage(DamageClass.Magic) += 0.13f;
@@ -124,7 +132,7 @@ namespace Bismuth.Content.Items.Accessories
                 player.lifeRegen += 6;
                 player.GetModPlayer<BismuthPlayer>().DodgeChance += 5;
             }
-            if (player.GetModPlayer<BismuthPlayer>().KilledBossesCount == 5)
+            if (progress == 5)
             {
                 player.GetDamage(DamageClass.Melee) += 0.18f + (0.05f * player.GetModPlayer<BismuthPlayer>().RingsCount);
                 player.GetDamage(DamageClass.Magic) += 0.18f + (0.05f * player.GetModPlayer<BismuthPlayer>().RingsCount);
@@ -144,7 +152,7 @@ namespace Bismuth.Content.Items.Accessories
                 player.GetModPlayer<BismuthPlayer>().DodgeChance += 10;
                 player.GetModPlayer<BismuthPlayer>().BlockChance += 10;
             }
-            if (player.GetModPlayer<BismuthPlayer>().KilledBossesCount == 6)
+            if (progress == 6)
             {
                 player.GetDamage(DamageClass.Melee) += 0.25f + (0.1f * player.GetModPlayer<BismuthPlayer>().RingsCount);
                 player.GetDamage(DamageClass.Magic) += 0.25f + (0.1f * player.GetModPlayer<BismuthPlayer>().RingsCount);
