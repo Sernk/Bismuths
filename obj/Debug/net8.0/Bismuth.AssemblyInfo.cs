@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bismuth")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44bd26e04126e146ca261d4602f4dd6a591e3eea")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+edcff6dba4a7682e237c384cacea8f52915c47c7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bismuth")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bismuth")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

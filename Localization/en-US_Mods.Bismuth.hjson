@@ -56,6 +56,7 @@ Tiles: {
 	TotemOfCurse.MapEntry: Totem Of Curse
 	WallCarpet.MapEntry: Wall Carpet
 	WarriorsTombstone.MapEntry: Warriors Tombstone
+	AluminiumBar.MapEntry: Metal Bar
 }
 
 Items: {
@@ -268,9 +269,10 @@ Items: {
 
 	HerosBoots: {
 		DisplayName: The Boots of a Hero
-		Tooltip: Doesn't give any bonuses
+		Tooltip: ""
 
 		Quests: {
+			HerosBoots_1: Mods.Bismuth.Items.HerosBoots.Quests.HerosBoots_1
 			HerosBoots6:
 				'''
 				The wearer can run super fast, movement speed is increased by 
@@ -1090,13 +1092,14 @@ Items: {
 			RingOfOmnipotence1: All types of damage are increased by 7%, +15 HP
 			RingOfOmnipotence: All types of damage are increased by 3%
 			DivineEquipment: Divine Equipment
+			RingOfOmnipotence_1: Doesn't give any bonuses
 		}
 
-		Tooltip: Doesn't give any bonuses
+		Tooltip: ""
 	}
 
 	ArchmagesAmulet: {
-		Tooltip: Doesn't give any bonuses
+		Tooltip: ""
 		DisplayName: Amulet of the Archmage
 
 		Quests: {
@@ -1122,6 +1125,7 @@ Items: {
 			ArchmagesAmulet2: +50 MP, -8% mana cost, +5% magic critical strike chance, +5% magic damage
 			ArchmagesAmulet1: +30 MP, -5% mana cost, +3% magic critical strike chance
 			ArchmagesAmulet: +20 MP, -3% mana cost
+			ArchmagesAmulet_1: Doesn't give any bonuses
 			DivineEquipment: Divine Equipment
 		}
 	}
@@ -1327,6 +1331,259 @@ Items: {
 			Decreases all nearest enemies' HP 
 			by 10% and sets their defence to 0
 			'''
+	}
+
+	AriadnesTangle: {
+		DisplayName: Ariadne's Tangle
+		Tooltip:
+			'''
+			7% increased assassin damage 
+			7% increased critical strike chance.
+			'''
+	}
+
+	AthenasShield: {
+		Quests: {
+			DivineEquipment: Divine Equipment
+			AthenasShield_1: Doesn't give any bonuses
+			AthenasShield: Damage resistance is increased by 5%
+			AthenasShield1:
+				'''
+				Damage resistance is increased by 7%, +15 HP, 
+				restores 25% of received damage if your HP 
+				is under 20%.
+				'''
+			AthenasShield2:
+				'''
+				Damage resistance is increased by 10%, +45 HP, 
+				restores 35% of received damage and increases 
+				regeneration for 5 seconds when your HP is under 35%.
+				'''
+			AthenasShield3:
+				'''
+				Damage resistance is increased by 15%, +80 HP, 
+				restores 35% of received damage and increases 
+				regeneration for 5 seconds when your HP is under 35%. 
+				Healing potions restore 30% more HP, the cooldown is 
+				shortened by 5 seconds.
+				'''
+			AthenasShield4:
+				'''
+				Damage resistance is increased by 18%, +100 HP, 
+				restores 35% of received damage and increases 
+				regeneration for 5 seconds when your HP is under 35%. 
+				Healing potions restore 30% more HP, the cooldown is 
+				shortened by 5 seconds. Greatly increases regeneration when your 
+				HP is under a 200. 15% chance to parry a projectile
+				'''
+			AthenasShield5:
+				'''
+				Damage resistance is increased by 25%, +150 HP, 
+				restores 35% of received damage, increases 
+				regeneration for 7 seconds and grants absolute invulnerability 
+				for 3 seconds if your HP falls under 50%. Healing 
+				potions restore 30% more HP, the cooldown is shortened by 10 
+				seconds. Greatly increases regeneration when your HP 
+				is under 150. 15% chance to parry a projectile
+				'''
+		}
+
+		DisplayName: The Shield of Athena
+		Tooltip: ""
+	}
+
+	BerserksRing: {
+		DisplayName: Berserk's Ring
+		Tooltip:
+			'''
+			Item use speed is increased by 30% 
+			30% less damage resistance, -25 defence
+			'''
+	}
+
+	GoldenRune: {
+		DisplayName: Golden Fleece
+		Tooltip:
+			'''
+			Increases life regeneration. Allows you to convert 
+			mana into health if your HP is under 50%.
+			'''
+	}
+
+	HeartOfDesert: {
+		Quests: {
+			HeartOfDesert4:
+				'''
+				+20% movement speed when equipped and +20% more when you 
+				are in the desert, +6 HP/sec, +12% damage and 
+				+8% critical strike chance when you are in the 
+				desert. Ignores the Sandstorm.
+				'''
+			HeartOfDesert5:
+				'''
+				+25% movement speed when equipped and +25% more when you 
+				are in the desert, +10 HP/sec, +12% damage and 
+				+8% critical strike chance when you are in the 
+				desert. Ignores the Sandstorm.
+				'''
+			HeartOfDesert3:
+				'''
+				+12% movement speed, +4 HP/sec, +10% damage and critical 
+				strike chance is increased by 5% when you are 
+				in the desert
+				'''
+			HeartOfDesert2: Movement speed is increased by 8%, +2.5 HP/sec.
+			HeartOfDesert1: Movement speed is increased by 5%, +1HP/sec
+			HeartOfDesert: Movement speed is increased by 3%
+			HeartOfDesert_1: Doesn't give any bonuses
+			DivineEquipment: Divine Equipment
+		}
+
+		DisplayName: Heart of the Desert
+		Tooltip: ""
+	}
+
+	JaguarsWings: {
+		DisplayName: Jaguar's Wings
+		Tooltip: Allows flight and slow fall.
+	}
+
+	MagicRune: {
+		DisplayName: Wizard's Rune
+		Tooltip: 12% increased magic damage.
+	}
+
+	MeleeRune: {
+		DisplayName: Warrior's Rune
+		Tooltip: 12% increased melee damage.
+	}
+
+	MirrorShield: {
+		DisplayName: Mirror Shield
+		Tooltip: 10% chance to parry a projectile. The less HP you have - the higher the chance is.
+	}
+
+	MrPigeonsCloak: {
+		DisplayName: Mr.Pigeon's Cloak
+		Tooltip: Great for impersonating devs!
+	}
+
+	QuiverOfOdysseus: {
+		DisplayName: Quiver of Odysseus
+		Tooltip:
+			'''
+			Increases arrow damage by 15%
+			+1 arrow projectile
+			'''
+	}
+
+	RangerRune: {
+		DisplayName: Ranger's Rune
+		Tooltip: 12% increased ranged damage.
+	}
+
+	AluminiumBar: {
+		DisplayName: Aluminium Bar
+		Tooltip: ""
+	}
+
+	RuneOfSummoner: {
+		Tooltip: 12% increased minion damage.
+		DisplayName: Sumonner's Rune
+	}
+
+	RuneOfSpeed: {
+		Tooltip: 15% increased movement speed.
+		DisplayName: Runner's Rune
+	}
+
+	RuneOfRegeneration: {
+		Tooltip: Increased life regeneration.
+		DisplayName: Doctor's Rune
+	}
+
+	RuneOfAssasin: {
+		Tooltip: +5% critical strike chance.
+		DisplayName: Assassin's Rune
+	}
+
+	ShinyCover: {
+		DisplayName: Sunny Cover
+		Tooltip: Creates three fireballs around you, which damage enemies
+	}
+
+	StatuetteOfHelios: {
+		DisplayName: Statuette of Helios
+		Tooltip:
+			'''
+			15% increased magic damage. 10% increased magic critical strike chance. 
+			Increased maximum mana by 50. Reduces mana usage by 20% in daytime.
+			'''
+	}
+
+	ThrownRune: {
+		DisplayName: Thrower's Rune
+		Tooltip: 12% increased throwing damage.
+	}
+
+	WingsOfDaedalus: {
+		DisplayName: Wings of Daedalus
+		Tooltip: Allows flight and slow fall.
+	}
+
+	AirAmulet: {
+		DisplayName: Air Amulet
+		Tooltip: Summons an allied air elemental
+	}
+
+	BlueKey: {
+		DisplayName: Blue Key
+		Tooltip: Opens the blue maze chest and door
+	}
+
+	EarthAmulet: {
+		DisplayName: Earth Amulet
+		Tooltip: Summons an allied earth elemental
+	}
+
+	FireAmulet: {
+		DisplayName: Fire Amulet
+		Tooltip: Summons an allied fire elemental
+	}
+
+	GreatPotionOfOblivion: {
+		DisplayName: Great Potion of Oblivion
+		Tooltip: Resets all your skills and returns you skill points
+	}
+
+	KeyOfTheSun: {
+		DisplayName: Key of the Suns
+		Tooltip: Opens Helios chests
+	}
+
+	MeuRansHook: {
+		DisplayName: MeuRan's Hook
+		Tooltip: Great for impersonating devs!
+	}
+
+	PanaceaScroll: {
+		DisplayName: Panacea Scroll
+		Tooltip: You can create panacea having this scroll
+	}
+
+	QuicksilverMirror: {
+		DisplayName: Quicksilver Mirror
+		Tooltip: Helps you to find beggar's caskets
+	}
+
+	RedKey: {
+		DisplayName: Red Key
+		Tooltip: Opens the red maze chest and door
+	}
+
+	WaterAmulet: {
+		DisplayName: Water Amulet
+		Tooltip: Summons an allied water elemental
 	}
 }
 
@@ -1559,6 +1816,31 @@ Buffs: {
 	DicePlaying: {
 		DisplayName: Dice Game
 		Description: Prepare your money and just enjoy...
+	}
+
+	AirElemental: {
+		Description: Air elemental fights for you
+		DisplayName: Air Elemental
+	}
+
+	EarthElemental: {
+		DisplayName: Earth Elemental
+		Description: Earth elemental fights for you
+	}
+
+	FireElemental: {
+		DisplayName: Fire Elemental
+		Description: Fire elemental fights for you
+	}
+
+	FlowOfWind: {
+		DisplayName: Flow Of Wind
+		Description: Your movement speed is increased, you are falling slow
+	}
+
+	WaterElemental: {
+		DisplayName: Water Elemental
+		Description: Water elemental fights for you
 	}
 }
 
@@ -2091,6 +2373,10 @@ NPCs: {
 
 	SwampWitchDeath.DisplayName: Swamp Witch Death
 	Snake.DisplayName: Snake
+	AirElemental.DisplayName: Air Elemental
+	EarthElemental.DisplayName: Earth Elemental
+	FireElemental.DisplayName: Fire Elemental
+	WaterElemental.DisplayName: Water Elemental
 }
 
 Projectiles: {
@@ -2156,6 +2442,11 @@ Projectiles: {
 	StilettoP.DisplayName: Stiletto P
 	SnakeProj.DisplayName: Snake Proj
 	MirrorSkullP.DisplayName: Mirror Skull P
+	DirtBallP.DisplayName: Dirt Ball P
+	FireElementalFireball.DisplayName: Fire Elemental Fireball
+	SolarBlast.DisplayName: Solar Blast
+	MeuRansHookP.DisplayName: Meu Rans Hook P
+	QuicksilverMirrorP.DisplayName: Quicksilver Mirror P
 }
 
 Configs: {

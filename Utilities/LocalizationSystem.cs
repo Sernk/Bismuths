@@ -1,12 +1,10 @@
-﻿using Bismuth.Utilities.Recipes;
-using Terraria;
-using Terraria.ID;
+﻿using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Utilities
 {
-    public class LocalizationSystem : ModPlayer, ILocalizedModType
+    public class LocalizationSystem : ModSystem, ILocalizedModType
     {
         public string LocalizationCategory => "CoinSystem";
 
@@ -19,16 +17,17 @@ namespace Bismuth.Utilities
         public string PoisonRecipe = Language.GetTextValue("Mods.Bismuth.CoinSystem.CoinLocalization.CoinSystem.PoisonRecipe");
         public string PanaceaRecipe = Language.GetTextValue("Mods.Bismuth.CoinSystem.CoinLocalization.CoinSystem.PanaceaRecipe");
 
-        public override void Load()
+        public static int GetProgress()
         {
-            _ = this.GetLocalization("CoinSystem.DwarvenCoin").Value; // Ru: Монета гномов: En: Dwarven Coin
-            _ = this.GetLocalization("CoinSystem.Ocrea").Value; // Ru: Охра : En: Ocrea
-            _ = this.GetLocalization("CoinSystem.ImperianHelmet").Value; // Ru: Императорский шлем: En: Imperian Helmet
-            _ = this.GetLocalization("CoinSystem.Lorica").Value; // Ru: Лорика: En: Lorica
-            _ = this.GetLocalization("CoinSystem.AetherRecipe").Value; // Ru: Рецепт эфира En: Aether Recipe
-            _ = this.GetLocalization("CoinSystem.GalvornRecipe").Value; // Ru: Рецепт Галворна En: GalvornRecipe
-            _ = this.GetLocalization("CoinSystem.PoisonRecipe").Value; // Ru: Рецепт яда En: PoisonRecipe
-            _ = this.GetLocalization("CoinSystem.PanaceaRecipe").Value; // Ru: Рецепт панацеи En: Panacea Recipe
+            int progress = 0;
+            if (NPC.downedBoss1) progress++;
+            if (NPC.downedBoss2) progress++;
+            if (NPC.downedBoss3) progress++;
+            if (Main.hardMode) progress++;
+            if (NPC.downedMechBossAny) progress++;
+            if (NPC.downedPlantBoss) progress++;
+            if (NPC.downedGolemBoss) progress++;
+            return progress;
         }
     }
 }

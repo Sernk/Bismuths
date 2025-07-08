@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.Localization;
 using Bismuth.Utilities;
 using Bismuth.Content.Items.Materials;
 
@@ -11,16 +10,10 @@ namespace Bismuth.Content.Items.Accessories
     [AutoloadEquip(EquipType.Neck)]
     public class ArchmagesAmulet : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Amulet of the Archmage");
-            // Tooltip.SetDefault("Doesn't give any bonuses");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Амулет архимага");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Не даёт никаких бонусов");
-        }
         public override void Load()
         {
             _ = this.GetLocalization("Quests.DivineEquipment").Value;
+            _ = this.GetLocalization("Quests.ArchmagesAmulet_1").Value;
             _ = this.GetLocalization("Quests.ArchmagesAmulet").Value;
             _ = this.GetLocalization("Quests.ArchmagesAmulet1").Value;
             _ = this.GetLocalization("Quests.ArchmagesAmulet2").Value;
@@ -37,6 +30,7 @@ namespace Bismuth.Content.Items.Accessories
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             string DivineEquipment = this.GetLocalization("Quests.DivineEquipment").Value;
+            string ArchmagesAmulet_1 = this.GetLocalization("Quests.ArchmagesAmulet_1").Value;
             string ArchmagesAmulet = this.GetLocalization("Quests.ArchmagesAmulet").Value;
             string ArchmagesAmulet1 = this.GetLocalization("Quests.ArchmagesAmulet1").Value;
             string ArchmagesAmulet2 = this.GetLocalization("Quests.ArchmagesAmulet2").Value;
@@ -46,33 +40,27 @@ namespace Bismuth.Content.Items.Accessories
 
             tooltips.Add(new TooltipLine(this.Mod, "ItemName", DivineEquipment) { OverrideColor = new Color?(new Color(0, 239, 239)) });
 
-            int progress = 0;
-
-            if (NPC.downedBoss1) { progress++; }
-            if (NPC.downedBoss2) { progress++; }
-            if (NPC.downedBoss3) { progress++; }
-            if (Main.hardMode) { progress++; }
-            if (NPC.downedMechBossAny) { progress++; }
-            if (NPC.downedPlantBoss) { progress++; }
-
-            if (progress == 1) { tooltips[3].Text = ArchmagesAmulet; }
-            if (progress == 2) { tooltips[3].Text = ArchmagesAmulet1; }
-            if (progress == 3) { tooltips[3].Text = ArchmagesAmulet2; }
-            if (progress == 4) { tooltips[3].Text = ArchmagesAmulet3; }
-            if (progress == 5) { tooltips[3].Text = ArchmagesAmulet4; }
-            if (progress == 6) { tooltips[3].Text = ArchmagesAmulet5; }
+            int progress = LocalizationSystem.GetProgress();
+            string description = progress switch
+            {
+                0 => ArchmagesAmulet_1,
+                1 => ArchmagesAmulet,
+                2 => ArchmagesAmulet1,
+                3 => ArchmagesAmulet2,
+                4 => ArchmagesAmulet3,
+                5 => ArchmagesAmulet4,
+                6 => ArchmagesAmulet5,
+                _ => null
+            };
+            if (description != null)
+            {
+                tooltips.Add(new TooltipLine(this.Mod, "ProgressDescription", description));
+            }
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<BismuthPlayer>().IsEquippedArchmagesAmulet = true;
-            int progress = 0;
-            if (NPC.downedBoss1) { progress++; }
-            if (NPC.downedBoss2) { progress++; }
-            if (NPC.downedBoss3) { progress++; }
-            if (Main.hardMode) { progress++; }
-            if (NPC.downedMechBossAny) { progress++; }
-            if (NPC.downedPlantBoss) { progress++; }
-            if (NPC.downedGolemBoss) { progress++; }
+            int progress = LocalizationSystem.GetProgress();
 
             if (progress == 1)
             {

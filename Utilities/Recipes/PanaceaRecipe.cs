@@ -5,6 +5,6 @@ namespace Bismuth.Utilities.Recipes
 {
     public class PanaceaRecipe
     {
-        public static Condition PanaceaRecipes = new Condition(ModContent.GetInstance<LocalizationSystem>().PanaceaRecipe,() => Main.LocalPlayer.GetModPlayer<BismuthPlayer>().downedWitch);
+        public static Condition PanaceaRecipes = new Condition(ModContent.GetInstance<LocalizationSystem>().PanaceaRecipe,() => BismuthPlayer.PanaceaResearch);
     }
 }

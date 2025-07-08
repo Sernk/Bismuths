@@ -19,6 +19,7 @@ namespace Bismuth.Content.Items.Accessories
         public override void Load()
         {
             _ = this.GetLocalization("Quests.DivineEquipment").Value;
+            _ = this.GetLocalization("Quests.HerosBoots_1").Value;
             _ = this.GetLocalization("Quests.HerosBoots").Value;
             _ = this.GetLocalization("Quests.HerosBoots1").Value;
             _ = this.GetLocalization("Quests.HerosBoots2").Value;
@@ -30,6 +31,7 @@ namespace Bismuth.Content.Items.Accessories
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             string DivineEquipment = this.GetLocalization("Quests.DivineEquipment").Value;
+            string HerosBoots_1 = this.GetLocalization("Quests.HerosBoots_1").Value;
             string HerosBoots = this.GetLocalization("Quests.HerosBoots").Value;
             string HerosBoots1 = this.GetLocalization("Quests.HerosBoots1").Value;
             string HerosBoots2 = this.GetLocalization("Quests.HerosBoots2").Value;
@@ -38,37 +40,31 @@ namespace Bismuth.Content.Items.Accessories
             string HerosBoots5 = this.GetLocalization("Quests.HerosBoots5").Value;
             string HerosBoots6 = this.GetLocalization("Quests.HerosBoots6").Value;
 
-            int progress = 0;
-
-            if (NPC.downedBoss1) { progress++; }
-            if (NPC.downedBoss2) { progress++; }
-            if (NPC.downedBoss3) { progress++; }
-            if (Main.hardMode) { progress++; }
-            if (NPC.downedMechBossAny) { progress++; }
-            if (NPC.downedPlantBoss) { progress++; }
-            if (NPC.downedGolemBoss) { progress++; }
             tooltips.Add(new TooltipLine(this.Mod, "ItemName", DivineEquipment) { OverrideColor = new Color?(new Color(0, 239, 239)) });
-            if (progress == 1) { tooltips[3].Text = HerosBoots;  }
-            if (progress == 2) { tooltips[3].Text = HerosBoots1; }
-            if (progress == 3) { tooltips[3].Text = HerosBoots2; }
-            if (progress == 4) { tooltips[3].Text = HerosBoots3; }
-            if (progress == 5) { tooltips[3].Text = HerosBoots4; }
-            if (progress == 6) { tooltips[3].Text = HerosBoots5; }
-            if (progress == 7) { tooltips[3].Text = HerosBoots6; }
+
+            int progress = LocalizationSystem.GetProgress();
+            string description = progress switch
+            {
+                0 => HerosBoots_1,
+                1 => HerosBoots,
+                2 => HerosBoots1,
+                3 => HerosBoots2,
+                4 => HerosBoots3,
+                5 => HerosBoots4,
+                6 => HerosBoots5,
+                7 => HerosBoots6,
+                _ => null
+            };
+            if (description != null)
+            {
+                tooltips.Add(new TooltipLine(this.Mod, "ProgressDescription", description));
+            }
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             Player.jumpSpeed += 0.15f;
 
-            int progress = 0;
-
-            if (NPC.downedBoss1) { progress++; }
-            if (NPC.downedBoss2) { progress++; }
-            if (NPC.downedBoss3) { progress++; }
-            if (Main.hardMode) { progress++; }
-            if (NPC.downedMechBossAny) { progress++; }
-            if (NPC.downedPlantBoss) { progress++; }
-            if (NPC.downedGolemBoss) { progress++; }
+            int progress = LocalizationSystem.GetProgress();
 
             if (progress == 1)
             {

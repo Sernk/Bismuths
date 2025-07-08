@@ -1,5 +1,6 @@
 ﻿using Bismuth.Content.Items.Accessories;
 using Bismuth.Content.Items.Materials;
+using Bismuth.Content.Items.Other;
 using Bismuth.Content.Items.Weapons.Assassin;
 using Bismuth.Utilities;
 using Microsoft.Xna.Framework;
@@ -55,9 +56,7 @@ namespace Bismuth.Content.NPCs
             if (currentframe > 0)
                 Lighting.AddLight(NPC.Center, new Vector3(0.25f, 0.67f, 0.99f));
         }
-
-
-        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)//30
+        public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             spriteBatch.Draw(ModContent.Request<Texture2D>("Bismuth/Content/NPCs/SwampWitchDeath").Value, NPC.position - Main.screenPosition + new Vector2(0f, 0f), new Rectangle?(new Rectangle(0, currentframe * 48, 120, 48)), drawColor, NPC.rotation, Vector2.Zero, 1f, NPC.direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0.0f);
             spriteBatch.Draw(ModContent.Request<Texture2D>("Bismuth/Content/NPCs/SwampWitchDeath_Glow").Value, NPC.position - Main.screenPosition + new Vector2(0f, 0f), new Rectangle?(new Rectangle(0, currentframe * 48, 120, 48)), Color.White, NPC.rotation, Vector2.Zero, 1f, NPC.direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0.0f);
@@ -66,6 +65,7 @@ namespace Bismuth.Content.NPCs
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<LightPartOfArchmagesAmulet>()));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PanaceaScroll>()));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PoisonFlask>(), 1, 5, 10));
             npcLoot.Add(ItemDropRule.OneFromOptions(1, ModContent.ItemType<TransmutationAmulet>(), ModContent.ItemType<SnakesFang>()));
         }
