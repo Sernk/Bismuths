@@ -1,9 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.Localization;
+﻿using Bismuth.Content.Items.Other;
 using Bismuth.Utilities;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
@@ -64,7 +63,7 @@ namespace Bismuth.Content.NPCs
             BismuthWorld.DefeatedPortals++;
             if (BismuthWorld.DefeatedPortals > 3)
             {
-                //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("OrcishKey"));
+                Item.NewItem(NPC.GetSource_FromThis(), (int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, ModContent.ItemType<OrcishKey>());
                 BismuthWorld.OrcishInvasionStage = 2;
             }
         }

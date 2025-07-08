@@ -1,12 +1,11 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Bismuth.Content.Projectiles;
+using Bismuth.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using Bismuth.Utilities;
-using Bismuth.Content.Projectiles;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
@@ -199,20 +198,8 @@ namespace Bismuth.Content.NPCs
                 NPC.NewNPC(NPC.GetSource_FromThis(), (int)vec.X, (int)vec.Y, ModContent.NPCType<SwampWitchDeath>(), 0, NPC.spriteDirection);
                 NPC.direction = NPC.direction;
                 NPC.spriteDirection = NPC.spriteDirection;
-                //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("LightPartOfArchmagesAmulet"));
-                //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PanaceaRecipe"));
-                //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PoisonFlask"), Main.rand.Next(5, 10));
-                //switch (Main.rand.Next(1, 3))
-                //{
-                //    case 1:
-                //        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TransmutationAmulet"));
-                //        break;
-                //    case 2:
-                //        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SnakesFang"));
-                //        break;
-                //}
-                Main.LocalPlayer.GetModPlayer<BismuthPlayer>().downedWitch = true;
                 NPC.active = false;
+                NPC.checkDead();
                 return;
             }
             if (currentphase == 1 && NPC.life > (NPC.lifeMax / 2))

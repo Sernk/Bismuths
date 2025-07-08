@@ -4,6 +4,7 @@ using Bismuth.Content.Items.Materials;
 using Terraria.ModLoader;
 using Bismuth.Utilities;
 using Bismuth.Content.Buffs;
+using Bismuth.Utilities.Recipes;
 
 namespace Bismuth.Content.Items.Other
 {
@@ -41,12 +42,12 @@ namespace Bismuth.Content.Items.Other
         }
         public override void AddRecipes()
         {
-
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ModContent.ItemType<ToadsEye>(), 3);
             recipe.AddIngredient(ModContent.ItemType<FernFlower>());
             recipe.AddIngredient(ModContent.ItemType<PoisonFlask>());
             recipe.AddTile(TileID.AlchemyTable);
+            recipe.AddCondition(PanaceaRecipe.PanaceaRecipes);
             recipe.Register();
         }
     }

@@ -1,12 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Items.Accessories;
+using Bismuth.Utilities;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using Bismuth.Utilities;
-using Bismuth.Content.Items.Materials;
 
 namespace Bismuth.Content.NPCs
 {
@@ -101,10 +101,9 @@ namespace Bismuth.Content.NPCs
                 gore.velocity *= 0.3f;
             }
         }
-        public override void OnKill()
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            //if (Main.rand.Next(0, 200) == 0)
-            //    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<HeartOfSwamp>());
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<HeartOfSwamp>(), 200));
         }
     }
 }

@@ -19,6 +19,5 @@ namespace Bismuth.Content.Items.Materials
             Item.maxStack = 9999;
             Item.material = true;
         }
-       
     }
 }

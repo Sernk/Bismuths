@@ -1,14 +1,17 @@
-﻿using Terraria.Audio;
-using Terraria.ID;
-using Microsoft.Xna.Framework;
-using Terraria;
-using System;
-using Terraria.ModLoader;
-using Terraria.Localization;
-using Microsoft.Xna.Framework.Graphics;
-using Bismuth.Content.Buffs;
+﻿using Bismuth.Content.Buffs;
+using Bismuth.Content.Items.Materials;
+using Bismuth.Content.Items.Weapons.Magical;
 using Bismuth.Content.Projectiles;
 using Bismuth.Utilities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
+using Terraria;
+using Terraria.Audio;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
@@ -154,11 +157,10 @@ namespace Bismuth.Content.NPCs
                 spriteBatch.Draw(ModContent.Request<Texture2D>("Bismuth/Content/Buffs/FightingSpiritIcon").Value, NPC.position - Main.screenPosition + new Vector2(4, -34), Color.White * 0.5f);
             }
         }
-        public override void OnKill()
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("OrcishFragment"), Main.rand.Next(0, 3));
-            //if (Main.rand.Next(0, 50) == 0)
-            //    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WaveOfForce"));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OrcishFragment>(), 1, 1, 3));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<WaveOfForce>(), 50));
         }
         public override void HitEffect(NPC.HitInfo hit)
         {

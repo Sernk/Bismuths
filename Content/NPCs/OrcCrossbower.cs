@@ -1,10 +1,12 @@
-﻿using Terraria.ID;
+﻿using Bismuth.Content.Buffs;
+using Bismuth.Content.Items.Materials;
 using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.Localization;
 using Microsoft.Xna.Framework.Graphics;
-using Bismuth.Content.Buffs;
+using Terraria;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
@@ -76,11 +78,10 @@ namespace Bismuth.Content.NPCs
                 NPC.damage /= 2;
             }
         }
-        public override void OnKill()
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("OrcishFragment"), Main.rand.Next(0, 3));
-            //if (Main.rand.Next(0, 50) == 0)
-            //    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("OrcishCrossbow"));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OrcishFragment>(), 1, 0, 3));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OrcishFragment>(), 50));
         }
     }
 }

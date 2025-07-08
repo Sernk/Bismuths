@@ -1,7 +1,5 @@
 ﻿using Bismuth.Content.Items.Accessories;
-using Bismuth.Content.Items.Materials;
 using Bismuth.Content.Items.Other;
-using Bismuth.Content.Items.Weapons;
 using Bismuth.Content.NPCs;
 using Bismuth.Content.Tiles;
 using Microsoft.Xna.Framework;
@@ -12,15 +10,12 @@ using Terraria;
 using Terraria.GameContent.Generation;
 using Terraria.ID;
 using Terraria.IO;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.WorldBuilding;
 using Bismuth.Content.Walls;
 using Bismuth.Content.Items.Weapons.Melee;
-using Bismuth.Content.Items.Weapons.Ranged;
 using Bismuth.Content.Items.Weapons.Magical;
-using Bismuth.Content.Items.Weapons.Throwing;
 using Bismuth.Content.Items.Weapons.Assassin;
 
 namespace Bismuth.Utilities
@@ -153,32 +148,26 @@ namespace Bismuth.Utilities
             if (!NPC.AnyNPCs(ModContent.NPCType<ImperianConsul>()))
             {
                 NPC.NewNPC(source, (Main.spawnTileX + 6) * 16 + 4, (Main.spawnTileY + 3) * 16, ModContent.NPCType<ImperianConsul>());
-
             }
             if (!NPC.AnyNPCs(ModContent.NPCType<DwarfBlacksmith>()))
             {
                 NPC.NewNPC(source, (Main.spawnTileX - 24) * 16, (Main.spawnTileY + 3) * 16, ModContent.NPCType<DwarfBlacksmith>());
-
             }
             if (!NPC.AnyNPCs(ModContent.NPCType<Beggar>()))
             {
                 NPC.NewNPC(source, (Main.spawnTileX - 43) * 16, (Main.spawnTileY + 3) * 16, ModContent.NPCType<Beggar>());
-
             }
             if (!NPC.AnyNPCs(ModContent.NPCType<Alchemist>()) && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest != 200)
             {
                 NPC.NewNPC(source, (Main.spawnTileX - 61) * 16, (Main.spawnTileY + 4) * 16, ModContent.NPCType<Alchemist>());
-
             }
             if (!NPC.AnyNPCs(ModContent.NPCType<ImperianCommander>()))
             {
                 NPC.NewNPC(source, (Main.spawnTileX + 59) * 16, (Main.spawnTileY + 4) * 16, ModContent.NPCType<ImperianCommander>());
-
             }
             if (!NPC.AnyNPCs(ModContent.NPCType<StrangeOldman>()) && Main.LocalPlayer.GetModPlayer<Quests>().LuceatQuest >= 40 && Main.LocalPlayer.GetModPlayer<Quests>().NewPriestQuest != 100)
             {
                 NPC.NewNPC(source, (Main.spawnTileX + 45) * 16, (Main.spawnTileY - 10) * 16, ModContent.NPCType<StrangeOldman>());
-
             }
             if (!NPC.AnyNPCs(ModContent.NPCType<OldmanPriest>()) && Main.LocalPlayer.GetModPlayer<Quests>().NewPriestQuest == 100)
             {
@@ -197,7 +186,6 @@ namespace Bismuth.Utilities
                     {
 
                         int j = Main.rand.Next(i + 1);
-                        // обменять значения data[j] и data[i]
                         int temp = rand[j];
                         rand[j] = rand[i];
                         rand[i] = temp;
@@ -231,10 +219,6 @@ namespace Bismuth.Utilities
             if (!Main.dayTime)
                 WizardDay = false;
             #endregion
-            #region Red Chest Costil'
-
-
-            #endregion
             #region Crypt
             if (Main.LocalPlayer.GetModPlayer<Quests>().TombstoneQuest == 200 && !CryptIsSpawned)
             {
@@ -252,7 +236,7 @@ namespace Bismuth.Utilities
                     }
                 }
                 int[,] Crypt = new int[,]
-         {
+                {
                        {0, 0, 0, 0, 0, 3, 1, 1, 1, 1, 1, 1, 1, 2, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 1, 6, 4, 4, 4, 4, 4, 5, 1, 0, 0, 0, 0, 0},
                        {0, 3, 1, 1, 1, 1, 4, 7, 0, 0, 0, 8, 4, 1, 1, 1, 1, 2, 0},
@@ -268,7 +252,7 @@ namespace Bismuth.Utilities
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-         };
+                };
                 for (int j = 0; j < Crypt.GetLength(0); j++)
                 {
                     for (int i = 0; i < Crypt.GetLength(1); i++)
@@ -320,7 +304,7 @@ namespace Bismuth.Utilities
                     }
                 }
                 int[,] CryptWall = new int[,]
-       {
+                {
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 3, 1, 1, 1, 2, 2, 3, 0, 0, 0, 0, 0, 0},
@@ -336,7 +320,7 @@ namespace Bismuth.Utilities
                        {0, 2, 3, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 2, 1, 3, 1, 0},
                        {0, 2, 3, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 3, 1, 0},
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-       };
+                };
                 for (int j = 0; j < CryptWall.GetLength(0); j++)
                 {
                     for (int i = 0; i < CryptWall.GetLength(1); i++)
@@ -411,7 +395,6 @@ namespace Bismuth.Utilities
                 Main.tile[WaterTempleX + 32, WaterTempleY + 13].TileFrameX = 54;
                 Main.tile[WaterTempleX + 31, WaterTempleY + 14].TileFrameX = 36;
                 Main.tile[WaterTempleX + 31, WaterTempleY + 13].TileFrameX = 36;
-
             }
             else
             {
@@ -427,7 +410,7 @@ namespace Bismuth.Utilities
                 Main.tile[WaterTempleX + 31, WaterTempleY + 13].TileFrameX = 0;
             }
         }
-        public override void OnWorldLoad()/* tModPorter Suggestion: Also override OnWorldUnload, and mirror your worldgen-sensitive data initialization in PreWorldGen */
+        public override void OnWorldLoad()
         {
             IsTotemActive = true;
             FirstTotemDeactivation = false;
@@ -472,7 +455,6 @@ namespace Bismuth.Utilities
             SunriseX = 0;
             SunriseY = 0;
         }
-
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref double totalWeight)
         {
             int MicroBiomesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
@@ -537,7 +519,6 @@ namespace Bismuth.Utilities
                         if (Main.tile[x, y].TileType == TileID.Gold)
                         {
                             GoldInWorld = true;
-
                         }
                         else
                             PlatinumInWorld = true;
@@ -673,7 +654,7 @@ namespace Bismuth.Utilities
                 BeachEndLeft = x;
                 x = Main.maxTilesX - 1;
                 y = 0;
-                while (!WorldMethods.CheckLiquid(x, y, 255))//ddd
+                while (!WorldMethods.CheckLiquid(x, y, 255))
                     y++;
                 while (!WorldGen.SolidTile(x, y))
                     x--;
@@ -721,7 +702,7 @@ namespace Bismuth.Utilities
                    {9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9},
                    {9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9},
                    {9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9},
-            };
+                };
                 for (int j = 0; j < WaterTempleTile.GetLength(0); j++)
                 {
                     for (int i = 0; i < WaterTempleTile.GetLength(1); i++)
@@ -806,7 +787,7 @@ namespace Bismuth.Utilities
                    {0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0},
                    {0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0},
                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            };
+                };
                 for (int j = 0; j < WaterTempleWall.GetLength(0); j++)
                 {
                     for (int i = 0; i < WaterTempleWall.GetLength(1); i++)
@@ -890,7 +871,7 @@ namespace Bismuth.Utilities
                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                    {0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
                    {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            };
+                };
                 for (int j = 0; j < WaterTempleSlope.GetLength(0); j++)
                 {
                     for (int i = 0; i < WaterTempleSlope.GetLength(1); i++)
@@ -1191,15 +1172,14 @@ namespace Bismuth.Utilities
                 }
                 #endregion
                 #region PeatGeneration
-                for (int k = 0; k < 175; k++)                     //750 is the ore spawn rate. the bigger is the number = more ore spawns
+                for (int k = 0; k < 175; k++)
                 {
                     int Xo = SwampStartX + Main.rand.Next(0, (Main.maxTilesX / 20));
                     int Yo = SwampStartY + Main.rand.Next(0, (Main.maxTilesX / 20));
-                    if (Main.tile[Xo, Yo].TileType == ModContent.TileType<SwampMud>())   //this is the tile where the ore will spawn
+                    if (Main.tile[Xo, Yo].TileType == ModContent.TileType<SwampMud>())
                     {
-
                         {
-                            WorldGen.TileRunner(Xo, Yo, (double)WorldGen.genRand.Next(4, 8), WorldGen.genRand.Next(4, 8), ModContent.TileType<PeatBlock>(), false, 0f, 0f, false, true);  //   5, 10 is how big is the ore veins.    mod.TileType("CustomOreTile") is the custom ore tile,  if u want a vanila ore just do this: TileID.Cobalt, for cobalt spawn
+                            WorldGen.TileRunner(Xo, Yo, (double)WorldGen.genRand.Next(4, 8), WorldGen.genRand.Next(4, 8), ModContent.TileType<PeatBlock>(), false, 0f, 0f, false, true);
                         }
                     }
                 }
@@ -1437,9 +1417,6 @@ namespace Bismuth.Utilities
                     HighestYPoint = FlagTile2Y;
                 if (FlagTile1Y < HighestYPoint)
                     HighestYPoint = FlagTile1Y;
-                //  if (Main.spawnTileY < HighestYPoint)
-                //    HighestYPoint = Main.spawnTileY;
-
                 for (int i = 0; i < 200; i++)
                 {
                     int type;
@@ -1521,7 +1498,6 @@ namespace Bismuth.Utilities
                 }
                 #endregion
             }));
-
             tasks.Insert(MicroBiomesIndex + 1, new PassLegacy("Some more swamp", delegate (GenerationProgress progress, GameConfiguration configuration)
             {
                 #region Cache
@@ -1716,120 +1692,38 @@ namespace Bismuth.Utilities
 
             tasks.Insert(DesertIndex + 1, new PassLegacy("Desert Village", delegate (GenerationProgress progress, GameConfiguration configuration)
             {
-                StartDesertVillageX = 0;
-                StartDesertVillageY = 0;
-                DesertVillageLeftBorderX = 0;
-                DesertVillageLeftBorderY = 0;
-                DesertVillageRightBorderX = 0;
-                DesertVillageRightBorderY = 0;
-                for (int i = 0; i < Main.maxTilesX; i++)
-                {
-                    for (int j = (int)GenVars.worldSurfaceLow; j < Main.maxTilesY; j++)
-                    {
-                        if (!WorldGen.TileEmpty(i, j))
-                        {
-                            break;
-                        }
-                        if (WorldMethods.CheckWall(i, j, WallID.HardenedSand))
-                        {
-                            StartDesertVillageX = i;
-                            StartDesertVillageY = j;
-                            goto Exit;
-                        }
-                    }
-                    /*  while (WorldGen.TileEmpty(StartDesertVillageX, StartDesertVillageY))
-                      {
-                          StartDesertVillageY++;
-                          if (WorldMethods.CheckWall(StartDesertVillageX, StartDesertVillageY, WallID.HardenedSand))
-                              break;
-                      }
-                      if (WorldMethods.CheckWall(StartDesertVillageX, StartDesertVillageY, WallID.HardenedSand))
-                          break;
-                      StartDesertVillageX++;
-                      StartDesertVillageY = (int)WorldGen.worldSurfaceLow;*/
-                }
-            Exit:
-                for (int i = 0; i < Main.maxTilesX; i++)
-                {
-                    for (int j = (int)GenVars.worldSurfaceLow; j < Main.maxTilesY; j++)
-                    {
-                        if (WorldMethods.CheckWall(i, j, WallID.HardenedSand))
-                        {
-                            DesertVillageLeftBorderX = i;
-                            DesertVillageLeftBorderY = j;
-                            goto Exit2;
-                        }
-                    }
-                }
-            Exit2:/*
-                    while (DesertVillageLeftBorderX < Main.maxTilesX)
-                {
-                    while (DesertVillageLeftBorderY < Main.maxTilesY)
-                    {
-                        DesertVillageLeftBorderY++;
-                        if (WorldMethods.CheckWall(DesertVillageLeftBorderX, DesertVillageLeftBorderY, WallID.HardenedSand))
-                            break;
-                    }
-                    if (WorldMethods.CheckWall(DesertVillageLeftBorderX, DesertVillageLeftBorderY, WallID.HardenedSand))
-                        break;
-                    DesertVillageLeftBorderX++;
-                    DesertVillageLeftBorderY = 0;
-                }
-                */
-                for (int i = Main.maxTilesX; i > 0; i--)
-                {
-                    for (int j = (int)GenVars.worldSurfaceLow; j < Main.maxTilesY; j++)
-                    {
-                        if (WorldMethods.CheckWall(i, j, WallID.HardenedSand))
-                        {
-                            DesertVillageRightBorderX = i;
-                            DesertVillageRightBorderY = j;
-                            goto Exit3;
-                        }
-                    }
-                }
-            Exit3:/*
-                while (DesertVillageRightBorderX > 0)
-                {
-                    while (DesertVillageRightBorderY < Main.maxTilesY)
-                    {
-                        DesertVillageRightBorderY++;
-                        Tile tile = Framing.GetTileSafely(DesertVillageRightBorderX, DesertVillageRightBorderY);
-                        if (tile.wall == WallID.HardenedSand)
-                            break;
-                    }
-                    Tile tile1 = Framing.GetTileSafely(DesertVillageRightBorderX, DesertVillageRightBorderY);
-                    if (tile1.wall == WallID.HardenedSand)
-                        break;
-                    DesertVillageRightBorderX--;
-                    DesertVillageRightBorderY = 0;
-                }     */
+                int desertCenterX = (GenVars.desertHiveLeft + GenVars.desertHiveRight) / 2;
+                int desertStartY = (int)GenVars.desertHiveLow;
 
-                TempY = StartDesertVillageY;
-                while (WorldMethods.CheckWall(StartDesertVillageX, StartDesertVillageY, WallID.Sandstone) || WorldMethods.CheckWall(StartDesertVillageX, StartDesertVillageY, WallID.HardenedSand))
-                    StartDesertVillageY--;
-                while (!WorldMethods.CheckTile(StartDesertVillageX, StartDesertVillageY, TileID.Sand))
-                    StartDesertVillageX--;
-                int CenterX = DesertVillageLeftBorderX + ((DesertVillageRightBorderX - DesertVillageLeftBorderX) / 2);
+                while (desertStartY > 0 && !WorldGen.SolidTile(desertCenterX, desertStartY))
+                    desertStartY--;
 
+                int left = desertCenterX;
+                while (left > 0 && WorldGen.InWorld(left, desertStartY) && WorldMethods.CheckTile(left, desertStartY, TileID.Sand))
+                    left--;
+
+                int right = desertCenterX;
+                while (right < Main.maxTilesX && WorldGen.InWorld(right, desertStartY) && WorldMethods.CheckTile(right, desertStartY, TileID.Sand))
+                    right++;
+
+                int center = (left + right) / 2;
+
+                StartDesertVillageX = center;
+                StartDesertVillageY = desertStartY;
+                DesertVillageLeftBorderX = left;
+                DesertVillageRightBorderX = right;
 
                 StartBridgeX = StartDesertVillageX;
                 BridgeY = StartDesertVillageY;
+
                 EndBridgeX = StartBridgeX + 2;
-                while (WorldGen.TileEmpty(EndBridgeX, BridgeY))
+                while (WorldGen.TileEmpty(EndBridgeX, BridgeY) && EndBridgeX < Main.maxTilesX)
                     EndBridgeX++;
                 EndBridgeX--;
-                if (Main.maxTilesX > 8400)
-                {
-                    if (EndBridgeX - StartBridgeX > 100)
-                        IsDesertSuccess = false;
-                }
-                else
-                {
-                    if (EndBridgeX - StartBridgeX > 50)
-                        IsDesertSuccess = false;
-                }
 
+                int bridgeLength = EndBridgeX - StartBridgeX;
+                IsDesertSuccess = bridgeLength <= (Main.maxTilesX > 8400 ? 100 : 50);
+                IsDesertSuccess = true;
             }));
             tasks.Insert(MicroBiomesIndex + 2, new PassLegacy("Desert Village", delegate (GenerationProgress progress, GameConfiguration configuration)
             {
@@ -1945,7 +1839,6 @@ namespace Bismuth.Utilities
                     WorldGen.PlaceTile(EndBridgeX - 3, BridgeY - 2, TileID.Rope);
                     WorldGen.PlaceTile(EndBridgeX - 3, BridgeY - 1, TileID.Rope);
                     WorldGen.PlaceTile(EndBridgeX - 3, BridgeY, TileID.Rope);
-
                     for (int i = 0; i < (EndBridgeX - (StartBridgeX + 5)); i++)
                     {
                         WorldGen.PlaceTile(StartBridgeX + 3 + i, BridgeY - 3, TileID.Rope);
@@ -1981,18 +1874,17 @@ namespace Bismuth.Utilities
                         MainBuildingY--;
                     MainBuildingY -= 22;
                     int n = 0;
-                    for (int i = 0; i < 24; i++)
-                    {
-                        while (!WorldMethods.CheckTile(MainBuildingX + i, MainBuildingY + n, TileID.Sand)) // БАГ NUOVA - discord
-                        {
-                            WorldGen.PlaceTile(MainBuildingX + i, MainBuildingY + n, TileID.Sand);
-                            n++;
-                        }
-                        n = 0;
-                    }
-
+                    //for (int i = 0; i < 24; i++)
+                    //{
+                    //    while (!WorldMethods.CheckTile(MainBuildingX + i, MainBuildingY + n, TileID.Sand))
+                    //    {
+                    //        WorldGen.PlaceTile(MainBuildingX + i, MainBuildingY + n, TileID.Sand);
+                    //        n++;
+                    //    }
+                    //    n = 0;
+                    //}
                     int[,] MainBuildingTile = new int[,]
-                        {  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+                    {  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0},
@@ -2032,8 +1924,7 @@ namespace Bismuth.Utilities
                        {5, 5, 5, 1, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 5, 5, 5, 5, 5, 5, 5},
                        {5, 5, 5, 1, 0, 0, 9, 9, 0, 0, 9, 0, 9, 9, 0, 0, 7, 7, 5, 5, 5, 5, 5, 5, 5},
                        {5, 5, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5, 5},
-                     };
-
+                    };
                     for (int j = 0; j < MainBuildingTile.GetLength(0); j++)
                     {
                         for (int i = 0; i < MainBuildingTile.GetLength(1); i++)
@@ -2118,7 +2009,6 @@ namespace Bismuth.Utilities
                     {
                         GenerateBiomeMainChestLoot(Main.chest[mainchestIndex].item);
                     }
-
                     WorldGen.PlaceWire(MainBuildingX + 17, UnderY + 4);
                     WorldGen.PlaceWire(MainBuildingX + 17, UnderY + 3);
                     WorldGen.PlaceWire(MainBuildingX + 17, UnderY + 2);
@@ -2161,7 +2051,7 @@ namespace Bismuth.Utilities
                         GenerateBiomeUnderChestLoot(Main.chest[underchestIndex].item);
                     }
                     int[,] MainBuildingWall = new int[,]
-                       {  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                    { {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -2189,8 +2079,8 @@ namespace Bismuth.Utilities
                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8, 2, 2, 2, 2, 8, 2, 0},
                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8, 2, 2, 2, 2, 8, 2, 0},
                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 8, 2, 2, 2, 2, 8, 2, 0},
-                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},  };
-
+                      {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},  
+                    };
                     for (int j = 0; j < MainBuildingWall.GetLength(0); j++)
                     {
                         for (int i = 0; i < MainBuildingWall.GetLength(1); i++)
@@ -2237,7 +2127,7 @@ namespace Bismuth.Utilities
                         }
                     }
                     int[,] MainBuildingSlope = new int[,]
-                     {  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0},
+                    {  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -2265,8 +2155,8 @@ namespace Bismuth.Utilities
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, };
-
+                       {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                    };
                     for (int j = 0; j < MainBuildingSlope.GetLength(0); j++)
                     {
                         for (int i = 0; i < MainBuildingSlope.GetLength(1); i++)
@@ -2290,7 +2180,6 @@ namespace Bismuth.Utilities
                                 case 5:
                                     Tile MainBuilding  = Main.tile[MainBuildingX + i, MainBuildingY + j];
                                     MainBuilding.IsHalfBlock = true;
-
                                     break;
                             }
                         }
@@ -2308,7 +2197,7 @@ namespace Bismuth.Utilities
                     while (!WorldGen.SolidTile(StartWellX, StartWellY))
                         StartWellY++;
                     StartWellY -= 7;
-                    int[,] Well = new int[,] //шоб я ещё хоть раз писал структуру одним массивом...Кривое говнище.
+                    int[,] Well = new int[,] 
                         { { 0, 1, 1, 1, 1, 0 },
                          { 3, 10, 3, 3, 10, 3 },
                          { 0, 4, 0, 0, 4, 0 },
@@ -2476,10 +2365,8 @@ namespace Bismuth.Utilities
 
                         GenerateBiomeTailorChestLoot(Main.chest[tailorchestIndex].item);
                     }
-
-
                     int[,] TailorBuildingWall = new int[,]
-                       {
+                    {
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -2496,7 +2383,7 @@ namespace Bismuth.Utilities
                        {0, 0, 2, 1, 1, 1, 1, 1, 1, 2, 0, 0},
                        {3, 3, 2, 1, 1, 1, 1, 1, 1, 2, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-                       };
+                    };
                     for (int j = 0; j < TailorBuildingWall.GetLength(0); j++)
                     {
                         for (int i = 0; i < TailorBuildingWall.GetLength(1); i++)
@@ -2582,19 +2469,19 @@ namespace Bismuth.Utilities
                     TreeStartY -= 12;
                     int[,] TreeTile = new int[,]
                     {
-                   { 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 },
-                   { 0, 0, 1, 1, 0, 1, 1, 0, 0, 0 },
-                   { 0, 1, 1, 1, 1, 1, 0, 0, 0, 0 },
-                   { 0, 1, 0, 1, 1, 1, 0, 1, 1, 1 },
-                   { 0, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
-                   { 0, 0, 0, 0, 1, 1, 1, 0, 0, 0 },
-                   { 0, 0, 0, 0, 0, 1, 1, 1, 0, 0 },
-                   { 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 },
-                   { 0, 0, 0, 0, 0, 0, 1, 1, 1, 0 },
-                   { 0, 0, 0, 0, 0, 0, 1, 1, 0, 0 },
-                   { 0, 0, 0, 0, 0, 0, 1, 1, 0, 0 },
-                   { 0, 0, 0, 0, 0, 1, 1, 1, 1, 0 },
-                   { 0, 0, 0, 0, 0, 2, 2, 2, 2, 0 },
+                       { 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 },
+                       { 0, 0, 1, 1, 0, 1, 1, 0, 0, 0 },
+                       { 0, 1, 1, 1, 1, 1, 0, 0, 0, 0 },
+                       { 0, 1, 0, 1, 1, 1, 0, 1, 1, 1 },
+                       { 0, 0, 0, 0, 1, 1, 1, 1, 0, 0 },
+                       { 0, 0, 0, 0, 1, 1, 1, 0, 0, 0 },
+                       { 0, 0, 0, 0, 0, 1, 1, 1, 0, 0 },
+                       { 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 },
+                       { 0, 0, 0, 0, 0, 0, 1, 1, 1, 0 },
+                       { 0, 0, 0, 0, 0, 0, 1, 1, 0, 0 },
+                       { 0, 0, 0, 0, 0, 0, 1, 1, 0, 0 },
+                       { 0, 0, 0, 0, 0, 1, 1, 1, 1, 0 },
+                       { 0, 0, 0, 0, 0, 2, 2, 2, 2, 0 },
                     };
                     for (int j = 0; j < TreeTile.GetLength(0); j++)
                     {
@@ -2616,20 +2503,20 @@ namespace Bismuth.Utilities
                         }
                     }
                     int[,] TreeSlope = new int[,]
-                       {
-                   { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 },
-                   { 0, 0, 4, 0, 0, 2, 0, 0, 0, 0 },
-                   { 0, 2, 0, 0, 1, 0, 0, 0, 0, 0 },
-                   { 0, 3, 0, 4, 0, 0, 0, 2, 0, 3 },
-                   { 0, 0, 0, 0, 0, 0, 0, 3, 0, 0 },
-                   { 0, 0, 0, 0, 4, 0, 0, 0, 0, 0 },
-                   { 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 },
-                   { 0, 0, 0, 0, 0, 0, 0, 0, 2, 1 },
-                   { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-                   { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-                   { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-                   { 0, 0, 0, 0, 0, 2, 0, 0, 0, 0 },
-                       };
+                    {
+                        { 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 },
+                        { 0, 0, 4, 0, 0, 2, 0, 0, 0, 0 },
+                        { 0, 2, 0, 0, 1, 0, 0, 0, 0, 0 },
+                        { 0, 3, 0, 4, 0, 0, 0, 2, 0, 3 },
+                        { 0, 0, 0, 0, 0, 0, 0, 3, 0, 0 },
+                        { 0, 0, 0, 0, 4, 0, 0, 0, 0, 0 },
+                        { 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 },
+                        { 0, 0, 0, 0, 0, 0, 0, 0, 2, 1 },
+                        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                        { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                        { 0, 0, 0, 0, 0, 2, 0, 0, 0, 0 },
+                    };
                     for (int j = 0; j < TreeSlope.GetLength(0); j++)
                     {
                         for (int i = 0; i < TreeSlope.GetLength(1); i++)
@@ -2664,12 +2551,12 @@ namespace Bismuth.Utilities
                     FireStart1Y -= 4;
                     int[,] Fire1 = new int[,]
                     {
-                   { 3, 0, 0, 0, 3 },
-                   { 4, 5, 5, 5, 4 },
-                   { 2, 0, 0, 0, 2 },
-                   { 2, 0, 0, 0, 2 },
-                   { 1, 1, 1, 1, 1 },
-                   { 6, 6, 6, 6, 6 },
+                        { 3, 0, 0, 0, 3 },
+                        { 4, 5, 5, 5, 4 },
+                        { 2, 0, 0, 0, 2 },
+                        { 2, 0, 0, 0, 2 },
+                        { 1, 1, 1, 1, 1 },
+                        { 6, 6, 6, 6, 6 },
                     };
                     for (int j = 0; j < Fire1.GetLength(0); j++)
                     {
@@ -2720,12 +2607,12 @@ namespace Bismuth.Utilities
                     FireStart2Y -= 4;
                     int[,] Fire2 = new int[,]
                     {
-                   { 3, 0, 0, 0, 3 },
-                   { 4, 5, 5, 5, 4 },
-                   { 2, 0, 0, 0, 2 },
-                   { 2, 0, 0, 0, 2 },
-                   { 1, 1, 1, 1, 1 },
-                   { 6, 6, 6, 6, 6 },
+                        { 3, 0, 0, 0, 3 },
+                        { 4, 5, 5, 5, 4 },
+                        { 2, 0, 0, 0, 2 },
+                        { 2, 0, 0, 0, 2 },
+                        { 1, 1, 1, 1, 1 },
+                        { 6, 6, 6, 6, 6 },
                     };
                     for (int j = 0; j < Fire2.GetLength(0); j++)
                     {
@@ -4621,7 +4508,7 @@ namespace Bismuth.Utilities
                 WorldGen.Place2x2(CastleSpawnX + 33, CastleSpawnY + 33, TileID.CookingPots, 0);
                 WorldGen.Place3x2(CastleSpawnX + 35, CastleSpawnY + 33, TileID.Furnaces);
                 WorldGen.PlaceTile(CastleSpawnX + 19, CastleSpawnY + 26, (ushort)ModContent.TileType<OrcishLamp>());
-                int orcishchest = WorldGen.PlaceChest(CastleSpawnX + 20, CastleSpawnY + 27, (ushort)ModContent.TileType<OrcishChest>(), false, 2);
+                int orcishchest = WorldGen.PlaceChest(CastleSpawnX + 20, CastleSpawnY + 27, (ushort)ModContent.TileType<OrcishChest>(), false, 0);
                 int orcishchestIndex = Chest.FindChest(CastleSpawnX + 20, CastleSpawnY + 26);
                 if (orcishchestIndex != -1)
                 {
@@ -4865,7 +4752,7 @@ namespace Bismuth.Utilities
             chestInventory[OrcishcurrentIndex].SetDefaults(ItemID.SilverCoin); chestInventory[OrcishcurrentIndex].stack = Main.rand.Next(1, 100); OrcishcurrentIndex++;
         }
         #endregion
-        public override void SaveWorldData(TagCompound tag)/* tModPorter Suggestion: Edit tag parameter instead of returning new TagCompound */
+        public override void SaveWorldData(TagCompound tag)
         {
             tag["TotemX"] = TotemX;
             tag["TotemY"] = TotemY;

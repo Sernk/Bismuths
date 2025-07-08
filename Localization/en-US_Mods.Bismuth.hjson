@@ -44,7 +44,12 @@ Tiles: {
 	RuneTable.MapEntry: Rune Table
 	ShadewoodBedNoSettle.MapEntry: Bed
 	SunrisePicture.MapEntry: Picture
-	SwampChest.MapEntry1: Chest
+
+	SwampChest: {
+		MapEntry1: Chest
+		Chat.Death5: was unworthy
+	}
+
 	SwampTreeSaplingTile.MapEntry: Sapling
 	TannedSkin.MapEntry: Tanned Skin
 	Target.MapEntry: Target
@@ -1150,6 +1155,179 @@ Items: {
 		Tooltip: ""
 		DisplayName: Naga Skin
 	}
+
+	Breakwater: {
+		Tooltip: Creates three water slashes in front of the player
+		DisplayName: Breakwater
+		Item.AssassinDamage: assassin damage
+	}
+
+	Angrist: {
+		Item.AssassinDamage: assassin damage
+		DisplayName: Angrist
+		Tooltip: ""
+	}
+
+	ManGosh: {
+		Item.AssassinDamage: assassin damage
+		DisplayName: Man-Gosh
+		Tooltip: +25% block chance holding this weapon in an active slot
+	}
+
+	Misericorde: {
+		Item.AssassinDamage: assassin damage
+		DisplayName: Misericorde
+		Tooltip: 5% chance to kill enemy immediately (doesn't work for bosses)
+	}
+
+	Parazonium: {
+		Item.AssassinDamage: assassin damage
+		DisplayName: Parazonium
+		Tooltip: ""
+	}
+
+	SacrificialDagger: {
+		Item.AssassinDamage: assassin damage
+		DisplayName: Sacrificial Dagger
+		Tooltip: A critical strike deals four times the normal damage
+	}
+
+	Sting: {
+		Item.AssassinDamage: assassin damage
+		DisplayName: Sting
+		Tooltip:
+			'''
+			Maegnas is my name, I am the spider's bane. 
+			Deals doubled damage to orcs and indicates about their proximity
+			'''
+	}
+
+	AssassinItem: {
+		Item.AssassinDamage: assassin damage
+		DisplayName: Assassin Item
+		Tooltip: ""
+	}
+
+	TribalQuiver: {
+		DisplayName: Tribal Quiver
+		Tooltip:
+			'''
+			+5% ranged damage, +10% ranged critical damage 
+			15% chance to shoot one more arrow
+			'''
+	}
+
+	TribalBow: {
+		DisplayName: Tribal Bow
+		Tooltip: ""
+	}
+
+	ThrowingAxe: {
+		DisplayName: Throwing Axe
+		Tooltip: ""
+	}
+
+	WoodenShield: {
+		DisplayName: Wooden Shield
+		Tooltip: +7% damage resistance
+	}
+
+	ShamansStaff: {
+		DisplayName: Shaman's Staff
+		Tooltip:
+			'''
+			Creates sand waves flying in different directions
+			Needs to be charged
+			'''
+	}
+
+	OrcishCrossbow: {
+		Tooltip: ""
+		DisplayName: Orcish Crossbow
+	}
+
+	Stiletto: {
+		Item.AssassinDamage: assassin damage
+		DisplayName: Stiletto
+		Tooltip: Creates doubled slash towards cursor
+	}
+
+	BattleDrum: {
+		DisplayName: Battle Drum
+		Tooltip: Increases max hp by 5 for every living town npc
+	}
+
+	SnakesFang: {
+		Tooltip: Snake appears near you after dealing damage. It will fight for you
+		DisplayName: Snake's Fang
+		Item.AssassinDamage: assassin damage
+	}
+
+	TransmutationAmulet: {
+		Tooltip:
+			'''
+			Buff duration for all potions is increased by 10%
+			Healing potions' cooldown is shortened by 5 seconds
+			You restore 10% of your mana after using any potion
+			'''
+		DisplayName: Transmutation Amulet
+	}
+
+	MirrorOfUndead: {
+		Tooltip: Teleports you to the location of your last death
+		DisplayName: Mirror Of Undead
+	}
+
+	NecromancersRobe: {
+		Tooltip:
+			'''
+			Minion damage is increased by 12%. 
+			Increases your max number of minions
+			'''
+		DisplayName: Necromancer's Robe
+	}
+
+	NecromancersHood: {
+		Tooltip:
+			'''
+			Minion damage is increased by 10%. 
+			Increases your max number of minions
+			'''
+		DisplayName: Necromancer's Hood
+	}
+
+	NecromancersRing: {
+		Tooltip:
+			'''
+			Increases max number of minions by 1 and minion damage by 7% 
+			You get more max mana, mana regeneration and 
+			minion damage for every nearby tombstone.
+			'''
+		DisplayName: Necromancer's Ring
+	}
+
+	MinotaursWaraxe: {
+		DisplayName: Minotaur's Waraxes
+		Tooltip: ""
+	}
+
+	OrcishShield: {
+		DisplayName: Orcish Shield
+		Tooltip:
+			'''
+			Increased thrown damage by 11%
+			The less health you have - the higher your thrown damage and crit
+			'''
+	}
+
+	BansheesHead: {
+		DisplayName: Banshee's Head
+		Tooltip:
+			'''
+			Decreases all nearest enemies' HP 
+			by 10% and sets their defence to 0
+			'''
+	}
 }
 
 Buffs: {
@@ -1912,6 +2090,7 @@ NPCs: {
 	}
 
 	SwampWitchDeath.DisplayName: Swamp Witch Death
+	Snake.DisplayName: Snake
 }
 
 Projectiles: {
@@ -1969,6 +2148,14 @@ Projectiles: {
 	Meteor2.DisplayName: Meteor2
 	Meteor3.DisplayName: Meteor3
 	MeteorBase.DisplayName: Meteor Base
+	PapuanWarriorPunch.DisplayName: Papuan Warrior Punch
+	ThrowingAxeP.DisplayName: Throwing Axe P
+	SandWaveP.DisplayName: Sand Wave P
+	ShamansStaffP.DisplayName: Shamans Staff P
+	StilettoHitboxP.DisplayName: Stiletto Hitbox P
+	StilettoP.DisplayName: Stiletto P
+	SnakeProj.DisplayName: Snake Proj
+	MirrorSkullP.DisplayName: Mirror Skull P
 }
 
 Configs: {
@@ -2388,6 +2575,54 @@ AssassinDamage: {
 		Tooltip: ""
 		DisplayName: Baselard
 		Item.AssassinDamage: assassin damage
+	}
+
+	AssassinItem: {
+		Item.AssassinDamage: assassin damage
+		DisplayName: Assassin Item
+		Tooltip: ""
+	}
+
+	Sting: {
+		Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Sting.Item.AssassinDamage
+		DisplayName: Sting
+		Tooltip: ""
+	}
+
+	SacrificialDagger: {
+		Item.AssassinDamage: Mods.Bismuth.AssassinDamage.SacrificialDagger.Item.AssassinDamage
+		DisplayName: Sacrificial Dagger
+		Tooltip: ""
+	}
+
+	Parazonium: {
+		Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Parazonium.Item.AssassinDamage
+		DisplayName: Parazonium
+		Tooltip: ""
+	}
+
+	Misericorde: {
+		Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Misericorde.Item.AssassinDamage
+		DisplayName: Misericorde
+		Tooltip: ""
+	}
+
+	ManGosh: {
+		Item.AssassinDamage: Mods.Bismuth.AssassinDamage.ManGosh.Item.AssassinDamage
+		DisplayName: Man Gosh
+		Tooltip: ""
+	}
+
+	Breakwater: {
+		Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Breakwater.Item.AssassinDamage
+		DisplayName: Breakwater
+		Tooltip: ""
+	}
+
+	Angrist: {
+		Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Angrist.Item.AssassinDamage
+		DisplayName: Angrist
+		Tooltip: ""
 	}
 }
 

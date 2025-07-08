@@ -13,16 +13,10 @@ namespace Bismuth.Utilities
 {
     public class AssassinItem : ModItem, ILocalizedModType
     {
-        public string LocalizationCategory => "AssassinDamage";
         public override void Load()
         {
             string AssassinDamage = this.GetLocalization("Item.AssassinDamage").Value;
         }
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return false;
-        }
-
         public override void SetDefaults()
         {
             Item.DamageType = ModP.AssassinDamage ?? DamageClass.Generic;
@@ -67,7 +61,6 @@ namespace Bismuth.Utilities
         //  //  return pre;
         //}
 
-           
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             string AssassinDamage = this.GetLocalization("Item.AssassinDamage").Value;

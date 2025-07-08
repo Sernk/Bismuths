@@ -1,19 +1,19 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using Bismuth.Content.Items.Accessories;
+using Bismuth.Content.Items.Weapons.Throwing;
+using Bismuth.Content.Projectiles;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace Bismuth.Content.NPCs
 {
     public class PapuanWarrior : ModNPC
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Papuan Warrior");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Папуас-воин");
-        }
+        private int frame = 0;
+        private double frameCounter = 0.0;
+        private bool attacked = false;
         public override void SetDefaults()
         {
             NPC.width = 40;
@@ -52,14 +52,12 @@ namespace Bismuth.Content.NPCs
                 NPC.velocity.X = 0.0f; NPC.velocity.Y = 5.0f;
             }
         }
-
-        private int frame = 0;
-        private double frameCounter = 0.0;
-        private bool attacked = false;
         public override void FindFrame(int frameHeight)
         {
             if (NPC.velocity.Y != 0.0f)
+            {
                 this.frame = 1;
+            }
             else
             {
                 if (attacked)
@@ -67,7 +65,7 @@ namespace Bismuth.Content.NPCs
                     this.frameCounter++;
                     if (frame == 5)
                     {
-                        Projectile.NewProjectile(NPC.GetSource_FromThis(), new Vector2(NPC.spriteDirection == 1 ? NPC.position.X + NPC.width + 8 : NPC.position.X - 8, NPC.position.Y + 15), Vector2.Zero, Mod.Find<ModProjectile>("PapuanWarriorPunch").Type, 15, 5f);
+                        Projectile.NewProjectile(NPC.GetSource_FromThis(), new Vector2(NPC.spriteDirection == 1 ? NPC.position.X + NPC.width + 8 : NPC.position.X - 8, NPC.position.Y + 15), Vector2.Zero, ModContent.ProjectileType<PapuanWarriorPunch>(), 15, 5f);
                     }
                     if (this.frameCounter >= 40)
                     {
@@ -75,19 +73,22 @@ namespace Bismuth.Content.NPCs
                         this.frame = 0;
                     }
                     else
+                    {
                         frame = (int)frameCounter / 8 + 2;
+                    }
                 }
                 else
                 {
-                        this.frameCounter++;
-                        if (this.frameCounter >= 84)
-                        {
-                            this.frameCounter = 0;
-                            this.frame = 7;
-                        }
-                       else
-                           frame = (int)frameCounter / 6 + 7;                  
-                    
+                    this.frameCounter++;
+                    if (this.frameCounter >= 84)
+                    {
+                        this.frameCounter = 0;
+                        this.frame = 7;
+                    }
+                    else
+                    {
+                        frame = (int)frameCounter / 6 + 7;
+                    }
                 }
             }           
             NPC.frame.Y = this.frame * frameHeight;          
@@ -109,12 +110,10 @@ namespace Bismuth.Content.NPCs
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("PapuanLeg").Type, 1f);
             }
         }
-        public override void OnKill()
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            //if (Main.rand.Next(0, 20) == 0)
-            //    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ThrowingAxe"));
-            //if (Main.rand.Next(0, 20) == 0)
-            //    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WoodenShield")); 
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ThrowingAxe>(), 20));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<WoodenShield>(), 20));
         }
     }
 }

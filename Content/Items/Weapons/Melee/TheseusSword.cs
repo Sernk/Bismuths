@@ -40,7 +40,7 @@ namespace Bismuth.Content.Items.Weapons.Melee
             // Tooltip.SetDefault("Creates eight projectiles flying in different directions after combo of strikes");
             //Tooltip.AddTranslation(GameCulture.Russian, "Создаёт восемь летящих снарядов после серии ударов");
         }
-        bool flag = false;
+        //bool flag = false;
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (player.GetModPlayer<BismuthPlayer>().TheseusCombo == 100)

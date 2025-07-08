@@ -83,14 +83,13 @@ namespace Bismuth.Content.NPCs
         };
         public override void AddShops()
         {
-            var KilledAnyMechBoss = new Condition("KilledAnyMechBoss", () => Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledAnyMechBoss);
+            var KilledAnyMechBoss = new Condition("KilledAnyMechBoss", () => NPC.downedMechBossAny);
             var HardMode = new Condition("KilledAnyMechBoss", () => Main.hardMode);
 
             NPCShop shop = new(Type, "NagaShop");
             shop.Add(ModContent.ItemType<ShellNecklace>());
             shop.Add(ModContent.ItemType<Typhoon>());
             shop.Add(ModContent.ItemType<Breakwater>());
-            //shop.Add(ModContent.ItemType<Whyrlpool>());
             shop.Add(ModContent.ItemType<FuryOfWaters>(), KilledAnyMechBoss);
             shop.Add(ModContent.ItemType<CoatlsWings>(), HardMode);
             shop.Register();

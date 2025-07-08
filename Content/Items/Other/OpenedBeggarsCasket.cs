@@ -30,15 +30,15 @@ namespace Bismuth.Content.Items.Other
             return true;
         }
         public override void RightClick(Player player)
-        {var source = player.GetSource_FromThis();
+        {
+            var source = player.GetSource_FromThis();
             player.GetModPlayer<BismuthPlayer>().CasketCount++;
             player.QuickSpawnItem(source, ModContent.ItemType<DwarvenCoin>(), Main.rand.Next(1, 3));
             player.QuickSpawnItem(source, ModContent.ItemType<PieceOfTabula>());
             if (player.GetModPlayer<BismuthPlayer>().CasketCount == 7)
             {
-
+                player.QuickSpawnItem(source, ModContent.ItemType<RingOfOmnipotence>());
             }
-                //player.QuickSpawnItem(source, ModContent.ItemType<RingOfOmnipotence>());
         }
     }
 }

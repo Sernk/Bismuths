@@ -1,10 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Items.Materials;
+using Microsoft.Xna.Framework;
+using System.IO;
 using Terraria;
 using Terraria.Audio;
-using Terraria.ModLoader;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
-using System.IO;
 using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
@@ -634,9 +636,9 @@ namespace Bismuth.Content.NPCs
         {
             return head ? (bool?)null : false;
         }
-        public override void OnKill()
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            //Item.NewItem((int)NPC.position.X, (int)NPC.position.Y, NPC.width, NPC.height, Mod.Find<ModItem>("SerpentsScale").Type, Main.rand.Next(3, 8));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SerpentsScale>(), 1, 3, 8));
         }
     }
 }

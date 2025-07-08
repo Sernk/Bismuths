@@ -1,27 +1,29 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.BismuthLayerInPlayer;
+using Bismuth.Content.Buffs;
+using Bismuth.Content.Items.Accessories;
+using Bismuth.Content.Items.Armor;
+using Bismuth.Content.Items.Materials;
+using Bismuth.Content.Items.Other;
+using Bismuth.Content.Items.Weapons.Assassin;
+using Bismuth.Content.Items.Weapons.Melee;
+using Bismuth.Content.Items.Weapons.Ranged;
+using Bismuth.Content.NPCs;
+using Bismuth.Content.Projectiles;
+using Bismuth.Content.Tiles;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
 using Terraria.Audio;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.Localization;
-using ReLogic.Graphics;
-using Bismuth.Content.NPCs;
+using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using Bismuth.Content.Buffs;
-using Bismuth.Content.Items.Materials;
-using Bismuth.Content.Projectiles;
-using Bismuth.Content.Items.Other;
-using Bismuth.Content.Items.Accessories;
-using Bismuth.Content.Items.Weapons.Melee;
-using Bismuth.Content.Items.Weapons.Assassin;
-using Bismuth.Content.Items.Weapons.Ranged;
-using Bismuth.Content.Items.Armor;
-using Bismuth.Content.Tiles;
+using static Terraria.ModLoader.PlayerDrawLayer;
 
 namespace Bismuth.Utilities
 {
@@ -35,6 +37,7 @@ namespace Bismuth.Utilities
         int count = 0;
         int fallTime = 0;
         bool canTrigger = false;
+        public Transformation BatLayer;
 
         public static int alphabanshee = 0;
         public static int growbanshee = 1;
@@ -245,8 +248,20 @@ namespace Bismuth.Utilities
                 Player.legs = EquipLoader.GetEquipSlot(Mod, "TheRingOfTheBlood", EquipType.Legs);
             }
         }
+        public override void HideDrawLayers(PlayerDrawSet drawInfo)
+        {
+            if (vampbat)
+            {
+                BatLayer ??= new BatLayer();
+                BatLayer.PreDrawRecursive(ref drawInfo);
+            }
+        }
         public override void ModifyDrawInfo(ref PlayerDrawSet drawInfo)
         {
+            if (vampbat)
+            {
+                BatLayer?.PostDrawRecursive(ref drawInfo);
+            }
             if (IsNaga)
             {
                 drawInfo.hideEntirePlayer = false;
@@ -254,7 +269,6 @@ namespace Bismuth.Utilities
                 drawInfo.hidesBottomSkin = true;
             }
         }
-
         #region ItemsSpecVars
         public float ArrowCharge = 0f;
         public float TheseusCombo = 0f;
@@ -348,6 +362,8 @@ namespace Bismuth.Utilities
         #endregion
         public override void ResetEffects()
         {
+            vampbat = false;
+            BatLayer = null;
             IsEquippedBerserksRing = false;
             IsEquippedAthenasShield = false;
             Charm = 0;

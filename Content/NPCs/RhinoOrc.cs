@@ -1,12 +1,15 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Bismuth.Content.Buffs;
+using Bismuth.Content.Items.Accessories;
+using Bismuth.Content.Items.Weapons.Assassin;
+using Bismuth.Content.Items.Weapons.Melee;
+using Bismuth.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Bismuth.Content.Buffs;
-using System;
+using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
@@ -15,17 +18,14 @@ namespace Bismuth.Content.NPCs
     {
         int tick = 0;
         int currentframe = 0; 
-        int currentphase = 1; // 0 - барабаны, 1 - таран.
+        int currentphase = 1;
         int MoveToX = 0;
         int dir = 0;
-        int firstphasecooldown = 0; // у aiSlyte = 3 поля ai[] используются
+        int firstphasecooldown = 0;
         int secondphaseflag = 0;
         bool getbuff = false;
         public override void SetStaticDefaults()
         {
-            // this.DisplayName.SetDefault("Rhino Orc");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Орк на носороге");
-
             Main.npcFrameCount[NPC.type] = 1;
         }
 
@@ -45,7 +45,6 @@ namespace Bismuth.Content.NPCs
         }
         public override void HitEffect(NPC.HitInfo hit)
         {
-
             if (NPC.life <= 0)
             {
                 for (int k = 0; k < 20; k++)
@@ -83,7 +82,6 @@ namespace Bismuth.Content.NPCs
                 tick = 0;
                 currentframe++;
             }
-
             if (currentphase == 0)
             {
                 for (int i = 0; i < Main.npc.Length; i++)
@@ -107,8 +105,7 @@ namespace Bismuth.Content.NPCs
                 }
             }
             if (currentphase == 1)
-            {
-               
+            {      
                 MoveToX = (int)Main.player[Main.myPlayer].Center.X;
                 NPC.aiStyle = 3;
                 if (secondphaseflag == 0)
@@ -146,7 +143,6 @@ namespace Bismuth.Content.NPCs
         public override bool PreDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             spriteBatch.Draw(ModContent.Request<Texture2D>("Bismuth/Content/NPCs/RhinoOrcActually").Value, new Vector2((int)NPC.position.X, (int)NPC.position.Y) - new Vector2((int)Main.screenPosition.X, (int)Main.screenPosition.Y) + new Vector2(-4, -44), new Rectangle?(new Rectangle(0, currentframe * 94, 116, 94)), drawColor, 0f, Vector2.Zero, 1f, dir == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
-           // spriteBatch.Draw(mod.GetTexture("Projectiles/BreakwaterHitboxP"), npc.position - Main.screenPosition, new Rectangle(0, 0, npc.width, npc.height), drawColor, 0f, Vector2.Zero, 1f, dir == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
             return false;
         }
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
@@ -167,24 +163,13 @@ namespace Bismuth.Content.NPCs
                 dir = -1;
             }
         }
-        //public override void NPCLoot()
-        //{
-        //    BismuthWorld.DownedRhino = true;
-        //    switch (Main.rand.Next(1, 5))
-        //    {
-        //        case 1:
-        //            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BattleDrum"));
-        //            break;
-        //        case 2:
-        //            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BerserkersRing"));
-        //            break;
-        //        case 3:
-        //            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Doomhammer"));
-        //            break;
-        //        case 4:
-        //            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("Stiletto"));
-        //            break;
-        //    }
-        //}
+        public override void OnKill()
+        {
+            BismuthWorld.DownedRhino = true;
+        }
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(ItemDropRule.OneFromOptions(1, ModContent.ItemType<BattleDrum>(), ModContent.ItemType<Doomhammer>(), ModContent.ItemType<Stiletto>()));
+        }
     }
 }

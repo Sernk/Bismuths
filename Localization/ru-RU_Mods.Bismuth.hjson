@@ -44,7 +44,12 @@ Tiles: {
 	RuneTable.MapEntry: Рунический стол
 	ShadewoodBedNoSettle.MapEntry: Кровать
 	SunrisePicture.MapEntry: Картина
-	SwampChest.MapEntry1: Сундук
+
+	SwampChest: {
+		MapEntry1: Сундук
+		Chat.Death5: был недостоин
+	}
+
 	SwampTreeSaplingTile.MapEntry: Саженец
 	TannedSkin.MapEntry: Загорелая кожа
 	Target.MapEntry: Мишень
@@ -1184,6 +1189,188 @@ Items: {
 		// Tooltip: ""
 		// DisplayName: Naga Skin
 	}
+
+	Breakwater: {
+		Tooltip: Создаёт три водных разреза перед игроком
+		DisplayName: Волнорез
+		Item.AssassinDamage: урона головореза
+	}
+
+	Angrist: {
+		Item.AssassinDamage: урона головореза
+		DisplayName: Ангрист
+		// Tooltip: ""
+	}
+
+	ManGosh: {
+		Item.AssassinDamage: урона головореза
+		DisplayName: Мэн-гош
+		Tooltip: +25% к шансу блокирование, пока оружие находится в активном слоте
+	}
+
+	Misericorde: {
+		Item.AssassinDamage: урона головореза
+		DisplayName: Мизерикорд
+		Tooltip: 5% шанс мнгновенно убить врага (не работает против боссов
+	}
+
+	Parazonium: {
+		Item.AssassinDamage: урона головореза
+		DisplayName: Паразониум
+		// Tooltip: ""
+	}
+
+	SacrificialDagger: {
+		Item.AssassinDamage: урона головореза
+		DisplayName: Жертвенный кинжал
+		Tooltip: Критические удары наносят четырехкратный урон
+	}
+
+	Sting: {
+		Item.AssassinDamage: урона головореза
+		DisplayName: Жало
+		Tooltip:
+			'''
+			Маэгнас – моё имя. Я – отрава паука
+			Наносит удвоенный урон оркам и указывает на их близость
+			'''
+	}
+
+	AssassinItem: {
+		Item.AssassinDamage: урона головореза
+		// DisplayName: Assassin Item
+		// Tooltip: ""
+	}
+
+	TribalQuiver: {
+		DisplayName: Племенной колчан
+		Tooltip:
+			'''
+			Увеличивает урон стрелка на 5%, а его шанс критического урона на 10%
+			15% шанс выпустить дополнительную стрелу
+			'''
+	}
+
+	TribalBow: {
+		DisplayName: Племенной лук
+		// Tooltip: ""
+	}
+
+	ThrowingAxe: {
+		DisplayName: Метательный топорик
+		// Tooltip: ""
+	}
+
+	WoodenShield: {
+		DisplayName: Деревянный щит
+		Tooltip: Увеличение поглощения урона на 7%
+	}
+
+	ShamansStaff: {
+		DisplayName: Посох шамана
+		Tooltip:
+			'''
+			Создаёт песчаные волны, летящие в разных направлениях
+			Должен быть заряжен
+			'''
+	}
+
+	OrcishCrossbow: {
+		// Tooltip: ""
+		DisplayName: Орочий арбалет
+	}
+
+	Stiletto: {
+		Item.AssassinDamage: урона головореза
+		DisplayName: Стилет
+		Tooltip: Создаёт двойной разрез в направлении курсора
+	}
+
+	BattleDrum: {
+		DisplayName: Боевые барабаны
+		Tooltip:
+			'''
+			Увеличивает максимальное здоровье на 5 за 
+			каждого заселенного НИПа
+			'''
+	}
+
+	SnakesFang: {
+		Tooltip:
+			'''
+			При атаке противника рядом с игроком появляется 
+			змея, сражающаяся за вас
+			'''
+		DisplayName: Змеиный клык
+		Item.AssassinDamage: урона головореза
+	}
+
+	TransmutationAmulet: {
+		Tooltip:
+			'''
+			Время действия всех зелий увеличено на 15%
+			Кулдаун использования лечебных зелий снижен на 5 секунд
+			Вы восстанавливаете 10% маны после использования любого зелья
+			'''
+		DisplayName: Амулет трансмутации
+	}
+
+	MirrorOfUndead: {
+		Tooltip: Перемещает вас на место последней смерти
+		DisplayName: Зеркало нежити
+	}
+
+	NecromancersRobe: {
+		Tooltip:
+			'''
+			Увеличивает урон прислужников на 12%. 
+			Увеличивает максимальное число прислужников.
+			'''
+		DisplayName: Роба некромантаs
+	}
+
+	NecromancersHood: {
+		Tooltip:
+			'''
+			Увеличивает урон прислужников на 10%. 
+			Увеличивает максимальное число прислужников.
+			'''
+		DisplayName: Капюшон некроманта
+	}
+
+	NecromancersRing: {
+		Tooltip:
+			'''
+			Увеличивает максимальное количество миньонов на 1, а также 
+			урон миньонов на 7%. Вы получаете бонус к мане, регенерации
+			маны и урону миньонов за каждую ближайшую надгробную плиту.
+			'''
+		DisplayName: Кольцо некроманта
+	}
+
+	MinotaursWaraxe: {
+		DisplayName: Боевой топор минотавра
+		// Tooltip: ""
+	}
+
+	OrcishShield: {
+		DisplayName: Орочий щит
+		Tooltip:
+			'''
+			Увеличивает метательный урон на 11%
+			Чем меньше у вас здоровья - тем больше ваш метательный 
+			урон и шанс критического урона
+			'''
+	}
+
+	BansheesHead: {
+		DisplayName: Голова банши
+		Tooltip:
+			'''
+			Уменьшает здоровье ближайших врагов 
+			на 10%, а также снижает их защиту до нуля
+			'''
+	}
 }
 
 Buffs: {
@@ -1946,6 +2133,7 @@ NPCs: {
 	}
 
 	SwampWitchDeath.DisplayName: Болотная ведьма
+	Snake.DisplayName: Змея
 }
 
 Projectiles: {
@@ -2003,6 +2191,14 @@ Projectiles: {
 	// Meteor2.DisplayName: Meteor2
 	// Meteor3.DisplayName: Meteor3
 	// MeteorBase.DisplayName: Meteor Base
+	// PapuanWarriorPunch.DisplayName: Papuan Warrior Punch
+	// ThrowingAxeP.DisplayName: Throwing Axe P
+	// SandWaveP.DisplayName: Sand Wave P
+	// ShamansStaffP.DisplayName: Shamans Staff P
+	// StilettoHitboxP.DisplayName: Stiletto Hitbox P
+	// StilettoP.DisplayName: Stiletto P
+	// SnakeProj.DisplayName: Snake Proj
+	// MirrorSkullP.DisplayName: Mirror Skull P
 }
 
 Configs: {
@@ -2418,6 +2614,54 @@ AssassinDamage: {
 		// Tooltip: ""
 		// DisplayName: Baselard
 		Item.AssassinDamage: урона головореза
+	}
+
+	AssassinItem: {
+		Item.AssassinDamage: урона головореза
+		// DisplayName: Assassin Item
+		// Tooltip: ""
+	}
+
+	Sting: {
+		// Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Sting.Item.AssassinDamage
+		// DisplayName: Sting
+		// Tooltip: ""
+	}
+
+	SacrificialDagger: {
+		// Item.AssassinDamage: Mods.Bismuth.AssassinDamage.SacrificialDagger.Item.AssassinDamage
+		// DisplayName: Sacrificial Dagger
+		// Tooltip: ""
+	}
+
+	Parazonium: {
+		// Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Parazonium.Item.AssassinDamage
+		// DisplayName: Parazonium
+		// Tooltip: ""
+	}
+
+	Misericorde: {
+		// Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Misericorde.Item.AssassinDamage
+		// DisplayName: Misericorde
+		// Tooltip: ""
+	}
+
+	ManGosh: {
+		// Item.AssassinDamage: Mods.Bismuth.AssassinDamage.ManGosh.Item.AssassinDamage
+		// DisplayName: Man Gosh
+		// Tooltip: ""
+	}
+
+	Breakwater: {
+		// Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Breakwater.Item.AssassinDamage
+		// DisplayName: Breakwater
+		// Tooltip: ""
+	}
+
+	Angrist: {
+		// Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Angrist.Item.AssassinDamage
+		// DisplayName: Angrist
+		// Tooltip: ""
 	}
 }
 

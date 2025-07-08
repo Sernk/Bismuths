@@ -1,12 +1,12 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Microsoft.Xna.Framework;
-using Bismuth.Content.Buffs;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using Terraria.Audio;
+﻿using Bismuth.Content.Buffs;
+using Bismuth.Content.Items.Accessories;
 using Bismuth.Utilities;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
@@ -168,10 +168,13 @@ namespace Bismuth.Content.NPCs
                 }
             }
         }
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<BansheesHead>()));
+        }
         public override void OnKill()
         {
-            //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BansheesHead"));
-            //BismuthWorld.downedBanshee = true;
+            BismuthWorld.downedBanshee = true;
             if (Main.netMode == 2)
             {
                 NetMessage.SendData(7, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);

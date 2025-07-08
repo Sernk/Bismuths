@@ -1,18 +1,14 @@
-﻿using Terraria.ID;
-using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Items.Accessories;
+using Bismuth.Content.Items.Weapons.Ranged;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace Bismuth.Content.NPCs
 {
     public class PapuanArcher : ModNPC
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Papuan Archer");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Папуас-стрелок");
-        }
         public override void SetDefaults()
         {
             NPC.width = 24;
@@ -38,12 +34,11 @@ namespace Bismuth.Content.NPCs
         }
         public override void HitEffect(NPC.HitInfo hit)
         {
-
             if (NPC.life <= 0)
             {
                 for (int k = 0; k < 20; k++)
                 {
-                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, 2.5f * hit.HitDirection, -2.5f, 0, default(Color), 0.7f);
+                    Dust.NewDust(NPC.position, NPC.width, NPC.height, 5, 2.5f * hit.HitDirection, -2.5f, 0, default, 0.7f);
                 }
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("PapuanArcherArm").Type, 1f);
                 Gore.NewGore(NPC.GetSource_Death(), NPC.position, NPC.velocity, Mod.Find<ModGore>("PapuanArcherBody").Type, 1f);
@@ -56,12 +51,10 @@ namespace Bismuth.Content.NPCs
         {
             NPC.TargetClosest(true);
         }
-        public override void OnKill()
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            //if (Main.rand.Next(0, 50) == 0)
-            //    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TribalBow"));
-            //if (Main.rand.Next(0, 50) == 0)
-            //    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TribalQuiver")); 
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TribalBow>(), 50));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TribalQuiver>(), 50));
         }
     }
 }

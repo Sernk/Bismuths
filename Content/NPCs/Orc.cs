@@ -1,20 +1,17 @@
-﻿using Terraria.ID;
+﻿using Bismuth.Content.Buffs;
+using Bismuth.Content.Items.Materials;
 using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.Localization;
 using Microsoft.Xna.Framework.Graphics;
-using Bismuth.Content.Buffs;
+using Terraria;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
     public class Orc : ModNPC
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Orc");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Орк");
-        }
         bool getbuff = false;
         public override void SetDefaults()
         {
@@ -77,10 +74,9 @@ namespace Bismuth.Content.NPCs
                 NPC.damage /= 2;
             }
         }
-
-        public override void OnKill()
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("OrcishFragment"), Main.rand.Next(0, 3));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<OrcishFragment>(), 1, 0, 3));
         }
     }
 }

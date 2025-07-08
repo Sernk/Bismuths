@@ -16,7 +16,7 @@ namespace Bismuth.Content.Buffs
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = true;
         }
-        bool flag = false;
+        //bool flag = false;
         public override void Update(Player player, ref int buffIndex)
         {
             player.moveSpeed /= 3;

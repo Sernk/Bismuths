@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.Localization;
-using Bismuth.Utilities;
+﻿using Bismuth.Content.Items.Accessories;
 using Bismuth.Content.Items.Materials;
+using Bismuth.Content.Items.Weapons.Assassin;
+using Bismuth.Utilities;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.Enums;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
@@ -84,9 +87,48 @@ namespace Bismuth.Content.NPCs
             button = Lang.inter[28].Value;
         }
 
-        //public override void AddShops()
+        //public override void AddShops() // заготовка для нового магазина
         //{
+        //    var BMoon = new Condition("BloodMoon", () => Main.bloodMoon);
+        //    var Vplayer = new Condition("IsVampire", () => Main.LocalPlayer.GetModPlayer<BismuthPlayer>().IsVampire);
+        //    var MoonPhaseFull = new Condition("FullMoon", () => Main.GetMoonPhase() == MoonPhase.Full);
+        //    var MoonPhaseThreeQuartersAtLeft = new Condition("ThreeQuartersAtLeftMoon", () => Main.GetMoonPhase() == MoonPhase.ThreeQuartersAtLeft);
+        //    var MoonPhaseHalfAtLeft = new Condition("HalfAtLeftMoon", () => Main.GetMoonPhase() == MoonPhase.HalfAtLeft);
+        //    var MoonPhaseQuarterAtLeft = new Condition("QuarterAtLeftMoon", () => Main.GetMoonPhase() == MoonPhase.QuarterAtLeft);
+        //    var MoonPhaseEmpty = new Condition("EmptyMoon", () => Main.GetMoonPhase() == MoonPhase.Empty);
+        //    var MoonPhaseQuartersAtRight = new Condition("QuarterAtRightMoon", () => Main.GetMoonPhase() == MoonPhase.QuarterAtRight);
+        //    var MoonPhaseHalfAtRight = new Condition("HalfAtRightMoon", () => Main.GetMoonPhase() == MoonPhase.HalfAtRight);
+        //    var MoonPhaseThreeQuartersAtRight = new Condition("ThreeQuartersAtRightMoon", () => Main.GetMoonPhase() == MoonPhase.ThreeQuartersAtRight);
+
         //    NPCShop shop = new(Type, "VampirShop");
+
+        //    shop.Add(ModContent.ItemType<DraculasCover>(), MoonPhaseFull, Vplayer, BMoon);
+        //    shop.Add(ModContent.ItemType<PendantOfBlood>(), MoonPhaseFull, Vplayer, BMoon);
+        //    shop.Add(ModContent.ItemType<MarbleMask>(), MoonPhaseFull, Vplayer, BMoon);
+
+        //    shop.Add(ModContent.ItemType<ManGosh>(), MoonPhaseThreeQuartersAtLeft, Vplayer, BMoon);
+        //    shop.Add(ModContent.ItemType<Misericorde>(), MoonPhaseThreeQuartersAtLeft, Vplayer, BMoon);
+
+        //    shop.Add(ModContent.ItemType<Baselard>(), MoonPhaseHalfAtLeft, Vplayer, BMoon);
+
+        //    shop.Add(ModContent.ItemType<DraculasCover>(), MoonPhaseEmpty, Vplayer, BMoon);
+        //    shop.Add(ModContent.ItemType<PendantOfBlood>(), MoonPhaseEmpty, Vplayer, BMoon);
+        //    shop.Add(ModContent.ItemType<MarbleMask>(), MoonPhaseEmpty, Vplayer, BMoon);
+        //    shop.Add(ModContent.ItemType<ManGosh>(), MoonPhaseEmpty, Vplayer, BMoon);
+        //    shop.Add(ModContent.ItemType<Misericorde>(), MoonPhaseEmpty, Vplayer, BMoon);
+        //    shop.Add(ModContent.ItemType<ManGosh>(), MoonPhaseEmpty, Vplayer, BMoon);
+
+        //    shop.Add(ModContent.ItemType<Baselard>(), MoonPhaseQuartersAtRight, Vplayer, BMoon);
+
+        //    shop.Add(ModContent.ItemType<ManGosh>(), MoonPhaseHalfAtRight, Vplayer, BMoon);
+        //    shop.Add(ModContent.ItemType<Misericorde>(), MoonPhaseHalfAtRight, Vplayer, BMoon);
+
+        //    shop.Add(ModContent.ItemType<MarbleMask>(), MoonPhaseThreeQuartersAtRight, Vplayer, BMoon);
+        //    shop.Add(ModContent.ItemType<PendantOfBlood>(), MoonPhaseThreeQuartersAtRight, Vplayer, BMoon);
+        //    shop.Add(ModContent.ItemType<DraculasCover>(), MoonPhaseThreeQuartersAtRight, Vplayer, BMoon);
+
+        //    shop.Add(ModContent.ItemType<Sanguinem>());
+        //    shop.Register();
         //}
         public override void ModifyActiveShop(string shopName, Item[] items)
         {

@@ -33,7 +33,6 @@ namespace Bismuth.Content.Tiles
             TileID.Sets.GeneralPlacementTiles[Type] = false;
             AdjTiles = new int[] { TileID.Containers };
             AddMapEntry(new Color(233, 211, 123), this.GetLocalization("MapEntry1"), MapChestName);
-            //name.AddTranslation(GameCulture.Russian, "Сундук");
             DustType = 79;
             RegisterItemDrop(ItemID.Chest);
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
@@ -52,9 +51,6 @@ namespace Bismuth.Content.Tiles
             TileObjectData.newTile.LavaDeath = false;
             TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
             TileObjectData.addTile(Type);
-            //name.SetDefault("Sunken Chest");
-            //         name.AddTranslation(GameCulture.Russian, "Затонувший сундук");
-            //         name.AddTranslation(GameCulture.Chinese, "沉没之箱");
         }
 
         public override ushort GetMapOption(int i, int j)
@@ -138,13 +134,17 @@ namespace Bismuth.Content.Tiles
         {
             Chest.DestroyChest(i, j);
         }
-
+        public override void Load()
+        {
+            _ = this.GetLocalization("Chat.Death5").Value; // Ru: был недостоин En: was unworthy
+        }
         public override bool RightClick(int i, int j)
         {
             Player player = Main.LocalPlayer;
+            NetworkText DeathReason5 = NetworkText.FromLiteral(player.name + " " + this.GetLocalization("Chat.Death5").Value);
             if (!player.GetModPlayer<BismuthPlayer>().IsBoSRead)
             {
-                player.KillMe(PlayerDeathReason.ByCustomReason(player.name + Language.GetTextValue("Mods.Bismuth.DeathReason5")), 10000, 1);
+                player.KillMe(PlayerDeathReason.ByCustomReason(DeathReason5), 10000, 1);
                 return false;
             }
             Tile tile = Main.tile[i, j];

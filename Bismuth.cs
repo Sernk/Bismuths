@@ -50,8 +50,8 @@ namespace Bismuth
         public static Texture2D VampireFemaleHeadMap;
 
         public static bool noOffsetUpdating;
-        private static Vector2 tempVector;
-        private static Vector2 prevOffsetGoal;
+        //private static Vector2 tempVector;
+       // private static Vector2 prevOffsetGoal;
         public static Vector2 oldCameraOffset;
         public static Vector2 screenPos;
         public static Vector2 screenPosNoShakes;

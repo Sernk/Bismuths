@@ -1,14 +1,13 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Bismuth.Content.Items.Materials;
 using Bismuth.Content.Projectiles;
+using Bismuth.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Linq;
+using Terraria;
 using Terraria.DataStructures;
-using Bismuth.Utilities;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
@@ -16,11 +15,9 @@ namespace Bismuth.Content.NPCs
     {
         int tick = 0;
         int currentframe = 0;
-        int currentphase = 0; // 0 - летит к игроку, 1 - мана- и лайфстил.
+        int currentphase = 0;
         public override void SetStaticDefaults()
         {
-            // this.DisplayName.SetDefault("Runic Elemental");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Рунический элементаль");
             Main.npcFrameCount[NPC.type] = 10;
             NPCID.Sets.MustAlwaysDraw[NPC.type] = true;
         }
@@ -49,7 +46,7 @@ namespace Bismuth.Content.NPCs
             {
                 dead = true;
                 NPC.immortal = true;
-                NPC.life = 1;            
+                NPC.life = 1;
             }
         }
         public override void AI()
@@ -87,7 +84,7 @@ namespace Bismuth.Content.NPCs
             if (dist < 250f && currentphase == 0 && !player.dead)
                 currentphase = 1;
             if ((dist > 280f || dead) && currentphase == 1)
-            { 
+            {
                 currentframe = 9;
                 currentphase = 0;
             }
@@ -100,7 +97,6 @@ namespace Bismuth.Content.NPCs
             }
             if (currentphase == 1)
             {
-
                 if (player.dead)
                     currentphase = 0;
                 NPC.velocity = Vector2.Zero;
@@ -121,11 +117,10 @@ namespace Bismuth.Content.NPCs
                         Projectile.NewProjectile(NPC.GetSource_FromThis(), player.Center, Vector2.Zero, ModContent.ProjectileType<VampirismEnemy>(), 0, 0f, 0, NPC.whoAmI);
                     }
                 }
-
             }
             UpdateDirection();
         }
-     
+
         public void UpdateDirection()
         {
             if (Main.player[Main.myPlayer].position.X >= NPC.position.X)
@@ -167,9 +162,9 @@ namespace Bismuth.Content.NPCs
         {
             spriteBatch.Draw(ModContent.Request<Texture2D>("Bismuth/Content/NPCs/RunicElementalGlow").Value, NPC.position - Main.screenPosition, new Rectangle?(new Rectangle(0, NPC.frame.Y, 48, 64)), Color.White, NPC.rotation, Vector2.Zero, 1f, NPC.direction == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0.0f);
         }
-        public override void OnKill()
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RuneEssence"));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<RuneEssence>()));
         }
     }
 }

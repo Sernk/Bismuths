@@ -1,12 +1,16 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Bismuth.Content.Items.Armor;
+using Bismuth.Content.Items.Other;
+using Bismuth.Content.Items.Weapons.Magical;
+using Bismuth.Content.Projectiles;
+using Bismuth.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Bismuth.Content.Projectiles;
 using System;
-using Bismuth.Utilities;
+using Terraria;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
@@ -255,29 +259,10 @@ namespace Bismuth.Content.NPCs
                 }
             }
         }
-        /*public override void NPCLoot()
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            switch (Main.rand.Next(1, 3))
-            {
-                case 1:
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ShamansStaff"));
-                    break;
-                case 2:
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EmpathyMirror"));
-                    break;
-            }
-            switch (Main.rand.Next(1, 4))
-            {
-                case 1:
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NomadsHood"));
-                    break;
-                case 2:
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NomadsBoots"));
-                    break;
-                case 3:
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("NomadsJacket"));
-                    break;
-            }
-        }*/
+            npcLoot.Add(ItemDropRule.OneFromOptions(1, ModContent.ItemType<ShamansStaff>(),ModContent.ItemType<EmpathyMirror>()));
+            npcLoot.Add(ItemDropRule.OneFromOptions(1, ModContent.ItemType<NomadsHood>(), ModContent.ItemType<NomadsBoots>(), ModContent.ItemType<NomadsJacket>()));
+        }
     }
 }
