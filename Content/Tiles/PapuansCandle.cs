@@ -1,7 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -22,9 +23,6 @@ namespace Bismuth.Content.Tiles
             DustType = 7;
             Main.tileLighted[Type] = true;
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Candle");
-            //name.AddTranslation(GameCulture.Russian, "Свеча");
             DustType = 79;
             AddMapEntry(new Color(233, 211, 123), CreateMapEntryName());
             TileObjectData.newTile.DrawYOffset = 2;
@@ -57,8 +55,7 @@ namespace Bismuth.Content.Tiles
             {
                 float num2 = (float)Utils.RandomInt(ref seed, -12, 13) * 0.075f;
                 float num3 = (float)Utils.RandomInt(ref seed, -12, 13) * 0.075f;
-                Texture2D flameTexture = ModContent.Request<Texture2D>("Bismuth/Content/Tiles/Flame_1").Value; 
-                Main.spriteBatch.Draw(flameTexture, new Vector2((float)(i * 16 - (int)Main.screenPosition.X) - (float)(((double)width - 16.0) / 2.0) + num2 + 1, (float)(j * 16 - (int)Main.screenPosition.Y + num1) + num3 - 1) + vector2, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(frameX, frameY, width, height)), color, 0.0f, new Vector2(), 1f, SpriteEffects.None, 0.0f);
+                Main.spriteBatch.Draw(TextureAssets.Flames[2].Value, new Vector2((float)(i * 16 - (int)Main.screenPosition.X) - (float)(((double)width - 16.0) / 2.0) + num2, (float)(j * 16 - (int)Main.screenPosition.Y + num1) + num3) + vector2, new Rectangle?(new Rectangle(frameX, frameY, width, height)), color, 0.0f, new Vector2(), 1f, SpriteEffects.None, 0.0f);
             }
         }
     }

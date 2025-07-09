@@ -24,9 +24,6 @@ namespace Bismuth.Content.Tiles
             DustType = 7;
             Main.tileLighted[Type] = true;
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Lamp");
-            //name.AddTranslation(GameCulture.Russian, "Лампа");
             DustType = 79;
             AddMapEntry(new Color(233, 211, 123), CreateMapEntryName());
         }

@@ -7,8 +7,8 @@ Tiles: {
 	AluminiumOre.MapEntry: Aluminium
 	BeggarsCasket.MapEntry: Casket
 	BeggarTent.MapEntry: Beggar's Tent
-	Bone1.MapEntry: Bone1
-	Bone4.MapEntry: Bone4
+	Bone1.MapEntry: ""
+	Bone4.MapEntry: ""
 	BookOfSecrets.MapEntry: Book of Secrets
 	BorealChairNoSettle.MapEntry: Chair
 	BorealTableNoSettle.MapEntry: Chair
@@ -57,6 +57,37 @@ Tiles: {
 	WallCarpet.MapEntry: Wall Carpet
 	WarriorsTombstone.MapEntry: Warriors Tombstone
 	AluminiumBar.MapEntry: Metal Bar
+	amphora3.MapEntry: Dinos
+	amphora2.MapEntry: Olpe
+	amphora1.MapEntry: Amphora
+	BismuthumBar.MapEntry: Metal Bar
+	BismuthumOre.MapEntry: Bismuthum
+	BronzeBar.MapEntry: Metal Bar
+	BorealWoodMirror.MapEntry: Mirror
+	BlueMazeChest.MapEntry1: Maze Chest
+	EbonwoodMirror.MapEntry: Mirror
+	BlueDoorLocked.MapEntry: Blue Door
+	MazeDoorClosed.MapEntry: Door
+	MazeDoorOpen.MapEntry: Door
+	Bone2.MapEntry: ""
+	Bone3.MapEntry: ""
+	HeliosChest.MapEntry1: Helios Chest
+	GreenMazeChest.MapEntry1: Maze Chest
+	GreenDoorLocked.MapEntry: Green Door
+	DugWarriorsTombstone.MapEntry: Warriors Tombstone
+	HeliosDoorClosed.MapEntry: Door
+	HeliosDoorOpen.MapEntry: Door
+	MahoganyMirror.MapEntry: Mirror
+	OrcishBed.MapEntry: Bed
+	OrcishBookcase.MapEntry: Bookcase
+	OrcishClock.MapEntry: Clock
+	OrcishDresser.MapEntry: Dresser
+	OrcishPiano.MapEntry: Piano
+	OrcishSofa.MapEntry: Sofa
+	PalmWoodMirror.MapEntry: Mirror
+	PapuansBathtub.MapEntry: Bathtub
+	PapuansBookcase.MapEntry: Bookcase
+	PapuansCandelabra.MapEntry: Candelabra
 }
 
 Items: {
@@ -1584,6 +1615,126 @@ Items: {
 	WaterAmulet: {
 		DisplayName: Water Amulet
 		Tooltip: Summons an allied water elemental
+	}
+
+	amphora3: {
+		DisplayName: Dinos
+		Tooltip: ""
+	}
+
+	amphora2: {
+		Tooltip: ""
+		DisplayName: Olpe
+	}
+
+	amphora1: {
+		Tooltip: ""
+		DisplayName: Amphora
+	}
+
+	BismuthumBar: {
+		DisplayName: Bismuthum Bar
+		Tooltip: ""
+	}
+
+	BismuthumOre: {
+		DisplayName: Bismuthum Ore
+		Tooltip: ""
+	}
+
+	BronzeBar: {
+		DisplayName: Bronze Bar
+		Tooltip: ""
+	}
+
+	BorealWoodMirror: {
+		Tooltip: ""
+		DisplayName: Boreal Wood Mirror
+	}
+
+	BlueMazeChest: {
+		Tooltip: ""
+		DisplayName: Blue Maze Chest
+	}
+
+	EbonwoodMirror: {
+		DisplayName: Ebonwood Mirror
+		Tooltip: ""
+	}
+
+	HeliosChest: {
+		Tooltip: ""
+		DisplayName: Helios Chest
+	}
+
+	GreenMazeChest: {
+		Tooltip: ""
+		DisplayName: Maze Chest
+	}
+
+	HeliosDoor: {
+		DisplayName: Helios Door
+		Tooltip: ""
+	}
+
+	MahoganyMirror: {
+		Tooltip: ""
+		DisplayName: Mahogany Mirror
+	}
+
+	MazeDoor: {
+		DisplayName: Maze Door
+		Tooltip: ""
+	}
+
+	OrcishBed: {
+		Tooltip: ""
+		DisplayName: Orcish Bed
+	}
+
+	OrcishBookcase: {
+		DisplayName: Orcish Bookcase
+		Tooltip: ""
+	}
+
+	OrcishClock: {
+		DisplayName: Orcish Clock
+		Tooltip: ""
+	}
+
+	OrcishDresser: {
+		DisplayName: Orcish Dresser
+		Tooltip: ""
+	}
+
+	OrcishPiano: {
+		DisplayName: Orcish Piano
+		Tooltip: ""
+	}
+
+	OrcishSofa: {
+		DisplayName: Orcish Sofa
+		Tooltip: ""
+	}
+
+	PalmWoodMirror: {
+		DisplayName: Palm Wood Mirror
+		Tooltip: ""
+	}
+
+	PapuansBathtub: {
+		DisplayName: Papuan's Bathtub
+		Tooltip: ""
+	}
+
+	PapuansBookcase: {
+		DisplayName: Papuan's Bookcase
+		Tooltip: ""
+	}
+
+	PapuansCandelabra: {
+		DisplayName: Papuan's Candelabra
+		Tooltip: ""
 	}
 }
 

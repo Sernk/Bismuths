@@ -1717,7 +1717,7 @@ namespace Bismuth.Utilities
             }
             else
                 DoomhammerTimer = 0;
-            if (Player.inventory[Player.selectedItem].type == ModContent.ItemType<Luceat>() && Player.itemAnimation == 1)
+            if (Player.inventory[Player.selectedItem].type == ModContent.ItemType<Content.Items.Other.Luceat>() && Player.itemAnimation == 1)
             {
 
                 for (int k = 0; k < 80; k++)

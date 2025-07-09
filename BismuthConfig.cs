@@ -15,6 +15,5 @@ namespace Bismuth
         //[Label("Blacksmith Forging Volume")]
         [LabelKey("$Mods.Bismuth.Config.AllowHealthBuffsTogether2")]
         public float BlacksmithForgingVolume;
-
     }
 }

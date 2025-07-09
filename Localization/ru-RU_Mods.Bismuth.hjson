@@ -7,8 +7,8 @@ Tiles: {
 	AluminiumOre.MapEntry: Алюминиевая руда
 	BeggarsCasket.MapEntry: Шкатулка
 	BeggarTent.MapEntry: Палатка бедняка
-	// Bone1.MapEntry: Bone1
-	// Bone4.MapEntry: Bone4
+	Bone1.MapEntry: ""
+	Bone4.MapEntry: ""
 	BookOfSecrets.MapEntry: Книга секретов
 	BorealChairNoSettle.MapEntry: Стул
 	BorealTableNoSettle.MapEntry: Стул
@@ -57,6 +57,37 @@ Tiles: {
 	WallCarpet.MapEntry: Настенный ковер
 	WarriorsTombstone.MapEntry: Могила воина
 	AluminiumBar.MapEntry: Металлический слиток
+	amphora3.MapEntry: Динос
+	amphora2.MapEntry: Ольпа
+	amphora1.MapEntry: Амфора
+	BismuthumBar.MapEntry: Металлический слиток
+	BismuthumOre.MapEntry: Висмут
+	BronzeBar.MapEntry: Металлический слиток
+	BorealWoodMirror.MapEntry: Зеркало
+	BlueMazeChest.MapEntry1: Сундук лабиринта
+	EbonwoodMirror.MapEntry: Зеркало
+	BlueDoorLocked.MapEntry: Синяя дверь
+	MazeDoorClosed.MapEntry: Дверь
+	MazeDoorOpen.MapEntry: Дверь
+	Bone2.MapEntry: ""
+	Bone3.MapEntry: ""
+	HeliosChest.MapEntry1: Сундук Гелиоса
+	GreenMazeChest.MapEntry1: Зеленая дверь
+	GreenDoorLocked.MapEntry: Зеленая дверь
+	DugWarriorsTombstone.MapEntry: Могила воина
+	HeliosDoorClosed.MapEntry: Дверь
+	HeliosDoorOpen.MapEntry: Дверь
+	MahoganyMirror.MapEntry: Зеркало
+	OrcishBed.MapEntry: Кровать
+	OrcishBookcase.MapEntry: Книжный шкаф
+	OrcishClock.MapEntry: Напольные часы
+	OrcishDresser.MapEntry: Тумбочка
+	OrcishPiano.MapEntry: Пианино
+	OrcishSofa.MapEntry: Диван
+	PalmWoodMirror.MapEntry: P
+	PapuansBathtub.MapEntry: Ванна
+	PapuansBookcase.MapEntry: Книжный шкаф
+	PapuansCandelabra.MapEntry: Канделябра
 }
 
 Items: {
@@ -1643,6 +1674,126 @@ Items: {
 	WaterAmulet: {
 		DisplayName: Амулет воды
 		Tooltip: Призывает водяного элементаля, сражающегося за вас
+	}
+
+	amphora3: {
+		DisplayName: Динос
+		// Tooltip: ""
+	}
+
+	amphora2: {
+		// Tooltip: ""
+		DisplayName: Ольпа
+	}
+
+	amphora1: {
+		// Tooltip: ""
+		DisplayName: Амфора
+	}
+
+	BismuthumBar: {
+		DisplayName: Висмутовый слиток
+		// Tooltip: ""
+	}
+
+	BismuthumOre: {
+		DisplayName: Висмутовая руда
+		// Tooltip: ""
+	}
+
+	BronzeBar: {
+		DisplayName: Бронзовый слиток
+		// Tooltip: ""
+	}
+
+	BorealWoodMirror: {
+		// Tooltip: ""
+		DisplayName: Зеркало из северной древесины
+	}
+
+	BlueMazeChest: {
+		// Tooltip: ""
+		DisplayName: Сундук лабиринта
+	}
+
+	EbonwoodMirror: {
+		DisplayName: Зеркало из черной древесины
+		// Tooltip: ""
+	}
+
+	HeliosChest: {
+		// Tooltip: ""
+		DisplayName: Сундук Гелиоса
+	}
+
+	GreenMazeChest: {
+		// Tooltip: ""
+		DisplayName: Сундук лабиринта
+	}
+
+	HeliosDoor: {
+		DisplayName: Дверь Гелиоса
+		// Tooltip: ""
+	}
+
+	MahoganyMirror: {
+		// Tooltip: ""
+		DisplayName: Зеркало из красной древесины
+	}
+
+	MazeDoor: {
+		DisplayName: Дверь лабиринта
+		// Tooltip: ""
+	}
+
+	OrcishBed: {
+		// Tooltip: ""
+		DisplayName: Орочья кровать
+	}
+
+	OrcishBookcase: {
+		DisplayName: Орочий книжный шкаф
+		// Tooltip: ""
+	}
+
+	OrcishClock: {
+		DisplayName: Орочьи часы
+		// Tooltip: ""
+	}
+
+	OrcishDresser: {
+		DisplayName: Орочья тумбочка
+		// Tooltip: ""
+	}
+
+	OrcishPiano: {
+		DisplayName: Орочье пианино
+		// Tooltip: ""
+	}
+
+	OrcishSofa: {
+		DisplayName: Орочий диван
+		// Tooltip: ""
+	}
+
+	PalmWoodMirror: {
+		DisplayName: Зеркало из пальмовой древесины
+		// Tooltip: ""
+	}
+
+	PapuansBathtub: {
+		DisplayName: Ванна папуасов
+		// Tooltip: ""
+	}
+
+	PapuansBookcase: {
+		DisplayName: Книжный шкаф папуасов
+		// Tooltip: ""
+	}
+
+	PapuansCandelabra: {
+		DisplayName: Канделябр папуасов
+		// Tooltip: ""
 	}
 }
 
