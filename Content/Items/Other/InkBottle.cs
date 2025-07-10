@@ -1,24 +1,15 @@
-﻿using Terraria.Audio;
-using Terraria.ID;
-using System;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Terraria.Localization;
+﻿using Bismuth.Content.Projectiles;
 using Bismuth.Utilities;
-using Bismuth.Content.Projectiles;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Other
 {
     public class InkBottle : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Ink Bottle");
-            // Tooltip.SetDefault("Creates ink stain at your cursor's position\nRight click to teleport at stain position");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Флакон чернил");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Создаёт чернильной пятно на месте курсора\nНажмите правую кнопку мыши, чтобы переместиться к пятну");
-        }
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -71,8 +62,7 @@ namespace Bismuth.Content.Items.Other
                 player.GetModPlayer<BismuthPlayer>().InkPos = Main.MouseWorld;
                 Projectile.NewProjectile(player.GetSource_FromThis(), Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<InkStainP>(), 0, 0f);
             }
-            return UseItem(player);
+            return base.UseItem(player);
         }
     }
 }
-

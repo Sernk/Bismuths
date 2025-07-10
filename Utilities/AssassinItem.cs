@@ -52,7 +52,7 @@ namespace Bismuth.Utilities
         {
             if (pre == -1)
                 return false;
-            return PrefixChance(pre, rand);
+            return base.PrefixChance(pre, rand);
         }
         //public override int ChoosePrefix(UnifiedRandom rand)
         //{

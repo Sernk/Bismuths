@@ -68,7 +68,7 @@ namespace Bismuth.Content.Projectiles
                 Main.spriteBatch.Draw(ModContent.Request<Texture2D>("Bismuth/Content/Projectiles/BreakwaterP").Value, Main.LocalPlayer.RotatedRelativePoint(Main.LocalPlayer.MountedCenter, true) - Main.screenPosition + (Main.LocalPlayer.direction == 1 ? new Vector2(20f, -26f) : new Vector2(10f, 30f)), new Rectangle?(new Rectangle(0, Projectile.frame * 60, 128, 60)), Color.White, (float)Math.Atan2((double)(Projectile.velocity.Y), (double)(Projectile.velocity.X)), Vector2.Zero, 1f, Main.LocalPlayer.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipVertically, 0f);
             else
                 Main.spriteBatch.Draw(ModContent.Request<Texture2D>("Bismuth/Content/Projectiles/BreakwaterP").Value, Main.LocalPlayer.RotatedRelativePoint(Main.LocalPlayer.MountedCenter, true) - Main.screenPosition + (Main.LocalPlayer.direction == 1 ? new Vector2(0f, -30f) : new Vector2(0f, 30f)), new Rectangle?(new Rectangle(0, Projectile.frame * 60, 128, 60)), Color.White, (float)Math.Atan2((double)(Projectile.velocity.Y), (double)(Projectile.velocity.X)), Vector2.Zero, 1f, Main.LocalPlayer.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipVertically, 0f);
-            return PreDraw(ref lightColor);
+            return base.PreDraw(ref lightColor);
         }
     }
 }

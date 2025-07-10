@@ -17,15 +17,14 @@ namespace Bismuth.Utilities
 
         public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
         {
-            if (item.DamageType == AssassinDamage)
+            if (item.DamageType == AssassinDamage || item.DamageType == DamageClass.Generic)
             {
                 damage *= assassinDamage;
             }
         }
-
         public override void ModifyWeaponCrit(Item item, ref float crit)
         {
-            if (item.DamageType == AssassinDamage) 
+            if (item.DamageType == AssassinDamage || item.DamageType == DamageClass.Generic) 
             {
                 crit += assassinCrit;
             }

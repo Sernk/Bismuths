@@ -18,18 +18,11 @@ namespace Bismuth.Content.Items.Weapons.Assassin
             Item.useAnimation = 14;
             Item.knockBack = 2;
             Item.value = Item.sellPrice(0, 0, 12, 0);
-            Item.rare = 0;
+            Item.rare = ItemRarityID.White;
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
-            Item.useStyle = 1;
+            Item.useStyle = ItemUseStyleID.Swing;
         }
-
-        //public override void SetStaticDefaults()
-        //{
-        //    DisplayName.SetDefault("Aluminium Blade");
-        //    DisplayName.AddTranslation(GameCulture.Russian, "Алюминиевый клинок");
-        //}
-
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

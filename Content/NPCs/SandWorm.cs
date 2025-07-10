@@ -27,7 +27,7 @@ namespace Bismuth.Content.NPCs
 
         public override void Init()
         {
-            Init();
+            base.Init();
             head = true;
         }
         public override void HitEffect(NPC.HitInfo hit)
@@ -122,7 +122,7 @@ namespace Bismuth.Content.NPCs
         }
         public override void Init()
         {
-            Init();
+            base.Init();
             tail = true;
         }
     }

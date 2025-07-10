@@ -1,22 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Projectiles;
+using Bismuth.Utilities;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Bismuth.Utilities;
 using Terraria.ModLoader;
-using Bismuth.Content.Projectiles;
 
 namespace Bismuth.Content.Items.Weapons.Assassin
 {
     public class Breakwater : AssassinItem
     {
-        public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Breakwater");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Волнорез");
-            //Tooltip.SetDefault("Creates three water slashes in front of the player");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Создаёт три водных разреза перед игроком");
-        }
         public override void SetDefaults()
         {
             Item.damage = 24;
@@ -45,7 +38,7 @@ namespace Bismuth.Content.Items.Weapons.Assassin
                 Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, new Vector2(5.656f * player.direction, -5.656f), ModContent.ProjectileType<BreakwaterHitboxP>(), Item.damage, 4f, Main.player[Main.myPlayer].whoAmI, 0f);
                 SoundEngine.PlaySound(SoundID.Item1);
             }
-            return UseItem(player);
+            return base.UseItem(player);
         }
     }
 }

@@ -1,28 +1,18 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Projectiles;
+using Bismuth.Utilities;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Bismuth.Utilities;
-using Bismuth.Content.Projectiles;
 
 namespace Bismuth.Content.Items.Weapons.Ranged
 {
     public class BowOfOdysseus : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Bow Of Odysseus");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Лук Одиссея");
-            // Tooltip.SetDefault("<right> to charge the bow with three powerfull arrows");
-           // Tooltip.AddTranslation(GameCulture.Russian, "<right> чтобы зарядить лук тремя мощными стрелами");
-        }
-
         public override void SetDefaults()
         {                  
-            //   item.UseSound = SoundID.Item1;
             Item.damage = 21;
             Item.knockBack = 4f;
             Item.noMelee = true;
@@ -39,12 +29,10 @@ namespace Bismuth.Content.Items.Weapons.Ranged
             Item.shoot = AmmoID.Arrow;
             Item.useAmmo = AmmoID.Arrow;
         }
-
         public override bool AltFunctionUse(Player player)
         {
             return true;
         }
-
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 speed, int type, int damage, float knockback)
         {
             var bPlayer = player.GetModPlayer<BismuthPlayer>();
@@ -70,7 +58,6 @@ namespace Bismuth.Content.Items.Weapons.Ranged
             }
             return false;
         }
-
         public override bool CanUseItem(Player player)
         {
             var bPlayer = player.GetModPlayer<BismuthPlayer>();
@@ -109,7 +96,7 @@ namespace Bismuth.Content.Items.Weapons.Ranged
                 }
 
             }
-            return CanUseItem(player);
+            return base.CanUseItem(player);
         }
     }
 }

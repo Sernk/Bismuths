@@ -1969,6 +1969,56 @@ Items: {
 		DisplayName: Toad Gun
 		Tooltip: ""
 	}
+
+	GalvornBow: {
+		Tooltip: ""
+		DisplayName: Galvorn Bow
+	}
+
+	BronzeBow: {
+		Tooltip: ""
+		DisplayName: Bronze Bow
+	}
+
+	BismuthumCrossbow: {
+		Tooltip: ""
+		DisplayName: Bismuthum Crossbow
+	}
+
+	AluminiumBow: {
+		Tooltip: ""
+		DisplayName: Aluminium Bow
+	}
+
+	GrannyGun: {
+		DisplayName: Granny Gun
+		Tooltip: Older than your Granny
+	}
+
+	Heat: {
+		DisplayName: Heat
+		Tooltip: Wooden arrows ignite enemies
+	}
+
+	UniversalCarbine: {
+		DisplayName: Universal Carbine
+		Tooltip: Arrows? Bullets? Doesn't matter
+	}
+
+	AdamantiteJavelin: {
+		DisplayName: Adamantite Javelin
+		Tooltip: ""
+	}
+
+	ChlorophyteJavelin: {
+		DisplayName: Chlorophyte Javelin
+		Tooltip: ""
+	}
+
+	CobaltJavelin: {
+		DisplayName: Cobalt Javelin
+		Tooltip: ""
+	}
 }
 
 Buffs: {
@@ -2844,6 +2894,10 @@ Projectiles: {
 	SolarBall.DisplayName: Solar Ball
 	SolarWave.DisplayName: Solar Wave
 	ToadGunP.DisplayName: Toad Gun P
+	HeatArrow.DisplayName: Heat Arrow
+	AdamantiteJavelinP.DisplayName: Adamantite Javelin P
+	ChlorophyteJavelinP.DisplayName: Chlorophyte Javelin P
+	CobaltJavelinP.DisplayName: Cobalt Javelin P
 }
 
 Configs: {

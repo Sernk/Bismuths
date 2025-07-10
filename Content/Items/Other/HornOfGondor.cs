@@ -1,22 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Buffs;
 using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
 using Terraria.Audio;
-using Bismuth.Content.Buffs;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Other
 {
     public class HornOfGondor : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Battle Horn");
-            // Tooltip.SetDefault("Use to raise your battle spirit");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Боевой рог");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Повышает ваш боевой дух");
-        }
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -35,7 +25,7 @@ namespace Bismuth.Content.Items.Other
         public override bool? UseItem(Player player)
         {
             player.AddBuff(ModContent.BuffType<FightingSpirit>(), 5400);
-            return UseItem(player);
+            return base.UseItem(player);
         }
         public override void HoldItem(Player player)
         {

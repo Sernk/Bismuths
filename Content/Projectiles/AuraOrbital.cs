@@ -1,20 +1,13 @@
-﻿using System;
+﻿using Bismuth.Content.Buffs;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Bismuth.Content.Buffs;
 
 namespace Bismuth.Content.Projectiles
 {
     public class AuraOrbital : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Aura Orbital");
-            //DisplayName.AddTranslation(GameCulture.Russian, "");
-        }
         public bool isspawnedone = false;
         public override void SetDefaults()
         {
@@ -34,7 +27,7 @@ namespace Bismuth.Content.Projectiles
         {
             if (Main.LocalPlayer.FindBuffIndex(ModContent.BuffType<MagiciansAura>()) == -1)
                 Projectile.Kill();
-            return PreAI();
+            return base.PreAI();
         }
         public override void AI()
         {           

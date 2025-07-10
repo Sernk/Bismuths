@@ -17,8 +17,6 @@ namespace Bismuth.Content.NPCs
     {
         public override void SetStaticDefaults()
         {
-            // this.DisplayName.SetDefault("Minotaur");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Минотавр");
             Main.npcFrameCount[NPC.type] = 1;
             NPCID.Sets.MustAlwaysDraw[NPC.type] = true;
         }
@@ -222,7 +220,7 @@ namespace Bismuth.Content.NPCs
         {
             if ((currentphase == 5 || currentphase == 1) && NPC.velocity.X == 0.0f)
                 ChoosePhase();
-            return PreAI();
+            return base.PreAI();
         }
         public void ChoosePhase()
         {

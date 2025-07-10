@@ -31,18 +31,12 @@ namespace Bismuth.Content.Items.Weapons.Throwing
             Item.noUseGraphic = true;
         }
 
-        public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Throwing Axe");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Метательный топорик");
-        }
-
         const int max_count = 1;
 
         public override bool CanUseItem(Player player)
         {
             if (Main.projectile.Where(p => p.type == ModContent.ProjectileType<ThrowingAxeP>() && p.owner == Item.playerIndexTheItemIsReservedFor && p.active == true).Count() < max_count)
-                return CanUseItem(player);
+                return base.CanUseItem(player);
             return false;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 speed, int type, int damage, float knockback)

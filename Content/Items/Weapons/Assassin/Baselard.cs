@@ -1,10 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Projectiles;
+using Bismuth.Utilities;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Bismuth.Utilities;
 using Terraria.ModLoader;
-using Bismuth.Content.Projectiles;
 
 namespace Bismuth.Content.Items.Weapons.Assassin
 {
@@ -17,10 +17,6 @@ namespace Bismuth.Content.Items.Weapons.Assassin
             //Tooltip.SetDefault("<right> to use as throwing weapon");
             //Tooltip.AddTranslation(GameCulture.Russian, "<right> чтобы использовать как метательное оружие");
         }
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return true;
-        }
         public override void SetDefaults()
         {
             Item.damage = 20;
@@ -29,8 +25,6 @@ namespace Bismuth.Content.Items.Weapons.Assassin
             Item.useTime = 14;
             Item.knockBack = 3f;
             Item.scale = 1f;
-           /* item.width = 32;
-            item.height = 32;*/
             Item.rare = 5;
             Item.value = Item.buyPrice(0, 5, 0, 0);
             Item.noMelee = true;          

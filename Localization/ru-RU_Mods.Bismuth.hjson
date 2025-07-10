@@ -2028,6 +2028,56 @@ Items: {
 		DisplayName: Жабья пушка
 		// Tooltip: ""
 	}
+
+	GalvornBow: {
+		// Tooltip: ""
+		DisplayName: Галворновый лук
+	}
+
+	BronzeBow: {
+		// Tooltip: ""
+		DisplayName: Бронзовый лук
+	}
+
+	BismuthumCrossbow: {
+		// Tooltip: ""
+		DisplayName: Висмутовый арбалет
+	}
+
+	AluminiumBow: {
+		// Tooltip: ""
+		DisplayName: Алюминиевый лук
+	}
+
+	GrannyGun: {
+		DisplayName: Пушка-бабушка
+		Tooltip: Старее, чем твоя бабушка
+	}
+
+	Heat: {
+		DisplayName: Зной
+		Tooltip: Деревянные стрелы поджигают врагов
+	}
+
+	UniversalCarbine: {
+		DisplayName: Универсальный карабин
+		Tooltip: Стрелы? Пули? Не имеет значения
+	}
+
+	AdamantiteJavelin: {
+		DisplayName: Адамантиевый дротик
+		// Tooltip: ""
+	}
+
+	ChlorophyteJavelin: {
+		DisplayName: Хлорофитовый дротик
+		// Tooltip: ""
+	}
+
+	CobaltJavelin: {
+		DisplayName: Кобальтовый дротик
+		// Tooltip: ""
+	}
 }
 
 Buffs: {
@@ -2903,6 +2953,10 @@ Projectiles: {
 	// SolarBall.DisplayName: Solar Ball
 	// SolarWave.DisplayName: Solar Wave
 	// ToadGunP.DisplayName: Toad Gun P
+	// HeatArrow.DisplayName: Heat Arrow
+	// AdamantiteJavelinP.DisplayName: Adamantite Javelin P
+	// ChlorophyteJavelinP.DisplayName: Chlorophyte Javelin P
+	// CobaltJavelinP.DisplayName: Cobalt Javelin P
 }
 
 Configs: {

@@ -1,9 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Utilities;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Items.Weapons.Melee
 {
@@ -30,15 +29,7 @@ namespace Bismuth.Content.Items.Weapons.Melee
         public override void UseItemHitbox(Player player, ref Rectangle hitbox, ref bool noHitbox)
         { 
             player.GetModPlayer<BismuthPlayer>().NarsilHitbox = hitbox;
-            UseItemHitbox(player, ref hitbox, ref noHitbox);
-        }
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Narsil");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Нарсил");
-            // Tooltip.SetDefault("Is able to reflect projectiles");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Способен отражать снаряды");
-
+            base.UseItemHitbox(player, ref hitbox, ref noHitbox);
         }
     }
 }

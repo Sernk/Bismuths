@@ -1,23 +1,14 @@
-﻿using Terraria.ID;
-using System;
-using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Terraria.Localization;
+﻿using Bismuth.Content.Projectiles;
 using Bismuth.Utilities;
-using Bismuth.Content.Projectiles;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Other
 {
     public class MirrorOfUndead : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Mirror Of Undead");
-            //Tooltip.SetDefault("Teleports you to the location of your last death");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Зеркало нежити");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Перемещает вас на место последней смерти");
-        }
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -41,7 +32,7 @@ namespace Bismuth.Content.Items.Other
                 player.noFallDmg = true;
                 player.GetModPlayer<BismuthPlayer>().cursepts++;
             }
-            return UseItem(player);
+            return base.UseItem(player);
         }
         public override void HoldItem(Player player)
         {

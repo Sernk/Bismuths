@@ -15,38 +15,31 @@ namespace Bismuth.Content.Items.Weapons.Throwing
         public override void SetDefaults()
         {
 
-            Item.damage = 20;           //this is the item damage
-            Item.DamageType = DamageClass.Throwing;             //this make the item do throwing damage
+            Item.damage = 20;
+            Item.DamageType = DamageClass.Throwing;
             Item.noMelee = true;
             Item.width = 20;
             Item.height = 20;
-            Item.useTime = 22;       //this is how fast you use the item
-            Item.useAnimation = 22;   //this is how fast the animation when the item is used
+            Item.useTime = 22; 
+            Item.useAnimation = 22;  
             Item.knockBack = 6;
             Item.value = Item.buyPrice(0, 5, 0, 0);
             Item.rare = 4;
             Item.UseSound = SoundID.Item1;
-            Item.autoReuse = true;       //this make the item auto reuse
-            Item.shoot = ModContent.ProjectileType<TyphoonP>();  //javelin projectile (поставь продж обратно)
-            Item.shootSpeed = 20.5f;     //projectile speed
+            Item.autoReuse = true;
+            Item.shoot = ModContent.ProjectileType<TyphoonP>();  
+            Item.shootSpeed = 20.5f;
             Item.useTurn = true;
-            Item.useStyle = 1;  // Анимация использования на персонаже
-            Item.noUseGraphic = true; // Скрывает ли графику "взмаха"           
+            Item.useStyle = 1;
+            Item.noUseGraphic = true;
         }
-        
-        public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Typhoon");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Тайфун");
-            // Tooltip.SetDefault("Creates water flower after dealing damage");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Создаёт водный цветок после нанесения урона");
-        }
+
         const int max_count = 1;
 
         public override bool CanUseItem(Player player)
         {
             if (Main.projectile.Where(p => p.type == ModContent.ProjectileType<TyphoonP>() && p.owner == Item.playerIndexTheItemIsReservedFor && p.active == true).Count() < max_count)
-                return CanUseItem(player);
+                return base.CanUseItem(player);
             return false;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
