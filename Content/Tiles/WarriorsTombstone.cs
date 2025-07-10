@@ -62,13 +62,13 @@ namespace Bismuth.Content.Tiles
         {
             if (Main.LocalPlayer.GetModPlayer<Quests>().TombstoneQuest == 0)
                 return false;
-            return base.CanKillTile(i, j, ref blockDamaged);
+            return CanKillTile(i, j, ref blockDamaged);
         }
         public override bool CanExplode(int i, int j)
         {
             if (Main.LocalPlayer.GetModPlayer<Quests>().TombstoneQuest == 0)
                 return false;
-            return base.CanExplode(i, j);
+            return CanExplode(i, j);
         }
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {

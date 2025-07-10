@@ -30,7 +30,7 @@ namespace Bismuth.Content.Items.Weapons.Melee
         public override void UseItemHitbox(Player player, ref Rectangle hitbox, ref bool noHitbox)
         { 
             player.GetModPlayer<BismuthPlayer>().NarsilHitbox = hitbox;
-            base.UseItemHitbox(player, ref hitbox, ref noHitbox);
+            UseItemHitbox(player, ref hitbox, ref noHitbox);
         }
         public override void SetStaticDefaults()
         {

@@ -45,7 +45,7 @@ namespace Bismuth.Content.Items.Weapons.Assassin
                 Projectile.NewProjectile(player.GetSource_FromThis(), player.Center, new Vector2(5.656f * player.direction, -5.656f), ModContent.ProjectileType<BreakwaterHitboxP>(), Item.damage, 4f, Main.player[Main.myPlayer].whoAmI, 0f);
                 SoundEngine.PlaySound(SoundID.Item1);
             }
-            return base.UseItem(player);
+            return UseItem(player);
         }
     }
 }

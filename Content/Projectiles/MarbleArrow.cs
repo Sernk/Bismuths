@@ -17,11 +17,11 @@ namespace Bismuth.Content.Projectiles
         }
         public override void SetDefaults()
         {
-            base.Projectile.width = (base.Projectile.height = 14);
-            base.Projectile.arrow = true;
-            base.Projectile.friendly = true;
-            base.Projectile.penetrate = 1;
-            base.Projectile.aiStyle = 1;
+            Projectile.width = (Projectile.height = 14);
+            Projectile.arrow = true;
+            Projectile.friendly = true;
+            Projectile.penetrate = 1;
+            Projectile.aiStyle = 1;
         }
         public override void AI()
         {

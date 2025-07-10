@@ -35,7 +35,7 @@ namespace Bismuth.Content.Items.Other
         public override bool? UseItem(Player player)
         {
             player.AddBuff(ModContent.BuffType<FightingSpirit>(), 5400);
-            return base.UseItem(player);
+            return UseItem(player);
         }
         public override void HoldItem(Player player)
         {

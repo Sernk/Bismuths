@@ -38,7 +38,7 @@ namespace Bismuth.Content.Items.Other
             if(player.itemAnimation == 1)
                 Projectile.NewProjectile(player.GetSource_FromThis(), player.position + new Vector2(-6f, -70f), Vector2.Zero, ModContent.ProjectileType<PhoenixP>(), 0, 0f, player.whoAmI);
             player.AddBuff(ModContent.BuffType<PhoenixBlessing>(), 600);
-            return base.UseItem(player);
+            return UseItem(player);
         }
         public override void HoldItem(Player player)
         {

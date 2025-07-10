@@ -109,7 +109,7 @@ namespace Bismuth.Content.Items.Weapons.Ranged
                 }
 
             }
-            return base.CanUseItem(player);
+            return CanUseItem(player);
         }
     }
 }

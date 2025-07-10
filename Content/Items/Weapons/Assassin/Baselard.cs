@@ -44,7 +44,7 @@ namespace Bismuth.Content.Items.Weapons.Assassin
         }
         public override bool? UseItem(Player player)
         {
-            return base.UseItem(player);
+            return UseItem(player);
         }
         public override bool CanUseItem(Player player)
         {
@@ -65,7 +65,7 @@ namespace Bismuth.Content.Items.Weapons.Assassin
                 Item.noUseGraphic = false;
                 Item.scale = 1f;
             }
-            return base.CanUseItem(player);
+            return CanUseItem(player);
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

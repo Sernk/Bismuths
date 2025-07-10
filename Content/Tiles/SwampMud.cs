@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Tiles
@@ -10,13 +9,11 @@ namespace Bismuth.Content.Tiles
         public override void SetStaticDefaults()
         {
             Main.tileSolid[Type] = true;
-            //this.SetModTree(new SwampTreeTile())/* tModPorter Note: Removed. Assign GrowsOnTileId to this tile type in ModTree.SetStaticDefaults instead */;
             Main.tileMerge[Type][ModContent.TileType<SwampMud>()] = true;
             Main.tileBlendAll[Type] = true;
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;
             AddMapEntry(new Color(65, 89, 60));
-           // HitSound = SoundID.Item;
         }
         public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int alternate = 0, int random = -1, int direction = -1)
         {
@@ -56,11 +53,5 @@ namespace Bismuth.Content.Tiles
                     break;
             }
         }
-        //public override int SaplingGrowthType(ref int style)/* tModPorter Note: Removed. Use ModTree.SaplingGrowthType */
-        //{
-        //    style = 0;
-        //    return ModContent.TileType<SwampTreeSaplingTile>();        
-        //}
-
     }
 }

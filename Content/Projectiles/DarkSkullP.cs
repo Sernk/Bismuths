@@ -53,7 +53,7 @@ namespace Bismuth.Content.Projectiles
                 Projectile.velocity += perp / 30;
             else
                 Projectile.velocity -= perp / 30;
-            Projectile.rotation = (float)Math.Atan2((double)base.Projectile.velocity.Y, (double)base.Projectile.velocity.X) + 1.57f;
+            Projectile.rotation = (float)Math.Atan2((double)Projectile.velocity.Y, (double)Projectile.velocity.X) + 1.57f;
             // if(projectile.ai[0] == 0f)
             //     projectile.Navigate()
             CreateDust();

@@ -84,10 +84,20 @@ Tiles: {
 	OrcishDresser.MapEntry: Тумбочка
 	OrcishPiano.MapEntry: Пианино
 	OrcishSofa.MapEntry: Диван
-	PalmWoodMirror.MapEntry: P
+	PalmWoodMirror.MapEntry: Зеркало
 	PapuansBathtub.MapEntry: Ванна
 	PapuansBookcase.MapEntry: Книжный шкаф
 	PapuansCandelabra.MapEntry: Канделябра
+	PapuansChandelier.MapEntry: Люстра
+	PapuansClock.MapEntry: Напольные часы
+	PapuansDresser.MapEntry: Тумбочка
+	PapuansPiano.MapEntry: Пианино
+	PapuansSink.MapEntry: Раковина
+	PearlwoodMirror.MapEntry: Зеркало
+	RedMazeChest.MapEntry1: Сундук лабиринта
+	ShadewoodMirror.MapEntry: Зеркало
+	WoodenMirror.MapEntry: Зеркало
+	RedDoorLocked.MapEntry: Дверь
 }
 
 Items: {
@@ -1795,6 +1805,229 @@ Items: {
 		DisplayName: Канделябр папуасов
 		// Tooltip: ""
 	}
+
+	PapuansDresser: {
+		DisplayName: Тумбочка папуасов
+		// Tooltip: ""
+	}
+
+	PapuansClock: {
+		// Tooltip: ""
+		DisplayName: Часы папуасов
+	}
+
+	PapuansChandelier: {
+		// Tooltip: ""
+		DisplayName: Люстра папуасов
+	}
+
+	PapuansPiano: {
+		DisplayName: Пианино папуасов
+		// Tooltip: ""
+	}
+
+	PapuansSink: {
+		DisplayName: Раковина папуасов
+		// Tooltip: ""
+	}
+
+	PearlwoodMirror: {
+		DisplayName: Зеркало из жемчужной древесины
+		// Tooltip: ""
+	}
+
+	RedMazeChest: {
+		DisplayName: Сундук лабиринта
+		// Tooltip: ""
+	}
+
+	ShadewoodMirror: {
+		DisplayName: Зеркало из темной древесины
+		// Tooltip: ""
+	}
+
+	SwampMud: {
+		DisplayName: Болотная грязь
+		// Tooltip: ""
+	}
+
+	WoodenMirror: {
+		DisplayName: Деревянное зеркало
+		// Tooltip: ""
+	}
+
+	AluminiumAxe: {
+		DisplayName: Алюминиевый боевой топор
+		// Tooltip: ""
+	}
+
+	AluminiumHammer: {
+		DisplayName: Алюминиевый молот
+		// Tooltip: ""
+	}
+
+	AluminiumPickaxe: {
+		DisplayName: Алюминиевая кирка
+		// Tooltip: ""
+	}
+
+	BismuthumDrill: {
+		DisplayName: Висмутовая дрель
+		// Tooltip: ""
+	}
+
+	BismuthumPickaxe: {
+		DisplayName: Висмутовая кирка
+		// Tooltip: ""
+	}
+
+	BismuthumSaw: {
+		DisplayName: Висмутовая пила
+		// Tooltip: ""
+	}
+
+	BronzeAxe: {
+		DisplayName: Бронзовый топор
+		// Tooltip: ""
+	}
+
+	BronzeHammer: {
+		DisplayName: Бронзовый молот
+		// Tooltip: ""
+	}
+
+	BronzePickaxe: {
+		DisplayName: Бронзовая кирка
+		// Tooltip: ""
+	}
+
+	GalvornPickaxe: {
+		DisplayName: Галворновая кирка
+		// Tooltip: ""
+	}
+
+	GalvornWaraxe: {
+		DisplayName: Галворновый боевой топор
+		// Tooltip: ""
+	}
+
+	GalvornWarhammer: {
+		DisplayName: Галворновый боевой молот
+		// Tooltip: ""
+	}
+
+	JaguarsHamaxe: {
+		DisplayName: Боевой молот ягуара
+		// Tooltip: ""
+	}
+
+	JaguarsPickaxe: {
+		DisplayName: Кирка ягуара
+		// Tooltip: ""
+	}
+
+	PrometheusFire: {
+		Tooltip: Бесконечный источник факелов
+		DisplayName: Огонь Прометея
+	}
+
+	AluminiumBlade: {
+		Item.AssassinDamage: урона головореза
+		// Tooltip: ""
+		DisplayName: Алюминиевый клинок
+	}
+
+	Prominence: {
+		Item.AssassinDamage: урона головореза
+		// Tooltip: ""
+		DisplayName: Протуберанец
+	}
+
+	SoulEater: {
+		Item.AssassinDamage: урона головореза
+		Tooltip:
+			'''
+			При атаке врага рядом с игроком появляются неупокоенные 
+			души, увеличивающие урон, но медленно понижающие здоровье
+			'''
+		DisplayName: Душегуб
+	}
+
+	Whirlpool: {
+		Item.AssassinDamage: урона головореза
+		DisplayName: Водоворот
+		Tooltip: Создаёт вращающийся вихрь вокруг игрока
+	}
+
+	MoonlightStaff: {
+		// Tooltip: ""
+		DisplayName: Посох лунного света
+	}
+
+	HarpOfOrpheus: {
+		// Tooltip: ""
+		DisplayName: Арфа Одиссея
+	}
+
+	GalvornStaff: {
+		Tooltip: Создаёт зеленые снаряды, падающие с неба
+		DisplayName: Галворновый посох
+	}
+
+	BismuthumGlove: {
+		// Tooltip: ""
+		DisplayName: Висмутовая перчатка
+	}
+
+	RainOfTears: {
+		DisplayName: Дождь слёз
+		Tooltip: Создаёт слёзы, падающие с неба
+	}
+
+	BismuthumSword: {
+		DisplayName: Висмутовый меч
+		// Tooltip: ""
+	}
+
+	BronzeSword: {
+		DisplayName: Бронзовый меч
+		// Tooltip: ""
+	}
+
+	DwarvenBattleAxe: {
+		DisplayName: Гномий боевой топор
+		// Tooltip: ""
+	}
+
+	GalvornBlade: {
+		DisplayName: Галворновый клинок
+		// Tooltip: ""
+	}
+
+	OrcishSword: {
+		DisplayName: Орочий меч
+		// Tooltip: ""
+	}
+
+	RunicBlade: {
+		DisplayName: Рунический клинок
+		// Tooltip: ""
+	}
+
+	SharkHalberd: {
+		DisplayName: Акулья алебарда
+		// Tooltip: ""
+	}
+
+	SolarWind: {
+		DisplayName: Солнечный ветер
+		Tooltip: <right> для вызова солнечного шторма
+	}
+
+	ToadGun: {
+		DisplayName: Жабья пушка
+		// Tooltip: ""
+	}
 }
 
 Buffs: {
@@ -2657,6 +2890,19 @@ Projectiles: {
 	// SolarBlast.DisplayName: Solar Blast
 	// MeuRansHookP.DisplayName: Meu Rans Hook P
 	// QuicksilverMirrorP.DisplayName: Quicksilver Mirror P
+	// BismuthumDrillP.DisplayName: Bismuthum Drill P
+	// BismuthumSawP.DisplayName: Bismuthum Saw P
+	// ProminenceP.DisplayName: Prominence P
+	// WhirlpoolP.DisplayName: Whirlpool P
+	// BismuthumGloveP.DisplayName: Bismuthum Glove P
+	// GalvornStaffP.DisplayName: Galvorn Staff P
+	// MoonlightStaffP.DisplayName: Moonlight Staff P
+	// RainOfTearsP.DisplayName: Rain Of Tears P
+	// RunicBladeP.DisplayName: Runic Blade P
+	// Marker.DisplayName: Marker
+	// SolarBall.DisplayName: Solar Ball
+	// SolarWave.DisplayName: Solar Wave
+	// ToadGunP.DisplayName: Toad Gun P
 }
 
 Configs: {
@@ -2673,8 +2919,6 @@ Config: {
 	AllowHealthBuffsTogether2: Blacksmith Forging Volume
 	// AllowHealthBuffsTogetherTooltip2: ""
 }
-
-// UI.ExampleResource: Mods.Bismuth.UI.ExampleResource
 
 Keybinds: {
 	// "Activate Second Skill.DisplayName": Activate  Second  Skill
@@ -3067,62 +3311,6 @@ BismuthPlayerSystem: {
 
 DamageClasses.AssasinDamageType.DisplayName: урона головореза
 
-AssassinDamage: {
-	Baselard: {
-		// Tooltip: ""
-		// DisplayName: Baselard
-		Item.AssassinDamage: урона головореза
-	}
-
-	AssassinItem: {
-		Item.AssassinDamage: урона головореза
-		// DisplayName: Assassin Item
-		// Tooltip: ""
-	}
-
-	Sting: {
-		// Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Sting.Item.AssassinDamage
-		// DisplayName: Sting
-		// Tooltip: ""
-	}
-
-	SacrificialDagger: {
-		// Item.AssassinDamage: Mods.Bismuth.AssassinDamage.SacrificialDagger.Item.AssassinDamage
-		// DisplayName: Sacrificial Dagger
-		// Tooltip: ""
-	}
-
-	Parazonium: {
-		// Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Parazonium.Item.AssassinDamage
-		// DisplayName: Parazonium
-		// Tooltip: ""
-	}
-
-	Misericorde: {
-		// Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Misericorde.Item.AssassinDamage
-		// DisplayName: Misericorde
-		// Tooltip: ""
-	}
-
-	ManGosh: {
-		// Item.AssassinDamage: Mods.Bismuth.AssassinDamage.ManGosh.Item.AssassinDamage
-		// DisplayName: Man Gosh
-		// Tooltip: ""
-	}
-
-	Breakwater: {
-		// Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Breakwater.Item.AssassinDamage
-		// DisplayName: Breakwater
-		// Tooltip: ""
-	}
-
-	Angrist: {
-		// Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Angrist.Item.AssassinDamage
-		// DisplayName: Angrist
-		// Tooltip: ""
-	}
-}
-
 DiceGameSystem: {
 	DiceGame: {
 		DiceGame: {
@@ -3339,19 +3527,6 @@ CoinSystem: {
 			GalvornRecipe: Рецепт Галворна
 			PoisonRecipe: Рецепт яда
 			PanaceaRecipe: Рецепт панацеи
-		}
-	}
-
-	LocalizationSystem: {
-		CoinSystem: {
-			// DwarvenCoin: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.DwarvenCoin
-			// Ocrea: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.Ocrea
-			// ImperianHelmet: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.ImperianHelmet
-			// Lorica: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.Lorica
-			// AetherRecipe: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.AetherRecipe
-			// GalvornRecipe: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.GalvornRecipe
-			// PoisonRecipe: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.PoisonRecipe
-			// PanaceaRecipe: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.PanaceaRecipe
 		}
 	}
 }

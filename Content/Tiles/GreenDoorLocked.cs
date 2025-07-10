@@ -36,14 +36,10 @@ namespace Bismuth.Content.Tiles
             TileObjectData.newAlternate.Origin = new Point16(0, 2);
             TileObjectData.addAlternate(0);
             TileObjectData.addTile(Type);
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Door");
-            //name.AddTranslation(GameCulture.Russian, "Дверь");
             AddMapEntry(Color.Green, CreateMapEntryName());
             TileID.Sets.DisableSmartCursor[Type] = true;
             DustType = 46;                  
         }
-
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
             num = 1;

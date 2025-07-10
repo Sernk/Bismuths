@@ -71,7 +71,7 @@ namespace Bismuth.Content.Items.Other
                 player.GetModPlayer<BismuthPlayer>().InkPos = Main.MouseWorld;
                 Projectile.NewProjectile(player.GetSource_FromThis(), Main.MouseWorld, Vector2.Zero, ModContent.ProjectileType<InkStainP>(), 0, 0f);
             }
-            return base.UseItem(player);
+            return UseItem(player);
         }
     }
 }

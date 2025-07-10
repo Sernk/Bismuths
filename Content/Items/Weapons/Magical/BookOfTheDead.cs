@@ -1,10 +1,9 @@
-﻿using Bismuth.Utilities;
+﻿using Bismuth.Content.NPCs;
+using Bismuth.Utilities;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Bismuth.Content.NPCs;
 
 namespace Bismuth.Content.Items.Weapons.Magical
 {

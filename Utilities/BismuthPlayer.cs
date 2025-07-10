@@ -3564,7 +3564,7 @@ namespace Bismuth.Utilities
             }
             #endregion
             #endregion
-            return base.CanConsumeAmmo(weapon, ammo);
+            return CanConsumeAmmo(weapon, ammo);
         }
         public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
         {
@@ -4458,14 +4458,14 @@ namespace Bismuth.Utilities
                     }
                 }
             }
-            return base.CanBeHitByProjectile(proj);
+            return CanBeHitByProjectile(proj);
         }
-        public override bool? CanHitNPCWithItem(Item item, NPC target)
-        {
-            if (item.type == ModContent.ItemType<TheBladeOfWoe>() && target.townNPC && target.aiStyle != -1)
-                return true;
-            return base.CanHitNPCWithItem(item, target);
-        }
+        //public override bool? CanHitNPCWithItem(Item item, NPC target)
+        //{
+        //    if (item.type == ModContent.ItemType<TheBladeOfWoe>() && target.townNPC && target.aiStyle != -1)
+        //        return true;
+        //    return CanHitNPCWithItem(item, target);
+        //}
         #region skills
         #region warrior's skills
         //skill1

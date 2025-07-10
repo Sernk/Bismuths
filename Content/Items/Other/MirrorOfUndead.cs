@@ -41,7 +41,7 @@ namespace Bismuth.Content.Items.Other
                 player.noFallDmg = true;
                 player.GetModPlayer<BismuthPlayer>().cursepts++;
             }
-            return base.UseItem(player);
+            return UseItem(player);
         }
         public override void HoldItem(Player player)
         {

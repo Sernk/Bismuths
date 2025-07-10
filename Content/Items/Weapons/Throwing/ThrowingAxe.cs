@@ -42,7 +42,7 @@ namespace Bismuth.Content.Items.Weapons.Throwing
         public override bool CanUseItem(Player player)
         {
             if (Main.projectile.Where(p => p.type == ModContent.ProjectileType<ThrowingAxeP>() && p.owner == Item.playerIndexTheItemIsReservedFor && p.active == true).Count() < max_count)
-                return base.CanUseItem(player);
+                return CanUseItem(player);
             return false;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 speed, int type, int damage, float knockback)

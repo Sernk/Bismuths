@@ -41,7 +41,7 @@ namespace Bismuth.Content.Projectiles
             Projectile.NewProjectile(s, Projectile.position, new Vector2(-4.242640f * (float)Math.Sin(Math.PI / 15.8 + (3 * Math.PI / 4)), -4.242640f * (float)Math.Cos(Math.PI / 15.8 + (3 * Math.PI / 4))), ModContent.ProjectileType<TyphoonP2>(), 8, 4f, Projectile.owner);
             Projectile.NewProjectile(s, Projectile.position, new Vector2(-4.242640f * (float)Math.Sin(Math.PI / 15.8 - (3 * Math.PI / 4)), -4.242640f * (float)Math.Cos(Math.PI / 15.8 - (3 * Math.PI / 4))), ModContent.ProjectileType<TyphoonP2>(), 8, 4f, Projectile.owner);
             Projectile.NewProjectile(s, Projectile.position, new Vector2(-4.242640f * (float)Math.Sin(Math.PI / 15.8 + Math.PI), -4.242640f * (float)Math.Cos(Math.PI / 15.8 + Math.PI)), ModContent.ProjectileType<TyphoonP2>(), 8, 4f, Projectile.owner);
-            base.OnHitNPC(target, hit, damageDone);
+            OnHitNPC(target, hit, damageDone);
         }
     }
 }

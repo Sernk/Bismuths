@@ -53,7 +53,7 @@ namespace Bismuth.Content.Projectiles
             if (!player.GetModPlayer<BismuthPlayer>().OrbitalAlive)
                 Projectile.Kill();
 
-            base.AI();
+            AI();
         }
     }
 }

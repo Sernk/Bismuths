@@ -11,7 +11,7 @@ using Bismuth.Content.Items;
 
 namespace Bismuth.Utilities
 {
-    public class AssassinItem : ModItem, ILocalizedModType
+    public class AssassinItem : ModItem
     {
         public override void Load()
         {
@@ -52,7 +52,7 @@ namespace Bismuth.Utilities
         {
             if (pre == -1)
                 return false;
-            return base.PrefixChance(pre, rand);
+            return PrefixChance(pre, rand);
         }
         //public override int ChoosePrefix(UnifiedRandom rand)
         //{

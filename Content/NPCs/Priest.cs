@@ -8,7 +8,6 @@ using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
@@ -40,12 +39,6 @@ namespace Bismuth.Content.NPCs
             string PriestAnsv_6 = this.GetLocalization("Chat.PriestAnsv_6").Value; // Ru: Я хочу зарядить косу En: I'd like to charge scythe
             string PriestAnsv_7 = this.GetLocalization("Chat.PriestAnsv_7").Value; // Ru: Ты зарядил её? En: Did you charge it?
         }
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Priest");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Священник");
-        }
-
         public override void SetDefaults()
         {
             NPC.townNPC = true;

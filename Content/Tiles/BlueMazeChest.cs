@@ -8,7 +8,6 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Bismuth.Utilities;
 using Bismuth.Content.Items.Other;
 
 namespace Bismuth.Content.Tiles
@@ -139,94 +138,88 @@ namespace Bismuth.Content.Tiles
         public override bool RightClick(int i, int j)
         {
             Player player = Main.LocalPlayer;
-            if (BismuthWorld.OrcishInvasionStage == 0 && BismuthWorld.downedSkeletron)
+
+            for (int num66 = 0; num66 < 58; num66++)
             {
-                BismuthWorld.CallOrcishInvasion();
-            }
-            if (BismuthWorld.OrcishInvasionStage == 2)
-            {
-                for (int num66 = 0; num66 < 58; num66++)
+                if (player.inventory[num66].type == ModContent.ItemType<BlueKey>() && player.inventory[num66].stack > 0)
                 {
-                    if (player.inventory[num66].type == ModContent.ItemType<BlueKey>() && player.inventory[num66].stack > 0)
+                    Tile tile = Main.tile[i, j];
+                    Main.mouseRightRelease = false;
+                    int left = i;
+                    int top = j;
+                    if (tile.TileFrameX % 36 != 0)
                     {
-                        Tile tile = Main.tile[i, j];
-                        Main.mouseRightRelease = false;
-                        int left = i;
-                        int top = j;
-                        if (tile.TileFrameX % 36 != 0)
-                        {
-                            left--;
-                        }
+                        left--;
+                    }
 
-                        if (tile.TileFrameY != 0)
-                        {
-                            top--;
-                        }
+                    if (tile.TileFrameY != 0)
+                    {
+                        top--;
+                    }
 
-                        player.CloseSign();
-                        player.SetTalkNPC(-1);
-                        Main.npcChatCornerItem = 0;
-                        Main.npcChatText = "";
-                        if (Main.editChest)
-                        {
-                            SoundEngine.PlaySound(SoundID.MenuTick);
-                            Main.editChest = false;
-                            Main.npcChatText = string.Empty;
-                        }
+                    player.CloseSign();
+                    player.SetTalkNPC(-1);
+                    Main.npcChatCornerItem = 0;
+                    Main.npcChatText = "";
+                    if (Main.editChest)
+                    {
+                        SoundEngine.PlaySound(SoundID.MenuTick);
+                        Main.editChest = false;
+                        Main.npcChatText = string.Empty;
+                    }
 
-                        if (player.editedChestName)
-                        {
-                            NetMessage.SendData(MessageID.SyncPlayerChest, -1, -1, NetworkText.FromLiteral(Main.chest[player.chest].name), player.chest, 1f);
-                            player.editedChestName = false;
-                        }
+                    if (player.editedChestName)
+                    {
+                        NetMessage.SendData(MessageID.SyncPlayerChest, -1, -1, NetworkText.FromLiteral(Main.chest[player.chest].name), player.chest, 1f);
+                        player.editedChestName = false;
+                    }
 
-                        bool isLocked = Chest.IsLocked(left, top);
-                        if (Main.netMode == NetmodeID.MultiplayerClient && !isLocked)
+                    bool isLocked = Chest.IsLocked(left, top);
+                    if (Main.netMode == NetmodeID.MultiplayerClient && !isLocked)
+                    {
+                        if (left == player.chestX && top == player.chestY && player.chest != -1)
                         {
-                            if (left == player.chestX && top == player.chestY && player.chest != -1)
+                            player.chest = -1;
+                            Recipe.FindRecipes();
+                            SoundEngine.PlaySound(SoundID.MenuClose);
+                        }
+                        else
+                        {
+                            NetMessage.SendData(MessageID.RequestChestOpen, -1, -1, null, left, top);
+                            Main.stackSplit = 600;
+                        }
+                    }
+                    else
+                    {
+                        if (isLocked)
+                        {
+                            int key = ModContent.ItemType<Key>();
+                            if (player.HasItemInInventoryOrOpenVoidBag(key) && Chest.Unlock(left, top) && player.ConsumeItem(key, includeVoidBag: true))
                             {
-                                player.chest = -1;
-                                Recipe.FindRecipes();
-                                SoundEngine.PlaySound(SoundID.MenuClose);
-                            }
-                            else
-                            {
-                                NetMessage.SendData(MessageID.RequestChestOpen, -1, -1, null, left, top);
-                                Main.stackSplit = 600;
+                                if (Main.netMode == NetmodeID.MultiplayerClient)
+                                {
+                                    NetMessage.SendData(MessageID.LockAndUnlock, -1, -1, null, player.whoAmI, 1f, left, top);
+                                }
                             }
                         }
                         else
                         {
-                            if (isLocked)
+                            int chest = Chest.FindChest(left, top);
+                            if (chest != -1)
                             {
-                                int key = ModContent.ItemType<Key>();
-                                if (player.HasItemInInventoryOrOpenVoidBag(key) && Chest.Unlock(left, top) && player.ConsumeItem(key, includeVoidBag: true))
+                                Main.stackSplit = 600;
+                                if (chest == player.chest)
                                 {
-                                    if (Main.netMode == NetmodeID.MultiplayerClient)
-                                    {
-                                        NetMessage.SendData(MessageID.LockAndUnlock, -1, -1, null, player.whoAmI, 1f, left, top);
-                                    }
+                                    player.chest = -1;
+                                    SoundEngine.PlaySound(SoundID.MenuClose);
                                 }
-                            }
-                            else
-                            {
-                                int chest = Chest.FindChest(left, top);
-                                if (chest != -1)
+                                else
                                 {
-                                    Main.stackSplit = 600;
-                                    if (chest == player.chest)
-                                    {
-                                        player.chest = -1;
-                                        SoundEngine.PlaySound(SoundID.MenuClose);
-                                    }
-                                    else
-                                    {
-                                        SoundEngine.PlaySound(player.chest < 0 ? SoundID.MenuOpen : SoundID.MenuTick);
-                                        player.OpenChest(left, top, chest);
-                                    }
+                                    SoundEngine.PlaySound(player.chest < 0 ? SoundID.MenuOpen : SoundID.MenuTick);
+                                    player.OpenChest(left, top, chest);
+                                }
 
-                                    Recipe.FindRecipes();
-                                }
+                                Recipe.FindRecipes();
                             }
                         }
                     }

@@ -34,7 +34,7 @@ namespace Bismuth.Content.Projectiles
         {
             if (Main.LocalPlayer.FindBuffIndex(ModContent.BuffType<MagiciansAura>()) == -1)
                 Projectile.Kill();
-            return base.PreAI();
+            return PreAI();
         }
         public override void AI()
         {           

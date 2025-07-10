@@ -88,6 +88,16 @@ Tiles: {
 	PapuansBathtub.MapEntry: Bathtub
 	PapuansBookcase.MapEntry: Bookcase
 	PapuansCandelabra.MapEntry: Candelabra
+	PapuansChandelier.MapEntry: Chandelier
+	PapuansClock.MapEntry: Clock
+	PapuansDresser.MapEntry: Dresser
+	PapuansPiano.MapEntry: Piano
+	PapuansSink.MapEntry: Sink
+	PearlwoodMirror.MapEntry: Mirror
+	RedMazeChest.MapEntry1: Maze Chest
+	ShadewoodMirror.MapEntry: Mirror
+	WoodenMirror.MapEntry: Mirror
+	RedDoorLocked.MapEntry: Door
 }
 
 Items: {
@@ -1736,6 +1746,229 @@ Items: {
 		DisplayName: Papuan's Candelabra
 		Tooltip: ""
 	}
+
+	PapuansDresser: {
+		DisplayName: Papuan's Dresser
+		Tooltip: ""
+	}
+
+	PapuansClock: {
+		Tooltip: ""
+		DisplayName: Papuan's Clock
+	}
+
+	PapuansChandelier: {
+		Tooltip: ""
+		DisplayName: Papuan's Chandelier
+	}
+
+	PapuansPiano: {
+		DisplayName: Papuan's Piano
+		Tooltip: ""
+	}
+
+	PapuansSink: {
+		DisplayName: Papuan's Sink
+		Tooltip: ""
+	}
+
+	PearlwoodMirror: {
+		DisplayName: Pearlwood Mirror
+		Tooltip: ""
+	}
+
+	RedMazeChest: {
+		DisplayName: Red Maze Chest
+		Tooltip: ""
+	}
+
+	ShadewoodMirror: {
+		DisplayName: Shadewood Mirror
+		Tooltip: ""
+	}
+
+	SwampMud: {
+		DisplayName: Swamp Mud
+		Tooltip: ""
+	}
+
+	WoodenMirror: {
+		DisplayName: Wooden Mirror
+		Tooltip: ""
+	}
+
+	AluminiumAxe: {
+		DisplayName: Aluminium Waraxe
+		Tooltip: ""
+	}
+
+	AluminiumHammer: {
+		DisplayName: Aluminium Hammer
+		Tooltip: ""
+	}
+
+	AluminiumPickaxe: {
+		DisplayName: Aluminium Pickaxe
+		Tooltip: ""
+	}
+
+	BismuthumDrill: {
+		DisplayName: Bismuthum Drill
+		Tooltip: ""
+	}
+
+	BismuthumPickaxe: {
+		DisplayName: Bismuthum Pickaxe
+		Tooltip: ""
+	}
+
+	BismuthumSaw: {
+		DisplayName: Bismuthum Saw
+		Tooltip: ""
+	}
+
+	BronzeAxe: {
+		DisplayName: Bronze Axe
+		Tooltip: ""
+	}
+
+	BronzeHammer: {
+		DisplayName: Bronze Hammer
+		Tooltip: ""
+	}
+
+	BronzePickaxe: {
+		DisplayName: Bronze Pickaxe
+		Tooltip: ""
+	}
+
+	GalvornPickaxe: {
+		DisplayName: Galvorn Pickaxe
+		Tooltip: ""
+	}
+
+	GalvornWaraxe: {
+		DisplayName: Galvorn Waraxe
+		Tooltip: ""
+	}
+
+	GalvornWarhammer: {
+		DisplayName: Galvorn Warhammer
+		Tooltip: ""
+	}
+
+	JaguarsHamaxe: {
+		DisplayName: Jaguar's Hamaxe
+		Tooltip: ""
+	}
+
+	JaguarsPickaxe: {
+		DisplayName: Jaguar's Pickaxe
+		Tooltip: ""
+	}
+
+	PrometheusFire: {
+		Tooltip: Endless source of torches
+		DisplayName: Prometheus Fire
+	}
+
+	AluminiumBlade: {
+		Item.AssassinDamage: assassin damage
+		Tooltip: ""
+		DisplayName: Aluminium Blade
+	}
+
+	Prominence: {
+		Item.AssassinDamage: assassin damage
+		Tooltip: ""
+		DisplayName: Prominence
+	}
+
+	SoulEater: {
+		Item.AssassinDamage: assassin damage
+		Tooltip:
+			'''
+			Restless souls appear near you after dealing damage. They increase your 
+			damage, but decrease your health
+			'''
+		DisplayName: Soul Eater
+	}
+
+	Whirlpool: {
+		Item.AssassinDamage: assassin damage
+		DisplayName: Whirlpool
+		Tooltip: Creates spinning vortex around the player
+	}
+
+	MoonlightStaff: {
+		Tooltip: ""
+		DisplayName: Moonlight Staff
+	}
+
+	HarpOfOrpheus: {
+		Tooltip: ""
+		DisplayName: Harp Of Orpheus
+	}
+
+	GalvornStaff: {
+		Tooltip: Creates green projectiles falling from the sky
+		DisplayName: Galvorn Staff
+	}
+
+	BismuthumGlove: {
+		Tooltip: ""
+		DisplayName: Bismuthum Glove
+	}
+
+	RainOfTears: {
+		DisplayName: Rain of Tears
+		Tooltip: Creates tears falling from the sky
+	}
+
+	BismuthumSword: {
+		DisplayName: Bismuthum Sword
+		Tooltip: ""
+	}
+
+	BronzeSword: {
+		DisplayName: Bronze Sword
+		Tooltip: ""
+	}
+
+	DwarvenBattleAxe: {
+		DisplayName: Dwarven Battle Axe
+		Tooltip: ""
+	}
+
+	GalvornBlade: {
+		DisplayName: Galvorn Blade
+		Tooltip: ""
+	}
+
+	OrcishSword: {
+		DisplayName: Orcish Sword
+		Tooltip: ""
+	}
+
+	RunicBlade: {
+		DisplayName: Runic Blade
+		Tooltip: ""
+	}
+
+	SharkHalberd: {
+		DisplayName: Shark Halberd
+		Tooltip: ""
+	}
+
+	SolarWind: {
+		DisplayName: Solar Wind
+		Tooltip: <right> to create solar storm
+	}
+
+	ToadGun: {
+		DisplayName: Toad Gun
+		Tooltip: ""
+	}
 }
 
 Buffs: {
@@ -2598,6 +2831,19 @@ Projectiles: {
 	SolarBlast.DisplayName: Solar Blast
 	MeuRansHookP.DisplayName: Meu Rans Hook P
 	QuicksilverMirrorP.DisplayName: Quicksilver Mirror P
+	BismuthumDrillP.DisplayName: Bismuthum Drill P
+	BismuthumSawP.DisplayName: Bismuthum Saw P
+	ProminenceP.DisplayName: Prominence P
+	WhirlpoolP.DisplayName: Whirlpool P
+	BismuthumGloveP.DisplayName: Bismuthum Glove P
+	GalvornStaffP.DisplayName: Galvorn Staff P
+	MoonlightStaffP.DisplayName: Moonlight Staff P
+	RainOfTearsP.DisplayName: Rain Of Tears P
+	RunicBladeP.DisplayName: Runic Blade P
+	Marker.DisplayName: Marker
+	SolarBall.DisplayName: Solar Ball
+	SolarWave.DisplayName: Solar Wave
+	ToadGunP.DisplayName: Toad Gun P
 }
 
 Configs: {
@@ -2614,8 +2860,6 @@ Config: {
 	AllowHealthBuffsTogether2: Blacksmith Forging Volume
 	AllowHealthBuffsTogetherTooltip2: ""
 }
-
-UI.ExampleResource: Mods.Bismuth.UI.ExampleResource
 
 Keybinds: {
 	"Activate Second Skill.DisplayName": Activate  Second  Skill
@@ -3012,62 +3256,6 @@ BismuthPlayerSystem: {
 
 DamageClasses.AssasinDamageType.DisplayName: assassin damage
 
-AssassinDamage: {
-	Baselard: {
-		Tooltip: ""
-		DisplayName: Baselard
-		Item.AssassinDamage: assassin damage
-	}
-
-	AssassinItem: {
-		Item.AssassinDamage: assassin damage
-		DisplayName: Assassin Item
-		Tooltip: ""
-	}
-
-	Sting: {
-		Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Sting.Item.AssassinDamage
-		DisplayName: Sting
-		Tooltip: ""
-	}
-
-	SacrificialDagger: {
-		Item.AssassinDamage: Mods.Bismuth.AssassinDamage.SacrificialDagger.Item.AssassinDamage
-		DisplayName: Sacrificial Dagger
-		Tooltip: ""
-	}
-
-	Parazonium: {
-		Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Parazonium.Item.AssassinDamage
-		DisplayName: Parazonium
-		Tooltip: ""
-	}
-
-	Misericorde: {
-		Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Misericorde.Item.AssassinDamage
-		DisplayName: Misericorde
-		Tooltip: ""
-	}
-
-	ManGosh: {
-		Item.AssassinDamage: Mods.Bismuth.AssassinDamage.ManGosh.Item.AssassinDamage
-		DisplayName: Man Gosh
-		Tooltip: ""
-	}
-
-	Breakwater: {
-		Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Breakwater.Item.AssassinDamage
-		DisplayName: Breakwater
-		Tooltip: ""
-	}
-
-	Angrist: {
-		Item.AssassinDamage: Mods.Bismuth.AssassinDamage.Angrist.Item.AssassinDamage
-		DisplayName: Angrist
-		Tooltip: ""
-	}
-}
-
 DiceGameSystem: {
 	DiceGame: {
 		DiceGame: {
@@ -3284,19 +3472,6 @@ CoinSystem: {
 			GalvornRecipe: Galvorn Recipe
 			PoisonRecipe: Poison Recipe
 			PanaceaRecipe: Panacea Recipe
-		}
-	}
-
-	LocalizationSystem: {
-		CoinSystem: {
-			DwarvenCoin: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.DwarvenCoin
-			Ocrea: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.Ocrea
-			ImperianHelmet: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.ImperianHelmet
-			Lorica: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.Lorica
-			AetherRecipe: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.AetherRecipe
-			GalvornRecipe: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.GalvornRecipe
-			PoisonRecipe: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.PoisonRecipe
-			PanaceaRecipe: Mods.Bismuth.CoinSystem.LocalizationSystem.CoinSystem.PanaceaRecipe
 		}
 	}
 }

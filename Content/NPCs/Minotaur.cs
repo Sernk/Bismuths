@@ -222,7 +222,7 @@ namespace Bismuth.Content.NPCs
         {
             if ((currentphase == 5 || currentphase == 1) && NPC.velocity.X == 0.0f)
                 ChoosePhase();
-            return base.PreAI();
+            return PreAI();
         }
         public void ChoosePhase()
         {

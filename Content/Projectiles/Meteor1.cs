@@ -32,13 +32,13 @@ namespace Bismuth.Content.Projectiles
         public override void AI()
         {
             CreateDust();          
-            base.Projectile.tileCollide = (Main.player[base.Projectile.owner].Center.Y < base.Projectile.Center.Y);
+            Projectile.tileCollide = (Main.player[Projectile.owner].Center.Y < Projectile.Center.Y);
         }
 
         public void CreateDust()
         {
-            Dust.NewDust(base.Projectile.position + new Vector2(0f, 20f), 2, 2, 6, -4f, 0);
-            Dust.NewDust(base.Projectile.position + new Vector2(30f, 20f), 2, 2, 6, 4f, 0);
+            Dust.NewDust(Projectile.position + new Vector2(0f, 20f), 2, 2, 6, -4f, 0);
+            Dust.NewDust(Projectile.position + new Vector2(30f, 20f), 2, 2, 6, 4f, 0);
         }
         public override void OnKill(int timeLeft)
         {

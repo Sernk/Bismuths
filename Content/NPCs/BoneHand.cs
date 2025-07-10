@@ -1,10 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Terraria.Localization;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
 using Bismuth.Content.Projectiles;
 
 namespace Bismuth.Content.NPCs
@@ -15,8 +12,6 @@ namespace Bismuth.Content.NPCs
         public int currentphase = 0; // 0 - появление, 1 - статик, 2 - атака, 3 - рассыпание.
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Bone Hand");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Костяная рука");
             Main.npcFrameCount[NPC.type] = 27;
         }
 
@@ -40,7 +35,6 @@ namespace Bismuth.Content.NPCs
             NPC.noGravity = false;
             NPC.noTileCollide = false;
         }
-        NPC target = null;
         int tick = 0;
         public override void AI()
         {
