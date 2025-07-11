@@ -2019,6 +2019,71 @@ Items: {
 		DisplayName: Cobalt Javelin
 		Tooltip: ""
 	}
+
+	MythrilJavelin: {
+		Tooltip: ""
+		DisplayName: Mythril Javelin
+	}
+
+	JaguarsDagger: {
+		Tooltip: ""
+		DisplayName: Jaguars Dagger
+	}
+
+	JaguarsChakram: {
+		Tooltip: ""
+		DisplayName: Jaguars Chakram
+	}
+
+	HectorsSpear: {
+		Tooltip: <right> to use as throwing weapon
+		DisplayName: Hector's Spear
+	}
+
+	OrcishJavelin: {
+		DisplayName: Orcish Javelin
+		Tooltip: ""
+	}
+
+	OrichalcumJavelin: {
+		DisplayName: Orichalcum Javelin
+		Tooltip: ""
+	}
+
+	PalladiumJavelin: {
+		DisplayName: Palladium Javelin
+		Tooltip: ""
+	}
+
+	SharkJavelin: {
+		DisplayName: Shark Javelin
+		Tooltip: ""
+	}
+
+	TitaniumJavelin: {
+		Tooltip: ""
+		DisplayName: Titanium Javelin
+	}
+
+	SolarDisk: {
+		Tooltip: ""
+		DisplayName: Solar Disk
+	}
+
+	SharkKnife: {
+		Tooltip: ""
+		DisplayName: Shark Knife
+	}
+
+	TestItem: {
+		DisplayName: Test Item
+		Tooltip: ""
+	}
+
+	TestItem2: {
+		DisplayName: Test Item2
+		Tooltip: ""
+	}
 }
 
 Buffs: {
@@ -2275,6 +2340,11 @@ Buffs: {
 	WaterElemental: {
 		DisplayName: Water Elemental
 		Description: Water elemental fights for you
+	}
+
+	InvigoratingDrink: {
+		DisplayName: Invigorating Drink
+		Description: You feel yourself cheerful and full of energy!
 	}
 }
 
@@ -2811,6 +2881,24 @@ NPCs: {
 	EarthElemental.DisplayName: Earth Elemental
 	FireElemental.DisplayName: Fire Elemental
 	WaterElemental.DisplayName: Water Elemental
+
+	PapuanMerchant: {
+		DisplayName: Papuan Merchant
+
+		TownNPCMood: {
+			Content: Я довольный.
+			NoHome: Терпеть не могу, когда у меня нет дома.
+			FarFromHome: Я слишком далеко от дома.
+			LoveSpace: Я люблю, когда так много пространства.
+			DislikeCrowded: Мне не нравится то, как здесь людно.
+			HateCrowded: Я ненавижу то, как здесь людно.
+			LikeNPC_Princess: Мне нравится {NPCName}.
+			Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+	}
+
+	Toad.DisplayName: Toad
+	SkeletonDwarf.DisplayName: Skeleton Dwarf
 }
 
 Projectiles: {
@@ -2898,6 +2986,19 @@ Projectiles: {
 	AdamantiteJavelinP.DisplayName: Adamantite Javelin P
 	ChlorophyteJavelinP.DisplayName: Chlorophyte Javelin P
 	CobaltJavelinP.DisplayName: Cobalt Javelin P
+	HectorsSpearP.DisplayName: Hectors Spear P
+	HectorsSpearP2.DisplayName: Hectors Spear P2
+	JaguarsChakramP.DisplayName: Jaguars Chakram P
+	JaguarsDaggerP.DisplayName: Jaguars Dagger P
+	MythrilJavelinP.DisplayName: Mythril Javelin P
+	OrcishJavelinP.DisplayName: Orcish Javelin P
+	OrichalcumJavelinP.DisplayName: Orichalcum Javelin P
+	PalladiumJavelinP.DisplayName: Palladium Javelin P
+	SharkJavelinP.DisplayName: Shark Javelin P
+	SolarDiskP.DisplayName: Solar Disk P
+	SharkKnifeP.DisplayName: Shark Knife P
+	TitaniumJavelinP.DisplayName: Titanium Javelin P
+	LightningBlast.DisplayName: Lightning Blast
 }
 
 Configs: {
@@ -3540,3 +3641,23 @@ BismuthPlayerLayerSystem: {
 		}
 	}
 }
+
+BonusArmor: {
+	GlobalItems: {
+		Ninja: {
+			NinjaHood: 9% increased thrown velocity
+			NinjaPants: 7% increased thrown critical strike chance
+			NinjaShirt: 9% increased thrown damage
+		}
+
+		Fossil: {
+			FossilShirt: 12% increased thrown damage
+			FossilPants: 5% increased thrown critical strike chance
+			FossilHelm: 12% increased thrown velocity
+		}
+	}
+}
+
+DeadGolems.Golem.BismuthumText: Your world has been blessed with Bismuthums
+DeadSkeletron.Skeletron.HeliosText: You hear hymns praising the ancient Lord of Sunlight
+DeadEoC.EyeofCthulhu.MazeText: Strange voice tells you about a mysterious building in caves...

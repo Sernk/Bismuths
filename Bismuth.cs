@@ -1,20 +1,19 @@
 using Bismuth.Content.Items.Armor;
+using Bismuth.Content.Items.Other;
 using Bismuth.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ReLogic.Content;
 using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.GameContent.UI;
 using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Bismuth.Content.Items.Other;
-using Terraria.Graphics.Shaders;
-using ReLogic.Content;
 
 namespace Bismuth
 {

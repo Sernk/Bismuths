@@ -2,18 +2,12 @@
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Projectiles
 {
     public class LanceaP : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Lancea");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Ланцея");
-        }
         public override void SetDefaults()
         {
             Projectile.width = 20;
@@ -23,17 +17,7 @@ namespace Bismuth.Content.Projectiles
             Projectile.DamageType = DamageClass.Throwing;
             Projectile.penetrate = 1;
             Projectile.extraUpdates = 1;
-          //  aiType = ProjectileID.BoneJavelin;
             Projectile.tileCollide = true;
-        }
-
-        public override void AI()
-        {
-
-        /*    if (projectile.velocity.Y < 0)
-                projectile.velocity.Y -= 0.06f;
-            else
-                projectile.velocity.Y *= 1.02f;*/
         }
 
         const int dust_count = 5;

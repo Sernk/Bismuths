@@ -30,8 +30,8 @@ namespace Bismuth.Content.Items.Weapons.Melee
         {
             //DisplayName.SetDefault("Soul Scythe");
             //DisplayName.AddTranslation(GameCulture.Russian, "Коса душ");
-            //Tooltip.SetDefault($"Steals certain enemies' souls\nKill harpies, wyverns and angry nimbuses to get [i:{mod.ItemType("AirEssence")}]\nKill sharks, jellyfishes and pirahnas to get [i:{mod.ItemType("WaterEssence")}]\nKill worms to get [i:{mod.ItemType("EarthEssence")}]\nKill imps, lava slimes and demons to get [i:{mod.ItemType("FireEssence")}]");
-            //Tooltip.AddTranslation(GameCulture.Russian, $"Крадёт души некоторых противников\nУбивайте злые тучи, гарпий и виверн, чтобы получить [i:{mod.ItemType("AirEssence")}]\nУбивайте акул, медуз и пираний, чтобы получить [i:{mod.ItemType("WaterEssence")}]\nУбивайте червей, чтобы получить [i:{mod.ItemType("EarthEssence")}]\nУбивайте импов, лавовых слизней и демонов, чтобы получить [i:{mod.ItemType("FireEssence")}]");
+            //Tooltip.SetDefault($"Steals certain enemies' souls\nKill harpies, wyverns and angry nimbuses to get [i:{ModContent.ItemType<AirEssence>()}]\nKill sharks, jellyfishes and pirahnas to get [i:{ModContent.ItemType<WaterEssence>()}]\nKill worms to get [i:{mod.ItemType("EarthEssence")}]\nKill imps, lava slimes and demons to get [i:{ModContent.ItemType<FireEssence>()}]");
+            //Tooltip.AddTranslation(GameCulture.Russian, $"Крадёт души некоторых противников\nУбивайте злые тучи, гарпий и виверн, чтобы получить [i:{ModContent.ItemType<AirEssence>()}]\nУбивайте акул, медуз и пираний, чтобы получить [i:{ModContent.ItemType<WaterEssence>()}]\nУбивайте червей, чтобы получить [i:{mod.ItemType("EarthEssence")}]\nУбивайте импов, лавовых слизней и демонов, чтобы получить [i:{ModContent.ItemType<FireEssence>()}]");
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

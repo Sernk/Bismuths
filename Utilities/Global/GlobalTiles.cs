@@ -20,7 +20,7 @@ namespace Bismuth.Utilities.Global
             if (Main.LocalPlayer.GetModPlayer<Quests>().TombstoneQuest == 0 && Main.tile[i, j - 1].TileType == (ushort)ModContent.TileType<WarriorsTombstone>()) return false;
             if (Main.tile[i, j - 1].TileType == (ushort)ModContent.TileType<AltarOfWaters>()) return false;
             if (Main.LocalPlayer.GetModPlayer<Quests>().ReportQuest <= 20 && (Main.tile[i, j].TileType == (ushort)ModContent.TileType<DeadCourier>() || Main.tile[i, j - 1].TileType == (ushort)ModContent.TileType<DeadCourier>())) return false;
-            return CanKillTile(i, j, type, ref blockDamaged);
+            return base.CanKillTile(i, j, type, ref blockDamaged);
         }
         public override bool Slope(int i, int j, int type)
         {

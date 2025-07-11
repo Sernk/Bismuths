@@ -2078,6 +2078,71 @@ Items: {
 		DisplayName: Кобальтовый дротик
 		// Tooltip: ""
 	}
+
+	MythrilJavelin: {
+		// Tooltip: ""
+		DisplayName: Мифриловый дротик
+	}
+
+	JaguarsDagger: {
+		// Tooltip: ""
+		DisplayName: Нож Ягуара
+	}
+
+	JaguarsChakram: {
+		// Tooltip: ""
+		DisplayName: Чакрам Ягуара
+	}
+
+	HectorsSpear: {
+		Tooltip: <right> чтобы использовать как метательное оружие
+		DisplayName: Копьё Гектора
+	}
+
+	OrcishJavelin: {
+		DisplayName: Орочий дротик
+		// Tooltip: ""
+	}
+
+	OrichalcumJavelin: {
+		DisplayName: Орихалковый дротик
+		// Tooltip: ""
+	}
+
+	PalladiumJavelin: {
+		DisplayName: Паладиевый дротик
+		// Tooltip: ""
+	}
+
+	SharkJavelin: {
+		DisplayName: Акулий дротик
+		// Tooltip: ""
+	}
+
+	TitaniumJavelin: {
+		// Tooltip: ""
+		DisplayName: Титановый дротик
+	}
+
+	SolarDisk: {
+		// Tooltip: ""
+		DisplayName: Солнечный диск
+	}
+
+	SharkKnife: {
+		// Tooltip: ""
+		DisplayName: Акулий нож
+	}
+
+	TestItem: {
+		// DisplayName: Test Item
+		// Tooltip: ""
+	}
+
+	TestItem2: {
+		// DisplayName: Test Item2
+		// Tooltip: ""
+	}
 }
 
 Buffs: {
@@ -2334,6 +2399,11 @@ Buffs: {
 	WaterElemental: {
 		DisplayName: Элементаль воды
 		Description: Водный элементаль сражается за вас
+	}
+
+	InvigoratingDrink: {
+		DisplayName: Бодрящий напиток
+		Description: Вы сувствуете себя бодрым и полным энергии
 	}
 }
 
@@ -2870,6 +2940,24 @@ NPCs: {
 	EarthElemental.DisplayName: Элементаль земли
 	FireElemental.DisplayName: Элементаль огня
 	WaterElemental.DisplayName: Элементаль воды
+
+	PapuanMerchant: {
+		DisplayName: Папуас-торговец
+
+		TownNPCMood: {
+			// Content: Я довольный.
+			// NoHome: Терпеть не могу, когда у меня нет дома.
+			// FarFromHome: Я слишком далеко от дома.
+			// LoveSpace: Я люблю, когда так много пространства.
+			// DislikeCrowded: Мне не нравится то, как здесь людно.
+			// HateCrowded: Я ненавижу то, как здесь людно.
+			// LikeNPC_Princess: Мне нравится {NPCName}.
+			// Princess_LovesNPC: Мне нравится {NPCName}.
+		}
+	}
+
+	Toad.DisplayName: Жаба
+	SkeletonDwarf.DisplayName: Скелет гнома
 }
 
 Projectiles: {
@@ -2957,6 +3045,19 @@ Projectiles: {
 	// AdamantiteJavelinP.DisplayName: Adamantite Javelin P
 	// ChlorophyteJavelinP.DisplayName: Chlorophyte Javelin P
 	// CobaltJavelinP.DisplayName: Cobalt Javelin P
+	// HectorsSpearP.DisplayName: Hectors Spear P
+	// HectorsSpearP2.DisplayName: Hectors Spear P2
+	// JaguarsChakramP.DisplayName: Jaguars Chakram P
+	// JaguarsDaggerP.DisplayName: Jaguars Dagger P
+	// MythrilJavelinP.DisplayName: Mythril Javelin P
+	// OrcishJavelinP.DisplayName: Orcish Javelin P
+	// OrichalcumJavelinP.DisplayName: Orichalcum Javelin P
+	// PalladiumJavelinP.DisplayName: Palladium Javelin P
+	// SharkJavelinP.DisplayName: Shark Javelin P
+	// SolarDiskP.DisplayName: Solar Disk P
+	// SharkKnifeP.DisplayName: Shark Knife P
+	// TitaniumJavelinP.DisplayName: Titanium Javelin P
+	// LightningBlast.DisplayName: Lightning Blast
 }
 
 Configs: {
@@ -3595,3 +3696,23 @@ BismuthPlayerLayerSystem: {
 		}
 	}
 }
+
+BonusArmor: {
+	GlobalItems: {
+		Ninja: {
+			NinjaHood: Скорость метания увеличена на 9%
+			NinjaPants: 7% увеличение вероятности критического удара при метание
+			NinjaShirt: 9% увеличен урон от метания
+		}
+
+		Fossil: {
+			FossilShirt: 12% увеличен урон от метания
+			FossilPants: 5% увеличение вероятности критического удара при метание
+			FossilHelm: Скорость метания увеличена на 12%
+		}
+	}
+}
+
+DeadGolems.Golem.BismuthumText: Ваш мир был благословлен висмутом
+DeadSkeletron.Skeletron.HeliosText: Вы слышите отголоски хора, прославляющего древнее божество Солнца
+DeadEoC.EyeofCthulhu.MazeText: Странный голос говорит вам о таинственной постройке в пещерах

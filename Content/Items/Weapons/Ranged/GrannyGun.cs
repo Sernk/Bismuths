@@ -20,7 +20,7 @@ namespace Bismuth.Content.Items.Weapons.Ranged
             Item.noMelee = true; 
             Item.knockBack = 4;
             Item.value = 10000;
-            Item.rare = 12;
+            Item.rare = 11;
             Item.UseSound = SoundID.Item10;
             Item.autoReuse = true;
             Item.shoot = 10; 

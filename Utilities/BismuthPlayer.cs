@@ -4458,7 +4458,7 @@ namespace Bismuth.Utilities
                     }
                 }
             }
-            return CanBeHitByProjectile(proj);
+            return base.CanBeHitByProjectile(proj);
         }
         public override bool? CanHitNPCWithItem(Item item, NPC target)
         {
