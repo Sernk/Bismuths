@@ -2415,21 +2415,221 @@ Items: {
 	MythrilHeadpiece: {
 		MythrilHeadpieceSetBonus: Minion damage is increased by 9%, increases your max number of minions.
 		DisplayName: Mythril Headpiece
-		Tooltip: 
-				'''
-				Minion damage is increased by 16%. 
-				Increases your max number of minions.
-				'''
+		Tooltip:
+			'''
+			Minion damage is increased by 16%. 
+			Increases your max number of minions.
+			'''
 	}
 
 	MythrilHeadgear: {
 		MythrilHeadgearSetBonus: 33% chance to not consume thrown item.
 		DisplayName: Mythril Headgear
-		Tooltip: 
-				'''
-				Throwing damage and velocity are increased by 14%. 
-				Throwing critical strike chance is increased by 12%.
-				'''
+		Tooltip:
+			'''
+			Throwing damage and velocity are increased by 14%. 
+			Throwing critical strike chance is increased by 12%.
+			'''
+	}
+
+	NokilosSuit: {
+		Tooltip: Great for impersonating devs!
+		DisplayName: Nokilos' Suit
+	}
+
+	NokilosMask: {
+		Tooltip: Great for impersonating devs!
+		DisplayName: Nokilos' Mask
+	}
+
+	NokilosBoots: {
+		Tooltip: Great for impersonating devs!
+		DisplayName: Nokilos' Boots
+	}
+
+	OrcishBreastplate: {
+		Tooltip: Throwing damage is increased by 15%.
+		DisplayName: Orcish Breastplate
+	}
+
+	OrcishHelmet: {
+		OrcishHelmetSetBonus: 33% chance to not consume thrown item, 8% increased throwing critical strike chance.
+		DisplayName: Orcish Helmet
+		Tooltip: Throwing velocity is increased by 25%.
+	}
+
+	OrcishLeggings: {
+		DisplayName: Orcish Leggings
+		Tooltip: Movement speed is increased by 18%.
+	}
+
+	OrichalcumHat: {
+		PalladiumHatSetBonus: 33% chance to not consume thrown item.
+		DisplayName: Orichalcum Hat
+		Tooltip:
+			'''
+			Throwing damage and velocity are increased by 15%. 
+			Throwing critical strike chance is increased by 12%.
+			'''
+	}
+
+	OrichalcumHeadpiece: {
+		OrihalcumHeadpieceSetBonus: Minion damage is increased by 9%, increases your max number of minions.s
+		DisplayName: Orichalcum Headpiece
+		Tooltip:
+			'''
+			Minion damage is increased by 17%. 
+			Increases your max number of minions.
+			'''
+	}
+
+	PalladiumHat: {
+		PalladiumHatSetBonus: 33% chance to not consume thrown item.
+		DisplayName: Palladium Hat
+		Tooltip:
+			'''
+			Throwing damage and velocity are increased by 11%. 
+			Throwing critical strike chance is increased by 10%.
+			'''
+	}
+
+	PalladiumHood: {
+		PalladiumHoodSetBonus: Minion damage is increased by 7%, increases your max number of minions.
+		DisplayName: Palladium Hood
+		Tooltip:
+			'''
+			Minion damage is increased by 15%. 
+			Increases your max number of minions.
+			'''
+	}
+
+	PikemansBreastplate: {
+		DisplayName: Pikeman's Breastplate
+		Tooltip: Throwing damage is increased by 12%.
+	}
+
+	PikemansHelmet: {
+		DisplayName: Pikeman's Helmet
+		Tooltip:
+			'''
+			Throwing velocity is increased by 12%. 
+			Throwing critical strike chance is increased by 5%.
+			'''
+		PikemanSetBonus: 33% chance to not consume thrown item.
+	}
+
+	PikemansLeggings: {
+		DisplayName: Pikeman's Leggings
+		Tooltip: Movement speed is increased by 8%.
+	}
+
+	RekstrisBoots: {
+		DisplayName: Rekstri's Boots
+		Tooltip: Great for impersonating devs!
+	}
+
+	RekstrisBreastplate: {
+		DisplayName: Rekstri's Breastplate
+		Tooltip: Great for impersonating devs!
+	}
+
+	RekstrisHelmet: {
+		DisplayName: Rekstri's Helmet
+		Tooltip: Great for impersonating devs!
+	}
+
+	RivetedHood: {
+		RivetedSetBonus: Faster regeneration after a critical strike.
+		DisplayName: Riveted Hood
+		Tooltip: Critical damage is increased by 10%.
+	}
+
+	RivetedBoots: {
+		DisplayName: Riveted Boots
+		Tooltip: Movement speed is increased by 8%
+	}
+
+	RivetedJacket: {
+		DisplayName: Riveted Jacket
+		Tooltip:
+			'''
+			Assassin damage is increased by 8%. 
+			Critical strike chance is increased by 6%
+			'''
+	}
+
+	RunicHood: {
+		RunicSetBonus: All runic bonuses are increased by three times.
+		DisplayName: Runic Hood
+		Tooltip:
+			'''
+			Reduces mana usage by 23%. 
+			Increases mana regen.
+			'''
+	}
+
+	RunicRobe: {
+		DisplayName: Runic Robe
+		Tooltip:
+			'''
+			15% increased magic damage. 
+			10% increased magic critical strike chance.
+			'''
+	}
+
+	TitaniumHat: {
+		TitaniumHatSetBonus: Шанс не потратить метательное оружие равняется 33%.
+		DisplayName: Titanium Hat
+		Tooltip:
+			'''
+			Throwing damage and velocity are increased by 20%. 
+			Throwing critical strike chance is increased by 15%s.
+			'''
+	}
+
+	TitaniumHood: {
+		TitaniumHoodSetBonus: Minion damage is increased by 12%, increases your max number of minions.
+		DisplayName: Titanium Hood
+		Tooltip:
+			'''
+			Minion damage is increased by 22%. 
+			Increases your max number of minions.
+			'''
+	}
+
+	VolvoxsBoots: {
+		DisplayName: Bassalt's Boots
+		Tooltip: Great for impersonating devs!
+	}
+
+	VolvoxsBreastplate: {
+		DisplayName: Bassalt's Breastplate
+		Tooltip: Great for impersonating devs!
+	}
+
+	VolvoxsHelmet: {
+		DisplayName: Bassalt's Helmet
+		Tooltip: Great for impersonating devs!
+	}
+
+	YeomansHat: {
+		YeomanSetBonus: +1 defense.
+		DisplayName: Yeoman's Hat
+		Tooltip:
+			'''
+			Ranged damage is increased by 9%. 
+			Arrow damage is increased by 12%.
+			'''
+	}
+
+	YeomansLeggings: {
+		DisplayName: Yeoman's Leggings
+		Tooltip: Movement speed is increased by 9%.
+	}
+
+	YeomansShirt: {
+		DisplayName: Yeoman's Shirt
+		Tooltip: Ranged critical strike chance is increased by 7%.
 	}
 }
 
