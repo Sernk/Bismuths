@@ -9,8 +9,7 @@ namespace Bismuth.Content.Items.Armor
     public class BismuthumBreastplate : ModItem
     {
         public override void SetDefaults()
-        {
-           
+        {    
             Item.width = 18;
             Item.height = 18;
             Item.value = Item.sellPrice(0, 6, 0, 0);
