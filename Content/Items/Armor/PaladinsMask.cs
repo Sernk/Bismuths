@@ -1,20 +1,15 @@
-﻿using Terraria;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Items.Armor
 {
     [AutoloadEquip(EquipType.Head)]
     public class PaladinsMask : ModItem
     {
-
-        public override void SetStaticDefaults()
+        public override void Load()
         {
-            // DisplayName.SetDefault("Paladin's Mask");
-            // Tooltip.SetDefault("Melee damage is increased by 10%, damage resistance is increased by 5%. \nMovement speed is decreased by 5%.");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Маска паладина");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает урон в ближнем бою на 10%, увеличивает сопротивляемость уронe на 5%. \nСнижает скорость передвижения на 5%.");
+            _ = this.GetLocalization("PaladinSetBonus").Value;
         }
         public override void SetDefaults()
         {
@@ -37,8 +32,7 @@ namespace Bismuth.Content.Items.Armor
         public override void UpdateArmorSet(Player player)
         {            
             player.GetModPlayer<BismuthPlayer>().paladinssetbonus = true;
-            string PaladinSetBonus = Language.GetTextValue("Mods.Bismuth.PaladinSetBonus");
-            player.setBonus = PaladinSetBonus;
+            player.setBonus = this.GetLocalization("PaladinSetBonus").Value;
         }
     }
 }

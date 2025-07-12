@@ -1,22 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using Bismuth.Utilities;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Items.Armor
 {
     [AutoloadEquip(EquipType.Head)]
     public class ImperianHelmet : ModItem
     {
-
-        public override void SetStaticDefaults()
+        public override void Load()
         {
-            // DisplayName.SetDefault("Imperian Helmet");
-            // Tooltip.SetDefault("Critical strike chance is increased by 3%.");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Имперский шлем");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает шанс критического удара на 3%.");
+            _ = this.GetLocalization("ImperianSetBonus").Value;
         }
         public override void SetDefaults()
         {
@@ -45,8 +38,7 @@ namespace Bismuth.Content.Items.Armor
             player.GetDamage(DamageClass.Magic) += 0.05f;
             player.GetDamage(DamageClass.Summon) += 0.05f;
             player.GetDamage(DamageClass.Throwing) += 0.05f;
-            string ImperianSetBonus = Language.GetTextValue("Mods.Bismuth.ImperianSetBonus");
-            player.setBonus = ImperianSetBonus;
+            player.setBonus = this.GetLocalization("ImperianSetBonus").Value;
         }        
     }
 }

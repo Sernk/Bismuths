@@ -43,14 +43,10 @@ namespace Bismuth
         public static Texture2D NagaArm;
         public static Texture2D NagaBody;
         public static Texture2D NagaLegs;
-
         public static Texture2D NagaHeadMap;
         public static Texture2D VampireMaleHeadMap;
         public static Texture2D VampireFemaleHeadMap;
-
         public static bool noOffsetUpdating;
-        //private static Vector2 tempVector;
-       // private static Vector2 prevOffsetGoal;
         public static Vector2 oldCameraOffset;
         public static Vector2 screenPos;
         public static Vector2 screenPosNoShakes;
@@ -135,7 +131,6 @@ namespace Bismuth
         public override void Load()
         {
             instance = this;
-            //MeuRansHoodGlow.Load();
             DwarvenCoinID = CustomCurrencyManager.RegisterCurrency(new DwarvenCoinData(ModContent.ItemType<DwarvenCoin>(), 999L));
             ImperianHelmetID = CustomCurrencyManager.RegisterCurrency(new ImperianHelmetExchangeData(ModContent.ItemType<ImperianHelmet>(), 999L));
             LoricaID = CustomCurrencyManager.RegisterCurrency(new LoricaExchangeData(ModContent.ItemType<Lorica>(), 999L));
@@ -158,8 +153,8 @@ namespace Bismuth
             {
                 Filters.Scene["Bismuth:SwampSky"] = new Filter(new ScreenShaderData("FilterMiniTower").UseColor(0.12f, 0.22f, 0.12f).UseOpacity(0.65f), EffectPriority.VeryHigh);
                 SkyManager.Instance["Bismuth:SwampSky"] = new SwampSky();
-                //EquipLoader.AddEquipTexture(this, "Bismuth/Items/Armor/CompoziussRobe_Legs", EquipType.Legs, name: "CompoziussRobe_Legs");
-                //EquipLoader.AddEquipTexture(this, "Bismuth/Items/Armor/NecromancersRobe_Legs", EquipType.Legs, name: "NecromancersRobe_Legs");
+                EquipLoader.AddEquipTexture(this, "Bismuth/Content/Items/Armor/CompoziussRobe_Legs", EquipType.Legs, name: "CompoziussRobe_Legs");
+                EquipLoader.AddEquipTexture(this, "Bismuth/Content/Items/Armor/NecromancersRobe_Legs", EquipType.Legs, name: "NecromancersRobe_Legs");
                 Adonais = ModContent.Request<DynamicSpriteFont>("Bismuth/Fonts/Adonaisxnb", AssetRequestMode.ImmediateLoad).Value;
                 TextureAssets.Item[ItemID.Excalibur] = ModContent.Request<Texture2D>("Bismuth/Resprites/Excalibur");
                 TextureAssets.Item[ItemID.Drax] = ModContent.Request<Texture2D>("Bismuth/Resprites/Drax");
@@ -169,14 +164,12 @@ namespace Bismuth
                 TextureAssets.Projectile[ProjectileID.LightDisc] = ModContent.Request<Texture2D>("Bismuth/Resprites/LightDisc");
                 TextureAssets.Projectile[ItemID.Drax] = ModContent.Request<Texture2D>("Bismuth/Resprites/Drax_proj");
             }
-
             FirstSkillActivate = KeybindLoader.RegisterKeybind(this, "Activate First Skill", "N");
             SecondSkillActivate = KeybindLoader.RegisterKeybind(this, "Toggle Experience Panel", "J");
             ToggleExpPanelHotKey = KeybindLoader.RegisterKeybind(this, "Activate Unique Ability", "Q");
             VampireBatTurnHotKey = KeybindLoader.RegisterKeybind(this, "Turn Into Bat", "T");
             TeleportActivate = KeybindLoader.RegisterKeybind(this, "Activate Second Skill", "U");
         }
-
         public override void Unload()
         {
             VampireMaleFace = null;
@@ -193,7 +186,6 @@ namespace Bismuth
             NagaHeadMap = null;
             VampireMaleHeadMap = null;
             VampireFemaleHeadMap = null;
-            //MeuRansHoodGlow.Unload();
             instance = null;
             Adonais = null;
             ToggleExpPanelHotKey = null;

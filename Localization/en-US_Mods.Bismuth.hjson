@@ -445,6 +445,7 @@ Items: {
 	ImperianHelmet: {
 		DisplayName: Imperian Helmet
 		Tooltip: Critical strike chance is increased by 3%.
+		ImperianSetBonus: All types of damage are increased by 5%.
 	}
 
 	KillersBoots: {
@@ -455,6 +456,11 @@ Items: {
 	KillersHood: {
 		DisplayName: Killer's Hood
 		Tooltip: Critical strike chance is increased by 8%.
+		KillerSetBonus:
+			'''
+			Makes you invisible at night, damage gets increased by 4 for every hit while you are invisible 
+			+1 satiety for every kill, if you are a vampire.
+			'''
 	}
 
 	KillersJacket: {
@@ -487,6 +493,7 @@ Items: {
 			Assassin damage is increased by 5%. 
 			Critical strike chance is increased by 13%.
 			'''
+		NomadSetBonus: Life regeneration is significantly increased while you are on a mount.
 	}
 
 	NomadsJacket: {
@@ -515,6 +522,7 @@ Items: {
 			Melee damage is increased by 10%, damage resistance is increased by 5%. 
 			Movement speed is decreased by 5%.
 			'''
+		PaladinSetBonus: Three light projectiles hit your enemies after you take damage
 	}
 
 	PaladinsShell: {
@@ -538,6 +546,7 @@ Items: {
 			Increases throwing critical strike chance by 11%. 
 			You use any items 5% faster.
 			'''
+		ScalySetBonus: Attackers also take damage.
 	}
 
 	ScalyLeggings: {
@@ -563,6 +572,7 @@ Items: {
 	WatersHelmet: {
 		DisplayName: Water's Helmet
 		Tooltip: More wetness - higher critical strike chance
+		WaterSetBonus: Your wetness waste is decreased.
 	}
 
 	WatersLeggings: {
@@ -2083,6 +2093,343 @@ Items: {
 	TestItem2: {
 		DisplayName: Test Item2
 		Tooltip: ""
+	}
+
+	AdamantiteHat: {
+		DisplayName: Adamantite Hat
+		Tooltip:
+			'''
+			Throwing damage and velocity are increased by 19%. 
+			Throwing critical strike chance is increased by 15%.
+			'''
+		AdamantiteHatSetBonus: 33% chance to not consume thrown item.
+	}
+
+	AdamantiteHeadpiece: {
+		DisplayName: Adamantite Headpiece
+		Tooltip:
+			'''
+			Minion damage is increased by 21%. 
+			Increases your max number of minions.
+			'''
+		AdamantiteHeadpieceSetBonus: Увеличивает урон прислужников на 12%, увеличивает максимальное число прислужников.
+	}
+
+	BismuthumBreastplate: {
+		DisplayName: Bismuthum Breastplate
+		Tooltip:
+			'''
+			Damage is increased by 15%. 
+			Critical strike chance is increased by 10%.
+			'''
+	}
+
+	BismuthumHelmet: {
+		BismuthumHelmetSetBonus: All your attacks poison enemies.
+		DisplayName: Bismuthum Helmet
+		Tooltip:
+			'''
+			Throwing velocity and damage are increased by 30%, throwing critical strike chance is increased by 18%. 
+			Melee damage is increased by 30%, melee critical strike chance is increased by 20%.
+			'''
+	}
+
+	BismuthumHeadgear: {
+		BismuthumHeadgearSetBonus: All your attacks poison enemies.
+		DisplayName: Bismuthum Headgear
+		Tooltip:
+			'''
+			Ranged damage is increased by 30%. 
+			Chance to not consume ammo is increased by 20%.
+			'''
+	}
+
+	BismuthumHat: {
+		BismuthumHatSetBonus: All your attacks poison enemies.
+		DisplayName: Bismuthum Hat
+		Tooltip:
+			'''
+			Magic and minion damage are increased by 27%, reduces mana usage by 35%. 
+			Increases your max number of minions, increases maximum mana by 120.
+			'''
+	}
+
+	BismuthumLeggings: {
+		DisplayName: Bismuthum Leggings
+		Tooltip:
+			'''
+			Movement speed is increased by 35%. 
+			Critical strike chance is increased by 14%.
+			'''
+	}
+
+	BripesBoots: {
+		DisplayName: Bripe's Boots
+		Tooltip: Great for impersonating devs!ы
+	}
+
+	BripesChestplate: {
+		DisplayName: Bripe's Chestplate
+		Tooltip: Great for impersonating devs!
+	}
+
+	BripesHeadgear: {
+		DisplayName: Bripe's Headgear
+		Tooltip: Great for impersonating devs!
+	}
+
+	BronzeMask: {
+		BronzeSetBonus: Throwing velocity is increased by 7%, +1 defense.
+		DisplayName: Bronze Mask
+		Tooltip:
+			'''
+			Throwing damage is increased by 5%, thrown velocity is increased by 12%. 
+			Throwing critical strike chance is increased by 4%.
+			'''
+	}
+
+	BronzeBreastplate: {
+		DisplayName: Bronze Breastplate
+		Tooltip: Throwing damage is increased by 6%.
+	}
+
+	BronzeLeggings: {
+		DisplayName: Bronze Leggings
+		Tooltip: Movement speed is increased by 10%.
+	}
+
+	CobaltHeadgear: {
+		DisplayName: Cobalt Headgear
+		CobaltHeadgearSetBonus: 33% chance to not consume thrown item.
+		Tooltip:
+			'''
+			Throwing damage and velocity are increased by 10%. 
+			Throwing critical strike chance is increased by 10%.
+			'''
+	}
+
+	ChlorophyteHeadpiece: {
+		Tooltip:
+			'''
+			27% increased minion damage. 
+			Increases your max number of minions.
+			'''
+		DisplayName: Chlorophyte Headpiece
+		ChlorophyteHeadpieceSetBonus: Minion damage is increased by 15%, increases your max number of minions.
+	}
+
+	ChlorophyteHeadgear: {
+		Tooltip:
+			'''
+			Throwing damage and velocity are increased by 19%. 
+			Throwing critical strike chance is increased by 15%.
+			'''
+		DisplayName: Chlorophyte Headgear
+		ChlorophyteHeadgearSetBonus: 25% increased throwing velocity.
+	}
+
+	CobaltHeadpiece: {
+		CobaltHeadpieceSetBonus: Minion damage is increased by 8%, increases your max number of minions.
+		DisplayName: Cobalt Headpiece
+		Tooltip: Minion damage is increased by 8%, increases your max number of minions.
+	}
+
+	CompoziussHood: {
+		DisplayName: Compozius' Hood
+		Tooltip: Great for impersonating devs!
+	}
+
+	CompoziussRobe: {
+		DisplayName: Compozius' Robe
+		Tooltip: Great for impersonating devs!
+	}
+
+	EfromomrsBreastplate: {
+		DisplayName: Efromomr's Breastplate
+		Tooltip: Great for impersonating devs!
+	}
+
+	EfromomrsHood: {
+		DisplayName: Efromomr's Hood
+		Tooltip: Great for impersonating devs!
+	}
+
+	EfromomrsLeggings: {
+		DisplayName: Efromomr's Leggings
+		Tooltip: Great for impersonating devs!
+	}
+
+	FeralHelmet: {
+		FeralSetBonus: Melee speed is increased by 15%.
+		DisplayName: Feral Helmet
+		Tooltip:
+			'''
+			Melee damage is increased by 5%. 
+			Melee critical strike chance is increased by 3%.
+			'''
+	}
+
+	FeralBreastplate: {
+		DisplayName: Feral Breastplate
+		Tooltip: Melee damage is increased by 7%.
+	}
+
+	FeralLeggings: {
+		DisplayName: Feral Leggings
+		Tooltip:
+			'''
+			Melee critical strike chance is increased by 6%. 
+			Movement speed is decreased by 14%.
+			'''
+	}
+
+	FrozenWarderersHood: {
+		FrozenWardererSetBonus: Magic damage is increased by 8%.
+		DisplayName: Frozen Warderers Hood
+		Tooltip: Magic damage is increased by 6%.
+	}
+
+	FrozenWarderersBreastplate: {
+		DisplayName: Frozen Warderers Breastplate
+		Tooltip:
+			'''
+			Increases maximum mana by 40. 
+			Reduces mana usage by 15%.
+			'''
+	}
+
+	FrozenWarderersLeggings: {
+		DisplayName: Frozen Warderers Leggings
+		Tooltip: Movement speed is increased by 10%.
+	}
+
+	GalvornHelmet: {
+		GalvornSetBonus: Magic damage is increased by 8%.
+		DisplayName: Galvorn Helmet
+		Tooltip:
+			'''
+			Critical strike chance is increased by 7%, critical strike damage is increased by 25%. 
+			Movement speed is decreased by 3%.
+			'''
+	}
+
+	GalvornBreastplate: {
+		DisplayName: Galvorn Breastplate
+		Tooltip:
+			'''
+			Damage is increased by 7%, melee speed is increased by 30%
+			Movement speed is decreased by 5%.
+			'''
+	}
+
+	GalvornLeggings: {
+		DisplayName: Galvorn Leggings
+		Tooltip: ""
+	}
+
+	HallowedFaceShield: {
+		HallowedFaceShieldSetBonus: Throwing velocity is increased by 35%.
+		DisplayName: Hallowed Face Shield
+		Tooltip:
+			'''
+			Throwing damage and velocity are increased by 14%. 
+			Throwing critical strike chance is increased by 15%.
+			'''
+	}
+
+	HallowedHeadpiece: {
+		HallowedHeadpieceSetBonus: Minion damage is increased by 16%, increases your max number of minions.
+		DisplayName: Hallowed Headpiece
+		Tooltip:
+			'''
+			Minion damage is increased by 21%. 
+			Increases your max number of minions.
+			'''
+	}
+
+	JaguarsMask: {
+		JaguarSetBonus: Movement speed is increased by 30%.
+		DisplayName: Jaguar's Mask
+		Tooltip: Movement speed is increased by 18%.
+	}
+
+	JaguarsBreastplate: {
+		DisplayName: Jaguar's Breastplate
+		Tooltip:
+			'''
+			Increased maximum flight time. 
+			Increased jump height.
+			'''
+	}
+
+	JaguarsLeggings: {
+		DisplayName: Jaguar's Leggings
+		Tooltip: Movement speed is increased by 20%.
+	}
+
+	KazzinaksBreastplate: {
+		DisplayName: Kazzinak's Breastplate
+		Tooltip: Great for impersonating devs!
+	}
+
+	KazzinaksHelmet: {
+		DisplayName: Kazzinak's Helmet
+		Tooltip: Great for impersonating devs!
+	}
+
+	KazzinaksLeggings: {
+		DisplayName: Kazzinak's Leggings
+		Tooltip: Great for impersonating devs!
+	}
+
+	MeuRansHood: {
+		Tooltip: Great for impersonating devs!
+		DisplayName: MeuRan's Hood
+	}
+
+	MeuRansGreaves: {
+		Tooltip: Great for impersonating devs!
+		DisplayName: MeuRan's Greaves
+	}
+
+	MeuRansBreastplate: {
+		Tooltip: Great for impersonating devs!
+		DisplayName: MeuRan's Breastplate
+	}
+
+	MrPigeonsJacket: {
+		DisplayName: Mr.Pigeon's Jacket
+		Tooltip: Great for impersonating devs!
+	}
+
+	MrPigeonsBoots: {
+		Tooltip: Great for impersonating devs!
+		DisplayName: Mr.Pigeon's Boots
+	}
+
+	MrPigeonsMask: {
+		DisplayName: Mr.Pigeon's Mask
+		Tooltip: Great for impersonating devs!
+	}
+
+	MythrilHeadpiece: {
+		MythrilHeadpieceSetBonus: Minion damage is increased by 9%, increases your max number of minions.
+		DisplayName: Mythril Headpiece
+		Tooltip: 
+				'''
+				Minion damage is increased by 16%. 
+				Increases your max number of minions.
+				'''
+	}
+
+	MythrilHeadgear: {
+		MythrilHeadgearSetBonus: 33% chance to not consume thrown item.
+		DisplayName: Mythril Headgear
+		Tooltip: 
+				'''
+				Throwing damage and velocity are increased by 14%. 
+				Throwing critical strike chance is increased by 12%.
+				'''
 	}
 }
 

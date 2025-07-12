@@ -1,21 +1,15 @@
-﻿using Terraria;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Items.Armor
 {
     [AutoloadEquip(EquipType.Head)]
     public class NomadsHood : ModItem
     {
-
-        public override void SetStaticDefaults()
+        public override void Load()
         {
-            // DisplayName.SetDefault("Nomad's Hood");
-            // Tooltip.SetDefault("Assassin damage is increased by 5%. \nCritical strike chance is increased by 13%.");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Капюшон кочевника");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает урон головореза на 5%. \nУвеличивает шанс критического удара на 13%.");
-
+            _ = this.GetLocalization("NomadSetBonus").Value;
         }
         public override void SetDefaults()
         {
@@ -40,8 +34,7 @@ namespace Bismuth.Content.Items.Armor
         }
         public override void UpdateArmorSet(Player player)
         {
-            string NomadSetBonus = Language.GetTextValue("Mods.Bismuth.NomadSetBonus");
-            player.setBonus = NomadSetBonus;
+            player.setBonus = this.GetLocalization("NomadSetBonus").Value;
             player.GetModPlayer<BismuthPlayer>().nomadsetbonus = true;
         }
     }

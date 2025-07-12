@@ -1,22 +1,17 @@
-﻿using Terraria;
+﻿using Bismuth.Content.Items.Materials;
+using Bismuth.Utilities;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using Bismuth.Content.Items.Materials;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Items.Armor
 {
     [AutoloadEquip(EquipType.Head)]
     public class KillersHood : ModItem
     {
-
-        public override void SetStaticDefaults()
+        public override void Load()
         {
-            // DisplayName.SetDefault("Killer's Hood");
-            // Tooltip.SetDefault("Critical strike chance is increased by 8%.");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Капюшон убийцы");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает шанс критического удара на 8%.");
+            _ = this.GetLocalization("KillerSetBonus").Value ;
         }
         public override void SetDefaults()
         {
@@ -40,8 +35,7 @@ namespace Bismuth.Content.Items.Armor
         }
         public override void UpdateArmorSet(Player player)
         {
-            string KillerSetBonus = Language.GetTextValue("Mods.Bismuth.KillerSetBonus");
-            player.setBonus = KillerSetBonus;
+            player.setBonus = this.GetLocalization("KillerSetBonus").Value;
             player.GetModPlayer<BismuthPlayer>().killersetbonus = true;
         }
         public override void AddRecipes()

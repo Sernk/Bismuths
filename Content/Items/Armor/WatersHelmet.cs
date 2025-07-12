@@ -1,21 +1,16 @@
-﻿using Terraria;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Items.Armor
 {
     [AutoloadEquip(EquipType.Head)]
     public class WatersHelmet : ModItem
     {
-
-        public override void SetStaticDefaults()
+        public override void Load()
         {
-            // DisplayName.SetDefault("Water's Helmet");
-            // Tooltip.SetDefault("More wetness - higher critical strike chance");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Шлем вод");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Больше влажности - выше шанс критического удара.");
+            _ = this.GetLocalization("WaterSetBonus").Value;
         }
         public override void SetDefaults()
         {
@@ -31,8 +26,7 @@ namespace Bismuth.Content.Items.Armor
         }
         public override void UpdateArmorSet(Player player)
         {
-            string WaterSetBonus = Language.GetTextValue("Mods.Bismuth.WaterSetBonus");
-            player.setBonus = "WaterSetBonus";
+            player.setBonus = this.GetLocalization("WaterSetBonus").Value;
             player.GetModPlayer<BismuthPlayer>().watersetbonus = true;
         }
         public override void AddRecipes()

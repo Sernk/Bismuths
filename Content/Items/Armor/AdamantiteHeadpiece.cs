@@ -1,0 +1,47 @@
+﻿using System.Collections.Generic;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.Localization;
+
+namespace Bismuth.Content.Items.Armor
+{
+    [AutoloadEquip(EquipType.Head)]
+    public class AdamantiteHeadpiece : ModItem
+    {
+        public override void Load()
+        {
+            _ = this.GetLocalization("AdamantiteHeadpieceSetBonus").Value;
+        }
+        public override void SetDefaults()
+        {            
+            Item.width = 18;
+            Item.height = 18;           
+            Item.value = Item.sellPrice(0, 3, 0, 0);
+            Item.rare = 4;
+            Item.defense = 2;
+        }
+        public override void UpdateEquip(Player player)
+        {
+            player.GetDamage(DamageClass.Summon) += 0.21f;
+            player.maxMinions++;
+        }
+        public override bool IsArmorSet(Item head, Item body, Item legs)
+        {
+            return body.type == 403 && legs.type == 404; 
+        }
+        public override void UpdateArmorSet(Player player)
+        {
+            player.maxMinions++;
+            player.GetDamage(DamageClass.Summon) += 0.12f;
+            player.setBonus = this.GetLocalization("AdamantiteHeadpieceSetBonus").Value;
+        }
+        public override void AddRecipes()  
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ItemID.AdamantiteBar, 12);  
+            recipe.AddTile(TileID.MythrilAnvil);   
+            recipe.Register();
+        }
+    }
+}

@@ -8,11 +8,6 @@ namespace Bismuth.Content.Items.Armor
     [AutoloadEquip(EquipType.Head)]
     public class Ushanka : ModItem
     {
-
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Ushanka");
-        }
         public override void SetDefaults()
         {
             Item.width = 18;

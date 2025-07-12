@@ -7,13 +7,6 @@ namespace Bismuth.Content.Items.Armor
     [AutoloadEquip(EquipType.Head)]
     public class NecromancersHood : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Necromancer's Hood");
-            //Tooltip.SetDefault("Minion damage is increased by 10%. \nIncreases your max number of minions");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Капюшон некроманта");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает урон прислужников на 10%. \nУвеличивает максимальное число прислужников.");
-        }
         public override void SetDefaults()
         {
             Item.width = 18;

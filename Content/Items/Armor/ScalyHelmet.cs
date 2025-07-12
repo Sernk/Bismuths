@@ -1,20 +1,15 @@
-﻿using Terraria;
+﻿using Bismuth.Content.Items.Materials;
+using Terraria;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using Bismuth.Content.Items.Materials;
 
 namespace Bismuth.Content.Items.Armor
 {
     [AutoloadEquip(EquipType.Head)]
     public class ScalyHelmet : ModItem
     {
-
-        public override void SetStaticDefaults()
+        public override void Load()
         {
-            // DisplayName.SetDefault("Scaly Helmet");
-            // Tooltip.SetDefault("Increases throwing critical strike chance by 11%. \nYou use any items 5% faster.");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Шлем из чешуи");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает шанс критического удара метательным оружием на 11% \nВы используете все предметы на 5% быстрее.");
+            _ = this.GetLocalization("ScalySetBonus").Value;
         }
         public override void SetDefaults()
         {
@@ -34,9 +29,8 @@ namespace Bismuth.Content.Items.Armor
         }
         public override void UpdateArmorSet(Player player)
         {
-            string ScalySetBonus = Language.GetTextValue("Mods.Bismuth.ScalySetBonus");
             player.thorns += 0.2f;
-            player.setBonus = "Attackers also take damage";
+            player.setBonus = this.GetLocalization("ScalySetBonus").Value;
         }
         public override void AddRecipes()
         {
