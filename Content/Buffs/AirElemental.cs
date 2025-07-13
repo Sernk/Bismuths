@@ -1,7 +1,5 @@
 ﻿using Terraria;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Bismuth.Content.NPCs;
 
 namespace Bismuth.Content.Buffs
 {

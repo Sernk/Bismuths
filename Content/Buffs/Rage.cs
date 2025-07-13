@@ -1,7 +1,6 @@
-﻿using Terraria;
-using Terraria.Localization;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ModLoader;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Buffs
 {
@@ -9,15 +8,10 @@ namespace Bismuth.Content.Buffs
     {
         public override void SetStaticDefaults()
         {
-            //DisplayName.SetDefault("Rage");
-            //Description.SetDefault("Your melee speed is increased");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Злость");
-            //Description.AddTranslation(GameCulture.Russian, "Ваша скорость ближнего боя увеличена");
             Main.debuff[Type] = false;
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = true;
         }
-
         public override void Update(Player player, ref int buffIndex)
         {
             if (player.GetModPlayer<BismuthPlayer>().skill22lvl > 0 && player.GetModPlayer<BismuthPlayer>().skill23lvl == 0)

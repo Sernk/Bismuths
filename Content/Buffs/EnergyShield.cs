@@ -1,6 +1,6 @@
-﻿using Terraria;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ModLoader;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Buffs
 {
@@ -8,10 +8,6 @@ namespace Bismuth.Content.Buffs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Energy Shield");
-            // Description.SetDefault("You get shield around player, which will reflect projectiles");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Энергетический щит");
-            //Description.AddTranslation(GameCulture.Russian, "Вокруг вас генерируется щит, отражающий снаряды");
             Main.debuff[Type] = false;
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = true;

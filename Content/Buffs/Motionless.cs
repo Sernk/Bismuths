@@ -1,7 +1,6 @@
-﻿using Terraria;
-using Terraria.Localization;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ModLoader;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Buffs
 {
@@ -9,15 +8,10 @@ namespace Bismuth.Content.Buffs
     {
         public override void SetStaticDefaults()
         {
-            //DisplayName.SetDefault("Motionless");
-            //Description.SetDefault("You get bonus stats, but you can't move");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Обездвиженный");
-            //Description.AddTranslation(GameCulture.Russian, "Ваши характеристики увеличены, но вы не можете двигаться");
             Main.debuff[Type] = false;
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = true;
         }
-
         public override void Update(Player player, ref int buffIndex)
         {
             player.controlJump = false;

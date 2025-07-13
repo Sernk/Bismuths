@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Items.Other;
+using Bismuth.Utilities;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
@@ -8,7 +10,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Bismuth.Content.Items.Other;
+using Bismuth.Content.NPCs;
 
 namespace Bismuth.Content.Tiles
 {
@@ -222,6 +224,56 @@ namespace Bismuth.Content.Tiles
                                 Recipe.FindRecipes();
                             }
                         }
+                    }
+                    SoundEngine.PlaySound(player.chest < 0 ? SoundID.MenuOpen : SoundID.MenuTick);
+                    player.inventory[num66].stack--;
+                    BismuthWorld.DestroyedMaze = true;
+                    if (Main.netMode == 2)
+                    {
+                        NetMessage.SendData(7, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);
+                    }
+                    BismuthWorld.OpenedRedChest = true;
+                    if (Main.netMode == 2)
+                    {
+                        NetMessage.SendData(7, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);
+                    }
+                    Bismuth.ShakeScreen(50f, 120);
+                    if (Main.netMode == 0)
+                    {
+                        for (int k = 1; k <= 57; k++)
+                        {
+                            for (int l = 1; l <= 56; l++)
+                            {
+                                if (!(k == 52 && l == 56) && !(k == 53 && l == 56) && !(k == 52 && l == 55) && !(k == 53 && l == 55))
+                                    WorldMethods.RavageChest(BismuthWorld.MazeStartX + k, BismuthWorld.MazeStartY + l);
+                            }
+                        }
+                    }
+                    for (int k = 1; k <= 57; k++)
+                    {
+                        for (int l = 1; l <= 56; l++)
+                        {
+                            if (!(k < 6 && l < 5))
+                            {
+                                if (!(k == 52 && l == 56) && !(k == 53 && l == 56) && !(k == 52 && l == 55) && !(k == 53 && l == 55))
+                                {
+                                    WorldGen.KillTile(BismuthWorld.MazeStartX + k, BismuthWorld.MazeStartY + l);
+                                    if (!Main.tile[BismuthWorld.MazeStartX + k, BismuthWorld.MazeStartY + l].HasTile && Main.netMode != 0)
+                                        NetMessage.SendData(17, -1, -1, null, 0, (float)k, (float)l, 0f, 0, 0, 0);
+                                }
+                                if (k % 10 == 0 && l % 10 == 0)
+                                {
+                                    WorldGen.PlaceTile(BismuthWorld.MazeStartX + k, BismuthWorld.MazeStartY + l, TileID.Torches, false, false, -1, 2);
+                                    if (Main.netMode == 1)
+                                        NetMessage.SendTileSquare(-1, BismuthWorld.MazeStartX + k, BismuthWorld.MazeStartY + l, 1, TileChangeType.None);
+                                }
+                            }
+                        }
+                    }
+
+                    if (!NPC.AnyNPCs(ModContent.NPCType<Minotaur>()))
+                    {
+                        NPC.NewNPC(Main.LocalPlayer.GetSource_FromThis(), (BismuthWorld.MazeStartX + 6) * 16, (BismuthWorld.MazeStartY + 50) * 16, ModContent.NPCType<Minotaur>());
                     }
                 }
             }

@@ -1,7 +1,6 @@
-﻿using Terraria;
-using Terraria.Localization;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ModLoader;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Buffs
 {
@@ -9,15 +8,10 @@ namespace Bismuth.Content.Buffs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Glaciation");          
-            // Description.SetDefault("You can't move, but your health regeneration is significantly increased");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Оледенение");
-            //Description.AddTranslation(GameCulture.Russian, "Вы не можете двигаться, однако ваша регенерация здоровья серьезно увеличена");
             Main.debuff[Type] = false;
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = true;
         }
-
         public override void Update(Player player, ref int buffIndex)
         {
             player.controlJump = false;

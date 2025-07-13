@@ -1,9 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Projectiles;
+using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Localization;
-using Terraria.DataStructures;
 using Terraria.ModLoader;
-using Bismuth.Content.Projectiles;
 
 namespace Bismuth.Content.Buffs
 {
@@ -11,10 +9,6 @@ namespace Bismuth.Content.Buffs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Magician's Aura");
-            // Description.SetDefault("Your damage reflection slightly increased");
-           // DisplayName.AddTranslation(GameCulture.Russian, "Магическая аура");
-           // Description.AddTranslation(GameCulture.Russian, "Ваше поглощение урона слегка увеличено");
             Main.debuff[Type] = false;
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = true;
@@ -26,7 +20,6 @@ namespace Bismuth.Content.Buffs
             timealive++;
             if (timealive == 1 || timealive == 30)
                 Projectile.NewProjectile(Main.LocalPlayer.GetSource_FromThis(), Main.LocalPlayer.position, Vector2.Zero, ModContent.ProjectileType<AuraOrbital>(), 0, 0f);
-        }
-        
+        }        
     }
 }

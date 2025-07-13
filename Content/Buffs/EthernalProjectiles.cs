@@ -1,5 +1,4 @@
 ﻿using Terraria;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Buffs
@@ -8,10 +7,6 @@ namespace Bismuth.Content.Buffs
     {
         public override void SetStaticDefaults()
         {
-            //DisplayName.SetDefault("Ethereal Projectiles");
-            //Description.SetDefault("All your projectiles can move through blocks");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Призрачные снаряды");
-            //Description.AddTranslation(GameCulture.Russian, "Все ваши снаряды игнорируют блоки");
             Main.debuff[Type] = false;
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = true;

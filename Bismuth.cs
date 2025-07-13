@@ -1,4 +1,4 @@
-using Bismuth.Content.Items.Armor;
+﻿using Bismuth.Content.Items.Armor;
 using Bismuth.Content.Items.Other;
 using Bismuth.Utilities;
 using Microsoft.Xna.Framework;
@@ -201,6 +201,7 @@ namespace Bismuth
             TextureAssets.Projectile[ProjectileID.LightDisc] = ModContent.Request<Texture2D>("Bismuth/Resprites/LightDisc");
             TextureAssets.Projectile[ItemID.Drax] = ModContent.Request<Texture2D>("Bismuth/Resprites/Drax_proj");
         }
+
         //public override void UpdateMusic(ref int music)/* tModPorter Note: Removed. Use ModSceneEffect.Music and .Priority, aswell as ModSceneEffect.IsSceneEffectActive */
         //{
         //    if (!Main.gameMenu)

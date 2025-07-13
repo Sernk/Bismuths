@@ -1,7 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using Bismuth.Utilities;
+﻿using Bismuth.Utilities;
 using Terraria;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Buffs
@@ -10,10 +8,6 @@ namespace Bismuth.Content.Buffs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Bone Trap");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Костяная ловушка");
-            // Description.SetDefault("You can't move");
-            //Description.AddTranslation(GameCulture.Russian, "Вы не можете двигаться");
             Main.debuff[Type] = true;
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = true;

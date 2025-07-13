@@ -1,5 +1,5 @@
-﻿using Terraria;
-using Bismuth.Utilities;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Buffs
@@ -8,10 +8,6 @@ namespace Bismuth.Content.Buffs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Blessing");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Благословение");
-            // Description.SetDefault("Your max HP, mana and health regeneration are increased");
-            //Description.AddTranslation(GameCulture.Russian, "Ваше макс. здоровье, регенерация маны и здоровья увеличены");
             Main.debuff[Type] = false;
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = true;

@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.Localization;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Buffs
@@ -9,10 +7,6 @@ namespace Bismuth.Content.Buffs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Reviving");
-            // Description.SetDefault("Heroes never die");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Возрождение");
-            //Description.AddTranslation(GameCulture.Russian, "Герои не умирают");
             Main.debuff[Type] = false;
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = true;

@@ -77,26 +77,12 @@ namespace Bismuth.Utilities.Global
                 flag = false;
             }
         }
-        //public override void ModifyActiveShop(NPC npc, string shopName, Item[] items) // временно отключено 
-        //{
-        //    for (int i = 0; i < 40; i++)
-        //    {
-        //        items[i].value = (int)((float)items[i].value * 1.2f - ((float)items[i].value * 1.2f) * (((float)Main.player[Main.myPlayer].GetModPlayer<BismuthPlayer>().Charm / 100)));
-        //    }
-        //    if (Main.player[Main.myPlayer].GetModPlayer<BismuthPlayer>().skill132lvl > 0 && npc.type == NPCID.Demolitionist)
-        //    {
-        //        items[0].value = (int)((float)items[0].value * 0.6f);
-        //        items[1].value = (int)((float)items[1].value * 0.6f);
-        //        items[2].value = (int)((float)items[2].value * 0.6f);
-        //    }
-        //    if (Main.player[Main.myPlayer].GetModPlayer<BismuthPlayer>().skill83lvl > 0)
-        //    {
-        //        for (int i = 0; i < 40; i++)
-        //        {
-        //            items[i].value = (int)((float)items[i].value * 0.65f);
-        //        }
-        //    }
-        //}
+        public override void ModifyActiveShop(NPC npc, string shopName, Item[] items)
+        {
+            /// <summary>
+            /// <примешено в cref="Shop"/>
+            /// </summary>
+        }
         public override void ModifyHitNPC(NPC npc, NPC target, ref NPC.HitModifiers modifiers)
         {
             // код возможно не провальные 

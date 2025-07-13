@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.Localization;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Buffs
@@ -9,10 +7,6 @@ namespace Bismuth.Content.Buffs
     {
         public override void SetStaticDefaults()
         {
-            //DisplayName.SetDefault("Dice Game");
-            //Description.SetDefault("Prepare your money and just enjoy...");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Игра в кости");
-            //Description.AddTranslation(GameCulture.Russian, "Готовь свои деньги и наслаждайся");
             Main.debuff[Type] = true;
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = true;

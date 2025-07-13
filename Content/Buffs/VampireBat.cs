@@ -1,5 +1,4 @@
-﻿using Bismuth.BismuthLayerInPlayer;
-using Bismuth.Content.Mounts;
+﻿using Bismuth.Content.Mounts;
 using Bismuth.Utilities;
 using Terraria;
 using Terraria.ModLoader;

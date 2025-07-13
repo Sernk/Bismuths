@@ -1,7 +1,7 @@
-﻿using Terraria;
-using Terraria.Localization;
+﻿using Bismuth.Utilities;
+using Bismuth.Utilities.Global;
+using Terraria;
 using Terraria.ModLoader;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Buffs
 {
@@ -9,10 +9,6 @@ namespace Bismuth.Content.Buffs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Paralisys");
-            // Description.SetDefault("Azaza, etovo nikto ne uvidit");
-            //DisplayName.AddTranslation(GameCulture.Russian, "чич");
-            //Description.AddTranslation(GameCulture.Russian, "фыф");
             Main.debuff[Type] = false;
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = true;
@@ -23,7 +19,7 @@ namespace Bismuth.Content.Buffs
             npc.frameCounter = 0;    
             if(npc.noGravity)
                 npc.position.Y = npc.oldPosition.Y;
-            //npc.GetGlobalNPC<GlobalNPCs>().stundef = true;
+            npc.GetGlobalNPC<GlobalNPCs>().stundef = true;
             if (Main.player[Main.myPlayer].GetModPlayer<BismuthPlayer>().skill96lvl > 0)
                 npc.defense = 0;
         }

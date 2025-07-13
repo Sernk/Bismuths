@@ -1,14 +1,12 @@
-﻿using Terraria;
-using Terraria.Audio;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Bismuth.Content.Projectiles;
+using Bismuth.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Linq;
-using Bismuth.Utilities;
-using Bismuth.Content.Projectiles;
+using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
@@ -225,49 +223,50 @@ namespace Bismuth.Content.NPCs
         public void ChoosePhase()
         {
            
-                UpdateDirection();
-                if (!(Main.player[Main.myPlayer].Center.ToTileCoordinates().X > BismuthWorld.MazeStartX && Main.player[Main.myPlayer].Center.ToTileCoordinates().X < BismuthWorld.MazeStartX + 58 && Main.player[Main.myPlayer].Center.ToTileCoordinates().Y > BismuthWorld.MazeStartY && Main.player[Main.myPlayer].Center.ToTileCoordinates().Y < BismuthWorld.MazeStartY + 57))
-                    currentphase = 0;
-                else if (currentphase > 1)
-                {
-                    currentphase = 1;
-                    NPC.ai[1] = 0f;
-                    WalkingTimeMax = 0;
-                }
-                else if (Math.Abs(player.Center.X - NPC.Center.X) < 100f && Math.Abs(player.Center.Y - NPC.Center.Y) < 100f)
-                    currentphase = 2;
-                else
-                {
-                    currentphase = Main.rand.Next(3, 6);
-                }
-                switch (currentphase)
-                {
-                    case 0:
-                        currentframe = 0;
-                        break;
-                    case 1:
-                        currentframe = 4;
-                        break;
-                    case 2:
-                        currentframe = 13;
-                        break;
-                    case 3:
-                        currentframe = 23;
-                        break;
-                    case 4:
-                        currentframe = 34;
-                        break;
-                    case 5:
-                        currentframe = 43;
-                        break;
-                    default:
-                        currentframe = 0;
-                        break;
-                }
-            
-           
-             
+            UpdateDirection();
+            if (!(Main.player[Main.myPlayer].Center.ToTileCoordinates().X > BismuthWorld.MazeStartX && Main.player[Main.myPlayer].Center.ToTileCoordinates().X < BismuthWorld.MazeStartX + 58 && Main.player[Main.myPlayer].Center.ToTileCoordinates().Y > BismuthWorld.MazeStartY && Main.player[Main.myPlayer].Center.ToTileCoordinates().Y < BismuthWorld.MazeStartY + 57))
+            {
+                currentphase = 0;
+            }
+            else if (currentphase > 1)
+            {
+                currentphase = 1;
+                NPC.ai[1] = 0f;
+                WalkingTimeMax = 0;
+            }
+            else if (Math.Abs(player.Center.X - NPC.Center.X) < 100f && Math.Abs(player.Center.Y - NPC.Center.Y) < 100f)
+            {
 
+                currentphase = 2;
+            }
+            else
+            {
+                currentphase = Main.rand.Next(3, 6);
+            }
+            switch (currentphase)
+            {
+                case 0:
+                    currentframe = 0;
+                    break;
+                case 1:
+                    currentframe = 4;
+                    break;
+                case 2:
+                    currentframe = 13;
+                    break;
+                case 3:
+                    currentframe = 23;
+                    break;
+                case 4:
+                    currentframe = 34;
+                    break;
+                case 5:
+                    currentframe = 43;
+                    break;
+                default:
+                    currentframe = 0;
+                    break;
+            }
         }
         public void UpdateDirection()
         {

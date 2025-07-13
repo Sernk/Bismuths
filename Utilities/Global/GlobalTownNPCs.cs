@@ -1,26 +1,28 @@
-﻿using Bismuth.Content.Items.Other;
+﻿using Bismuth.Content.Items.Armor;
+using Bismuth.Content.Items.Other;
+using Bismuth.Content.Items.Placeable;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Bismuth.Utilities.Global
 {
-    public class GlobalTownNPCs : GlobalNPC // Нужно добавить броню 
+    public class GlobalTownNPCs : GlobalNPC
     {
         public override void ModifyShop(NPCShop shop)
         {
             var Quest = new Condition("Quest", () => Main.LocalPlayer.GetModPlayer<Quests>().GlamdringQuest == 20);
             if (shop.NpcType == NPCID.Dryad)
             {
-                //shop.Add(ModContent.ItemType<OrnamentalPlant>());
+                shop.Add(ModContent.ItemType<OrnamentalPlant>());
             }
             if (shop.NpcType == NPCID.Merchant)
             {
                 shop.Add(ModContent.ItemType<AdventurersBook>());
                 shop.Add(225);
-                //shop.Add(ModContent.ItemType<YeomansHat>());
-                //shop.Add(ModContent.ItemType<YeomansShirt>());
-                //shop.Add(ModContent.ItemType<YeomansLeggings>());
+                shop.Add(ModContent.ItemType<YeomansHat>());
+                shop.Add(ModContent.ItemType<YeomansShirt>());
+                shop.Add(ModContent.ItemType<YeomansLeggings>());
             }
             if (shop.NpcType == NPCID.GoblinTinkerer)
             {

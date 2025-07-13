@@ -1,5 +1,5 @@
-﻿using Terraria;
-using Bismuth.Utilities;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Buffs
@@ -8,15 +8,10 @@ namespace Bismuth.Content.Buffs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Cruelty");
-            // Description.SetDefault("Your assassin damage and crit. chance are increased, but you get more damage");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Подлость");
-            //Description.AddTranslation(GameCulture.Russian, "Ваш урон и крит. шанс головореза увеличены, но вы получаете больше урона");
             Main.debuff[Type] = false;
             Main.pvpBuff[Type] = true;
             Main.buffNoSave[Type] = true;
         }
-
         public override void Update(Player player, ref int buffIndex)
         {
             if (player.GetModPlayer<BismuthPlayer>().skill86lvl > 0)
