@@ -18,7 +18,7 @@ namespace Bismuth.Utilities
         {
             Item.DamageType = ModP.AssassinDamage ?? DamageClass.Generic;
             Item.crit = 7;
-        }       
+        }
         public override void ModifyWeaponCrit(Player player, ref float crit)
         {
             crit += player.GetModPlayer<ModP>().assassinCrit;
@@ -33,24 +33,24 @@ namespace Bismuth.Utilities
             float cc = Item.crit; 
             ModifyWeaponCrit(player, ref cc); 
         }
-        //public override bool AllowPrefix(int pre)
-        //{
-        //    if (SkillsGlobalItems.VanillaCommonPrefixes.Contains(pre) || SkillsGlobalItems.VanillaUniversalPrefixes.Contains(pre))
-        //        return true;
-        //   else
-        //        return false;
-        //}
+        public override bool AllowPrefix(int pre)
+        {
+            if (SkillsGlobalItems.VanillaCommonPrefixes.Contains(pre) || SkillsGlobalItems.VanillaUniversalPrefixes.Contains(pre))
+                return true;
+           else
+                return false;
+        }
         public override bool? PrefixChance(int pre, UnifiedRandom rand)
         {
             if (pre == -1)
                 return false;
             return base.PrefixChance(pre, rand);
         }
-        //public override int ChoosePrefix(UnifiedRandom rand)
-        //{
-        //    int pre = rand.Next(SkillsGlobalItems.VanillaCommonPrefixes.Concat(SkillsGlobalItems.VanillaUniversalPrefixes).ToArray());
-        //    return pre;
-        //}
+        public override int ChoosePrefix(UnifiedRandom rand)
+        {
+            int pre = rand.Next(SkillsGlobalItems.VanillaCommonPrefixes.Concat(SkillsGlobalItems.VanillaUniversalPrefixes).ToArray());
+            return pre;
+        }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             string AssassinDamage = this.GetLocalization("Item.AssassinDamage").Value;

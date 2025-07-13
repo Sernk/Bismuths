@@ -1,7 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -36,7 +37,7 @@ namespace Bismuth.Content.Tiles
         }
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
-            ulong seed = Main.TileFrameSeed ^ ((ulong)j << 32);// | (ulong)i
+            ulong seed = Main.TileFrameSeed ^ ((ulong)j << 32);//| (ulong)i);
             Color color = new Color(120, 120, 120, 0);
             int frameX = (int)Main.tile[i, j].TileFrameX;
             int frameY = (int)Main.tile[i, j].TileFrameY;
@@ -56,8 +57,7 @@ namespace Bismuth.Content.Tiles
             {
                 float num12 = (float)Utils.RandomInt(ref seed, -10, 11) * 0.15f;
                 float num13 = (float)Utils.RandomInt(ref seed, -10, 11) * 0.15f;
-                Texture2D flameTexture = ModContent.Request<Texture2D>("Bismuth/Content/Tiles/Flame_1").Value; 
-                Main.spriteBatch.Draw(flameTexture, new Vector2((float)(i * 16 - (int)Main.screenPosition.X) - (float)(((double)width - 16.0) / 2.0) + num12 + 1, (float)(j * 16 - (int)Main.screenPosition.Y + num1) + num13 - 1) + vector2, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(frameX, frameY, width, height)), color, 0.0f, new Vector2(), 1f, SpriteEffects.None, 0.0f);
+                Main.spriteBatch.Draw(TextureAssets.Flames[4].Value, new Vector2((float)(i * 16 - (int)Main.screenPosition.X) - (float)(((double)width - 16.0) / 2.0) + num12 + 1, (float)(j * 16 - (int)Main.screenPosition.Y + num1) + num13 - 1) + vector2, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(frameX, frameY, width, height)), color, 0.0f, new Vector2(), 1f, SpriteEffects.None, 0.0f);
             }
         }
     }

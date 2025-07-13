@@ -3505,6 +3505,19 @@ NPCs: {
 			// LikeNPC_Princess: Мне нравится {NPCName}.
 			// Princess_LovesNPC: Мне нравится {NPCName}.
 		}
+
+		Name: {
+			Gagini: Gagini
+			Budd: Budd
+			Butannaziba: Butannaziba
+			Mazozi: Mazozi
+			Nkemdilim: Nkemdilim
+			Olanreuodzhu: Olanreuodzhu
+			Syed: Syed
+			Tafari: Tafari
+			Chidzhenda: Chidzhenda
+			Jango: Jango
+		}
 	}
 
 	Toad.DisplayName: Жаба

@@ -4,12 +4,9 @@ using Bismuth.Content.Items.Weapons.Magical;
 using Bismuth.Content.Projectiles;
 using Bismuth.Utilities;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
@@ -19,8 +16,6 @@ namespace Bismuth.Content.NPCs
     {
         public override void SetStaticDefaults()
         {
-            // this.DisplayName.SetDefault("Papuan Shaman");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Папуас-шаман");
             Main.npcFrameCount[NPC.type] = 29;
         }
 
@@ -37,7 +32,6 @@ namespace Bismuth.Content.NPCs
             NPC.value = (float)Item.buyPrice(0, 4, 0, 0);
             NPC.knockBackResist = 0.0f;
             NPC.aiStyle = -1;
-            //npc.scale = 1f;
         }
         int currentframe = 0;
         int currentphase = 1;

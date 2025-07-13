@@ -1,19 +1,11 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Bismuth.Content.Items.Armor;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Other
 {
     public class BismuthumCasket : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Bismuthum Casket");
-            // Tooltip.SetDefault("There are dev items inside");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Висмутовая шкатулка");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Содержит предметы разработчиков");
-        }
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -26,7 +18,7 @@ namespace Bismuth.Content.Items.Other
         {
             return true;
         }
-        /*public override void RightClick(Player player)
+        public override void RightClick(Player player)
         {
             var source = player.GetSource_OpenItem(Item.type);
             switch (Main.rand.Next(0, 9))
@@ -94,6 +86,6 @@ namespace Bismuth.Content.Items.Other
                         break;
                     }            
             }
-        }*/
+        }
     }
 }

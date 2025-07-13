@@ -1,4 +1,5 @@
-﻿using Bismuth.Content.Items.Materials;
+﻿using Bismuth.Content.Items.Armor;
+using Bismuth.Content.Items.Materials;
 using Bismuth.Content.Items.Tools;
 using Bismuth.Content.Items.Weapons.Melee;
 using Bismuth.Content.Items.Weapons.Throwing;
@@ -67,46 +68,63 @@ namespace Bismuth.Content.NPCs
             }
             return false;
         }
-
-        //public override List<string> SetNPCNameList()/* tModPorter Suggestion: Return a list of names */
-        //{
-        //    switch (WorldGen.genRand.Next(4))
-        //    {
-        //        case 0:
-        //            return "Gagini";
-        //        case 1:
-        //            return "Budd";
-        //        case 2:
-        //            return "Butannaziba";
-        //        case 3:
-        //            return "Mazozi";
-        //        case 4:
-        //            return "Nkemdilim";
-        //        case 5:
-        //            return "Olanreuodzhu";
-        //        case 6:
-        //            return "Syed";
-        //        case 7:
-        //            return "Tafari";
-        //        case 8:
-        //            return "Chidzhenda";
-        //        default:
-        //            return "Jango";
-        //    }
-        //}
-        public override List<string> SetNPCNameList() => new List<string>()
+        public override List<string> SetNPCNameList()
         {
-            this.GetLocalizedValue("Name.Gagini"), 
-            this.GetLocalizedValue("Name.Budd"), 
-            this.GetLocalizedValue("Name.Butannaziba"), 
-            this.GetLocalizedValue("Name.Mazozi"), 
-            this.GetLocalizedValue("Name.Nkemdilim"), 
-            this.GetLocalizedValue("Name.Olanreuodzhu"),
-            this.GetLocalizedValue("Name.Syed"), 
-            this.GetLocalizedValue("Name.Tafari"), 
-            this.GetLocalizedValue("Name.Chidzhenda"), 
-            this.GetLocalizedValue("Name.Jango"), 
-        };
+            switch (WorldGen.genRand.Next(4))
+            {
+                case 0:
+                    return new List<string>
+                    {
+                        this.GetLocalizedValue("Name.Gagini"),
+                    };
+                case 1:
+                    return new List<string>
+                    {
+                        this.GetLocalizedValue("Name.Budd"),
+                    };
+                case 2:
+                    return new List<string>
+                    {
+                        this.GetLocalizedValue("Name.Butannaziba"),
+                    };
+                case 3:
+                    return new List<string>
+                    {
+                        this.GetLocalizedValue("Name.Mazozi"),
+                    };
+                case 4:
+                    return new List<string>
+                    {
+                        this.GetLocalizedValue("Name.Nkemdilim"),
+                    };
+                case 5:
+                    return new List<string>
+                    {
+                        this.GetLocalizedValue("Name.Olanreuodzhu"),
+                    };
+                case 6:
+                    return new List<string>
+                    {
+                        this.GetLocalizedValue("Name.Syed"),
+                    };
+                case 7:
+                    return new List<string>
+                    {
+                        this.GetLocalizedValue("Name.Tafari"),
+                    };
+                case 8:
+                    return new List<string>
+                    {
+                        this.GetLocalizedValue("Name.Chidzhenda"),
+                    };
+                default:
+                    return new List<string>                         
+                    {
+                        this.GetLocalizedValue("Name.Jango"),
+                    };
+            }
+        }
+
         public override string GetChat()
         {
             int Angler = NPC.FindFirstNPC(NPCID.Angler);
@@ -149,9 +167,9 @@ namespace Bismuth.Content.NPCs
             shop.Add(ModContent.ItemType<SharkKnife>());
             shop.Add(ModContent.ItemType<SharkJavelin>());
             shop.Add(ModContent.ItemType<SharkHalberd>());
-            //shop.Add(ModContent.ItemType<JaguarsMask>());
-            //shop.Add(ModContent.ItemType<JaguarsBreastplate>());
-            //shop.Add(ModContent.ItemType<JaguarsLeggings>());
+            shop.Add(ModContent.ItemType<JaguarsMask>());
+            shop.Add(ModContent.ItemType<JaguarsBreastplate>());
+            shop.Add(ModContent.ItemType<JaguarsLeggings>());
             shop.Add(ModContent.ItemType<JaguarsPickaxe>());
 
             shop.Add(ModContent.ItemType<HerbalFeather>(), HardMode);

@@ -224,10 +224,6 @@ namespace Bismuth.Content.NPCs
                               Main.npcChatText = SwampWitch_12;
                         }
                     }
-                    if (!temp)
-                    {
-                        shopName = "BabaYagaShop";
-                    }
                 }
                 else if (Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest == 200 && Main.LocalPlayer.GetModPlayer<BismuthPlayer>().witchsecondatt)
                 {

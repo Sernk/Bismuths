@@ -1689,41 +1689,95 @@ namespace Bismuth.Utilities
                 ;
             }));
             int DesertIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Full Desert"));
-
             tasks.Insert(DesertIndex + 1, new PassLegacy("Desert Village", delegate (GenerationProgress progress, GameConfiguration configuration)
             {
-                int desertCenterX = (GenVars.desertHiveLeft + GenVars.desertHiveRight) / 2;
-                int desertStartY = (int)GenVars.desertHiveLow;
+                var desert = GenVars.UndergroundDesertLocation;
+                int left = Math.Max(0, desert.Left - 50);
+                int right = Math.Min(Main.maxTilesX - 1, desert.Right + 50);
+                int top = Math.Max((int)GenVars.worldSurfaceLow, desert.Top - 20);
+                int bottom = Math.Min(Main.maxTilesY - 1, desert.Bottom + 50);
 
-                while (desertStartY > 0 && !WorldGen.SolidTile(desertCenterX, desertStartY))
-                    desertStartY--;
+                StartDesertVillageX = -1;
+                StartDesertVillageY = -1;
+                DesertVillageLeftBorderX = -1;
+                DesertVillageLeftBorderY = -1;
+                DesertVillageRightBorderX = -1;
+                DesertVillageRightBorderY = -1;
 
-                int left = desertCenterX;
-                while (left > 0 && WorldGen.InWorld(left, desertStartY) && WorldMethods.CheckTile(left, desertStartY, TileID.Sand))
-                    left--;
-
-                int right = desertCenterX;
-                while (right < Main.maxTilesX && WorldGen.InWorld(right, desertStartY) && WorldMethods.CheckTile(right, desertStartY, TileID.Sand))
-                    right++;
-
-                int center = (left + right) / 2;
-
-                StartDesertVillageX = center;
-                StartDesertVillageY = desertStartY;
-                DesertVillageLeftBorderX = left;
-                DesertVillageRightBorderX = right;
+                for (int i = left; i <= right; i++)
+                {
+                    for (int j = top; j <= bottom; j++)
+                    {
+                        if (!WorldGen.TileEmpty(i, j))
+                            break;
+                        if (WorldMethods.CheckWall(i, j, WallID.HardenedSand) || WorldMethods.CheckWall(i, j, WallID.Sandstone))
+                        {
+                            StartDesertVillageX = i;
+                            StartDesertVillageY = j;
+                            goto LeftBorder;
+                        }
+                    }
+                }
+            LeftBorder:
+                for (int i = left; i <= right; i++)
+                {
+                    for (int j = top; j <= bottom; j++)
+                    {
+                        if (WorldMethods.CheckWall(i, j, WallID.HardenedSand) || WorldMethods.CheckWall(i, j, WallID.Sandstone))
+                        {
+                            DesertVillageLeftBorderX = i;
+                            DesertVillageLeftBorderY = j;
+                            goto RightBorder;
+                        }
+                    }
+                }
+            RightBorder:
+                for (int i = right; i >= left; i--)
+                {
+                    for (int j = top; j <= bottom; j++)
+                    {
+                        if (WorldMethods.CheckWall(i, j, WallID.HardenedSand) || WorldMethods.CheckWall(i, j, WallID.Sandstone))
+                        {
+                            DesertVillageRightBorderX = i;
+                            DesertVillageRightBorderY = j;
+                            goto Calculate;
+                        }
+                    }
+                }
+            Calculate:
+                TempY = StartDesertVillageY;
+                while (WorldMethods.CheckWall(StartDesertVillageX, StartDesertVillageY, WallID.Sandstone) || WorldMethods.CheckWall(StartDesertVillageX, StartDesertVillageY, WallID.HardenedSand))
+                {
+                    StartDesertVillageY--;
+                    if (StartDesertVillageY < top) break;
+                }
+                while (!WorldMethods.CheckTile(StartDesertVillageX, StartDesertVillageY, TileID.Sand))
+                {
+                    StartDesertVillageX--;
+                    if (StartDesertVillageX < left) break;
+                }
+                int CenterX = DesertVillageLeftBorderX + ((DesertVillageRightBorderX - DesertVillageLeftBorderX) / 2);
 
                 StartBridgeX = StartDesertVillageX;
                 BridgeY = StartDesertVillageY;
-
                 EndBridgeX = StartBridgeX + 2;
-                while (WorldGen.TileEmpty(EndBridgeX, BridgeY) && EndBridgeX < Main.maxTilesX)
+                while (EndBridgeX < right && EndBridgeX >= 0 && EndBridgeX < Main.maxTilesX && BridgeY >= 0 && BridgeY < Main.maxTilesY && WorldGen.TileEmpty(EndBridgeX, BridgeY))
+                {
                     EndBridgeX++;
+                }   
+                EndBridgeX = Math.Min(EndBridgeX, Main.maxTilesX - 1);
                 EndBridgeX--;
-
-                int bridgeLength = EndBridgeX - StartBridgeX;
-                IsDesertSuccess = bridgeLength <= (Main.maxTilesX > 8400 ? 100 : 50);
-                IsDesertSuccess = true;
+                IsDesertSuccess = true; 
+                if (Main.maxTilesX > 8400)
+                {
+                    if (EndBridgeX - StartBridgeX > 100)
+                        IsDesertSuccess = false;
+                }
+                else
+                {
+                    if (EndBridgeX - StartBridgeX > 50)
+                        IsDesertSuccess = false;
+                }
             }));
             tasks.Insert(MicroBiomesIndex + 2, new PassLegacy("Desert Village", delegate (GenerationProgress progress, GameConfiguration configuration)
             {
@@ -1874,15 +1928,15 @@ namespace Bismuth.Utilities
                         MainBuildingY--;
                     MainBuildingY -= 22;
                     int n = 0;
-                    //for (int i = 0; i < 24; i++)
-                    //{
-                    //    while (!WorldMethods.CheckTile(MainBuildingX + i, MainBuildingY + n, TileID.Sand))
-                    //    {
-                    //        WorldGen.PlaceTile(MainBuildingX + i, MainBuildingY + n, TileID.Sand);
-                    //        n++;
-                    //    }
-                    //    n = 0;
-                    //}
+                    for (int i = 0; i < 24; i++)
+                    {
+                        while (!WorldMethods.CheckTile(MainBuildingX + i, MainBuildingY + n, TileID.Sand))
+                        {
+                            WorldGen.PlaceTile(MainBuildingX + i, MainBuildingY + n, TileID.Sand);
+                            n++;
+                        }
+                        n = 0;
+                    }
                     int[,] MainBuildingTile = new int[,]
                     {  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0},

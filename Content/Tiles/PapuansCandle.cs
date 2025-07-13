@@ -55,7 +55,7 @@ namespace Bismuth.Content.Tiles
             {
                 float num2 = (float)Utils.RandomInt(ref seed, -12, 13) * 0.075f;
                 float num3 = (float)Utils.RandomInt(ref seed, -12, 13) * 0.075f;
-                Main.spriteBatch.Draw(TextureAssets.Flames[2].Value, new Vector2((float)(i * 16 - (int)Main.screenPosition.X) - (float)(((double)width - 16.0) / 2.0) + num2, (float)(j * 16 - (int)Main.screenPosition.Y + num1) + num3) + vector2, new Rectangle?(new Rectangle(frameX, frameY, width, height)), color, 0.0f, new Vector2(), 1f, SpriteEffects.None, 0.0f);
+                Main.spriteBatch.Draw(TextureAssets.Flames[1].Value, new Vector2((float)(i * 16 - (int)Main.screenPosition.X) - (float)(((double)width - 16.0) / 2.0) + num2, (float)(j * 16 - (int)Main.screenPosition.Y + num1) + num3) + vector2, new Rectangle?(new Rectangle(frameX, frameY, width, height)), color, 0.0f, new Vector2(), 1f, SpriteEffects.None, 0.0f);
             }
         }
     }
