@@ -11,7 +11,6 @@ namespace Bismuth.Content.Items.Weapons.Magical
     {
         public override void SetDefaults()
         {
-
             Item.damage = 32;
             Item.DamageType = DamageClass.Magic;
             Item.width = 24;
@@ -55,7 +54,7 @@ namespace Bismuth.Content.Items.Weapons.Magical
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(ModContent.ItemType<Materials.RuneEssence>(), 10);
             recipe.AddIngredient(ItemID.SpellTome);
-            recipe.AddTile(ModContent.TileType<Tiles.PapuansBookcase>());
+            recipe.AddTile(TileID.Bookcases);
             recipe.Register();
         }
     }

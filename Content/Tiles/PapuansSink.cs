@@ -21,6 +21,7 @@ namespace Bismuth.Content.Tiles
             DustType = 79;
             AddMapEntry(new Color(233, 211, 123), CreateMapEntryName());
             TileObjectData.newTile.DrawYOffset = 2;
+            TileID.Sets.CountsAsWaterSource[Type] = true;
         }
     }
 }

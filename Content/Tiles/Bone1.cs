@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.Enums;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
@@ -16,8 +15,7 @@ namespace Bismuth.Content.Tiles
             Main.tileLavaDeath[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
             TileObjectData.newTile.CoordinateHeights = new int[] { 16 };
-            TileObjectData.addTile(Type);
-            //ModTranslation name = CreateMapEntryName();            
+            TileObjectData.addTile(Type);          
             AddMapEntry(new Color(153, 153, 117), CreateMapEntryName());
             DustType = DustID.Stone;
             TileObjectData.newTile.DrawYOffset = 2;

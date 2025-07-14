@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -18,9 +16,6 @@ namespace Bismuth.Content.Tiles
             Main.tileFrameImportant[Type] = true;
             TileObjectData.addTile(Type);
             DustType = 7;
-           // ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Picture");
-            //name.AddTranslation(GameCulture.Russian, "Картина");
             AddMapEntry(new Color(253, 151, 49), CreateMapEntryName());
         }
     }

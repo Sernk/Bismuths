@@ -1,8 +1,5 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -20,9 +17,6 @@ namespace Bismuth.Content.Tiles
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
             TileObjectData.addTile(Type);
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Table");
-            //name.AddTranslation(GameCulture.Russian, "Стол");
             DustType = 118;
             AddMapEntry(new Color(131, 86, 190), CreateMapEntryName());
             TileObjectData.newTile.DrawYOffset = 2;

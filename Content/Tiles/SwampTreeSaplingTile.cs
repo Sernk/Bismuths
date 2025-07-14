@@ -32,8 +32,6 @@ namespace Bismuth.Content.Tiles
             TileObjectData.addTile(Type);
             TileID.Sets.TreeSapling[Type] = true;
             TileID.Sets.CommonSapling[Type] = true;
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Sapling");
             AddMapEntry(new Color(200, 200, 200), CreateMapEntryName());
             AdjTiles = new int[] { TileID.Saplings };
         }

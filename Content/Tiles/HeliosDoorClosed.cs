@@ -41,7 +41,6 @@ namespace Bismuth.Content.Tiles
             TileID.Sets.DisableSmartCursor[Type] = true;
             TileID.Sets.OpenDoorID[Type] = ModContent.TileType<HeliosDoorOpen>();
         }
-
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
             num = 1;

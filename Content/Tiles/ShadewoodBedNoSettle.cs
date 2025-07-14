@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.GameContent.ObjectInteractions;
 using Terraria.GameContent;
+using Terraria.GameContent.ObjectInteractions;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -18,12 +17,9 @@ namespace Bismuth.Content.Tiles
         {
             Main.tileFrameImportant[Type] = true;
             Main.tileLavaDeath[Type] = true;
-            TileObjectData.newTile.CopyFrom(TileObjectData.Style4x2); //this style already takes care of direction for us
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style4x2);
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
             TileObjectData.addTile(Type);
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Bed");
-            //name.AddTranslation(GameCulture.Russian, "Кровать");
             AddMapEntry(new Color(191, 142, 111), CreateMapEntryName());
             AdjTiles = new int[] { TileID.Beds };
             TileID.Sets.CanBeSleptIn[Type] = true;
@@ -32,24 +28,19 @@ namespace Bismuth.Content.Tiles
         {
             return true;
         }
-
         public override void ModifySmartInteractCoords(ref int width, ref int height, ref int frameWidth, ref int frameHeight, ref int extraY)
         {
-
             width = 2;
             height = 2;
         }
-
         public override void ModifySleepingTargetInfo(int i, int j, ref TileRestingInfo info)
         {
             info.VisualOffset.Y += 4f;
         }
-
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
             num = 1;
         }
-
         public override bool RightClick(int i, int j)
         {
             Player player = Main.LocalPlayer;
@@ -85,10 +76,8 @@ namespace Bismuth.Content.Tiles
                     Main.NewText(Language.GetTextValue("Game.SpawnPointSet"), byte.MaxValue, 240, 20);
                 }
             }
-
             return true;
         }
-
         public override void MouseOver(int i, int j)
         {
             Player player = Main.LocalPlayer;

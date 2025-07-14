@@ -1,8 +1,9 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Accessories
 {
@@ -10,7 +11,8 @@ namespace Bismuth.Content.Items.Accessories
     {        
         public override void SetStaticDefaults()
         {
-            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(3, 10));
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(4, 10));
+            ItemID.Sets.AnimatesAsSoul[Item.type] = true;
         }
         public override void SetDefaults()
         {           
@@ -19,8 +21,7 @@ namespace Bismuth.Content.Items.Accessories
             Item.width = 20;
             Item.height = 20;
             Item.accessory = true;
-            Item.scale = 0.1f;
-           // item.Size = new Vector2(20f, 20f);
+            //Item.scale = 0.1f;
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {

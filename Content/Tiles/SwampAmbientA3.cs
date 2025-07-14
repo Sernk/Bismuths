@@ -1,8 +1,8 @@
-﻿using Terraria;
+﻿using Bismuth.Content.Dusts;
+using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Bismuth.Content.Dusts;
-using Terraria.ID;
 
 namespace Bismuth.Content.Tiles
 {
@@ -18,10 +18,7 @@ namespace Bismuth.Content.Tiles
             Main.tileLighted[Type] = false;
             DustType = ModContent.DustType<SwampDust>();
             HitSound = SoundID.Dig;
-            TileObjectData.newTile.CoordinateHeights = new int[]
-          {
-        18
-          };
+            TileObjectData.newTile.CoordinateHeights = new int[] { 18 };
             TileObjectData.addTile(Type);                     
         }
     }

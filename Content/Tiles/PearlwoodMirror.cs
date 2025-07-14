@@ -19,7 +19,6 @@ namespace Bismuth.Content.Tiles
             DustType = 7;
             AddMapEntry(new Color(120, 85, 60), CreateMapEntryName());
         }
-
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
             num = fail ? 1 : 3;

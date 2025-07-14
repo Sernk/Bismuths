@@ -24,7 +24,6 @@ namespace Bismuth.Content.Tiles
             AdjTiles = new int[] { TileID.Bookcases };
             TileObjectData.newTile.DrawYOffset = 2;
         }
-
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
             num = fail ? 1 : 3;

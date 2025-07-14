@@ -1,8 +1,6 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -21,10 +19,7 @@ namespace Bismuth.Content.Tiles
             TileObjectData.addTile(Type);
             AdjTiles = new int[] { TileID.WorkBenches };
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Workbench");
             AddMapEntry(new Color(233, 211, 123), CreateMapEntryName());
-            //name.AddTranslation(GameCulture.Russian, "Верстак");
             DustType = 79;
             TileObjectData.newTile.DrawYOffset = 2;
         }

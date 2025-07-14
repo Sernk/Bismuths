@@ -1,8 +1,5 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -20,14 +17,9 @@ namespace Bismuth.Content.Tiles
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
             TileObjectData.addTile(Type);
             AnimationFrameHeight = 36;
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Magic Pot");
-            //name.AddTranslation(GameCulture.Russian, "Магический котел");
             AddMapEntry(new Color(59, 58, 66), CreateMapEntryName());
             TileObjectData.newTile.DrawYOffset = 2;
-
-        }
-      
+        }      
         public override void AnimateTile(ref int frame, ref int frameCounter)
         {
             frameCounter++;

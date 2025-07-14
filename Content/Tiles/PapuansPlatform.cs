@@ -30,16 +30,13 @@ namespace Bismuth.Content.Tiles
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
             DustType = 79;
             AddMapEntry(new Color(233, 211, 123));
-            //drop = mod.ItemType("PapuansPlatform");
             TileID.Sets.DisableSmartCursor[Type] = true;
             AdjTiles = new int[] { TileID.Platforms };
         }
-
         public override void PostSetDefaults()
         {
             Main.tileNoSunLight[Type] = false;
         }
-
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
             num = fail ? 1 : 3;

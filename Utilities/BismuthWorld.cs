@@ -1762,9 +1762,7 @@ namespace Bismuth.Utilities
                 BridgeY = StartDesertVillageY;
                 EndBridgeX = StartBridgeX + 2;
                 while (EndBridgeX < right && EndBridgeX >= 0 && EndBridgeX < Main.maxTilesX && BridgeY >= 0 && BridgeY < Main.maxTilesY && WorldGen.TileEmpty(EndBridgeX, BridgeY))
-                {
                     EndBridgeX++;
-                }   
                 EndBridgeX = Math.Min(EndBridgeX, Main.maxTilesX - 1);
                 EndBridgeX--;
                 IsDesertSuccess = true; 

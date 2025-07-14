@@ -20,9 +20,6 @@ namespace Bismuth.Content.Tiles
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.StyleWrapLimit = 111;
             TileObjectData.addTile(Type);
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Metal Bar");
-            //name.AddTranslation(GameCulture.Russian, "Металлический слиток");
             AddMapEntry(new Color(224, 194, 101), CreateMapEntryName());
             Main.tileShine[Type] = 1100;
             Main.tileSolid[Type] = true;       

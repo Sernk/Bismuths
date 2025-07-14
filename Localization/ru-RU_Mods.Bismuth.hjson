@@ -22,7 +22,12 @@ Tiles: {
 	OrcishCandle.MapEntry: Свеча
 	OrcishChair.MapEntry: Стул
 	OrcishChandelier.MapEntry: Люстра
-	OrcishChest.MapEntry1: Сундук
+
+	OrcishChest: {
+		MapEntry1: Сундук
+		OrcishChest: Сундук
+	}
+
 	OrcishCoatOfArms.MapEntry: Орочий герб
 	OrcishDoorClosed.MapEntry: Дверь
 	OrcishDoorOpen.MapEntry: Дверь
@@ -33,7 +38,12 @@ Tiles: {
 	PapuansBed.MapEntry: Кровать
 	PapuansCandle.MapEntry: Свеча
 	PapuansChair.MapEntry: Стул
-	PapuansChest.MapEntry1: Сундук
+
+	PapuansChest: {
+		MapEntry1: Сундук
+		PapuansChest: Сундук
+	}
+
 	PapuansDoorClosed.MapEntry: Дверь
 	PapuansDoorOpen.MapEntry: Дверь
 	PapuansLamp.MapEntry: Лампа
@@ -48,6 +58,7 @@ Tiles: {
 	SwampChest: {
 		MapEntry1: Сундук
 		Chat.Death5: был недостоин
+		SwampChest: Сундук
 	}
 
 	SwampTreeSaplingTile.MapEntry: Саженец
@@ -64,15 +75,29 @@ Tiles: {
 	BismuthumOre.MapEntry: Висмут
 	BronzeBar.MapEntry: Металлический слиток
 	BorealWoodMirror.MapEntry: Зеркало
-	BlueMazeChest.MapEntry1: Сундук лабиринта
+
+	BlueMazeChest: {
+		MapEntry1: Сундук лабиринта
+		MazeChest: Сундук лабиринта
+	}
+
 	EbonwoodMirror.MapEntry: Зеркало
 	BlueDoorLocked.MapEntry: Синяя дверь
 	MazeDoorClosed.MapEntry: Дверь
 	MazeDoorOpen.MapEntry: Дверь
 	Bone2.MapEntry: ""
 	Bone3.MapEntry: ""
-	HeliosChest.MapEntry1: Сундук Гелиоса
-	GreenMazeChest.MapEntry1: Зеленая дверь
+
+	HeliosChest: {
+		MapEntry1: Сундук Гелиоса
+		HeliosChest: Сундук Гелиоса
+	}
+
+	GreenMazeChest: {
+		MapEntry1: Сундук лабиринта
+		MazeChest: Сундук лабиринта
+	}
+
 	GreenDoorLocked.MapEntry: Зеленая дверь
 	DugWarriorsTombstone.MapEntry: Могила воина
 	HeliosDoorClosed.MapEntry: Дверь
@@ -94,7 +119,12 @@ Tiles: {
 	PapuansPiano.MapEntry: Пианино
 	PapuansSink.MapEntry: Раковина
 	PearlwoodMirror.MapEntry: Зеркало
-	RedMazeChest.MapEntry1: Сундук лабиринта
+
+	RedMazeChest: {
+		MapEntry1: Сундук лабиринта
+		MazeChest: Сундук лабиринта
+	}
+
 	ShadewoodMirror.MapEntry: Зеркало
 	WoodenMirror.MapEntry: Зеркало
 	RedDoorLocked.MapEntry: Дверь

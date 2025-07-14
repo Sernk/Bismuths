@@ -40,7 +40,6 @@ namespace Bismuth.Content.Tiles
             TileID.Sets.OpenDoorID[Type] = ModContent.TileType<MazeDoorOpen>();
             AdjTiles = new int[] { TileID.ClosedDoor };                   
         }
-
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
             num = 1;

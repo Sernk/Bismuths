@@ -1,14 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Items.Other;
+using Bismuth.Content.Items.Tools;
+using Bismuth.Utilities;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
-using Terraria.Enums;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Bismuth.Utilities;
-using Bismuth.Content.Items.Tools;
-using Bismuth.Content.Items.Other;
 
 namespace Bismuth.Content.Tiles
 {
@@ -21,11 +19,8 @@ namespace Bismuth.Content.Tiles
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
             TileObjectData.addTile(Type);
-            //ModTranslation name = CreateMapEntryName();
             TileObjectData.newTile.DrawYOffset = 0;
-            //name.AddTranslation(GameCulture.Russian, "Могила воина");
             AddMapEntry(new Color(193, 138, 104), CreateMapEntryName());
-
         }
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
@@ -51,7 +46,6 @@ namespace Bismuth.Content.Tiles
             }
             return true;
         }
-
         public override void MouseOver(int i, int j)
         {
             Player player = Main.player[Main.myPlayer];
@@ -60,14 +54,12 @@ namespace Bismuth.Content.Tiles
         }
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
         {
-            if (Main.LocalPlayer.GetModPlayer<Quests>().TombstoneQuest == 0)
-                return false;
+            if (Main.LocalPlayer.GetModPlayer<Quests>().TombstoneQuest == 0)return false;
             return base.CanKillTile(i, j, ref blockDamaged);
         }
         public override bool CanExplode(int i, int j)
         {
-            if (Main.LocalPlayer.GetModPlayer<Quests>().TombstoneQuest == 0)
-                return false;
+            if (Main.LocalPlayer.GetModPlayer<Quests>().TombstoneQuest == 0) return false;     
             return base.CanExplode(i, j);
         }
         public override void KillMultiTile(int i, int j, int frameX, int frameY)

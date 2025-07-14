@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Bismuth.Content.Items.Materials;
+using Bismuth.Content.Items.Other;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Bismuth.Content.Items.Materials;
-using Bismuth.Content.Items.Other;
+
 namespace Bismuth.Content.Tiles
 {
     public class AltarOfWaters : ModTile
@@ -23,13 +21,10 @@ namespace Bismuth.Content.Tiles
             Main.tileFrameImportant[Type] = true;
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
             TileObjectData.addTile(Type);
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Altar of Waters");
-            //name.AddTranslation(GameCulture.Russian, "Алтарь вод");
             AddMapEntry(new Color(152, 171, 198), CreateMapEntryName());
             TileObjectData.newTile.DrawYOffset = 2;
         }
-        public override bool CanKillTile(int i, int j, ref bool blockDamaged) // jtrit
+        public override bool CanKillTile(int i, int j, ref bool blockDamaged)
         {
             return false;
         }
@@ -56,7 +51,6 @@ namespace Bismuth.Content.Tiles
             }
             return true;
         }
-
         public override void MouseOver(int i, int j)
         {
             Player player = Main.player[Main.myPlayer];

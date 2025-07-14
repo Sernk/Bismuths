@@ -33,12 +33,10 @@ namespace Bismuth.Content.Tiles
             TileID.Sets.DisableSmartCursor[Type] = true;
             AdjTiles = new int[] { TileID.Platforms };
         }
-
         public override void PostSetDefaults()
         {
             Main.tileNoSunLight[Type] = false;
         }
-
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
             num = fail ? 1 : 3;

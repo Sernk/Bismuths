@@ -25,20 +25,15 @@ namespace Bismuth.Content.Tiles
             TileObjectData.addTile(Type);
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
             Main.tileLighted[Type] = true;
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Chandelier");
-            //name.AddTranslation(GameCulture.Russian, "Люстра");
             DustType = 118;
             AddMapEntry(new Color(131, 86, 190), CreateMapEntryName());
         }
-
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
             r = 0.72f;
             g = 0.6f;
             b = 0.9f;
         }
-
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
             ulong seed = Main.TileFrameSeed ^ ((ulong)j << 32);
@@ -51,12 +46,10 @@ namespace Bismuth.Content.Tiles
             if (WorldGen.SolidTile(i, j - 1))
             {
                 num1 = 2;
-                if (WorldGen.SolidTile(i - 1, j + 1) || WorldGen.SolidTile(i + 1, j + 1))
-                    num1 = 4;
+                if (WorldGen.SolidTile(i - 1, j + 1) || WorldGen.SolidTile(i + 1, j + 1)) num1 = 4;
             }
             Vector2 vector2 = new Vector2((float)Main.offScreenRange, (float)Main.offScreenRange);
-            if (Main.drawToScreen)
-                vector2 = Vector2.Zero;
+            if (Main.drawToScreen) vector2 = Vector2.Zero;
             for (int index = 0; index < 7; ++index)
             {
                 float num2 = (float)Utils.RandomInt(ref seed, -12, 13) * 0.075f;

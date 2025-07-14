@@ -1,13 +1,10 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria.Enums;
-using System.Collections.Generic;
-using Terraria.DataStructures;
 
 namespace Bismuth.Content.Tiles
 {
@@ -16,23 +13,20 @@ namespace Bismuth.Content.Tiles
         public override void SetStaticDefaults()
         {
             Main.tileFrameImportant[Type] = true;
-            Main.tileCut[Type] = true;
-          
-            Main.tileNoFail[Type] = true;
-       
+            Main.tileCut[Type] = true; 
+            Main.tileNoAttach[Type] = true;
+            TileID.Sets.CanBeClearedDuringGeneration[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
-            TileObjectData.newTile.AnchorValidTiles = new int[]
-            {
-               
-            };
             TileObjectData.newTile.AnchorAlternateTiles = new int[]
             {
-                78, 
+                78, 380
+            };
+            TileObjectData.newTile.AnchorValidTiles = new int[]
+            {
+
             };
             TileObjectData.addTile(Type);
-          
         }
-      
         public override void SetSpriteEffects(int i, int j, ref SpriteEffects spriteEffects)
         {
             if (i % 2 == 1)
@@ -40,25 +34,48 @@ namespace Bismuth.Content.Tiles
                 spriteEffects = SpriteEffects.FlipHorizontally;
             }
         }
-        public override void KillMultiTile(int i, int j, int frameX, int frameY)
+        public override bool RightClick(int i, int j)
         {
-            int stage = Main.tile[i, j].TileFrameX / 18;
-            if (stage == 2)
+            Tile tile = Framing.GetTileSafely(i, j);
+            if (tile.TileFrameX == 36)
             {
-                new Item(ModContent.ItemType<Items.Materials.FernFlower>(), i * 16, j * 16);
-                new Item(ModContent.ItemType<Items.Placeable.FernSpore>(), i * 16, j * 16);
+                Player player = Main.LocalPlayer;
+                Item.NewItem(new EntitySource_TileInteraction(player, i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Placeable.FernSpore>());
+                Item.NewItem(new EntitySource_TileInteraction(player, i, j), i * 16, j * 16, 16, 16, ModContent.ItemType<Items.Materials.FernFlower>());
+
+                tile.TileFrameX = 18;
+                NetMessage.SendTileSquare(-1, i, j, 1);
+                return true;
+            }
+            return false;
+        }
+        public override void MouseOver(int i, int j)
+        {
+            Tile tile = Framing.GetTileSafely(i, j);
+            Player player = Main.LocalPlayer;
+
+            if (tile.TileFrameX == 36)
+            {
+                player.cursorItemIconID = ModContent.ItemType<Items.Materials.FernFlower>();
+                player.cursorItemIconEnabled = true;
             }
         }
-        public override void RandomUpdate(int i, int j)
+        public override bool CanDrop(int i, int j)
         {
-            if (Main.tile[i, j].TileFrameX == 0)
+            return true;
+        }
+        public override IEnumerable<Item> GetItemDrops(int i, int j)
+        {
+            Tile tile = Framing.GetTileSafely(i, j);
+            if (tile.TileFrameX == 36)
             {
-                Main.tile[i, j].TileFrameX += 18;
+                yield return new Item(ModContent.ItemType<Items.Materials.FernFlower>());
+                yield return new Item(ModContent.ItemType<Items.Placeable.FernSpore>());
             }
-            else if (Main.tile[i, j].TileFrameX == 18)
+            else
             {
-                Main.tile[i, j].TileFrameX += 18;
+                yield return new Item(ModContent.ItemType<Items.Placeable.FernSpore>());
             }
-        }      
+        }
     }
 }

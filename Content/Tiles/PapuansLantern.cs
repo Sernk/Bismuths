@@ -23,24 +23,19 @@ namespace Bismuth.Content.Tiles
             TileObjectData.newTile.StyleWrapLimit = 111;
             TileObjectData.addTile(Type);
             Main.tileLighted[Type] = true;
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Lantern");
-            //name.AddTranslation(GameCulture.Russian, "Фонарь");
             DustType = 79;
             AddMapEntry(new Color(233, 211, 123), CreateMapEntryName());
             TileObjectData.newTile.DrawYOffset = 2;
         }
-
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
             r = 0.9f;
             g = 0.9f;
             b = 0.9f;
         }
-
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
-            ulong seed = Main.TileFrameSeed ^ ((ulong)j << 32);//| (ulong)i
+            ulong seed = Main.TileFrameSeed ^ ((ulong)j << 32);
             Color color = new Color(100, 100, 100, 0);
             int left = i;
             int top = j;
@@ -54,8 +49,7 @@ namespace Bismuth.Content.Tiles
                 top--;
             }
             Vector2 vector2 = new Vector2((float)Main.offScreenRange, (float)Main.offScreenRange);
-            if (Main.drawToScreen)
-                vector2 = Vector2.Zero;
+            if (Main.drawToScreen) vector2 = Vector2.Zero;      
             if (i == left && j == top)
             {
                 for (int index = 0; index < 7; ++index)

@@ -56,7 +56,7 @@ namespace Bismuth.Content.Tiles
             TileObjectData.addAlternate(1);
             TileObjectData.addTile(Type);
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
-            TileID.Sets.HousingWalls[Type] = true; //needed for non-solid blocks to count as walls
+            TileID.Sets.HousingWalls[Type] = true;
             AddMapEntry(new Color(248, 145, 0), CreateMapEntryName());
             AdjTiles = new int[] { TileID.OpenDoor };
             TileID.Sets.DisableSmartCursor[Type] = true;

@@ -16,12 +16,10 @@ namespace Bismuth.Content.Tiles
         {
             Main.tileFrameImportant[Type] = true;
             Main.tileLavaDeath[Type] = true;
-            TileObjectData.newTile.CopyFrom(TileObjectData.Style4x2); //this style already takes care of direction for us
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style4x2);
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
             TileObjectData.addTile(Type);
             LocalizedText name = CreateMapEntryName();
-            // name.SetDefault("Papuan's Bed");
-            //name.AddTranslation(GameCulture.Russian, "Кровать");
             DustType = 79;
             AddMapEntry(new Color(233, 211, 123), CreateMapEntryName());
             AdjTiles = new int[] { TileID.Beds };
@@ -29,7 +27,6 @@ namespace Bismuth.Content.Tiles
             TileID.Sets.CanBeSleptIn[Type] = true;
             TileObjectData.newTile.DrawYOffset = 2;
         }
-
         public override bool RightClick(int i, int j)
         {
             Player player = Main.LocalPlayer;
@@ -41,7 +38,6 @@ namespace Bismuth.Content.Tiles
             {
                 spawnY--;
             }
-
             if (!Player.IsHoveringOverABottomSideOfABed(i, j))
             {
                 if (player.IsWithinSnappngRangeToTile(i, j, PlayerSleepingHelper.BedSleepingMaxDistance))
@@ -68,7 +64,6 @@ namespace Bismuth.Content.Tiles
 
             return true;
         }
-
         public override void MouseOver(int i, int j)
         {
             Player player = Main.LocalPlayer;

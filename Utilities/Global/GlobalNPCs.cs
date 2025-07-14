@@ -252,7 +252,6 @@ namespace Bismuth.Utilities.Global
                     player.GetModPlayer<BismuthPlayer>().SoulScytheCharge--;
                 }
                 if (npc.type == NPCID.Piranha)
-
                 {
                     Item.NewItem(source, (int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<WaterEssence>());
                     player.GetModPlayer<BismuthPlayer>().SoulScytheCharge--;

@@ -15,8 +15,6 @@ namespace Bismuth.Content.Tiles
             Main.tileSpelunker[Type] = true;
             Main.tileBlockLight[Type] = true;
             MinPick = 200;
-            //name.SetDefault("Bismuthum");
-            //name.AddTranslation(GameCulture.Russian, "Висмут");
             AddMapEntry(new Color(13, 88, 130), CreateMapEntryName());
             DustType = 11;
             HitSound = SoundID.Tink;

@@ -57,10 +57,7 @@ namespace Bismuth.Content.Tiles
             TileObjectData.addAlternate(1);
             TileObjectData.addTile(Type);
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
-            TileID.Sets.HousingWalls[Type] = true; //needed for non-solid blocks to count as walls
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Door");
-            //name.AddTranslation(GameCulture.Russian, "Дверь");
+            TileID.Sets.HousingWalls[Type] = true;
             DustType = 79;
             AddMapEntry(new Color(233, 211, 123), CreateMapEntryName());
             TileID.Sets.DisableSmartCursor[Type] = true;

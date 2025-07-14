@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Enums;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Bismuth.Content.Items.Other;
@@ -19,11 +17,8 @@ namespace Bismuth.Content.Tiles
             TileObjectData.newTile.Width = 3;
             TileObjectData.newTile.CoordinateHeights = new int[] { 16 };
             TileObjectData.addTile(Type);
-            //////ModTranslation name = CreateMapEntryName();
             TileObjectData.newTile.DrawYOffset = 2;
-            //name.SetDefault("");
             AddMapEntry(new Color(48, 40, 35), CreateMapEntryName());
-
         }
         public override bool RightClick(int i, int j)
         {
@@ -34,6 +29,15 @@ namespace Bismuth.Content.Tiles
                 Main.LocalPlayer.GetModPlayer<Quests>().ReportQuest = 30;
             }
             return true;
+        }
+        public override void MouseOver(int i, int j)
+        {
+            Player player = Main.LocalPlayer;
+            if (Main.LocalPlayer.GetModPlayer<Quests>().ReportQuest == 20)
+            {
+                player.cursorItemIconID = ModContent.ItemType<ScoutsReport>();
+                player.cursorItemIconEnabled = true;
+            }
         }
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
         {

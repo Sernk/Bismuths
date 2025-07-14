@@ -18,17 +18,17 @@ namespace Bismuth.Content.Tiles
         public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int alternate = 0, int random = -1, int direction = -1)
         {
             TileObject objectData;
-            if (!TileObject.CanPlace(x, y, type, style, direction, out objectData, false))
-                return false;
             objectData.random = random;
-            if (TileObject.Place(objectData) && !mute)
-                WorldGen.SquareTileFrame(x, y, true);
+
+            if (!TileObject.CanPlace(x, y, type, style, direction, out objectData, false)) return false;
+            if (TileObject.Place(objectData) && !mute) WorldGen.SquareTileFrame(x, y, true);
+                
             return false;
         }
         public override void RandomUpdate(int i, int j)
         {
-            if (Framing.GetTileSafely(i, j - 1).HasTile)
-                return;
+            if (Framing.GetTileSafely(i, j - 1).HasTile) return;
+                
             switch (Main.rand.Next(5))
             {
                 case 0:

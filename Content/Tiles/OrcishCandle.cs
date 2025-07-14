@@ -1,9 +1,7 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -22,9 +20,6 @@ namespace Bismuth.Content.Tiles
             DustType = 7;
             Main.tileLighted[Type] = true;
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Orcish Candle");
-            //name.AddTranslation(GameCulture.Russian, "Свеча");
             DustType = 118;
             AddMapEntry(new Color(131, 86, 190), CreateMapEntryName());
             TileObjectData.newTile.DrawYOffset = 2;
@@ -48,12 +43,10 @@ namespace Bismuth.Content.Tiles
             if (WorldGen.SolidTile(i, j - 1))
             {
                 num1 = 2;
-                if (WorldGen.SolidTile(i - 1, j + 1) || WorldGen.SolidTile(i + 1, j + 1))
-                    num1 = 4;
+                if (WorldGen.SolidTile(i - 1, j + 1) || WorldGen.SolidTile(i + 1, j + 1)) num1 = 4;        
             }
             Vector2 vector2 = new Vector2((float)Main.offScreenRange, (float)Main.offScreenRange);
-            if (Main.drawToScreen)
-                vector2 = Vector2.Zero;
+            if (Main.drawToScreen) vector2 = Vector2.Zero;
             for (int index = 0; index < 7; ++index)
             {
                 float num2 = (float)Utils.RandomInt(ref seed, -12, 13) * 0.075f;

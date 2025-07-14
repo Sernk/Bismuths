@@ -8,7 +8,6 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Tiles
 {
@@ -58,10 +57,14 @@ namespace Bismuth.Content.Tiles
             return (ushort)(Main.tile[i, j].TileFrameX / 36);
         }
 
+        public override void Load()
+        {
+            _ = this.GetLocalization("PapuansChest").Value;
+        }
         public override LocalizedText DefaultContainerName(int frameX, int frameY)
         {
             int option = frameX / 36;
-            return this.GetLocalization("MapEntry" + option);
+            return this.GetLocalization("PapuansChest");
         }
 
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)

@@ -1,13 +1,9 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
-using Terraria.DataStructures;
-using Terraria.Enums;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.Localization;
 
 namespace Bismuth.Content.Tiles
 {
@@ -19,20 +15,15 @@ namespace Bismuth.Content.Tiles
             Main.tileLavaDeath[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
             TileObjectData.newTile.StyleHorizontal = true;
-            //TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.Table, TileObjectData.newTile.Width, 0);
             TileObjectData.newTile.StyleWrapLimit = 36;
             TileObjectData.addTile(Type);
             DustType = 7;
             Main.tileLighted[Type] = true;
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Candelabra");
-            //name.AddTranslation(GameCulture.Russian, "Канделябр");
             DustType = 118;
             AddMapEntry(new Color(131, 86, 190), CreateMapEntryName());
             TileObjectData.newTile.DrawYOffset = 2;
         }
-
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
             r = 0.72f;
@@ -51,12 +42,10 @@ namespace Bismuth.Content.Tiles
             if (WorldGen.SolidTile(i, j - 1))
             {
                 num1 = 2;
-                if (WorldGen.SolidTile(i - 1, j + 1) || WorldGen.SolidTile(i + 1, j + 1))
-                    num1 = 4;
+                if (WorldGen.SolidTile(i - 1, j + 1) || WorldGen.SolidTile(i + 1, j + 1)) num1 = 4;
             }
             Vector2 vector2 = new Vector2((float)Main.offScreenRange, (float)Main.offScreenRange);
-            if (Main.drawToScreen)
-                vector2 = Vector2.Zero;
+            if (Main.drawToScreen) vector2 = Vector2.Zero;    
             for (int index = 0; index < 7; ++index)
             {
                 float num2 = (float)Utils.RandomInt(ref seed, -12, 13) * 0.075f;

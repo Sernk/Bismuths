@@ -21,6 +21,7 @@ namespace Bismuth.Content.Tiles
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTable);
             DustType = 79;
             AddMapEntry(new Color(233, 211, 123), CreateMapEntryName());
+            AdjTiles = new int[] { TileID.Bookcases };
             TileObjectData.newTile.DrawYOffset = 2;
         }
     }

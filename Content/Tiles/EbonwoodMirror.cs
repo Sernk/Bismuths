@@ -18,8 +18,6 @@ namespace Bismuth.Content.Tiles
             TileObjectData.addTile(Type);
             DustType = 77;
             AddMapEntry(new Color(191, 142, 111), CreateMapEntryName());
-            //name.SetDefault("Mirror");
-            //name.AddTranslation(GameCulture.Russian, "Зеркало");
         }
         public override void NumDust(int i, int j, bool fail, ref int num)
         {

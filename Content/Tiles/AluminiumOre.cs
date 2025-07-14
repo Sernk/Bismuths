@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.ModLoader;
-using Terraria.ObjectData;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Tiles
 {
@@ -16,9 +15,6 @@ namespace Bismuth.Content.Tiles
             Main.tileLighted[Type] = true;
             Main.tileSpelunker[Type] = true;
             Main.tileBlockLight[Type] = true;
-            //drop = mod.ItemType("AluminiumOre");   //put your CustomBlock name
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Aluminium");
             AddMapEntry(new Color(214, 216, 218), CreateMapEntryName());
             DustType = 11;
             HitSound = SoundID.Tink;

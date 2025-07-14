@@ -17,13 +17,11 @@ namespace Bismuth.Content.Tiles
             TileID.Sets.IsValidSpawnPoint[Type] = true;
             TileID.Sets.DisableSmartCursor[Type] = true;
             AdjTiles = new int[] { TileID.Beds };
-
             Main.tileFrameImportant[Type] = true;
             Main.tileLavaDeath[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style5x4); 
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16 };
             TileObjectData.addTile(Type);
-            ;
             AddMapEntry(new Color(131, 86, 190), CreateMapEntryName());           
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
             TileObjectData.newTile.DrawYOffset = 2;
@@ -53,13 +51,12 @@ namespace Bismuth.Content.Tiles
             }
             return true;
         }
-
         public override void MouseOver(int i, int j)
         {
             Player player = Main.player[Main.myPlayer];
             player.noThrow = 2;
             player.cursorItemIconEnabled = true;
-            player.cursorItemIconID = ModContent.ItemType<Content.Items.Placeable.OrcishBed>();
+            player.cursorItemIconID = ModContent.ItemType<Items.Placeable.OrcishBed>();
         }
     }
 }

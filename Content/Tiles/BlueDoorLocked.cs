@@ -1,13 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Items.Other;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Bismuth.Content.Items.Other;
 
 namespace Bismuth.Content.Tiles
 {
@@ -41,7 +40,6 @@ namespace Bismuth.Content.Tiles
             TileID.Sets.DisableSmartCursor[Type] = true;
             DustType = DustID.BlueCrystalShard;
         }
-
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
             num = fail ? 3 : 9;

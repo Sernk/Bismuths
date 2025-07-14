@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -25,7 +24,6 @@ namespace Bismuth.Content.Tiles
         {
             num = fail ? 3 : 9;
         }
-
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
             Item.NewItem(Main.LocalPlayer.GetSource_FromThis(), i * 16, j * 16, 16, 32, ItemID.Bone, Main.rand.Next(1, 5));

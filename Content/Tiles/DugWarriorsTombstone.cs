@@ -14,10 +14,7 @@ namespace Bismuth.Content.Tiles
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };
             TileObjectData.addTile(Type);
-            //ModTranslation name = CreateMapEntryName();
             TileObjectData.newTile.DrawYOffset = 2;
-            //name.SetDefault("Warriors Tombstone");
-            //name.AddTranslation(GameCulture.Russian, "Могила воина");
             AddMapEntry(new Color(193, 138, 104), CreateMapEntryName());
             DustType = 1;
         }

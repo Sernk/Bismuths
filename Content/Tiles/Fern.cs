@@ -1,15 +1,10 @@
-﻿using System;
+﻿using Bismuth.Content.Dusts;
+using Bismuth.Content.Items.Placeable;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria.Enums;
-using Bismuth.Content.Dusts;
-using Terraria.Localization;
-using System.Collections.Generic;
-using Bismuth.Content.Items.Placeable;
 
 namespace Bismuth.Content.Tiles
 {
@@ -28,9 +23,6 @@ namespace Bismuth.Content.Tiles
 				ModContent.TileType<SwampMud>()
             };
             DustType = ModContent.DustType<SwampDust>();
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Fern");
-            //name.AddTranslation(GameCulture.Russian, "Папоротник");
             AddMapEntry(new Color(31, 43, 25), CreateMapEntryName());
             TileObjectData.addTile(Type);
             TileObjectData.newTile.DrawYOffset = 2;

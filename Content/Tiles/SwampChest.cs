@@ -40,40 +40,29 @@ namespace Bismuth.Content.Tiles
             TileObjectData.newTile.CoordinateHeights = new[] { 16, 18 };
             TileObjectData.newTile.HookCheckIfCanPlace = new PlacementHook(Chest.FindEmptyChest, -1, 0, true);
             TileObjectData.newTile.HookPostPlaceMyPlayer = new PlacementHook(Chest.AfterPlacement_Hook, -1, 0, false);
-            TileObjectData.newTile.AnchorInvalidTiles = new int[] {
-                TileID.MagicalIceBlock,
-                TileID.Boulder,
-                TileID.BouncyBoulder,
-                TileID.LifeCrystalBoulder,
-                TileID.RollingCactus
-            };
+            TileObjectData.newTile.AnchorInvalidTiles = new int[] { TileID.MagicalIceBlock, TileID.Boulder, TileID.BouncyBoulder, TileID.LifeCrystalBoulder, TileID.RollingCactus };
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.LavaDeath = false;
             TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
             TileObjectData.addTile(Type);
         }
-
         public override ushort GetMapOption(int i, int j)
         {
             return (ushort)(Main.tile[i, j].TileFrameX / 36);
         }
-
         public override LocalizedText DefaultContainerName(int frameX, int frameY)
         {
             int option = frameX / 36;
-            return this.GetLocalization("MapEntry" + option);
+            return this.GetLocalization("SwampChest");
         }
-
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
         {
             return true;
         }
-
         public override bool IsLockedChest(int i, int j)
         {
             return Main.tile[i, j].TileFrameX / 36 == 1;
         }
-
         public override bool UnlockChest(int i, int j, ref short frameXAdjustment, ref int dustType, ref bool manual)
         {
             if (Main.dayTime)
@@ -85,7 +74,6 @@ namespace Bismuth.Content.Tiles
             DustType = dustType;
             return true;
         }
-
         public override bool LockChest(int i, int j, ref short frameXAdjustment, ref bool manual)
         {
             int style = TileObjectData.GetTileStyle(Main.tile[i, j]);
@@ -95,28 +83,25 @@ namespace Bismuth.Content.Tiles
             }
             return false;
         }
-
         public static string MapChestName(string name, int i, int j)
         {
             int left = i;
             int top = j;
             Tile tile = Main.tile[i, j];
+            int chest = Chest.FindChest(left, top);
+
             if (tile.TileFrameX % 36 != 0)
             {
                 left--;
             }
-
             if (tile.TileFrameY != 0)
             {
                 top--;
             }
-
-            int chest = Chest.FindChest(left, top);
             if (chest < 0)
             {
                 return Language.GetTextValue("LegacyChestType.0");
             }
-
             if (Main.chest[chest].name == "")
             {
                 return name;
@@ -124,12 +109,10 @@ namespace Bismuth.Content.Tiles
 
             return name + ": " + Main.chest[chest].name;
         }
-
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
             num = 1;
         }
-
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
             Chest.DestroyChest(i, j);
@@ -137,6 +120,7 @@ namespace Bismuth.Content.Tiles
         public override void Load()
         {
             _ = this.GetLocalization("Chat.Death5").Value; // Ru: был недостоин En: was unworthy
+            _ = this.GetLocalization("SwampChest").Value;
         }
         public override bool RightClick(int i, int j)
         {
@@ -151,11 +135,11 @@ namespace Bismuth.Content.Tiles
             Main.mouseRightRelease = false;
             int left = i;
             int top = j;
+
             if (tile.TileFrameX % 36 != 0)
             {
                 left--;
             }
-
             if (tile.TileFrameY != 0)
             {
                 top--;
@@ -227,10 +211,8 @@ namespace Bismuth.Content.Tiles
                     }
                 }
             }
-
             return true;
         }
-
         public override void MouseOver(int i, int j)
         {
             Player player = Main.LocalPlayer;
@@ -272,7 +254,6 @@ namespace Bismuth.Content.Tiles
             player.noThrow = 2;
             player.cursorItemIconEnabled = true;
         }
-
         public override void MouseOverFar(int i, int j)
         {
             MouseOver(i, j);

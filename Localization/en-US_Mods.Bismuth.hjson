@@ -22,7 +22,12 @@ Tiles: {
 	OrcishCandle.MapEntry: Orcish Candle
 	OrcishChair.MapEntry: Chair
 	OrcishChandelier.MapEntry: Chandelier
-	OrcishChest.MapEntry1: Chest
+
+	OrcishChest: {
+		MapEntry1: Chest
+		OrcishChest: Chest
+	}
+
 	OrcishCoatOfArms.MapEntry: Orcish Coat Of Arms
 	OrcishDoorClosed.MapEntry: Door
 	OrcishDoorOpen.MapEntry: Door
@@ -33,7 +38,12 @@ Tiles: {
 	PapuansBed.MapEntry: Papuan's Bed
 	PapuansCandle.MapEntry: Candle
 	PapuansChair.MapEntry: Chair
-	PapuansChest.MapEntry1: Chest
+
+	PapuansChest: {
+		MapEntry1: Chest
+		PapuansChest: Chest
+	}
+
 	PapuansDoorClosed.MapEntry: Door
 	PapuansDoorOpen.MapEntry: Door
 	PapuansLamp.MapEntry: Lamp
@@ -48,6 +58,7 @@ Tiles: {
 	SwampChest: {
 		MapEntry1: Chest
 		Chat.Death5: was unworthy
+		SwampChest: Chest
 	}
 
 	SwampTreeSaplingTile.MapEntry: Sapling
@@ -64,15 +75,29 @@ Tiles: {
 	BismuthumOre.MapEntry: Bismuthum
 	BronzeBar.MapEntry: Metal Bar
 	BorealWoodMirror.MapEntry: Mirror
-	BlueMazeChest.MapEntry1: Maze Chest
+
+	BlueMazeChest: {
+		MapEntry1: Maze Chest
+		MazeChest: Maze Chest
+	}
+
 	EbonwoodMirror.MapEntry: Mirror
 	BlueDoorLocked.MapEntry: Blue Door
 	MazeDoorClosed.MapEntry: Door
 	MazeDoorOpen.MapEntry: Door
 	Bone2.MapEntry: ""
 	Bone3.MapEntry: ""
-	HeliosChest.MapEntry1: Helios Chest
-	GreenMazeChest.MapEntry1: Maze Chest
+
+	HeliosChest: {
+		MapEntry1: Helios Chest
+		HeliosChest: Helios Chest
+	}
+
+	GreenMazeChest: {
+		MapEntry1: Maze Chest
+		MazeChest: Maze Chest
+	}
+
 	GreenDoorLocked.MapEntry: Green Door
 	DugWarriorsTombstone.MapEntry: Warriors Tombstone
 	HeliosDoorClosed.MapEntry: Door
@@ -94,7 +119,12 @@ Tiles: {
 	PapuansPiano.MapEntry: Piano
 	PapuansSink.MapEntry: Sink
 	PearlwoodMirror.MapEntry: Mirror
-	RedMazeChest.MapEntry1: Maze Chest
+
+	RedMazeChest: {
+		MapEntry1: Maze Chest
+		MazeChest: Maze Chest
+	}
+
 	ShadewoodMirror.MapEntry: Mirror
 	WoodenMirror.MapEntry: Mirror
 	RedDoorLocked.MapEntry: Door

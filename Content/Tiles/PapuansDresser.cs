@@ -36,24 +36,20 @@ namespace Bismuth.Content.Tiles
             TileObjectData.newTile.LavaDeath = false;
             TileObjectData.addTile(Type);
         }
-
         public override LocalizedText DefaultContainerName(int frameX, int frameY)
         {
             return CreateMapEntryName();
         }
-
         public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings)
         {
             return true;
         }
-
         public override void ModifySmartInteractCoords(ref int width, ref int height, ref int frameWidth, ref int frameHeight, ref int extraY)
         {
             width = 3;
             height = 1;
             extraY = 0;
         }
-
         public override bool RightClick(int i, int j)
         {
             Player player = Main.LocalPlayer;
@@ -136,7 +132,6 @@ namespace Bismuth.Content.Tiles
             }
             return true;
         }
-
         public void MouseOverNearAndFarSharedLogic(Player player, int i, int j)
         {
             Tile tile = Main.tile[i, j];
@@ -174,7 +169,6 @@ namespace Bismuth.Content.Tiles
             player.noThrow = 2;
             player.cursorItemIconEnabled = true;
         }
-
         public override void MouseOverFar(int i, int j)
         {
             Player player = Main.LocalPlayer;
@@ -185,7 +179,6 @@ namespace Bismuth.Content.Tiles
                 player.cursorItemIconID = 0;
             }
         }
-
         public override void MouseOver(int i, int j)
         {
             Player player = Main.LocalPlayer;
@@ -196,17 +189,14 @@ namespace Bismuth.Content.Tiles
                 player.cursorItemIconText = "";
             }
         }
-
         public override void NumDust(int i, int j, bool fail, ref int num)
         {
             num = fail ? 1 : 3;
         }
-
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
             Chest.DestroyChest(i, j);
         }
-
         public static string MapChestName(string name, int i, int j)
         {
             int left = i;

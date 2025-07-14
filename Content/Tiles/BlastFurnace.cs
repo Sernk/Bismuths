@@ -9,7 +9,6 @@ namespace Bismuth.Content.Tiles
     {
         public override void SetStaticDefaults()
         {
-
             Main.tileNoAttach[Type] = true;
             Main.tileLavaDeath[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
@@ -17,9 +16,6 @@ namespace Bismuth.Content.Tiles
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16 };
             TileObjectData.addTile(Type);
             AnimationFrameHeight = 38;
-            //ModTranslation name = CreateMapEntryName();
-            //name.SetDefault("Blast Furnace");
-            //name.AddTranslation(GameCulture.Russian, "Доменная печь");
             AddMapEntry(new Color(144, 148, 144), CreateMapEntryName());
             Main.tileLighted[Type] = true;
             TileObjectData.newTile.DrawYOffset = 2;
@@ -30,7 +26,6 @@ namespace Bismuth.Content.Tiles
             g = 0.35f;
             b = 0f;
         }
-
         public override void AnimateTile(ref int frame, ref int frameCounter)
         {
             frameCounter++;
