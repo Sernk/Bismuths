@@ -1,11 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Items.Other;
+using Bismuth.Utilities;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using Bismuth.Content.Items.Other;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Items.Accessories
 {
@@ -22,13 +20,6 @@ namespace Bismuth.Content.Items.Accessories
             _ = this.GetLocalization("Quests.HeartOfDesert3").Value;
             _ = this.GetLocalization("Quests.HeartOfDesert4").Value;
             _ = this.GetLocalization("Quests.HeartOfDesert5").Value;
-        }
-        public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Heart of the Desert");
-            //Tooltip.SetDefault("Doesn't give any bonuses");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Сердце пустыни");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Не даёт никаких бонусов");
         }
         public override void SetDefaults()
         {

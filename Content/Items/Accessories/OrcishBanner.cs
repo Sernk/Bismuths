@@ -1,22 +1,10 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
-using System.Collections.Generic;
-using Terraria.ID;
-using System.Linq;
-using Terraria.Localization;
 
 namespace Bismuth.Content.Items.Accessories
 {
     public class OrcishBanner : ModItem
     {
-        
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Orcish Banner");
-            // Tooltip.SetDefault("More defense and life regeneration for every living town npc");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Орочий баннер");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Больше защиты и регенерации здоровья за каждого заселенного НИПа");
-        }
         public override void SetDefaults()
         {                 
             Item.value = Item.sellPrice(0, 2, 0, 0);
@@ -37,4 +25,4 @@ namespace Bismuth.Content.Items.Accessories
             player.lifeRegen = player.lifeRegen + (NPCsCount / 2);
         }
     }                 
-  }
+}

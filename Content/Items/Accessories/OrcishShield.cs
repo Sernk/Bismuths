@@ -1,5 +1,4 @@
 ﻿using Terraria;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Accessories
@@ -7,13 +6,6 @@ namespace Bismuth.Content.Items.Accessories
     [AutoloadEquip(EquipType.Shield)]
     public class OrcishShield : ModItem
     {   
-        //public override void SetStaticDefaults()
-        //{
-        //    DisplayName.SetDefault("Orcish Shield");
-        //    Tooltip.SetDefault("Increased thrown damage by 11%\nThe less health you have - the higher your thrown damage and crit");
-        //    DisplayName.AddTranslation(GameCulture.Russian, "Орочий щит");
-        //    Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает метательный урон на 11%\nЧем меньше у вас здоровья - тем больше ваш метательный \nурон и шанс критического урона");
-        //}       
         public override void SetDefaults()
         {         
             Item.value = 3000000;

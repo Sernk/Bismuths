@@ -6,13 +6,6 @@ namespace Bismuth.Content.Items.Accessories
     [AutoloadEquip(EquipType.Shield)]
     public class WoodenShield : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Wooden Shield");
-            //Tooltip.SetDefault("+7% damage resistance");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Деревянный щит");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Увеличение поглощения урона на 7%");
-        }
         public override void SetDefaults()
         {
             Item.value = Item.sellPrice(0, 0, 30, 0);

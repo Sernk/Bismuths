@@ -58,7 +58,6 @@ namespace Bismuth.Content.Items.Accessories
                 tooltips.Add(new TooltipLine(this.Mod, "ProgressDescription", description));
             }
         }
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<BismuthPlayer>().IsEquippedAthenasShield = true;

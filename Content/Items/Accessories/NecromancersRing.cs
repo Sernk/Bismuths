@@ -1,18 +1,11 @@
-﻿using Terraria;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ModLoader;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Items.Accessories
 {
     public class NecromancersRing : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Necromancer's Ring");
-            //Tooltip.SetDefault("Increases max number of minions by 1 and minion damage by 7% \nYou get more max mana, mana regeneration and \nminion damage for every nearby tombstone.");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Кольцо некроманта");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает максимальное количество миньонов на 1, а также \nурон миньонов на 7%. Вы получаете бонус к мане, регенерации\nманы и урону миньонов за каждую ближайшую надгробную плиту.");
-        }
         public override void SetDefaults()
         {
             Item.value = Item.sellPrice(0, 2, 0, 0);

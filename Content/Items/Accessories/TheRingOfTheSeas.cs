@@ -11,7 +11,6 @@ namespace Bismuth.Content.Items.Accessories
     /// </summary>
     public class TheRingOfTheSeas : ModItem
     {
-
         public override void SetStaticDefaults()
         {
             BismuthPlayer modPlayer = ModContent.GetInstance<BismuthPlayer>();
@@ -54,7 +53,6 @@ namespace Bismuth.Content.Items.Accessories
             recipe.AddTile(16);
             recipe.Register();
         }
-
         public override bool IsVanitySet(int head, int body, int legs) => true;
     }
 }

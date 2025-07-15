@@ -17,14 +17,8 @@ namespace Bismuth.Content.Tiles
             Main.tileNoAttach[Type] = true;
             TileID.Sets.CanBeClearedDuringGeneration[Type] = true;
             TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
-            TileObjectData.newTile.AnchorAlternateTiles = new int[]
-            {
-                78, 380
-            };
-            TileObjectData.newTile.AnchorValidTiles = new int[]
-            {
-
-            };
+            TileObjectData.newTile.AnchorAlternateTiles = new int[] { 78, 380 };
+            TileObjectData.newTile.AnchorValidTiles = new int[] { };
             TileObjectData.addTile(Type);
         }
         public override void SetSpriteEffects(int i, int j, ref SpriteEffects spriteEffects)

@@ -149,6 +149,7 @@ namespace Bismuth.Utilities
         public bool IsEquippedNecklace = false; // Надето ли ожерелье ракушек?
         public bool IsEquippedBelt = false; // Надет ли пояс Алхимика?
         public bool IsEquippedBerserksRing = false;
+        public bool IsEquippedScalyHelmet = false;
         public bool IsEquippedRekstrisHelmet = false;
         public bool IsEquippedRekstrisChest = false;
         public bool IsEquippedRekstrisBoots = false;
@@ -365,6 +366,7 @@ namespace Bismuth.Utilities
             vampbat = false;
             BatLayer = null;
             IsEquippedBerserksRing = false;
+            IsEquippedScalyHelmet = false;
             IsEquippedAthenasShield = false;
             Charm = 0;
             IsElessarInInventory = false;
@@ -9853,8 +9855,8 @@ namespace Bismuth.Utilities
                 string info = StringBreak(Bismuth.Adonais, Skill101Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
                 float offset = Main.mouseY + 80 + Bismuth.Adonais.MeasureString(info).Y * 0.9f;
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Language.GetTextValue("Mods.Bismuth.SkillLevel", skill101lvl, skill101lvlmax), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                offset += 4 + Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.SkillLevel", skill101lvl, skill101lvlmax)).Y * 0.9f;
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, fullText11, Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                offset += 4 + Bismuth.Adonais.MeasureString(fullText11).Y * 0.9f;
 
                 switch (skill101lvl)
                 {

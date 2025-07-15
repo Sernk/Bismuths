@@ -1,12 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Buffs;
+using Bismuth.Content.Items.Accessories;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Utilities;
-using Bismuth.Content.Buffs;
-using Bismuth.Content.Items.Accessories;
-using Bismuth.Content.Items.Armor;
 
 namespace Bismuth.Utilities.Global
 {
@@ -26,55 +25,10 @@ namespace Bismuth.Utilities.Global
         }
         public override float UseTimeMultiplier(Item item, Player player)
         {
-            float bonus = 0;
-            if (item.useTime <= 1 || item.useAnimation <= 2)
-            {
-                return 1f;
-            }
-            float num = 1f;
-            float num2 = 1f;
-            if (item.ModItem != null)
-            {
-                num2 = (num = item.ModItem.UseTimeMultiplier(player));
-            }
-            if (player.GetModPlayer<BismuthPlayer>().IsEquippedBerserksRing)
-            {
-                bonus += 0.3f;
-            }
-            if (player.armor[0].type == ModContent.ItemType<ScalyHelmet>())
-            {
-                bonus += 0.05f;
-            }
-            if (player.GetModPlayer<BismuthPlayer>().skill101lvl > 0 && player.inventory[player.selectedItem].CountsAsClass(DamageClass.Ranged))
-            {
-                bonus += 0.05f;
-            }
-            if (player.GetModPlayer<BismuthPlayer>().skill101lvl > 1 && player.inventory[player.selectedItem].CountsAsClass(DamageClass.Ranged))
-            {
-                bonus += 0.1f;
-            }
-            if (player.GetModPlayer<BismuthPlayer>().skill101lvl > 2 && player.inventory[player.selectedItem].CountsAsClass(DamageClass.Ranged))
-            {
-                bonus += 0.15f;
-            }
-            num *= (1f + bonus);
-            if (num <= 0f)
-            {
-                return 1f;
-            }
-            if ((float)item.useAnimation / num < 3f || (float)item.useTime / num < 2f)
-            {
-                if (item.useAnimation - 1 <= item.useTime)
-                {
-                    num = (float)item.useAnimation / 3f;
-                }
-                else
-                {
-                    num = (float)item.useTime / 2f;
-                }
-            }
-            return num / num2;
-
+            /// <summary>
+            /// <примешено в cref="PlayerAttackSpeed"/>
+            /// </summary>
+            return base.UseTimeMultiplier(item, player);
         }
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 speed, int type, int damage, float knockback)
         {
@@ -197,12 +151,16 @@ namespace Bismuth.Utilities.Global
                     item.healLife = (int)(item.healLife * 1.3f);
                 }
                 if (player.GetModPlayer<BismuthPlayer>().IsEquippedBelt)
+                {
                     item.healLife = (int)(item.healLife * 1.2f);
+                }
             }
             if (item.type == ItemID.LesserManaPotion || item.type == ItemID.ManaPotion || item.type == ItemID.GreaterManaPotion || item.type == ItemID.SuperManaPotion)
             {
                 if (player.GetModPlayer<BismuthPlayer>().IsEquippedBelt)
+                {
                     item.healMana = (int)(item.healMana * 1.2f);
+                }
             }
             if (player.GetModPlayer<BismuthPlayer>().skill134lvl > 0)
             {
@@ -215,22 +173,37 @@ namespace Bismuth.Utilities.Global
                     item.healMana = (int)(item.healMana * 1.25f);
                 }
             }
-            if (item.type == ItemID.ManaRegenerationPotion || item.type == ItemID.MagicPowerPotion || item.type == ItemID.InvisibilityPotion || item.type == ItemID.ThornsPotion || item.type == ItemID.GillsPotion || item.type == ItemID.GravitationPotion || item.type == ItemID.ObsidianSkinPotion || item.type == ItemID.NightOwlPotion || item.type == ItemID.SwiftnessPotion || item.type == ItemID.ArcheryPotion || item.type == ItemID.FeatherfallPotion || item.type == ItemID.IronskinPotion || item.type == ItemID.WaterWalkingPotion || item.type == ItemID.ShinePotion || item.type == ItemID.HunterPotion || item.type == ItemID.MiningPotion || item.type == ItemID.RegenerationPotion || item.type == ItemID.BattlePotion || item.type == ItemID.WarmthPotion || item.type == ItemID.HeartreachPotion || item.type == ItemID.LifeforcePotion || item.type == ItemID.EndurancePotion || item.type == ItemID.FishingPotion || item.type == ItemID.CratePotion || item.type == ItemID.SonarPotion || item.type == ItemID.SummoningPotion || item.type == ItemID.SpelunkerPotion || item.type == ItemID.AmmoReservationPotion || item.type == 2329 || item.type == ItemID.CalmingPotion || item.type == ItemID.BuilderPotion || item.type == ItemID.RagePotion || item.type == ItemID.WrathPotion || item.type == ItemID.TitanPotion || item.type == ItemID.InfernoPotion || item.type == ItemID.FlipperPotion)
+            for (int l = 0; l < Player.MaxBuffs; l++)
             {
-                if (player.GetModPlayer<BismuthPlayer>().IsEquippedBelt)
+                int hasBuff = player.buffType[l];
+                if (BList.BuffsList.Contains(hasBuff))
                 {
-                    item.buffTime = (int)(item.buffTime * 1.15f);
+                    if (item.buffType > 0 && item.consumable)
+                    {
+                        float mult = 1f;
+                        var modPlayer = player.GetModPlayer<BismuthPlayer>();
+                        if (modPlayer.IsEquippedBelt)
+                        {
+                            mult *= 1.15f;
+                        }
+                        if (isequippedamulet)
+                        {
+                            mult *= 1.10f;
+                            item.healMana = player.statManaMax2 / 10;
+                        }
+                        int duration = (int)(item.buffTime * mult);
+                        player.AddBuff(item.buffType, duration);
+                        if (modPlayer.skill35lvl > 0)
+                        {
+                            player.AddBuff(ModContent.BuffType<InvigoratingDrink>(), 900);
+                        }
+                    }
                 }
-                if (isequippedamulet)
-                {
-                    item.buffTime = (int)(item.buffTime * 1.1f);
-                    item.healMana = player.statManaMax2 / 10;
-                }
-                if (player.GetModPlayer<BismuthPlayer>().skill35lvl > 0)
-                    player.AddBuff(ModContent.BuffType<InvigoratingDrink>(), 900);
             }
             if (item.type == ItemID.BottledWater)
+            {
                 Main.LocalPlayer.GetModPlayer<BismuthPlayer>().Wetness += 10;
+            }
             return base.UseItem(item, player);
         }
         public override bool CanUseItem(Item item, Player player)

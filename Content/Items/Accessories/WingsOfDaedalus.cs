@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Accessories
@@ -25,8 +24,7 @@ namespace Bismuth.Content.Items.Accessories
         {
             player.wingTimeMax = 55;
         }
-        public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
-               ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
+        public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)             
         {
             ascentWhenFalling = 0.85f;
             ascentWhenRising = 0.15f;

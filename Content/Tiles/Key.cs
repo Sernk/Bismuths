@@ -1,6 +1,2 @@
-using Terraria.ModLoader;
-
-namespace Bismuth.Content.Tiles
-{
-    public class Key : ModItem;
-}
+namespace Bismuth.Content.Tiles;
+public class Key : Terraria.ModLoader.ModItem;

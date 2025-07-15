@@ -1,5 +1,4 @@
 ﻿using Bismuth.Content.Items.Materials;
-using Bismuth.Utilities;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,10 +9,6 @@ namespace Bismuth.Content.Items.Accessories
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("The Ring Of The Blood");
-            // Tooltip.SetDefault("Turns you into a vampire");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Кольцо крови");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Превращает вас в вампира");
             if (Main.netMode != NetmodeID.Server)
             {
                 SetupDrawing();

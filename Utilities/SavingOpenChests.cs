@@ -24,30 +24,12 @@ namespace Bismuth.Utilities
         }
         public override void SaveWorldData(TagCompound tag)
         {
-            if (HChest)
-            {
-                tag ["HChest"] = true;
-            }
-            if (OChest)
-            {
-                tag ["OChest"] = true;
-            }
-            if (RChest)
-            {
-                tag ["RChest"] = true;
-            }
-            if (GChest)
-            {
-                tag ["GChest"] = true;
-            }
-            if (BChest)
-            {
-                tag ["BChest"] = true;
-            }
-            if (MChest)
-            {
-                tag ["MChest"] = true;
-            }
+            if (HChest) tag["HChest"] = true;
+            if (OChest) tag["OChest"] = true;
+            if (RChest) tag["RChest"] = true;
+            if (GChest) tag["GChest"] = true;
+            if (BChest) tag["BChest"] = true;
+            if (MChest) tag["MChest"] = true;
         }
         public override void NetSend(BinaryWriter writer)
         {

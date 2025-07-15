@@ -1,8 +1,8 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using System.Collections.Generic;
+﻿using Bismuth.Utilities;
 using Microsoft.Xna.Framework;
-using Bismuth.Utilities;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Accessories
 {

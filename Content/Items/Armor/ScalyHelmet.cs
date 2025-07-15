@@ -1,4 +1,5 @@
 ﻿using Bismuth.Content.Items.Materials;
+using Bismuth.Utilities;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -21,6 +22,7 @@ namespace Bismuth.Content.Items.Armor
         }
         public override void UpdateEquip(Player player)
         {
+            player.GetModPlayer<BismuthPlayer>().IsEquippedScalyHelmet = true;
             player.GetCritChance(DamageClass.Throwing) += 11;
         }
         public override bool IsArmorSet(Item head, Item body, Item legs)

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bismuth")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a92b0580610d87d2c7e0c8deb4532be7fa552c7f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+32d684269c0946fe1971f8908a2bdedfd5a607f7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bismuth")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bismuth")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

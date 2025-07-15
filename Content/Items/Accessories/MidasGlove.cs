@@ -1,18 +1,11 @@
-﻿using Terraria;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ModLoader;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Items.Accessories
 {
     public class MidasGlove : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Midas' Glove");
-            // Tooltip.SetDefault("6% increased damage, 30% more coins dropped from enemies");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Перчатка Мидаса");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает любой урон на 6%, вы получаете на 30% \nбольше денег при убийстве врагов");
-        }
         public override void SetDefaults()
         {
             Item.value = Item.sellPrice(0, 2, 0, 0);

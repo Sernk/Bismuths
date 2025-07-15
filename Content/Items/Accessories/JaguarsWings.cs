@@ -25,9 +25,7 @@ namespace Bismuth.Content.Items.Accessories
         {
             player.wingTimeMax = 104;
         }
-
-        public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
-               ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
+        public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)               
         {
             ascentWhenFalling = 0.85f;
             ascentWhenRising = 0.15f;
@@ -35,13 +33,11 @@ namespace Bismuth.Content.Items.Accessories
             maxAscentMultiplier = 3f;
             constantAscend = 0.135f;
         }
-
         public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
         {
             speed = 9f;
             acceleration *= 2.5f;
         }
-
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

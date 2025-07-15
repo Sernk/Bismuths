@@ -11,14 +11,12 @@ namespace Bismuth.Content.Dusts
             dust.noLight = true;
             dust.scale *= 1f;
         }
-
         public override bool Update(Dust dust)
         {
             dust.position += dust.velocity;
             dust.rotation += dust.velocity.X * 0.15f;
-            dust.scale *= 0.95f;        
-            if ((double)dust.scale < 0.5)
-                dust.active = false;
+            dust.scale *= 0.95f;
+            if (dust.scale < 0.5) dust.active = false;
             return false;
         }
     }
