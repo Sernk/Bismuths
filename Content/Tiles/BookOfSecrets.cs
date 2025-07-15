@@ -23,7 +23,6 @@ namespace Bismuth.Content.Tiles
         }
         public override bool RightClick(int i, int j)
         {
-            Player player = Main.player[Main.myPlayer];
             WorldGen.KillTile(i, j, false, false, false);
             return true;
         }
