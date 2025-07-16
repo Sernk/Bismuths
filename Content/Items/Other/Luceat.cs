@@ -7,13 +7,6 @@ namespace Bismuth.Content.Items.Other
 {
     public class Luceat : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Luceat");
-            // Tooltip.SetDefault("Teleports you to Imperian town");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Луцеат");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Телепортирует вас в Имперский город");
-        }
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -23,8 +16,7 @@ namespace Bismuth.Content.Items.Other
             Item.useTime = 15;
             Item.useAnimation = 15;
             Item.UseSound = SoundID.Item6;
-        }
-        
+        } 
         public override bool? UseItem(Player player)
         {
             if (player.itemAnimation == 2)

@@ -1,22 +1,16 @@
-﻿using Terraria.ModLoader;
+﻿using Terraria;
 using Terraria.ID;
-using Terraria;
-using Terraria.Localization;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Placeable
 {
     public class OrcishPlatform : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Orcish Platform");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Орочья платформа");
-        }
         public override void SetDefaults()
         {
             Item.width = 8;
             Item.height = 10;
-            Item.maxStack = 999;
+            Item.maxStack = 9999;
             Item.useTurn = true;
             Item.autoReuse = true;
             Item.useAnimation = 15;
@@ -25,13 +19,12 @@ namespace Bismuth.Content.Items.Placeable
             Item.consumable = true;
             Item.createTile = ModContent.TileType<Tiles.OrcishPlatform>();
         }
-
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(50);
             recipe.AddIngredient(129, 1);        
             recipe.AddIngredient(ModContent.ItemType<Materials.OrcishFragment>(), 1);
-            recipe.AddTile(TileID.WorkBenches);   //at work bench
+            recipe.AddTile(TileID.WorkBenches);
             recipe.Register();
         }
     }

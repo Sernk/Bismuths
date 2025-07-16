@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using Bismuth.Content.Items.Accessories;
+using Bismuth.Content.Items.Materials;
+using Bismuth.Content.Items.Other;
+using Bismuth.Content.Items.Placeable;
+using Bismuth.Utilities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Bismuth.Content.Items.Other;
-using Bismuth.Content.Items.Materials;
-using Microsoft.Xna.Framework.Graphics;
-using Bismuth.Utilities;
-using Bismuth.Content.Items.Accessories;
-using Bismuth.Content.Items.Placeable;
 
 namespace Bismuth.Content.NPCs
 {
@@ -57,6 +58,7 @@ namespace Bismuth.Content.NPCs
         {
             // DisplayName.SetDefault("Alchemist");
             //DisplayName.AddTranslation(GameCulture.Russian, "Алхимик");
+            NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
 
         public override void SetDefaults()
@@ -77,11 +79,11 @@ namespace Bismuth.Content.NPCs
 
         public override List<string> SetNPCNameList() => new List<string>()
         {
-                this.GetLocalizedValue("Name.Rizo"), // Language.GetTextValue("Mods.Bismuth.AlchemistName_1");
-                this.GetLocalizedValue("Name.Albert"), // Language.GetTextValue("Mods.Bismuth.AlchemistName_2");
-                this.GetLocalizedValue("Name.Bernando"), // Language.GetTextValue("Mods.Bismuth.AlchemistName_3");
-                this.GetLocalizedValue("Name.Seefeld"), // Language.GetTextValue("Mods.Bismuth.AlchemistName_4");
-                this.GetLocalizedValue("Name.Robert") // Language.GetTextValue("Mods.Bismuth.AlchemistName_5");
+            this.GetLocalizedValue("Name.Rizo"), // Language.GetTextValue("Mods.Bismuth.AlchemistName_1");
+            this.GetLocalizedValue("Name.Albert"), // Language.GetTextValue("Mods.Bismuth.AlchemistName_2");
+            this.GetLocalizedValue("Name.Bernando"), // Language.GetTextValue("Mods.Bismuth.AlchemistName_3");
+            this.GetLocalizedValue("Name.Seefeld"), // Language.GetTextValue("Mods.Bismuth.AlchemistName_4");
+            this.GetLocalizedValue("Name.Robert") // Language.GetTextValue("Mods.Bismuth.AlchemistName_5");
         };
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {

@@ -1,18 +1,10 @@
-﻿using System;
-using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Placeable
 {
     public class MagicPot : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Magic Pot");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Магический котел");
-        }
         public override void SetDefaults()
         {
             Item.width = 64;

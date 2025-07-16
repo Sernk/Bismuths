@@ -18,6 +18,7 @@ namespace Bismuth.Content.NPCs
         {
             // DisplayName.SetDefault("Beggar");
             //DisplayName.AddTranslation(GameCulture.Russian, "Бедняк");
+            NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
         public override void Load()
         {
@@ -37,7 +38,6 @@ namespace Bismuth.Content.NPCs
             string BeggarAnsv_3 = this.GetLocalization("Chat.BeggarAnsv_3").Value; // Ru: Я достал еду для тебя En: Here is food for you
             string BeggarAnsv_4 = this.GetLocalization("Chat.BeggarAnsv_4").Value; // Ru: Я был занят другими делами En: I was busy with other things
             string BeggarAnsv_5 = this.GetLocalization("Chat.BeggarAnsv_5").Value; // Ru: Сыграть в кости En: Play dice
-
         }
         public override void SetDefaults()
         {

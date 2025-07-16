@@ -16,6 +16,7 @@ namespace Bismuth.Content.NPCs
         {
             // DisplayName.SetDefault("Imperian Commander");
             //DisplayName.AddTranslation(GameCulture.Russian, "Имперский командир");
+            NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
         public override void Load()
         {

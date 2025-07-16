@@ -1,21 +1,14 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Projectiles;
+using Bismuth.Utilities;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Bismuth.Utilities;
 using Terraria.ModLoader;
-using Bismuth.Content.Projectiles;
 
 namespace Bismuth.Content.Items.Weapons.Assassin
 {
     public class Misericorde : AssassinItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Misericorde");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Мизерикорд");
-            //Tooltip.SetDefault("5% chance to kill enemy immediately (doesn't work for bosses)");
-            //Tooltip.AddTranslation(GameCulture.Russian, "5% шанс мнгновенно убить врага (не работает против боссов)");
-        }
         public override void SetDefaults()
         {
             Item.damage = 21;

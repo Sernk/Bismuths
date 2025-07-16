@@ -9,7 +9,6 @@ namespace Bismuth.Content.Items.Tools
     {
         public override void SetDefaults()
         {
-
             Item.damage = 12;
             Item.DamageType = DamageClass.Melee;
             Item.width = 20;

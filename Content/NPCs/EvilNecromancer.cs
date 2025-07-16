@@ -22,6 +22,7 @@ namespace Bismuth.Content.NPCs
             //DisplayName.AddTranslation(GameCulture.Russian, "Некромант");
             Main.npcFrameCount[NPC.type] = 1;
             NPCID.Sets.MustAlwaysDraw[NPC.type] = true;
+            NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
         int currentframe = 0;
         int tick = 0;

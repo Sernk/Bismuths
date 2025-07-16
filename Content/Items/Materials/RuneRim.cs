@@ -3,13 +3,8 @@ using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Materials
 {
-    class RuneRim : ModItem
+    public class RuneRim : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Rune Rim");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Руническая оправа");
-        }
         public override void SetDefaults()
         {     
             Item.width = 40;

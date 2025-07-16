@@ -27,7 +27,7 @@ namespace Bismuth.Content.Items.Weapons.Throwing
             Item.useTurn = true;
             Item.useStyle = 1;
             Item.noUseGraphic = true;
-            Item.maxStack = 999;
+            Item.maxStack = 9999;
             Item.consumable = true;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

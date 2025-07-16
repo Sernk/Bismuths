@@ -9,12 +9,9 @@ namespace Bismuth.Content.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Runic Essence");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Руническая эссенция");
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 4));
             ItemID.Sets.ItemNoGravity[Item.type] = true;
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
-
         }
         public override void SetDefaults()
         {

@@ -50,6 +50,7 @@ namespace Bismuth.Content.Items.Accessories
                 4 => AthenasShield3,
                 5 => AthenasShield4,
                 6 => AthenasShield5,
+                7 => AthenasShield5,
                 _ => null
             };
 
@@ -64,23 +65,23 @@ namespace Bismuth.Content.Items.Accessories
 
             int progress = LocalizationSystem.GetProgress();
 
-            if (progress >= 1)
+            if (progress == 1)
             {
                 Item.defense = 2;
             }
-            if (progress >= 2)
+            if (progress == 2)
             {
                 Item.defense = 3;
                 player.endurance += 0.07f;
                 player.statLifeMax2 += 15;
             }
-            if (progress >= 3)
+            if (progress == 3)
             {
                 Item.defense = 5;
                 player.endurance += 0.1f;
                 player.statLifeMax2 += 45;
             }
-            if (progress >= 4)
+            if (progress == 4)
             {
                 Item.defense = 7;
                 player.endurance += 0.15f;
@@ -88,7 +89,7 @@ namespace Bismuth.Content.Items.Accessories
                 player.potionDelay -= 300;
                 player.potionDelayTime -= 300;
             }
-            if (progress >= 5)
+            if (progress == 5)
             {
                 Item.defense = 10;
                 player.endurance += 0.18f;
@@ -99,7 +100,18 @@ namespace Bismuth.Content.Items.Accessories
                 if (player.statLife <= 200)
                     player.lifeRegen += 30;
             }
-            if (progress >= 6)
+            if (progress == 6)
+            {
+                Item.defense = 15;
+                player.endurance += 0.25f;
+                player.statLifeMax2 += 150;
+                player.potionDelay -= 600;
+                player.potionDelayTime -= 600;
+                player.GetModPlayer<BismuthPlayer>().ParryChance += 15;
+                if (player.statLife <= 150)
+                    player.lifeRegen += 30;
+            }
+            if (progress >= 7)
             {
                 Item.defense = 15;
                 player.endurance += 0.25f;

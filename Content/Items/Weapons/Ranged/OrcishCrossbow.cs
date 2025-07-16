@@ -25,11 +25,5 @@ namespace Bismuth.Content.Items.Weapons.Ranged
             Item.useStyle = 5;
             Item.useAmmo = AmmoID.Arrow;
         }
-
-        public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Orcish Crossbow");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Орочий арбалет");
-        }
     }
 }

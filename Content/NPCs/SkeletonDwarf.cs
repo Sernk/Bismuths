@@ -53,6 +53,7 @@ namespace Bismuth.Content.NPCs
         public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DwarvenBrokenArmor>()));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DwarvenCoin>(), 1, 1, 3));
         }
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {

@@ -6,18 +6,11 @@ namespace Bismuth.Content.Items.Other
 {
     public class Pancakes : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Pancakes");
-            // Tooltip.SetDefault("Minor improvements to all stats");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Блины");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Небольшое увеличение всех характеристик");
-        }
         public override void SetDefaults()
         {
             Item.width = 20;
             Item.height = 20;
-            Item.maxStack = 30;
+            Item.maxStack = 9999;
             Item.useStyle = 2;
             Item.useTime = 20;
             Item.useAnimation = 20;

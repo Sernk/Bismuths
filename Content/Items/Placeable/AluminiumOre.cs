@@ -1,23 +1,15 @@
-﻿using System;
-using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Placeable
 {
     public class AluminiumOre : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Aluminium Ore");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Алюминиевая руда");
-        }
         public override void SetDefaults()
         {
             Item.width = 12;
             Item.height = 12;
-            Item.maxStack = 999;
+            Item.maxStack = 9999;
             Item.useTurn = true;
             Item.autoReuse = true;
             Item.useAnimation = 15;

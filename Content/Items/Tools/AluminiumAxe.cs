@@ -1,7 +1,7 @@
-﻿using Terraria.ID;
+﻿using Bismuth.Content.Items.Placeable;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using Bismuth.Content.Items.Placeable;
 
 namespace Bismuth.Content.Items.Tools
 {
@@ -9,7 +9,6 @@ namespace Bismuth.Content.Items.Tools
     {
         public override void SetDefaults()
         {
-
             Item.damage = 7;
             Item.DamageType = DamageClass.Melee;
             Item.width = 20;

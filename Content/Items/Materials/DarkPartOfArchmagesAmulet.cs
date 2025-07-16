@@ -1,17 +1,10 @@
-﻿using Terraria.ModLoader;
-using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Terraria;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Materials
 {
     public class DarkPartOfArchmagesAmulet : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Dark Fragment of the Archmage's Amulet");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Темный осколок амулета архимага");
-        }
         public override void SetDefaults()
         {
             Item.width = 40;

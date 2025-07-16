@@ -1,23 +1,15 @@
-﻿using System;
-using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Placeable
 {
     public class PapuansBed : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Papuan's Bed");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Кровать папуасов");
-        }
         public override void SetDefaults()
         {
             Item.width = 64;
             Item.height = 26;
-            Item.maxStack = 99;
+            Item.maxStack = 9999;
             Item.useTurn = true;
             Item.autoReuse = true;
             Item.useAnimation = 15;
@@ -27,7 +19,7 @@ namespace Bismuth.Content.Items.Placeable
             Item.value = Item.sellPrice(0, 0, 4, 0);
             Item.createTile = ModContent.TileType<Tiles.PapuansBed>();
         }      
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(2504, 15);

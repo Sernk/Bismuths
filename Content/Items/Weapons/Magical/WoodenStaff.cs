@@ -1,9 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Projectiles;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Bismuth.Content.Projectiles;
 
 namespace Bismuth.Content.Items.Weapons.Magical
 {
@@ -33,11 +32,6 @@ namespace Bismuth.Content.Items.Weapons.Magical
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-4, 0);
-        }
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Wooden Staff");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Деревянный посох");
         }
     }
 }

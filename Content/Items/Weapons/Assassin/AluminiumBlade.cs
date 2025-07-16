@@ -1,7 +1,7 @@
-﻿using Terraria;
-using Terraria.ID;
+﻿using Bismuth.Content.Items.Placeable;
 using Bismuth.Utilities;
-using Bismuth.Content.Items.Placeable;
+using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Weapons.Assassin

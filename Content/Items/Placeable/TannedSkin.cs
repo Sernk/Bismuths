@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Bismuth.Content.Items.Materials;
 using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Bismuth.Content.Items.Materials;
 
 namespace Bismuth.Content.Items.Placeable
 {
@@ -11,10 +8,9 @@ namespace Bismuth.Content.Items.Placeable
     {
         public override void SetDefaults()
         {
-
             Item.width = 64;
             Item.height = 26;
-            Item.maxStack = 999;
+            Item.maxStack = 9999;
             Item.useTurn = true;
             Item.autoReuse = true;
             Item.useAnimation = 15;
@@ -24,12 +20,6 @@ namespace Bismuth.Content.Items.Placeable
             Item.value = 3500;
             Item.createTile = ModContent.TileType<Tiles.TannedSkin>();
         }
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Tanned Skin");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Дубленая кожа");
-        }
-
         public override void AddRecipes()  
         {
             Recipe recipe = CreateRecipe();

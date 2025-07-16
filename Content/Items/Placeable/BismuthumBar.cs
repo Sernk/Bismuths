@@ -1,6 +1,6 @@
-﻿using Terraria.ModLoader;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Placeable
 {
@@ -8,9 +8,7 @@ namespace Bismuth.Content.Items.Placeable
     {
         public override void SetStaticDefaults()
         {
-            ItemID.Sets.ExtractinatorMode[Item.type] = Item.type;        
-            //DisplayName.SetDefault("Bismuthum Bar");         
-            //DisplayName.AddTranslation(GameCulture.Russian, "Висмутовый слиток");            
+            ItemID.Sets.ExtractinatorMode[Item.type] = Item.type;          
         }
         public override void SetDefaults()
         {           

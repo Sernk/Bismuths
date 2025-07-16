@@ -1,9 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Projectiles;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Bismuth.Content.Projectiles;
 
 namespace Bismuth.Content.Items.Weapons.Magical        
 {
@@ -28,12 +26,6 @@ namespace Bismuth.Content.Items.Weapons.Magical
             Item.autoReuse = true; 
             Item.shoot = ModContent.ProjectileType<WaveOfForceP>();  
             Item.shootSpeed = 28f;    
-        }
-
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Wave of Force");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Силовая волна");
-        }      
+        }     
     }
 }

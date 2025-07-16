@@ -1,6 +1,5 @@
 ﻿using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Weapons.Melee
@@ -9,7 +8,6 @@ namespace Bismuth.Content.Items.Weapons.Melee
     {
         public override void SetDefaults()
         {
-
             Item.damage = 18;
             Item.DamageType = DamageClass.Melee;
             Item.width = 20;
@@ -28,13 +26,6 @@ namespace Bismuth.Content.Items.Weapons.Melee
         {
             if (target.type == NPCID.GoblinArcher || target.type == NPCID.GoblinPeon || target.type == NPCID.GoblinScout || target.type == NPCID.GoblinSorcerer || target.type == NPCID.GoblinSummoner || target.type == NPCID.GoblinThief || target.type == NPCID.GoblinWarrior)
                 modifiers.SourceDamage *= 5;
-        }
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Glamdring");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Гламдринг");
-            //Tooltip.SetDefault("Deals multiplied damage to goblins");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Наносит многократный урон гоблинам");
         }
     }
 }

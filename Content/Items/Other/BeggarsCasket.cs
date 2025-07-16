@@ -1,19 +1,10 @@
 ﻿using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Other
 {
     public class BeggarsCasket : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Beggar's Casket");
-            // Tooltip.SetDefault("Impossible to open without a lockpick");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Шкатулка бедняка");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Требует отмычку для взлома");
-        }
         public override void SetDefaults()
         {
             Item.width = 20;

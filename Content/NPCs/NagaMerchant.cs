@@ -17,6 +17,7 @@ namespace Bismuth.Content.NPCs
         {
             // DisplayName.SetDefault("Naga Merchant");
             //DisplayName.AddTranslation(GameCulture.Russian, "Нага-торговец");
+            NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
         public override void Load()
         {

@@ -29,6 +29,7 @@ namespace Bismuth.Content.NPCs
             // DisplayName.SetDefault("Blacksmith");
             //DisplayName.AddTranslation(GameCulture.Russian, "Кузнец");
             Main.npcFrameCount[NPC.type] = 20;
+            NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
         public override void Load()
         {

@@ -1,18 +1,10 @@
-﻿using System;
-using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Placeable
 {
     public class OrcishLantern : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Orcish Lantern");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Орочий фонарь");
-        }
         public override void SetDefaults()
         {
             Item.width = 16;
@@ -27,15 +19,13 @@ namespace Bismuth.Content.Items.Placeable
             Item.value = 0;
             Item.createTile = ModContent.TileType<Tiles.OrcishLantern>();
         }
-
-   
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(129, 6);
             recipe.AddIngredient(8, 1);
             recipe.AddIngredient(ModContent.ItemType<Materials.OrcishFragment>(), 1);
-            recipe.AddTile(18);   //at work bench
+            recipe.AddTile(18);
             recipe.Register();
         }
     }

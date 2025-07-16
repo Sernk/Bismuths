@@ -1,6 +1,6 @@
-﻿using Terraria.ID;
+﻿using Bismuth.Content.Projectiles;
+using Terraria.ID;
 using Terraria.ModLoader;
-using Bismuth.Content.Projectiles;
 
 namespace Bismuth.Content.Items.Other
 {

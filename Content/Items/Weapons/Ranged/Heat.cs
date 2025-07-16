@@ -47,6 +47,5 @@ namespace Bismuth.Content.Items.Weapons.Ranged
             else
                 return true;
         }
-
     }
 }

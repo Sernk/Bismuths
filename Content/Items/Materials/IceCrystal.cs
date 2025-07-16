@@ -1,25 +1,20 @@
-﻿using Terraria.ModLoader;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Materials
 {
     class IceCrystal : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Ice Crystal");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Ледяной кристалл");
-        }
         public override void SetDefaults()
         {          
             Item.width = 40;
             Item.height = 20;
             Item.rare = 0;
-            Item.maxStack = 999;
+            Item.maxStack = 9999;
             Item.material = true;
         }
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe(3);
             recipe.AddIngredient(ItemID.IceBlock, 1);

@@ -1,18 +1,11 @@
-﻿using Terraria.ModLoader;
+﻿using Bismuth.Content.Tiles;
 using Terraria;
-using Bismuth.Content.Tiles;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Materials
 {
     public class Aether : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Aether");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Эфир");
-            // Tooltip.SetDefault("Used to charge philosopher stone");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Используется для зарядки филосовского камня");
-        }
         public override void SetDefaults()
         {
             Item.width = 40;
@@ -28,6 +21,7 @@ namespace Bismuth.Content.Items.Materials
             recipe.AddIngredient(ModContent.ItemType<WaterEssence>());
             recipe.AddIngredient(ModContent.ItemType<EarthEssence>());
             recipe.AddIngredient(ModContent.ItemType<AirEssence>());
+            recipe.AddCondition(AetherRecipe.AetherRecipes);
             recipe.AddTile(ModContent.TileType<AlchemicalShelf>());
             recipe.Register();
         }

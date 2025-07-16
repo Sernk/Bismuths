@@ -11,14 +11,12 @@ namespace Bismuth.Content.Items.Weapons.Melee
     {
         public override void SetDefaults()
         {
-
             Item.damage = 48;
             Item.DamageType = DamageClass.Melee;
             Item.width = 20;
             Item.height = 20;
             Item.useTime = 26;
             Item.useAnimation = 26;
-            //Item.reuseDelay = 8;
             Item.knockBack = 5.5f;
             Item.rare = 0;
             Item.UseSound = SoundID.Item1;
@@ -111,16 +109,8 @@ namespace Bismuth.Content.Items.Weapons.Melee
                         if (Math.Abs(Y3 - Y4) <= 1)
                             Projectile.NewProjectile(source, new Vector2(X4 * 16 + (player.direction > 0 ? 8 : -8), (Y4 - 1) * 16), Vector2.Zero, ModContent.ProjectileType<IceSpikeP>(), 20, 4f, Main.LocalPlayer.whoAmI, 2f);
                     }
-                }
-               
+                }              
             }               
-        }
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Ringril");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Рингрил");
-            // Tooltip.SetDefault("Creates five ice spikes after dealing damage");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Создаёт пять ледяных шипов после нанесения урона");
         }
     }
 }

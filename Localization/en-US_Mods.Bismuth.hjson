@@ -27,7 +27,7 @@ Tiles: {
 		MapEntry1: Chest
 		OrcishChest: Chest
 	}
-
+	
 	OrcishCoatOfArms.MapEntry: Orcish Coat Of Arms
 	OrcishDoorClosed.MapEntry: Door
 	OrcishDoorOpen.MapEntry: Door
@@ -642,7 +642,11 @@ Items: {
 
 	DwarvenCoin: {
 		DisplayName: Dwarven Coin
-		Tooltip: Currency for trading with the Blacksmith
+		Tooltip: 
+				'''
+				Currency for trading with the Blacksmith
+				Can be obtained from Silt Block
+				'''
 	}
 
 	EmpathyMirror: {

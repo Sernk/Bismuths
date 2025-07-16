@@ -36,7 +36,6 @@ namespace Bismuth.Content.Items.Weapons.Throwing
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
         }
-
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 speed, int type, int damage, float knockback)
         {
             float numberProjectiles = 2; 

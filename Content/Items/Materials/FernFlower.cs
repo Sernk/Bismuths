@@ -1,15 +1,10 @@
-﻿using Terraria.ModLoader;
-using Terraria;
+﻿using Terraria;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Materials
 {
     public class FernFlower : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Fern Flower");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Цветок папоротника");
-        }
         public override void SetDefaults()
         {
             Item.width = 40;

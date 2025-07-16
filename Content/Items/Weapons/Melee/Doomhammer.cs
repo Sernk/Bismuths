@@ -26,13 +26,5 @@ namespace Bismuth.Content.Items.Weapons.Melee
             Item.UseSound = SoundID.Item15;
             Item.autoReuse = false;
         }
-
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Doomhammer");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Молот рока");
-            // Tooltip.SetDefault("Creates small explosion on the ground\nLok Tar Ogar!");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Создаёт небольшой взрыв на твердой поверхности\n Лок Тар Огар!");
-        }
     }
 }

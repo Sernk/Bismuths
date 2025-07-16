@@ -1,7 +1,6 @@
-﻿using Terraria;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ID;
-using Bismuth.Utilities;
-using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Weapons.Assassin
 {
@@ -21,11 +20,6 @@ namespace Bismuth.Content.Items.Weapons.Assassin
             Item.autoReuse = true;
             Item.useStyle = 1;
             Item.useTurn = true;
-        }
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Angrist");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Ангрист");
         }
     }
 }

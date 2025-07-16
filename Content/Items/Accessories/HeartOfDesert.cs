@@ -51,6 +51,7 @@ namespace Bismuth.Content.Items.Accessories
                 4 => HeartOfDesert3,
                 5 => HeartOfDesert4,
                 6 => HeartOfDesert5,
+                7 => HeartOfDesert5,
                 _ => null
             };
             if (description != null)
@@ -116,6 +117,27 @@ namespace Bismuth.Content.Items.Accessories
                 player.buffImmune[194] = true;
             }
             if (progress == 6)
+            {
+                player.moveSpeed += 0.25f;
+                player.lifeRegen += 20;
+                Item.defense = 3;
+                player.moveSpeed += ((player.statLifeMax2 - player.statLife) / player.statLifeMax2) / 3;
+                if (player.ZoneDesert)
+                {
+                    player.GetDamage(DamageClass.Melee) += 0.15f;
+                    player.GetDamage(DamageClass.Magic) += 0.15f;
+                    player.GetDamage(DamageClass.Summon) += 0.15f;
+                    player.GetDamage(DamageClass.Ranged) += 0.15f;
+                    player.GetDamage(DamageClass.Throwing) += 0.15f;
+                    player.moveSpeed += 0.25f;
+                    player.GetCritChance(DamageClass.Melee) += 10;
+                    player.GetCritChance(DamageClass.Magic) += 10;
+                    player.GetCritChance(DamageClass.Ranged) += 10;
+                    player.GetCritChance(DamageClass.Throwing) += 10;
+                }
+                player.buffImmune[194] = true;
+            }
+            if (progress >= 7)
             {
                 player.moveSpeed += 0.25f;
                 player.lifeRegen += 20;

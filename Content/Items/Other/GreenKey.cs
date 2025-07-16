@@ -1,19 +1,10 @@
-﻿using Terraria.ID;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace Bismuth.Content.Items.Other
 {
     public class GreenKey : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Green Key");
-            // Tooltip.SetDefault("Opens the green maze chest and door");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Зеленый ключ");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Открывает зеленые сундук и дверь лабиринта");
-        }
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -22,6 +13,5 @@ namespace Bismuth.Content.Items.Other
             Item.rare = 3;
             Item.consumable = true;
         }
-
     }
 }

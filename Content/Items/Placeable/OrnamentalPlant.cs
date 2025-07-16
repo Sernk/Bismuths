@@ -5,11 +5,6 @@ namespace Bismuth.Content.Items.Placeable
 {
     public class OrnamentalPlant : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Ornamental Plant");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Декоративное растение");
-        }
         public override void SetDefaults()
         {
 
@@ -24,7 +19,7 @@ namespace Bismuth.Content.Items.Placeable
             Item.rare = 1;
             Item.value = Item.buyPrice(0, 0, 15, 0);
             Item.createTile = ModContent.TileType<Tiles.OrnamentalPlant>();
-            Item.maxStack = 99;
+            Item.maxStack = 9999;
         }
     }
 }

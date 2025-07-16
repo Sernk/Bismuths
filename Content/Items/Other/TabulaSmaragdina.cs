@@ -1,20 +1,12 @@
-﻿using Terraria;
-using Terraria.ID;
+﻿using Bismuth.Content.Items.Materials;
 using Bismuth.Utilities;
+using Terraria;
 using Terraria.ModLoader;
-using Bismuth.Content.Items.Materials;
 
 namespace Bismuth.Content.Items.Other
 {
     public class TabulaSmaragdina : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Tabula Smaragdina");
-            // Tooltip.SetDefault("Ancient artifact needed to create aether");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Изумрудная скрижаль");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Древний артефакт, необходимый для создания эфира");
-        }
         public override void SetDefaults()
         {
             Item.width = 20;
@@ -26,6 +18,10 @@ namespace Bismuth.Content.Items.Other
             Item.useTime = 15;
             Item.useStyle = 1;
             Item.consumable = true;
+        }
+        public override void UpdateInventory(Player player)
+        {
+            player.GetModPlayer<BismuthPlayer>().TabulaResearch = true;
         }
         public override bool CanUseItem(Player player)
         {

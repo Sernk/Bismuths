@@ -1,16 +1,11 @@
-﻿using Terraria.ModLoader;
+﻿using Bismuth.Content.Tiles;
 using Terraria;
-using Bismuth.Content.Tiles;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Materials
 {
     public class Quicksilver : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Quicksilver");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Ртуть");
-        }
         public override void SetDefaults()
         {
             Item.width = 40;

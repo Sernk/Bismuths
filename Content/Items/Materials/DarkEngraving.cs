@@ -1,15 +1,10 @@
-﻿using Terraria.ModLoader;
-using Terraria;
+﻿using Terraria;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Materials
 {
     public class DarkEngraving : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Dark Engraving");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Темная гравировка");
-        }
         public override void SetDefaults()
         {
             Item.width = 40;

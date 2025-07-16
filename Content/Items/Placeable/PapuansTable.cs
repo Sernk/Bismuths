@@ -10,7 +10,7 @@ namespace Bismuth.Content.Items.Placeable
 
             Item.width = 48;
             Item.height = 32;
-            Item.maxStack = 99;
+            Item.maxStack = 9999;
             Item.useTurn = true;
             Item.autoReuse = true;
             Item.useAnimation = 15;
@@ -20,12 +20,6 @@ namespace Bismuth.Content.Items.Placeable
             Item.value = Item.sellPrice(0, 0, 0, 60);
             Item.createTile = ModContent.TileType<Tiles.PapuansTable>();
         }
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Papuan's Table");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Стол папуасов");
-        }
-
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

@@ -1,17 +1,10 @@
-﻿using Terraria.ModLoader;
-using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Terraria;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Materials
 {
     public class MirrorRim : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Mirror Rim");
-            // DisplayName.AddTranslation(GameCulture.Russian, "Оправа зеркала");
-        }
         public override void SetDefaults()
         {
             Item.width = 40;

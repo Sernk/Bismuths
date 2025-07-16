@@ -1,19 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Utilities;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Items.Weapons.Assassin
 {
     public class Parazonium : AssassinItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Parazonium");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Паразониум");
-        }
         public override void SetDefaults()
         {
             Item.damage = 4;

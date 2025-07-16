@@ -1,7 +1,4 @@
-﻿using System;
-using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Placeable
@@ -12,7 +9,7 @@ namespace Bismuth.Content.Items.Placeable
         {
             Item.width = 32;
             Item.height = 16;
-            Item.maxStack = 99;
+            Item.maxStack = 9999;
             Item.useTurn = true;
             Item.autoReuse = true;
             Item.useAnimation = 15;
@@ -22,12 +19,6 @@ namespace Bismuth.Content.Items.Placeable
             Item.value = Item.sellPrice(0, 0, 0, 30);
             Item.createTile = ModContent.TileType<Tiles.PapuansWorkbench>();
         }
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Papuan's Workbench");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Верстак папуасов");
-        }
-
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();

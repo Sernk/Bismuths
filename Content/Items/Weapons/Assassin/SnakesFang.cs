@@ -1,9 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
+﻿using Bismuth.Content.NPCs;
 using Bismuth.Utilities;
-using Bismuth.Content.NPCs;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Weapons.Assassin
 {

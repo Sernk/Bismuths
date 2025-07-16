@@ -51,6 +51,7 @@ namespace Bismuth.Content.NPCs
         {
             // DisplayName.SetDefault("Swamp Witch");
             //DisplayName.AddTranslation(GameCulture.Russian, "Болотная ведьма");
+            NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
         public override void SetDefaults()
         {

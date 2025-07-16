@@ -1,20 +1,13 @@
-﻿using Terraria.ModLoader;
+﻿using Bismuth.Content.Items.Accessories;
+using Bismuth.Utilities;
 using Terraria;
 using Terraria.ID;
-using Bismuth.Utilities;
-using Bismuth.Content.Items.Accessories;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Other
 {
     public class PotionOfHumanity : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Potion Of Humanity");
-            // Tooltip.SetDefault("Resets your race");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Зелье человечности");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Превращает вас обратно в человека");
-        }
         public override void SetDefaults()
         {
             Item.width = 40;
@@ -22,7 +15,7 @@ namespace Bismuth.Content.Items.Other
             Item.value = Item.buyPrice(1, 0, 0, 0);
             Item.rare = 1;
             Item.maxStack = 30;
-            Item.useStyle = 2;
+            Item.useStyle = ItemUseStyleID.DrinkLiquid;
             Item.useTime = 15;
             Item.UseSound = SoundID.Item3;
             Item.useAnimation = 15;

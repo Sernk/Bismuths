@@ -1,21 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Utilities;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Items.Weapons.Assassin
 {
     public class ManGosh : AssassinItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Man-Gosh");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Мэн-гош");
-            // Tooltip.SetDefault("+25% block chance holding this weapon in an active slot");
-            //Tooltip.AddTranslation(GameCulture.Russian, "+25% к шансу блокирование, пока оружие находится в активном слоте");
-        }
         public override void SetDefaults()
         {
             Item.damage = 23;

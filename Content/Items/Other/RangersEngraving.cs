@@ -1,18 +1,11 @@
-﻿using Terraria.ModLoader;
+﻿using Bismuth.Utilities;
 using Terraria;
-using Bismuth.Utilities;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Other
 {
-   public class RangersEngraving : ModItem
+    public class RangersEngraving : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Ranger's Engraving");
-            //Tooltip.SetDefault("Use this to choose your class");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Гравировка стрелка");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Используется для выбора класса");
-        }
         public override void SetDefaults()
         {
             Item.width = 40;

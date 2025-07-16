@@ -50,6 +50,7 @@ namespace Bismuth.Content.Items.Accessories
                 4 => ArchmagesAmulet3,
                 5 => ArchmagesAmulet4,
                 6 => ArchmagesAmulet5,
+                7 => ArchmagesAmulet5,
                 _ => null
             };
             if (description != null)
@@ -102,6 +103,13 @@ namespace Bismuth.Content.Items.Accessories
                 player.manaCost -= 0.25f;
                 player.GetCritChance(DamageClass.Magic) += 15;
                 player.GetDamage(DamageClass.Magic) += 0.2f;            
+            }
+            if (progress >= 6)
+            {
+                player.statManaMax2 += 140;
+                player.manaCost -= 0.25f;
+                player.GetCritChance(DamageClass.Magic) += 15;
+                player.GetDamage(DamageClass.Magic) += 0.2f;
             }
         }
         public override void AddRecipes()

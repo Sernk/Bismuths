@@ -1,25 +1,11 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
-using Microsoft.Xna.Framework;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ModLoader;
-using Bismuth.Utilities;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
-using System.Text;
-using ReLogic.Graphics;
 
 namespace Bismuth.Content.Items.Other
 {
     public class AdventurersBook : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Adventurer's Book");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Книга приключенца");
-            //Tooltip.SetDefault("Contains useful information about player stats");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Содержит полезную информацию о характеристиках игрока");
-        }
         public override void SetDefaults()
         {
             Item.width = 20;

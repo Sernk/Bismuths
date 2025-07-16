@@ -1,9 +1,7 @@
 ﻿using Terraria;
 using Terraria.DataStructures;
-using Terraria.ModLoader;
 using Terraria.ID;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Materials
 {
@@ -11,12 +9,9 @@ namespace Bismuth.Content.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Water Essence");
-           // DisplayName.AddTranslation(GameCulture.Russian, "Эссенция воды");
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 4));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
             ItemID.Sets.ItemNoGravity[Item.type] = true;
-
         }
         public override void SetDefaults()
         {

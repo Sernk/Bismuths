@@ -1,16 +1,11 @@
-﻿using Terraria.ModLoader;
+﻿using Bismuth.Content.Items.Placeable;
 using Terraria;
-using Bismuth.Content.Items.Placeable;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Materials
 {
     public class PeatPowder : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Peat Powder");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Торфяной порошок");
-        }
         public override void SetDefaults()
         {
             Item.width = 40;

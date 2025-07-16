@@ -26,7 +26,6 @@ namespace Bismuth.Content.Items.Other
         {
             return true;
         }
-
         public override bool CanUseItem(Player player)
         {
             if (player.altFunctionUse == 2)

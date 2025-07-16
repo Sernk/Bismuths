@@ -28,7 +28,8 @@ namespace Bismuth.Content.NPCs
         public override void SetStaticDefaults()
         {
             // DisplayName.SetDefault("Consul");
-           // DisplayName.AddTranslation(GameCulture.Russian, "Консул");
+            // DisplayName.AddTranslation(GameCulture.Russian, "Консул");
+            NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
 
         public override void SetDefaults()

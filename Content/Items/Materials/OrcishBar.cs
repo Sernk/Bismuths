@@ -1,24 +1,17 @@
 ﻿using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Materials
 {
     public class OrcishBar : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Orcish Bar");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Орочий слиток");
-        }
         public override void SetDefaults()
         {            
             Item.width = 40;
             Item.height = 20;
             Item.value = 100;
             Item.rare = 2;
-            Item.maxStack = 999;
+            Item.maxStack = 9999;
             Item.createTile = ModContent.TileType<Tiles.OrcishBar>();
             Item.useTurn = true;
             Item.autoReuse = true;

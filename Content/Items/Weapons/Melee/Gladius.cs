@@ -23,11 +23,5 @@ namespace Bismuth.Content.Items.Weapons.Melee
             Item.autoReuse = false;
             Item.useStyle = 1;
         }
-
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Gladius");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Гладиус");
-        }
     }
 }

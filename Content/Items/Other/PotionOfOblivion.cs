@@ -1,27 +1,20 @@
-﻿using Terraria.ModLoader;
+﻿using Bismuth.Utilities;
 using Terraria;
 using Terraria.ID;
-using Bismuth.Utilities;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Other
 {
     public class PotionOfOblivion : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Potion Of Oblivion");
-            // Tooltip.SetDefault("Resets all your skills and returns you skill points");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Зелье забвения");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Сбрасывает все изученные умения и возвращает очки умений");
-        }
         public override void SetDefaults()
         {
             Item.width = 40;
             Item.height = 20;
             Item.value = Item.buyPrice(0, 50, 0, 0);
             Item.rare = 1;
-            Item.maxStack = 30;
-            Item.useStyle = 2;
+            Item.maxStack = 9999;
+            Item.useStyle = ItemUseStyleID.DrinkLiquid;
             Item.useTime = 15;
             Item.UseSound = SoundID.Item3;
             Item.useAnimation = 15;

@@ -1,4 +1,5 @@
 ﻿using Bismuth.Content.Buffs;
+using Bismuth.Content.Items.Other;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -85,6 +86,21 @@ namespace Bismuth.Utilities.Global
             {
                 player.GetCritChance(DamageClass.Generic) -= 3;
                 player.GetDamage(DamageClass.Throwing) += 0.09f;
+            }
+        }
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ExtractinatorMode[ItemID.SiltBlock] = ItemID.SiltBlock; // Без этого не работает ExtractinatorUse();
+        }
+        public override void ExtractinatorUse(int extractType, int extractinatorBlockType, ref int resultType, ref int resultStack)
+        {
+            if (extractType == ItemID.SiltBlock)
+            {
+                if (Main.rand.Next(25) == 0)
+                {
+                    resultType = ModContent.ItemType<DwarvenCoin>();
+                    resultStack = 1;
+                }
             }
         }
     }

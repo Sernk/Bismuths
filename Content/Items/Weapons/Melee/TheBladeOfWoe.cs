@@ -1,6 +1,5 @@
 ﻿using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Weapons.Melee
@@ -21,13 +20,6 @@ namespace Bismuth.Content.Items.Weapons.Melee
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.useStyle = 1;
-        }
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("The Blade Of Woe");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Клинок горя");
-            //Tooltip.SetDefault($"Let you kill NPCs to get [i:{mod.ItemType("DarkEssence")}]\nYou have no honor...");
-            //Tooltip.AddTranslation(GameCulture.Russian, $"Позволяет убивать НИПов для получения [i:{mod.ItemType("DarkEssence")}]\nУ тебя нет чести...");
         }
     }
 }

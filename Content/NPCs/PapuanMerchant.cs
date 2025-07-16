@@ -15,7 +15,6 @@ namespace Bismuth.Content.NPCs
     [AutoloadHead]
     public class PapuanMerchant : ModNPC // НЕ ЗАБЫТЬ ДОБАВИТЬ ЛОКАЛИЗАЦИЮ И ПЕРЕВОДЫ
     {
-
         public override string Texture
         {
             get
@@ -33,6 +32,7 @@ namespace Bismuth.Content.NPCs
             NPCID.Sets.AttackType[NPC.type] = 0;
             NPCID.Sets.AttackTime[NPC.type] = 30;
             NPCID.Sets.AttackAverageChance[NPC.type] = 30;
+            NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
         public override void SetDefaults()
         {

@@ -11,10 +11,5 @@ namespace Bismuth.Content.Items.Tools
             Item.rare = -11;
             Item.questItem = true;
         }
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Dirty Shovel");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Грязная лопата");
-        }
     }
 }

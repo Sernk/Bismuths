@@ -1,8 +1,7 @@
-﻿using Terraria;
+﻿using Bismuth.Content.Items.Materials;
+using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Bismuth.Content.Items.Materials;
 
 namespace Bismuth.Content.Items.Other
 {

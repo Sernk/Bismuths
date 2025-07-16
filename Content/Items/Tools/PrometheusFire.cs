@@ -18,7 +18,10 @@ namespace Bismuth.Content.Items.Tools
             Item.useAnimation = 15;
             Item.useTime = 10;
             Item.useStyle = 1;
-            Item.noUseGraphic = true;
-        }     
+        }
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.Torches[Item.type] = true;
+        }
     }
 }

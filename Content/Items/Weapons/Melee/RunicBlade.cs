@@ -8,7 +8,6 @@ namespace Bismuth.Content.Items.Weapons.Melee
 {
     public class RunicBlade : ModItem
     {
-
         public override void SetDefaults()
         {
             Item.damage = 44;

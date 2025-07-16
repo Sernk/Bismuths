@@ -1,21 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Utilities;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Items.Weapons.Assassin
 {
     public class SacrificialDagger : AssassinItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Sacrificial Dagger");
-            // Tooltip.SetDefault("A critical strike deals four times the normal damage");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Жертвенный кинжал");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Критические удары наносят четырехкратный урон");
-        }
         public override void SetDefaults()
         {
             Item.damage = 24;

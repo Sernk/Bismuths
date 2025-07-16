@@ -10,7 +10,7 @@ namespace Bismuth.Content.Items.Placeable
 
             Item.width = 16;
             Item.height = 48;
-            Item.maxStack = 99;
+            Item.maxStack = 9999;
             Item.useTurn = true;
             Item.autoReuse = true;
             Item.useAnimation = 15;
@@ -19,11 +19,6 @@ namespace Bismuth.Content.Items.Placeable
             Item.consumable = true;
             Item.value = Item.sellPrice(0, 0, 1, 0);
             Item.createTile = ModContent.TileType<Tiles.PapuansLamp>();
-        }
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Papuan's Lamp");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Лампа папуасов");
         }
         public override void AddRecipes()  
         {

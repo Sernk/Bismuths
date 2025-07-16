@@ -1,9 +1,9 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
+﻿using Bismuth.Content.NPCs;
 using Bismuth.Utilities;
-using Bismuth.Content.NPCs;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
 namespace Bismuth.Content.Items.Weapons.Assassin
 {
     public class Sting : AssassinItem
@@ -23,13 +23,6 @@ namespace Bismuth.Content.Items.Weapons.Assassin
             Item.autoReuse = true;
             Item.useStyle = 1;
             Item.useTurn = true;
-        }
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Stinger");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Жало");
-            // Tooltip.SetDefault("Maegnas is my name, I am the spider's bane. \nDeals doubled damage to orcs and indicates about their proximity");
-           // Tooltip.AddTranslation(GameCulture.Russian, "Маэгнас – моё имя. Я – отрава паука\nНаносит удвоенный урон оркам и указывает на их близость");
         }
         public override void ModifyHitNPC(Player player, NPC target, ref NPC.HitModifiers modifiers)
         {

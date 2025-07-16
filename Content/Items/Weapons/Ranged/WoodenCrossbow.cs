@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Weapons.Ranged
@@ -10,7 +9,6 @@ namespace Bismuth.Content.Items.Weapons.Ranged
     {
         public override void SetDefaults()
         {
-
             Item.damage = 5;
             Item.DamageType = DamageClass.Ranged;
             Item.noMelee = true;
@@ -31,11 +29,6 @@ namespace Bismuth.Content.Items.Weapons.Ranged
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-4, 0);
-        }
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Wooden Crossbow");
-           // DisplayName.AddTranslation(GameCulture.Russian, "Деревянный арбалет");           
         }
     }
 }

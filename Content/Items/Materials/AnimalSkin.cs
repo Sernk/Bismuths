@@ -1,16 +1,10 @@
-﻿using Terraria.ModLoader;
-using Terraria;
-using Terraria.ID;
+﻿using Terraria;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Materials
 {
     public class AnimalSkin : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Animal Skin");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Шкура зверя");
-        }
         public override void SetDefaults()
         {         
             Item.width = 40;
@@ -20,6 +14,5 @@ namespace Bismuth.Content.Items.Materials
             Item.maxStack = 9999;
             Item.material = true;
         }
-       
     }
 }

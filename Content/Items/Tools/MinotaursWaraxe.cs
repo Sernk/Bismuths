@@ -1,8 +1,6 @@
-﻿using Terraria.ID;
-using Terraria;
+﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Terraria.Localization;
 
 namespace Bismuth.Content.Items.Tools
 {
@@ -24,12 +22,6 @@ namespace Bismuth.Content.Items.Tools
             Item.UseSound = SoundID.Item1;
             Item.autoReuse = true;
             Item.useTurn = false;
-            
-        }     
-        public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Minotaur's Waraxe");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Боевой топор минотавра");
-        }      
+        } 
     }
 }

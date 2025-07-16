@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Materials
@@ -10,8 +9,6 @@ namespace Bismuth.Content.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Dark Essence");
-           // DisplayName.AddTranslation(GameCulture.Russian, "Эссенция тьмы");
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 5));
             ItemID.Sets.ItemNoGravity[Item.type] = true;
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;

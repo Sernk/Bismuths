@@ -1,18 +1,11 @@
-﻿using Terraria;
-using Bismuth.Utilities;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Other
 {
     public class FaithTreatise : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Faith Treatise");
-            // Tooltip.SetDefault("Gives you permanent a life regeneration bonus on use\nOnce per day you can restore 40% of your HP, \n if it's under 20%");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Трактат веры");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Увеличивает регенерацию здоровья после использования\nРаз в день вы можете восстановить 40% здоровья, если\nу вас его менее 20%");
-        }
         public override void SetDefaults()
         {
             Item.width = 20;

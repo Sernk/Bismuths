@@ -5,12 +5,10 @@ using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Tools
 {
-
     public class BronzeAxe : ModItem
     {
         public override void SetDefaults()
         {
-
             Item.damage = 8;
             Item.DamageType = DamageClass.Melee;
             Item.width = 20;

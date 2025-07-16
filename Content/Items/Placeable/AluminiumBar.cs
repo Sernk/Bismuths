@@ -16,7 +16,7 @@ namespace Bismuth.Content.Items.Placeable
             Item.height = 24;
             Item.value = Item.sellPrice(0, 0, 2, 0);
             Item.rare = 0;
-            Item.maxStack = 999;
+            Item.maxStack = 9999;
             Item.createTile = ModContent.TileType<Tiles.AluminiumBar>();
             Item.useTurn = true;
             Item.autoReuse = true;

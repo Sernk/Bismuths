@@ -2,13 +2,8 @@
 
 namespace Bismuth.Content.Items.Materials
 {
-    class TheMoldofaKeyOfTheSun : ModItem
+    public class TheMoldofaKeyOfTheSun : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Mold of the Sun Key");
-           // DisplayName.AddTranslation(GameCulture.Russian, "Слепок ключа солнца");
-        }
         public override void SetDefaults()
         {
             Item.width = 40;

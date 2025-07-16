@@ -1,24 +1,16 @@
-﻿using System;
-using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Placeable
 {
     public class OrcishCoatOfArms : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Orcish Coat of Arms");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Орочий герб");
-        }
         public override void SetDefaults()
         {
 
             Item.width = 10;
             Item.height = 24;
-            Item.maxStack = 99;
+            Item.maxStack = 9999;
             Item.useTurn = true;
             Item.autoReuse = true;
             Item.useAnimation = 15;

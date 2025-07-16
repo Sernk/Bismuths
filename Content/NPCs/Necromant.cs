@@ -12,6 +12,7 @@ namespace Bismuth.Content.NPCs
         {
             // DisplayName.SetDefault("Necromancer");
             //DisplayName.AddTranslation(GameCulture.Russian, "Некромант");
+            NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
         bool dead = false;
         public override void HitEffect(NPC.HitInfo hit)

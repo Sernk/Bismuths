@@ -27,12 +27,6 @@ namespace Bismuth.Content.Items.Weapons.Ranged
             Item.useStyle = 5;
             Item.useAmmo = AmmoID.Arrow;
         }
-
-        public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Tribal Bow");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Племенной лук");
-        }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             if (Main.rand.Next(0, 5) == 0)

@@ -1,6 +1,6 @@
-﻿using Terraria.ModLoader;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Placeable
 {
@@ -16,7 +16,7 @@ namespace Bismuth.Content.Items.Placeable
             Item.height = 20;
             Item.value = Item.sellPrice(0, 0, 2, 50);
             Item.rare = 0;
-            Item.maxStack = 999;
+            Item.maxStack = 9999;
             Item.createTile = ModContent.TileType<Tiles.BronzeBar>();
             Item.useTurn = true;
             Item.autoReuse = true;

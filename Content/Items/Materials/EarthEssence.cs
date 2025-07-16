@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.DataStructures;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Materials
 {
@@ -9,12 +9,9 @@ namespace Bismuth.Content.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Earth Essence");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Эссенция земли");
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(6, 6));
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
             ItemID.Sets.ItemNoGravity[Item.type] = true;
-
         }
         public override void SetDefaults()
         {

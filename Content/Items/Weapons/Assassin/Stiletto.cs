@@ -1,7 +1,7 @@
-﻿using Terraria;
-using Terraria.ID;
-using Bismuth.Content.Projectiles;
+﻿using Bismuth.Content.Projectiles;
 using Bismuth.Utilities;
+using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Weapons.Assassin

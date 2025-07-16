@@ -1,20 +1,11 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ModLoader;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Items.Other
 {
     public class BookOfMazarbul : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Book Of Mazarbul");
-            // Tooltip.SetDefault("Gives you extra skill point");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Книга Мазарбул");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Даёт вам дополнительное очко умений");
-        }
         public override void SetDefaults()
         {
             Item.width = 20;

@@ -1,7 +1,4 @@
-﻿using System;
-using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Placeable
@@ -10,10 +7,9 @@ namespace Bismuth.Content.Items.Placeable
     {
         public override void SetDefaults()
         {
-
             Item.width = 16;
             Item.height = 16;
-            Item.maxStack = 99;
+            Item.maxStack = 9999;
             Item.useTurn = true;
             Item.autoReuse = true;
             Item.useAnimation = 15;
@@ -23,19 +19,12 @@ namespace Bismuth.Content.Items.Placeable
             Item.value = Item.sellPrice(0, 0, 0, 0);
             Item.createTile = ModContent.TileType<Tiles.PapuansCandle>();
         }
-
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Papuan's Candle");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Свеча папуасов");
-        }
-
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe();
             recipe.AddIngredient(2504, 4);
             recipe.AddIngredient(8, 1);
-            recipe.AddTile(106);   //at work bench
+            recipe.AddTile(106);
             recipe.Register();
         }
     }

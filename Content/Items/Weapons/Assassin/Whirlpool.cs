@@ -27,13 +27,5 @@ namespace Bismuth.Content.Items.Weapons.Assassin
         {
             return player.ownedProjectileCounts[ModContent.ProjectileType<WhirlpoolP>()] < 1;
         }
-        //public override void SetStaticDefaults()
-        //{
-        //    DisplayName.SetDefault("Whirlpool");
-        //    DisplayName.AddTranslation(GameCulture.Russian, "Водоворот");
-        //    Tooltip.SetDefault("Creates spinning vortex around the player");
-        //    Tooltip.AddTranslation(GameCulture.Russian, "Создаёт вращающийся вихрь вокруг игрока");
-
-        //}
     }
 }

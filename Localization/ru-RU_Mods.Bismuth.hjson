@@ -655,7 +655,11 @@ Items: {
 
 	DwarvenCoin: {
 		DisplayName: Гномья монета
-		Tooltip: Валюта для торговли с кузнецом
+		Tooltip: 
+				'''
+				Валюта для торговли с кузнецом
+				Можно получить из блока ила.
+				'''
 	}
 
 	EmpathyMirror: {
@@ -2416,7 +2420,7 @@ Items: {
 	}
 
 	GalvornLeggings: {
-		DisplayName: Galvorn Leggings
+		DisplayName: Галворновый поножи
 		Tooltip: ""
 	}
 

@@ -1,28 +1,21 @@
-﻿using Terraria;
-using Terraria.ID;
+﻿using Bismuth.Content.Buffs;
 using Bismuth.Content.Items.Materials;
-using Terraria.ModLoader;
 using Bismuth.Utilities;
-using Bismuth.Content.Buffs;
 using Bismuth.Utilities.Recipes;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Other
 {
     public class Panacea : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Panacea");
-            // Tooltip.SetDefault("Saves you from all negative effects");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Панацея");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Исцеляет от всех негативных эффектов");
-        }
         public override void SetDefaults()
         {
             Item.width = 20;
             Item.height = 20;
             Item.maxStack = 30;
-            Item.useStyle = 2;
+            Item.useStyle = ItemUseStyleID.DrinkLiquid;
             Item.useTime = 20;
             Item.useAnimation = 20;
             Item.UseSound = SoundID.Item3;

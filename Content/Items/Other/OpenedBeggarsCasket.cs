@@ -1,22 +1,13 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
-using Bismuth.Utilities;
+﻿using Bismuth.Content.Items.Accessories;
 using Bismuth.Content.Items.Materials;
-using Bismuth.Content.Items.Accessories;
+using Bismuth.Utilities;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Other
 {
     public class OpenedBeggarsCasket : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Opened Beggar's Casket");
-            // Tooltip.SetDefault("There are useful items inside");
-           // DisplayName.AddTranslation(GameCulture.Russian, "Открытая шкатулка бедняка");
-           // Tooltip.AddTranslation(GameCulture.Russian, "Содержит полезные предметы");
-        }
         public override void SetDefaults()
         {
             Item.width = 20;

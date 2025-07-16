@@ -7,19 +7,14 @@ namespace Bismuth.Content.Items.Materials
 {
     public class PoisonFlask : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Poison Flask");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Бутыль яда");
-        }
         public override void SetDefaults()
         {
             Item.width = 30;
             Item.height = 24;
-            Item.maxStack = 30;
+            Item.maxStack = 9999;
             Item.useTime = 20;
             Item.useAnimation = 20;
-            Item.useStyle = 2;
+            Item.useStyle = ItemUseStyleID.DrinkLiquid;
             Item.value = 100;
             Item.rare = 1;
             Item.UseSound = SoundID.Item3;

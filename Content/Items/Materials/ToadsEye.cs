@@ -1,15 +1,10 @@
-﻿using Terraria.ModLoader;
-using Terraria;
+﻿using Terraria;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Materials
 {
     public class ToadsEye : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Toad's Eye");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Жабий глаз");
-        }
         public override void SetDefaults()
         {
             Item.width = 40;

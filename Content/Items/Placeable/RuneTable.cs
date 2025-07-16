@@ -7,7 +7,6 @@ namespace Bismuth.Content.Items.Placeable
     {
         public override void SetDefaults()
         {
-
             Item.width = 22;
             Item.height = 32;            
             Item.useTurn = true;
@@ -19,11 +18,6 @@ namespace Bismuth.Content.Items.Placeable
             Item.rare = 1;
             Item.value = Item.buyPrice(0, 30, 0, 0);
             Item.createTile = ModContent.TileType<Tiles.RuneTable>();
-        }
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Rune Table");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Рунический стол");
         }
     }
 }

@@ -23,15 +23,6 @@ namespace Bismuth.Content.Items.Weapons.Assassin
             Item.useStyle = 1;
             Item.useTurn = true;
         }
-        public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Soul Eater");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Душегуб");
-            //Tooltip.SetDefault("Restless souls appear near you after dealing damage. They increase your \ndamage, but decrease your health");
-
-            //Tooltip.AddTranslation(GameCulture.Russian, "При атаке врага рядом с игроком появляются неупокоенные \nдуши, увеличивающие урон, но медленно понижающие здоровье");
-        }
-
         public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (target.life <= 0)

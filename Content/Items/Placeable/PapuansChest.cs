@@ -1,6 +1,4 @@
-﻿using Terraria.Localization;
-using Terraria;
-using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Placeable
@@ -12,7 +10,7 @@ namespace Bismuth.Content.Items.Placeable
 
             Item.width = 26;
             Item.height = 22;
-            Item.maxStack = 99;        
+            Item.maxStack = 9999;        
             Item.useTurn = true;
             Item.autoReuse = true;
             Item.useAnimation = 15;
@@ -21,13 +19,6 @@ namespace Bismuth.Content.Items.Placeable
             Item.consumable = true;
             Item.value = Item.sellPrice(0, 0, 1, 0);
             Item.createTile = ModContent.TileType<Tiles.PapuansChest>();
-        }
-
-
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Papuan's Chest");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Сундук папуасов");
         }
 
         public override void AddRecipes()

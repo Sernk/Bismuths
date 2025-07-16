@@ -1,15 +1,10 @@
-﻿using Terraria.ModLoader;
-using Terraria;
+﻿using Terraria;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Materials
 {
     public class Sanguinem : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Sanguinem");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Сангуинем");
-        }
         public override void SetDefaults()
         {
             Item.width = 40;

@@ -1,15 +1,11 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.Items.Placeable
 {
     public class EbonwoodMirror : ModItem
     {
-        //public override void SetStaticDefaults()
-        //{
-        //    DisplayName.SetDefault("Ebonwood Mirror");
-        //    DisplayName.AddTranslation(GameCulture.Russian, "Зеркало из черной древесины");
-        //}
         public override void SetDefaults()
         {
             Item.width = 10;
@@ -24,6 +20,14 @@ namespace Bismuth.Content.Items.Placeable
             Item.value = Item.sellPrice(0, 0, 2, 0);
             Item.createTile = ModContent.TileType<Tiles.EbonwoodMirror>();
             Item.placeStyle = 0;
+        }
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+            recipe.AddIngredient(ItemID.Glass, 5);
+            recipe.AddIngredient(ItemID.Ebonwood, 10);
+            recipe.AddTile(TileID.Sawmill);
+            recipe.Register();
         }
     }
 }

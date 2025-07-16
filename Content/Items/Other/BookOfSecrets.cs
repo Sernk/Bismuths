@@ -1,20 +1,11 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ModLoader;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.Items.Other
 {
     public class BookOfSecrets : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("The Book Of Secrets");
-            // Tooltip.SetDefault("Contains secret knowledge...");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Книга секретов");
-            //Tooltip.AddTranslation(GameCulture.Russian, "Содержит секретные знания...");
-        }
         public override void SetDefaults()
         {
             Item.width = 20;

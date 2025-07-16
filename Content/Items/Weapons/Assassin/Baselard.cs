@@ -10,13 +10,6 @@ namespace Bismuth.Content.Items.Weapons.Assassin
 {
     public class Baselard : AssassinItem
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Baselard");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Баселард");
-            //Tooltip.SetDefault("<right> to use as throwing weapon");
-            //Tooltip.AddTranslation(GameCulture.Russian, "<right> чтобы использовать как метательное оружие");
-        }
         public override void SetDefaults()
         {
             Item.damage = 20;

@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Bismuth.Content.Items.Materials;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Bismuth.Content.Items.Materials;
 
 namespace Bismuth.Content.Items.Weapons.Magical
 {
