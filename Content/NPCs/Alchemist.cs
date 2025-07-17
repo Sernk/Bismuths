@@ -7,9 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.GameContent;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
@@ -56,11 +54,8 @@ namespace Bismuth.Content.NPCs
         }
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Alchemist");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Алхимик");
             NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
-
         public override void SetDefaults()
         {
             NPC.townNPC = true;
@@ -76,7 +71,6 @@ namespace Bismuth.Content.NPCs
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.knockBackResist = 0f;
         }
-
         public override List<string> SetNPCNameList() => new List<string>()
         {
             this.GetLocalizedValue("Name.Rizo"), // Language.GetTextValue("Mods.Bismuth.AlchemistName_1");
@@ -89,11 +83,14 @@ namespace Bismuth.Content.NPCs
         {
             Texture2D available = ModContent.Request<Texture2D>("Bismuth/UI/AvailableQuest").Value;
             Texture2D active = ModContent.Request<Texture2D>("Bismuth/UI/ActiveQuest").Value;
-            if ((Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest <= 10 && BismuthWorld.downedSkeletron) || (Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest <= 10) || (Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest <= 10))
+            if ((Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest <= 10 && BismuthWorld.downedSkeletron) || (TempNPCs.AlchemistTemp && Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest <= 10) || (TempNPCs.AlchemistTemp && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest <= 10))
+            {
                 spriteBatch.Draw(available, NPC.position - Main.screenPosition + new Vector2(12, -36), Color.White);
-            if ((Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest < 100) || (Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest < 100) || (Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest < 100))
+            }          
+            if ((Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest < 100) || (TempNPCs.AlchemistTemp && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest < 100) || (TempNPCs.AlchemistTemp && Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest < 100))
+            {
                 spriteBatch.Draw(active, NPC.position - Main.screenPosition + new Vector2(8, -40), Color.White);
-
+            }
         }
         public override void SetChatButtons(ref string button, ref string button2)
         {
@@ -127,13 +124,21 @@ namespace Bismuth.Content.NPCs
             if (Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest != 200)
             {
                 if (Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest == 30)
+                {
                     button = AlchemistButton_9;
+                }
                 else
+                {
                     button = Lang.inter[28].Value;
+                }
                 if (Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest == 0 && Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100 && BismuthWorld.downedSkeletron)
+                {
                     button2 = AlchemistButton_1;
+                }  
                 if (Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest == 5)
+                {
                     button2 = AlchemistButton_2;
+                }   
                 if (Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest == 20)
                 {
                     bool temp = false;
@@ -143,15 +148,22 @@ namespace Bismuth.Content.NPCs
                         {
                             button2 = AlchemistButton_3;
                             temp = true;
+                            TempNPCs.AlchemistTempStart = true;
                         }
                     }
                     if (!temp && Main.npcChatText != Alchemist_4)
+                    {
                         button2 = AlchemistButton_4;
+                    }             
                 }
-                if (Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest == 0)
+                if (TempNPCs.AlchemistTemp && Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest == 0)
+                {
                     button2 = AlchemistButton_5;
+                }
                 if (Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest == 5)
+                {
                     button2 = AlchemistButton_6;
+                }
                 if (Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest == 20)
                 {
                     bool temp = false;
@@ -164,7 +176,9 @@ namespace Bismuth.Content.NPCs
                         }
                     }
                     if (!temp && Main.npcChatText != Alchemist_9)
+                    {
                         button2 = AlchemistButton_8;
+                    }
                 }
                 if (Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest == 30)
                 {
@@ -183,12 +197,18 @@ namespace Bismuth.Content.NPCs
                         }
                     }
                     if (!temp && Main.npcChatText != Alchemist_12 && Main.npcChatText != Alchemist_14)
+                    {
                         button2 = AlchemistButton_12;
+                    }
                 }
                 if (Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest == 0)
+                {
                     button2 = AlchemistButton_13;
+                }
                 if (Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest == 5)
+                {
                     AlchemistButton_14 = this.GetLocalization("Chat.AlchemistButton_14").Value;
+                }
                 if (Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest == 5)
                 {
                     button2 = AlchemistButton_14;
@@ -211,7 +231,7 @@ namespace Bismuth.Content.NPCs
                 {
                     button2 = AlchemistButton_17;
                 }
-                if (Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneCharging == 10 && Main.LocalPlayer.GetModPlayer<BismuthPlayer>().WaitStoneCharging >= 1800)
+                if (Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneCharging == 10)
                 {
                     button2 = AlchemistButton_18;
                 }
@@ -245,7 +265,9 @@ namespace Bismuth.Content.NPCs
                     Main.npcChatText = Alchemist_12;
                 }
                 else
+                {
                     shopName = "AlchemistShop";
+                }
             }
             else
             {
@@ -255,9 +277,13 @@ namespace Bismuth.Content.NPCs
                     Main.npcChatText = Alchemist_11;
                 }
                 else if (Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest == 100)
+                {
                     quests.PholosopherStoneCharging();
+                }
                 else
+                {
                     quests.AlchemistQuests();
+                }
             }                
         }
         public override string GetChat()
@@ -273,15 +299,25 @@ namespace Bismuth.Content.NPCs
             string AlchemistNQ_4 = this.GetLocalization("Chat.AlchemistNQ_4").Value;
 
             if (Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest == 0 && BismuthWorld.downedSkeletron)
+            {
                 return Alchemist_1;
+            }
             else if (Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest == 20)
+            {
                 return Alchemist_3;
+            }
             else if (Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest == 20)
+            {
                 return Alchemist_8;
+            }
             else if (Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest == 40)
+            {
                 return Alchemist_13;
+            }
             else if (Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest == 0)
+            {
                 return Alchemist_16;
+            }
             else
             {
                 if (NPC.FindFirstNPC(NPCID.WitchDoctor) >= 0 && WorldGen.genRand.Next(0, 4) == 0)
@@ -289,14 +325,14 @@ namespace Bismuth.Content.NPCs
                     return string.Format(this.GetLocalization("Chat.AlchemistNQ_2").Value, Main.npc[NPC.FindFirstNPC(NPCID.WitchDoctor)].GivenName);
                 }
                 else switch (WorldGen.genRand.Next(0, 3))
-                    {
-                        case 0:
-                            return AlchemistNQ_1;
-                        case 1:
-                            return AlchemistNQ_3;
-                        default:
-                            return AlchemistNQ_4;
-                    }
+                {
+                    case 0:
+                        return AlchemistNQ_1;
+                    case 1:
+                        return AlchemistNQ_3;
+                    default:
+                        return AlchemistNQ_4;
+                }
             }
         }
         public void UpdatePosition()
@@ -321,7 +357,9 @@ namespace Bismuth.Content.NPCs
             NPC.breath = 100;
             NPC.life = NPC.lifeMax;
             if (NPC.oldVelocity.X != 0f)
+            {
                 NPC.velocity.X = 0f;
+            }
             if (Main.LocalPlayer.talkNPC != -1)
             {
                 if (Main.npc[Main.LocalPlayer.talkNPC].whoAmI == NPC.whoAmI)

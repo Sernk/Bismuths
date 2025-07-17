@@ -27,11 +27,8 @@ namespace Bismuth.Content.NPCs
         }
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Consul");
-            // DisplayName.AddTranslation(GameCulture.Russian, "Консул");
             NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
-
         public override void SetDefaults()
         {
             NPC.townNPC = true;
@@ -99,9 +96,9 @@ namespace Bismuth.Content.NPCs
             Quests quests = (Quests)Main.player[Main.myPlayer].GetModPlayer<Quests>();
             if (Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 0)
             {
-                button = ConsulAnsv_1;
+                button = ConsulAnsv_4;
                 if(Main.LocalPlayer.GetModPlayer<BismuthPlayer>().PlayerClass == 0)
-                    button2 = ConsulAnsv_4;
+                    button2 = ConsulAnsv_1;
             }
             if (Main.LocalPlayer.GetModPlayer<Quests>().TombstoneQuest == 20)//TO DO
                 button = string.Format(this.GetLocalization("Chat.ConsulAnsv_2").Value, Main.npc[NPC.FindFirstNPC(ModContent.NPCType<Priest>())].GivenName);

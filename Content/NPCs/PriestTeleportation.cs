@@ -1,16 +1,9 @@
-﻿using System.IO;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using System.Linq;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.WorldBuilding;
-using Microsoft.Xna.Framework;
-using Terraria.GameContent.Generation;
-using Terraria.ModLoader.IO;
-using Terraria.DataStructures;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Bismuth.Content.NPCs
 {
@@ -19,8 +12,6 @@ namespace Bismuth.Content.NPCs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Priest");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Священник");
             Main.npcFrameCount[NPC.type] = 19;
         }
         public override void Load()

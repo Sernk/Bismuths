@@ -8,11 +8,6 @@ namespace Bismuth.Content.NPCs
 {
     public class OrcishPortal : ModNPC
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Orcish Portal");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Орочий портал");
-        }
         public override void SetDefaults()
         {         
             NPC.width = 124;

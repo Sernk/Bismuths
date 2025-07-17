@@ -20,18 +20,18 @@ namespace Bismuth.Content.NPCs
         {
             NPC.width = 46;
             NPC.height = 46;
-            NPC.lifeMax = 10;
+            NPC.lifeMax = 1000000000;
+            NPC.defense = 1000000000;
             NPC.dontTakeDamage = false;
             NPC.dontCountMe = false;
             NPC.knockBackResist = 0.0f;
             NPC.aiStyle = -1;
+            NPC.active = false;
         }
-
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 30;
         }
-        Player player = Main.player[Main.myPlayer];
         public override void AI()
         {
             NPC.direction = (int)NPC.ai[0];

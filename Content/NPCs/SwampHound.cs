@@ -1,10 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Utilities;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.NPCs
 {
@@ -12,13 +11,10 @@ namespace Bismuth.Content.NPCs
     {
         public override void SetStaticDefaults()
         {
-            // this.DisplayName.SetDefault("Swamp Hound");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Болотная гончая");
             Main.npcFrameCount[this.NPC.type] = 10;
             NPCID.Sets.TrailCacheLength[NPC.type] = 1;
             NPCID.Sets.TrailingMode[NPC.type] = 0;
         }
-
         public override void SetDefaults()
         {      
             NPC.width = 46;

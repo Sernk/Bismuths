@@ -655,11 +655,11 @@ Items: {
 
 	DwarvenCoin: {
 		DisplayName: Гномья монета
-		Tooltip: 
-				'''
-				Валюта для торговли с кузнецом
-				Можно получить из блока ила.
-				'''
+		Tooltip:
+			'''
+			Валюта для торговли с кузнецом
+			Можно получить из блока ила.
+			'''
 	}
 
 	EmpathyMirror: {
@@ -4092,7 +4092,7 @@ QuestsSystem: {
 			Quest5Short: Заполучить оружие против гоблинов
 			Quest4Short: Помочь страннику вернуться домой
 			Quest3Short: Определить судьбу таинственного камня
-			Quest2Short: Help witch get an ancient tome
+			Quest2Short: Помочь ведьме найти древний фолиат
 			Quest1Short: Получить стартовую экипировку
 			Quest14Name: Важное донесение
 			Quest13Name: Ценитель искусства
@@ -4280,6 +4280,7 @@ CoinSystem: {
 			GalvornRecipe: Рецепт Галворна
 			PoisonRecipe: Рецепт яда
 			PanaceaRecipe: Рецепт панацеи
+			PhilosopherStone: PhilosopherStone
 		}
 	}
 }

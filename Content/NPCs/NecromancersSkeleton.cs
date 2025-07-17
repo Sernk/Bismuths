@@ -1,19 +1,13 @@
-﻿using Terraria.ID;
-using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ModLoader;
-using Terraria.Localization;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
     public class NecromancersSkeleton : ModNPC
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Necromancer's Skeleton");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Скелет Некроманта");
-        }
         public override void SetDefaults()
         {
             NPC.width = 24;

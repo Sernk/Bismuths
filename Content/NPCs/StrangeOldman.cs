@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
+﻿using Bismuth.Content.Buffs;
+using Bismuth.Content.Items.Other;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Bismuth.Content.Buffs;
-using Bismuth.Content.Items.Other;
+using System.Collections.Generic;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
@@ -47,8 +46,7 @@ namespace Bismuth.Content.NPCs
         }
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Strange Old Man");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Странный старик");
+            NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
 
         public override void SetDefaults()

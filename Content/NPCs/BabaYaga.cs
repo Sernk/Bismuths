@@ -49,8 +49,6 @@ namespace Bismuth.Content.NPCs
         }
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Swamp Witch");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Болотная ведьма");
             NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
         public override void SetDefaults()
@@ -72,11 +70,14 @@ namespace Bismuth.Content.NPCs
         {
             Texture2D available = ModContent.Request<Texture2D>("Bismuth/UI/AvailableQuest").Value;
             Texture2D active = ModContent.Request<Texture2D>("Bismuth/UI/ActiveQuest").Value;
-            if (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest <= 10 || (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest == 100 && Main.LocalPlayer.GetModPlayer<BismuthPlayer>().BosWait == 86400 && Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest <= 10))
+            if (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest <= 10 || (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest == 100 && TempNPCs.BabaYagaTemp && Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest <= 10))
+            {
                 spriteBatch.Draw(available, NPC.position - Main.screenPosition + new Vector2(8, -34), Color.White);
+            }
             if ((Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest < 100) || (Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest < 100))
+            {
                 spriteBatch.Draw(active, NPC.position - Main.screenPosition + new Vector2(4, -38), Color.White);
-
+            }
         }     
         public override string GetChat()
         {
@@ -90,26 +91,34 @@ namespace Bismuth.Content.NPCs
             string SwampWitchNQ_4 = this.GetLocalization("Chat.SwampWitchNQ_4").Value; 
 
             if (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest == 0)
+            {
                 return SwampWitch_1;
+            }
             else if (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest == 20)
+            {
                 return SwampWitch_3;
-            else if (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest == 0 && Main.LocalPlayer.GetModPlayer<BismuthPlayer>().BosWait == 86400)
+            }
+            else if (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest == 0 && TempNPCs.BabaYagaTemp)
+            {
                 return SwampWitch_7;
+            }
             else if (Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest == 20)
+            {
                 return SwampWitch_9;
+            }
             else
             {
                 if (NPC.FindFirstNPC(ModContent.NPCType<Priest>()) >= 0 && WorldGen.genRand.Next(0, 4) == 0)
                     return string.Format(this.GetLocalization("Chat.SwampWitchNQ_3").Value, Main.npc[NPC.FindFirstNPC(ModContent.NPCType<Priest>())].GivenName);
                 else switch (WorldGen.genRand.Next(0, 3))
-                {
-                   case 0:
-                   return SwampWitchNQ_1;
-                   case 1:
-                   return SwampWitchNQ_2;
-                   default:
-                   return SwampWitchNQ_4;
-                }
+                    {
+                        case 0:
+                            return SwampWitchNQ_1;
+                        case 1:
+                            return SwampWitchNQ_2;
+                        default:
+                            return SwampWitchNQ_4;
+                    }
             }
         }
         public override void AddShops()
@@ -157,8 +166,9 @@ namespace Bismuth.Content.NPCs
                 bool temp = false;
                 for (int num66 = 0; num66 < 58; num66++)
                 {
-                    if (player.inventory[num66].type == Mod.Find<ModItem>("BookOfSecrets").Type && player.inventory[num66].stack > 0)
+                    if (player.inventory[num66].type == ModContent.ItemType<BookOfSecrets>() && player.inventory[num66].stack > 0)
                     {
+                        TempNPCs.BabaYagaTempStart = true;
                         button2 = SwampWitchAnsv_3;
                         temp = true;
                     }
@@ -170,9 +180,9 @@ namespace Bismuth.Content.NPCs
             }
             if (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest == 0)
             {
-                if (Main.LocalPlayer.GetModPlayer<BismuthPlayer>().BosWait < 86400 && Main.npcChatText != SwampWitch_6)
+                if (!TempNPCs.BabaYagaTemp && Main.npcChatText != SwampWitch_6)
                     button2 = SwampWitchAnsv_4;
-              else if (Main.LocalPlayer.GetModPlayer<BismuthPlayer>().BosWait == 86400 && Main.npcChatText != SwampWitch_6)
+              else if (TempNPCs.BabaYagaTemp && Main.npcChatText != SwampWitch_6)
                     button2 = SwampWitchAnsv_5;
             }
             if (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest == 5)
@@ -256,7 +266,7 @@ namespace Bismuth.Content.NPCs
             string SwampWitchName_4 = this.GetLocalization("Chat.SwampWitchName_4").Value;
             string SwampWitchName_5 = this.GetLocalization("Chat.SwampWitchName_5").Value;
 
-            if (!NPC.HasGivenName) // TownNPCName() решил выебнуться
+            if (!NPC.HasGivenName)
             {
                 switch (WorldGen.genRand.Next(0, 5))
                 {

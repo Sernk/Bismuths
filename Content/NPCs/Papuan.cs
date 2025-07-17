@@ -2,17 +2,11 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace Bismuth.Content.NPCs
 {
     public class Papuan : ModNPC
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Papuan");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Папуас");
-        }
         public override void SetDefaults()
         {
             NPC.width = 40;

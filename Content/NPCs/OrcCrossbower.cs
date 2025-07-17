@@ -5,18 +5,12 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
     public class OrcCrossbower : ModNPC
     {
-        public override void SetStaticDefaults()
-        {
-            // DisplayName.SetDefault("Orc Crossbower");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Орк-арбалетчик");
-        }
         bool getbuff = false;
         public override void SetDefaults()
         {

@@ -5,13 +5,11 @@ using Bismuth.Utilities;
 
 namespace Bismuth.Content.NPCs
 {
-   // [AutoloadHead]
+   [AutoloadHead]
     public class Necromant : ModNPC
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Necromancer");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Некромант");
             NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
         bool dead = false;
@@ -56,8 +54,7 @@ namespace Bismuth.Content.NPCs
                     NPC.NewNPC(NPC.GetSource_FromThis(), (int)NPC.position.X + 10, (int)NPC.position.Y + 42, ModContent.NPCType<EvilNecromancer>());
                 else
                     NPC.NewNPC(NPC.GetSource_FromThis(), (int)NPC.position.X + 16, (int)NPC.position.Y + 42, ModContent.NPCType<EvilNecromancer>());
-                NPC.active = false;
-                //Main.player[Main.myPlayer].talkNPC = 0;       
+                NPC.active = false;   
             }
         }
         public void UpdatePosition()

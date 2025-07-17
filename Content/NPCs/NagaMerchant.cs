@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Bismuth.Content.Items.Accessories;
+using Bismuth.Content.Items.Weapons.Assassin;
+using Bismuth.Content.Items.Weapons.Throwing;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Bismuth.Content.Items.Accessories;
-using Bismuth.Content.Items.Weapons.Throwing;
-using Bismuth.Content.Items.Weapons.Assassin;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.NPCs
 {
@@ -15,8 +13,6 @@ namespace Bismuth.Content.NPCs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Naga Merchant");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Нага-торговец");
             NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
         public override void Load()

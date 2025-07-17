@@ -1,8 +1,8 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Projectiles;
 using Bismuth.Utilities;
-using Bismuth.Content.Projectiles;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
@@ -14,7 +14,6 @@ namespace Bismuth.Content.NPCs
         {
             Main.npcFrameCount[NPC.type] = 12;
         }
-
         public override void SetDefaults()
         {
             NPC.width = 70;

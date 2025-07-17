@@ -7,10 +7,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
-using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
@@ -19,8 +17,6 @@ namespace Bismuth.Content.NPCs
     {
         public override void SetStaticDefaults()
         {
-            // this.DisplayName.SetDefault("Orc Wizard");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Орк-колдун");
             Main.npcFrameCount[NPC.type] = 1;
         }
         int currentframe = 0;
@@ -85,10 +81,7 @@ namespace Bismuth.Content.NPCs
                     Projectile.NewProjectile(NPC.GetSource_FromThis(), NPC.Center, UtilsAI.VelocityToPoint(NPC.Center, player.Center, 16f), ModContent.ProjectileType<OrcWizardOrbP>(), 30, 4f, 0);
                     attackcount++;
                 }
-              //  if (currentframe >= 31 && currentframe <= 38)
-              //      Lighting.AddLight(npc.Center, new Vector3(0.42f, 0.12f, 0.58f));
             }
-
             if (currentphase == 1)
             {
                 if (currentframe > 15)

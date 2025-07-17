@@ -1,21 +1,20 @@
-﻿using System.Collections.Generic;
-using Terraria;
-using Terraria.ID;
-using Terraria.Localization;
-using Terraria.ModLoader;
+﻿using Bismuth.Content.Items.Accessories;
+using Bismuth.Content.Items.Armor;
+using Bismuth.Content.Items.Materials;
+using Bismuth.Content.Items.Other;
+using Bismuth.Content.Items.Weapons.Assassin;
+using Bismuth.Content.Items.Weapons.Magical;
+using Bismuth.Content.Items.Weapons.Melee;
+using Bismuth.Content.Items.Weapons.Ranged;
+using Bismuth.Content.Items.Weapons.Throwing;
+using Bismuth.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Bismuth.Utilities;
+using System.Collections.Generic;
+using Terraria;
 using Terraria.Audio;
-using Bismuth.Content.Items.Weapons.Throwing;
-using Bismuth.Content.Items.Weapons.Magical;
-using Bismuth.Content.Items.Other;
-using Bismuth.Content.Items.Weapons.Ranged;
-using Bismuth.Content.Items.Weapons.Melee;
-using Bismuth.Content.Items.Materials;
-using Bismuth.Content.Items.Armor;
-using Bismuth.Content.Items.Accessories;
-using Bismuth.Content.Items.Weapons.Assassin;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
@@ -26,8 +25,6 @@ namespace Bismuth.Content.NPCs
         public int currentframe = 0;
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Blacksmith");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Кузнец");
             Main.npcFrameCount[NPC.type] = 20;
             NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
@@ -144,6 +141,7 @@ namespace Bismuth.Content.NPCs
             var KilledSkeletron = new Condition("KilledSkeletron", () => Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledSkeletron);
             var KilledWoF = new Condition("KilledWoF", () => Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledWoF);
             var KilledAnyMechBoss = new Condition("KilledAnyMechBoss", () => Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledAnyMechBoss);
+
 
             NPCShop shop = new(Type, "DwarfShop");
 

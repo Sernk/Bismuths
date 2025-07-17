@@ -848,7 +848,6 @@ namespace Bismuth
             }
             if (NewPriestQuest == 10)
             {
-                //Player.talkNPC = -1;
                 CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y - 35, 10, 10), Color.LemonChiffon, "QUEST ACCCEPTED!");
                 NewPriestQuest = 20;
                 return;
@@ -866,9 +865,13 @@ namespace Bismuth
             string SwampWitch_13 = this.GetLocalization("Quests.SwampWitch_13").Value;
 
             if (Main.npcChatText == SwampWitch_4)
+            {
                 Main.LocalPlayer.GetModPlayer<BismuthPlayer>().CustomChatClose = true;
+            }
             if (Main.npcChatText == SwampWitch_10)
+            {
                 Main.LocalPlayer.GetModPlayer<BismuthPlayer>().CustomChatClose = true;
+            }
             if (BookOfSecretsQuest < 10)
             {
                 Main.npcChatText = SwampWitch_2;
@@ -895,20 +898,23 @@ namespace Bismuth
                         temp = true;
                     }
                 }
-                if(!temp)
+                if (!temp)
+                {
                     Main.npcChatText = SwampWitch_4;
+                }
             }
-            if (BookOfSecretsQuest == 100 && ElessarQuest == 0 && Main.LocalPlayer.GetModPlayer<BismuthPlayer>().BosWait < 86400)
-                Main.npcChatText = SwampWitch_6;          
+            if (BookOfSecretsQuest == 100 && ElessarQuest == 0 && !TempNPCs.BabaYagaTemp)
+            {
+                Main.npcChatText = SwampWitch_6;
+            } 
             if (BookOfSecretsQuest == 100 && ElessarQuest < 10)
             {
-                if (Player.GetModPlayer<BismuthPlayer>().BosWait == 86400)
+                if (TempNPCs.BabaYagaTemp)
                 {
                     Main.npcChatText = SwampWitch_8;
                     Main.npcChatCornerItem = ModContent.ItemType<Elessar>();
                     ElessarQuest += 5;
                 }
-              
             }
             if (BookOfSecretsQuest == 100 && ElessarQuest == 10)
             {
@@ -925,14 +931,15 @@ namespace Bismuth
                 {
                     if (Player.inventory[num66].type == ModContent.ItemType<UnchargedElessar>() && Player.inventory[num66].stack > 0)
                     {
-                       // player.inventory[num66].stack--;
                         ElessarQuest = 190;
                         Main.npcChatText = SwampWitch_13;
                         temp = true;
                     }
                 }
                 if (!temp)
+                {
                     Main.npcChatText = SwampWitch_10;
+                }
             }           
         }
         public void BlacksmithQuests()
@@ -953,7 +960,7 @@ namespace Bismuth
                 Main.LocalPlayer.GetModPlayer<BismuthPlayer>().CustomChatClose = true;
             if (GlamdringQuest < 10)
             {
-                Main.npcChatText = string.Format(this.GetLocalization("Quests.ValueBlacksmith_2").Value, Convert.ToString(Main.npc[NPC.FindFirstNPC(NPCID.GoblinTinkerer)].GivenName));
+                Main.npcChatText = string.Format(this.GetLocalization("Quests.Blacksmith_2").Value, Convert.ToString(Main.npc[NPC.FindFirstNPC(NPCID.GoblinTinkerer)].GivenName));
                 Main.npcChatCornerItem = ModContent.ItemType<GlamdringBlueprint>();
                 GlamdringQuest += 5;
             }
@@ -1219,7 +1226,9 @@ namespace Bismuth
             string Alchemist_21 = this.GetLocalization("Quests.Alchemist_21").Value;
 
             if (Main.npcChatText == Alchemist_4 || Main.npcChatText == Alchemist_9 || Main.npcChatText == Alchemist_14)
+            {
                 Player.GetModPlayer<BismuthPlayer>().CustomChatClose = true;
+            }
             if (SunriseQuest < 10)
             {
                 Main.npcChatText = Alchemist_2;
@@ -1248,10 +1257,10 @@ namespace Bismuth
                     }
                 }
                 if (!temp)
+                {
                     Main.npcChatText = Alchemist_4;
+                }
             }
-
-
             if (SunriseQuest == 100 && PotionQuest < 10)
             {
                 Main.npcChatText = Alchemist_7;
@@ -1280,7 +1289,9 @@ namespace Bismuth
                     }
                 }
                 if (!temp)
+                {
                     Main.npcChatText = Alchemist_9;
+                }
             }
             if (PotionQuest == 40)
             {
@@ -1297,7 +1308,9 @@ namespace Bismuth
                     }
                 }
                 if (!temp)
+                {
                     Main.npcChatText = Alchemist_14;
+                }
             }
             if (PotionQuest == 100 && PhilosopherStoneQuest < 10)
             {
@@ -1322,18 +1335,19 @@ namespace Bismuth
                         Player.inventory[num66].stack--;
                         PhilosopherStoneQuest = 30;
                         Main.npcChatText = Alchemist_19;
+                        //TempNPCs.WaitStoneQuestsTempStart = true;
                         return;
                     }
                 }               
             }
             if (PhilosopherStoneQuest == 30)
             {
-                if (Player.GetModPlayer<BismuthPlayer>().WaitTabula >= 86400)
+                if (TempNPCs.WaitStoneQuestsTemp)
                 {
                     Main.npcChatText = Alchemist_21;
-                    PhilosopherStoneQuest = 90;                    
+                    PhilosopherStoneQuest = 90;
                 }
-                else
+                else if(!TempNPCs.WaitStoneQuestsTemp)
                 {
                     Main.npcChatText = Alchemist_20;
                 }
@@ -1459,7 +1473,6 @@ namespace Bismuth
                                                                             {
                                                                                 if (Player.inventory[num74].type == ItemID.LeadOre && Player.inventory[num74].stack >= 30)
                                                                                 {
-                                                                                    Player.inventory[num66].stack--;
                                                                                     Player.inventory[num67].stack -= 10;
                                                                                     Player.inventory[num68].stack -= 30;
                                                                                     Player.inventory[num69].stack -= 30;
@@ -1470,6 +1483,7 @@ namespace Bismuth
                                                                                     Player.inventory[num74].stack -= 30;
                                                                                     PhilosopherStoneCharging = 10;
                                                                                     Main.npcChatText = Alchemist_23;
+                                                                                    TempNPCs.RecipePhilosopherStone = true;
                                                                                     temp = true;
                                                                                     return;
                                                                                 }
@@ -1488,7 +1502,6 @@ namespace Bismuth
                             }
                         }
                     }
-
                 }
             }
             if (!temp)

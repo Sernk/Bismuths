@@ -15,8 +15,6 @@ namespace Bismuth.Content.NPCs
         public int currentphase = 0;
         public override void SetStaticDefaults()
         {
-            // this.DisplayName.SetDefault("Restless");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Неупокоенный");
             Main.npcFrameCount[NPC.type] = 4;
         }
 
@@ -39,11 +37,9 @@ namespace Bismuth.Content.NPCs
             NPC.alpha = 80;
             NPC.friendly = true;
             AnimationType = NPCID.Wraith;
-            //npc.scale = 1f;
         }
         public override void AI()
         {
-            // UpdateDirection();
             Player player = Main.LocalPlayer;
             NPC.spriteDirection = NPC.direction;
             if (NPC.ai[0] == 0f)

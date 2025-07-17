@@ -9,11 +9,6 @@ namespace Bismuth.Content.NPCs
 {
     public class SkeletonDwarf : ModNPC
     {
-        public override void SetStaticDefaults()
-        {
-            //DisplayName.SetDefault("Skeleton Dwarf");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Скелет гнома");
-        }
         public override void SetDefaults()
         {
             NPC.width = 40;

@@ -47,7 +47,6 @@ C:\Users\User\Documents\My Games\Terraria\tModLoader\ModSources\Bismuth\bin\Debu
 C:\Users\User\Documents\My Games\Terraria\tModLoader\ModSources\Bismuth\bin\Debug\net8.0\Steamworks.NET.dll
 C:\Users\User\Documents\My Games\Terraria\tModLoader\ModSources\Bismuth\bin\Debug\net8.0\SteelSeriesEngineWrapper.dll
 C:\Users\User\Documents\My Games\Terraria\tModLoader\ModSources\Bismuth\bin\Debug\net8.0\Stubble.Core.dll
-C:\Users\User\Documents\My Games\Terraria\tModLoader\ModSources\Bismuth\bin\Debug\net8.0\SurgeProtector.dll
 C:\Users\User\Documents\My Games\Terraria\tModLoader\ModSources\Bismuth\bin\Debug\net8.0\System.CodeDom.dll
 C:\Users\User\Documents\My Games\Terraria\tModLoader\ModSources\Bismuth\bin\Debug\net8.0\System.CommandLine.dll
 C:\Users\User\Documents\My Games\Terraria\tModLoader\ModSources\Bismuth\bin\Debug\net8.0\System.Composition.AttributedModel.dll
@@ -142,7 +141,6 @@ C:\Users\User\Documents\My Games\Terraria\tModLoader\ModSources\Bismuth\bin\Debu
 C:\Users\User\Documents\My Games\Terraria\tModLoader\ModSources\Bismuth\bin\Debug\net8.0\System.Windows.Extensions.xml
 C:\Users\User\Documents\My Games\Terraria\tModLoader\ModSources\Bismuth\bin\Debug\net8.0\tModPorter.pdb
 C:\Users\User\Documents\My Games\Terraria\tModLoader\ModSources\Bismuth\bin\Debug\net8.0\UtfUnknown.xml
-C:\Users\User\Documents\My Games\Terraria\tModLoader\ModSources\Bismuth\bin\Debug\net8.0\SurgeProtector.pdb
 C:\Users\User\Documents\My Games\Terraria\tModLoader\ModSources\Bismuth\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
 C:\Users\User\Documents\My Games\Terraria\tModLoader\ModSources\Bismuth\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
 C:\Users\User\Documents\My Games\Terraria\tModLoader\ModSources\Bismuth\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll

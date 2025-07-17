@@ -131,10 +131,10 @@ namespace Bismuth
         public override void Load()
         {
             instance = this;
-            DwarvenCoinID = CustomCurrencyManager.RegisterCurrency(new DwarvenCoinData(ModContent.ItemType<DwarvenCoin>(), 999L));
+            DwarvenCoinID = CustomCurrencyManager.RegisterCurrency(new DwarvenCoinData(ModContent.ItemType<DwarvenCoin>(), 9999999L));
             ImperianHelmetID = CustomCurrencyManager.RegisterCurrency(new ImperianHelmetExchangeData(ModContent.ItemType<ImperianHelmet>(), 999L));
             LoricaID = CustomCurrencyManager.RegisterCurrency(new LoricaExchangeData(ModContent.ItemType<Lorica>(), 999L));
-            OcreaID = CustomCurrencyManager.RegisterCurrency(new OcreaExchangeData(ModContent.ItemType<Ocrea>(), 999L));
+            OcreaID = CustomCurrencyManager.RegisterCurrency(new OcreaExchangeData(ModContent.ItemType<Ocrea>(), 9999999L));
             VampireMaleFace = ModContent.Request<Texture2D>("Bismuth/RacesTextures/VampireMale_Head").Value;
             VampireFemaleFace = ModContent.Request<Texture2D>("Bismuth/RacesTextures/VampireFemale_Head").Value;
             VampireArms = ModContent.Request<Texture2D>("Bismuth/RacesTextures/Vampire_Arms").Value;

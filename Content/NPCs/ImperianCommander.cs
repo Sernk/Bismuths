@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Bismuth.Content.Items.Other;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Bismuth.Content.Items.Other;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Bismuth.Content.NPCs
 {
@@ -14,8 +13,6 @@ namespace Bismuth.Content.NPCs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Imperian Commander");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Имперский командир");
             NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
         public override void Load()
@@ -95,8 +92,7 @@ namespace Bismuth.Content.NPCs
             {
                 bool temp = false;
                 if (Main.LocalPlayer.GetModPlayer<Quests>().ReportQuest == 30)
-                {
-                   
+                {               
                     for (int num66 = 0; num66 < 58; num66++)
                     {
                         if (Main.LocalPlayer.inventory[num66].type == ModContent.ItemType<ScoutsReport>() && Main.LocalPlayer.inventory[num66].stack > 0)

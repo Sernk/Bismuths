@@ -15,6 +15,10 @@ namespace Bismuth.Content.NPCs
     [AutoloadHead]
     public class Priest : ModNPC
     {
+        public override void SetStaticDefaults()
+        {
+            NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
+        }
         public override void Load()
         {
             string Priest_1 = this.GetLocalization("Chat.Priest_1").Value; // Ru: Мне нужен человек, который не будет задавать лишних вопросов. Приходи, когда покров тьмы сокроет нас - и ты не пожалеешь
@@ -54,7 +58,6 @@ namespace Bismuth.Content.NPCs
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.knockBackResist = 0f;
         }
-
         public override List<string> SetNPCNameList() => new List<string>()
         {
             this.GetLocalizedValue("Name.Rizo"), // Language.GetTextValue("Mods.Bismuth.PriestName_1");
@@ -126,7 +129,6 @@ namespace Bismuth.Content.NPCs
         {
             return false;
         }
-
         public override void SetChatButtons(ref string button, ref string button2)
         {
             string Priest_5 = this.GetLocalization("Chat.Priest_5").Value;
@@ -229,7 +231,6 @@ namespace Bismuth.Content.NPCs
             NPC.netUpdate = true;
             NPC.dontTakeDamage = true;
             NPC.breath = 100;
-        //    npc.life = npc.lifeMax;
             if (NPC.oldVelocity.X != 0f)
                 NPC.velocity.X = 0f;
 

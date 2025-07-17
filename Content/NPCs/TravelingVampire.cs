@@ -1,12 +1,8 @@
-﻿using Bismuth.Content.Items.Accessories;
-using Bismuth.Content.Items.Materials;
-using Bismuth.Content.Items.Weapons.Assassin;
+﻿using Bismuth.Content.Items.Materials;
 using Bismuth.Utilities;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.Enums;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
@@ -16,8 +12,7 @@ namespace Bismuth.Content.NPCs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Traveling Vampire");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Странствующий вампир");
+            NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
         public override void Load()
         {

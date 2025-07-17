@@ -27,9 +27,7 @@ namespace Bismuth.Content.NPCs
             NPC.knockBackResist = 0.7f;
             NPC.aiStyle = 3;
             Main.npcFrameCount[NPC.type] = 21;
-            AIType = NPCID.GoblinWarrior;
-            //banner = npc.type;
-            //bannerItem = mod.ItemType("PapuanWarriorBanner");
+            AIType = NPCID.GoblinWarrior;;
         }
         public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)
         {

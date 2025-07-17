@@ -16,6 +16,7 @@ namespace Bismuth.Utilities
         public string GalvornRecipe = Language.GetTextValue("Mods.Bismuth.CoinSystem.CoinLocalization.CoinSystem.GalvornRecipe");
         public string PoisonRecipe = Language.GetTextValue("Mods.Bismuth.CoinSystem.CoinLocalization.CoinSystem.PoisonRecipe");
         public string PanaceaRecipe = Language.GetTextValue("Mods.Bismuth.CoinSystem.CoinLocalization.CoinSystem.PanaceaRecipe");
+        public string PhilosopherStone = Language.GetTextValue("Mods.Bismuth.CoinSystem.CoinLocalization.CoinSystem.PhilosopherStone");
 
         public static int GetProgress()
         {

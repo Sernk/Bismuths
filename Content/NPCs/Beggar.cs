@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Bismuth.Content.Items.Materials;
+using Bismuth.Content.Items.Other;
+using Bismuth.Utilities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Bismuth.Content.Items.Other;
-using Bismuth.Content.Items.Materials;
-using Microsoft.Xna.Framework.Graphics;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.NPCs
 {
@@ -16,8 +15,6 @@ namespace Bismuth.Content.NPCs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Beggar");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Бедняк");
             NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
         public override void Load()
@@ -56,11 +53,11 @@ namespace Bismuth.Content.NPCs
         }
         public override List<string> SetNPCNameList() => new List<string>()
         {
-                this.GetLocalizedValue("Name.Rizo"), // Language.GetTextValue("Mods.Bismuth.BeggarName_1");
-                this.GetLocalizedValue("Name.Albert"), // Language.GetTextValue("Mods.Bismuth.BeggarName_2");
-                this.GetLocalizedValue("Name.Bernando"), // Language.GetTextValue("Mods.Bismuth.BeggarName_3");
-                this.GetLocalizedValue("Name.Seefeld"), // Language.GetTextValue("Mods.Bismuth.BeggarName_4");
-                this.GetLocalizedValue("Name.Robert") // Language.GetTextValue("Mods.Bismuth.BeggarName_5");
+            this.GetLocalizedValue("Name.Rizo"), // Language.GetTextValue("Mods.Bismuth.BeggarName_1");
+            this.GetLocalizedValue("Name.Albert"), // Language.GetTextValue("Mods.Bismuth.BeggarName_2");
+            this.GetLocalizedValue("Name.Bernando"), // Language.GetTextValue("Mods.Bismuth.BeggarName_3");
+            this.GetLocalizedValue("Name.Seefeld"), // Language.GetTextValue("Mods.Bismuth.BeggarName_4");
+            this.GetLocalizedValue("Name.Robert") // Language.GetTextValue("Mods.Bismuth.BeggarName_5");
         };
         public override string GetChat()
         {
@@ -74,23 +71,31 @@ namespace Bismuth.Content.NPCs
             string BeggarNQ_6 = this.GetLocalization("Chat.BeggarNQ_6").Value;
 
             if (Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest == 0)
+            {
                 return Beggar_1;
+            }
             else if (Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest == 20)
+            {
                 return Beggar_3;
+            }
             else
             {
                 if (NPC.FindFirstNPC(550) >= 0 && WorldGen.genRand.Next(0, 4) == 0)
+                {
                     return string.Format(this.GetLocalization("Chat.BeggarNQ_1").Value, Main.npc[NPC.FindFirstNPC(550)].GivenName);
+                }
                 else if (NPC.FindFirstNPC(ModContent.NPCType<Priest>()) >= 0 && WorldGen.genRand.Next(0, 4) == 0)
+                {
                     return string.Format(this.GetLocalization("Chat.BeggarNQ_3").Value, Main.npc[NPC.FindFirstNPC(ModContent.NPCType<Priest>())].GivenName);
+                }
                 else switch (WorldGen.genRand.Next(0, 2))
                     {
                         case 0:
-                            return BeggarNQ_2;                        
+                            return BeggarNQ_2;
                         case 1:
                             return BeggarNQ_4;
                         default:
-                            return string.Format(this.GetLocalization("Chat.BeggarNQ_6").Value, Main.LocalPlayer.GetModPlayer<DiceGame>().VictoryTotal, Main.LocalPlayer.GetModPlayer<DiceGame>().VictoryInARow); 
+                            return string.Format(this.GetLocalization("Chat.BeggarNQ_6").Value, Main.LocalPlayer.GetModPlayer<DiceGame>().VictoryTotal, Main.LocalPlayer.GetModPlayer<DiceGame>().VictoryInARow);
                     }
             }
         }
@@ -103,9 +108,13 @@ namespace Bismuth.Content.NPCs
             Texture2D available = ModContent.Request<Texture2D>("Bismuth/UI/AvailableQuest").Value;
             Texture2D active = ModContent.Request<Texture2D>("Bismuth/UI/ActiveQuest").Value;
             if (Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest <= 10 && Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100)
+            {
                 spriteBatch.Draw(available, NPC.position - Main.screenPosition + new Vector2(10, -36), Color.White);
+            }
             if (Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest < 100)
+            {
                 spriteBatch.Draw(active, NPC.position - Main.screenPosition + new Vector2(6, -40), Color.White);
+            }
         }
         public override void AddShops()
         {
@@ -130,9 +139,13 @@ namespace Bismuth.Content.NPCs
             if (Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100)
             {
                 if (Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest == 0)
+                {
                     button2 = BeggarAnsv_1;
+                }
                 if (Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest == 5)
+                {
                     button2 = BeggarAnsv_2;
+                }
                 if (Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest == 20)
                 {
                     bool temp = false;
@@ -144,8 +157,10 @@ namespace Bismuth.Content.NPCs
                             button2 = BeggarAnsv_3;
                         }
                     }
-                    if(!temp && Main.npcChatText != Beggar_4)
+                    if (!temp && Main.npcChatText != Beggar_4)
+                    {
                         button2 = BeggarAnsv_4;
+                    }
                 }
                 if (Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest == 100)
                 {
@@ -161,11 +176,15 @@ namespace Bismuth.Content.NPCs
             Quests quests = (Quests)Main.player[Main.myPlayer].GetModPlayer<Quests>();
             DiceGame Dicegame = (DiceGame)Main.player[Main.myPlayer].GetModPlayer<DiceGame>();
             if (firstButton && Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest == 100)
+            {
                 shopName = "BeggarShop";
+            }
             else
             {
                 if (Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest != 100)
+                {
                     quests.BeggarQuests();
+                }
                 else
                 {
                     Player player = Main.player[Main.myPlayer];
@@ -173,14 +192,16 @@ namespace Bismuth.Content.NPCs
                     for (int num66 = 0; num66 < 58; num66++)
                     {
                         if (player.inventory[num66].type == ItemID.GoldCoin)
-                        {                                                                   
+                        {
                             temp = true;
                             Dicegame.IsTableOpened = true;
                         }
                     }
                     if (!temp)
+                    {
                         Main.npcChatText = BeggarNQ_5;
-                }                  
+                    }
+                }
             }               
         }
         public void UpdatePosition()

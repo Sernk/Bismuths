@@ -19,10 +19,6 @@ namespace Bismuth.Content.Items.Other
             Item.useStyle = 1;
             Item.consumable = true;
         }
-        public override void UpdateInventory(Player player)
-        {
-            player.GetModPlayer<BismuthPlayer>().TabulaResearch = true;
-        }
         public override bool CanUseItem(Player player)
         {
             if (Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest == 100)

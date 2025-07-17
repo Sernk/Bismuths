@@ -59,6 +59,7 @@ namespace Bismuth.Utilities
         public bool movecameratopriest = false;
         public bool NoRPGGameplay = false;
         public int OrcishBarTimer = 0;
+        public bool extraSlotUnlocked = false;
         #region SwampMethods
         public static bool ZoneSwamp = false;
         #endregion
@@ -623,6 +624,7 @@ namespace Bismuth.Utilities
         }
         public override void SaveData(TagCompound tag)
         {
+            tag["extraSlotUnlocked"] = extraSlotUnlocked;
             tag["witchsecondatt"] = witchsecondatt;
             tag["OneRingTimer"] = OneRingTimer;
             tag["TabulaResearch"] = TabulaResearch;
@@ -1046,6 +1048,7 @@ namespace Bismuth.Utilities
         #endregion
         public override void LoadData(TagCompound tag)
         {
+            extraSlotUnlocked = tag.GetBool("extraSlotUnlocked");
             IsReadMazarbul = tag.GetBool("IsReadMazarbul");
             OneRingTimer = tag.GetInt("OneRingTimer");
             IsFTRead = tag.GetBool("IsFTRead");
@@ -3515,7 +3518,9 @@ namespace Bismuth.Utilities
                 Player.ThrownVelocity += 0.4f;
             }
             if (skill146lvl > 0)
-                Player.extraAccessorySlots++;
+            {
+                extraSlotUnlocked = true;
+            }
             if (skill147lvl > 0)
             {
                 Player.GetDamage(DamageClass.Throwing) += 0.25f;
@@ -9426,8 +9431,8 @@ namespace Bismuth.Utilities
                         }
                     case 2:
                         {
-                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.MeleeSpeedBonus", Convert.ToString(3))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
-                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, Language.GetTextValue("Mods.Bismuth.MeleeSpeedBonus", Convert.ToString(3))), maxwidth)).Y * 0.9f;
+                            Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Ranger.RangedCritBonus").Value, Convert.ToString(3))), maxwidth), Main.mouseX + 44, offset + 4, Color.White, Color.Black, new Vector2(), 0.9f);
+                            offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SkillLevelBonus").Value, string.Format(this.GetLocalization("Skill.Ranger.RangedCritBonus").Value, Convert.ToString(3))), maxwidth)).Y * 0.9f;
                             Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(2)), maxwidth), Main.mouseX + 44, offset + 4, SkillPoints >= 3 ? Color.LightGreen : Color.PaleVioletRed, Color.Black, new Vector2(), 0.9f);
                             offset += 4 + Bismuth.Adonais.MeasureString(StringBreak(Bismuth.Adonais, string.Format(this.GetLocalization("Skill.SPRequired").Value, Convert.ToString(2)), maxwidth)).Y * 0.9f;
                             if (!KilledWoF)
@@ -10360,7 +10365,7 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill112X, skill112Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill112Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill112Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill112Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill112Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
                 string info = StringBreak(Bismuth.Adonais, Skill112Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
@@ -10562,7 +10567,7 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill116X, skill116Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill116Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill116Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill116Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill116Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
                 string info = StringBreak(Bismuth.Adonais, Skill116Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
@@ -14302,7 +14307,7 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill138X, skill138Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill138Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill138Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill138Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill138Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, ActiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(ActiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.DarkOrange, Color.Black, new Vector2(), 0.85f);
                 string info = StringBreak(Bismuth.Adonais, Skill138Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
@@ -14342,7 +14347,7 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill139X, skill139Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill139Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill139Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill139Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill139Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, PassiveSkill, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(PassiveSkill).X / 2) * 0.85f, Main.mouseY + 44, Color.LightGreen, Color.Black, new Vector2(), 0.85f);
                 string info = StringBreak(Bismuth.Adonais, Skill139Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);
@@ -14417,7 +14422,7 @@ namespace Bismuth.Utilities
             if (MouseInFrame && CheckPointInRect(new Vector2(Main.mouseX, Main.mouseY), new Vector2(skill141X, skill141Y), 56, 56))
             {
                 sb.Draw(skillinfopanel, new Rectangle(Main.mouseX + 4, Main.mouseY + 8, skillinfopanel.Width, skillinfopanel.Height), null, Color.White, 0f, new Vector2(), SpriteEffects.None, 0f);
-                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill141Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Language.GetTextValue("Mods.Bismuth.Skill141Name")).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
+                Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, Skill141Name, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(Skill141Name).X / 2), Main.mouseY + 24, Color.White, Color.Black, new Vector2(), 1f);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, ActiveSkillUpgrade, Main.mouseX + 226 - (Bismuth.Adonais.MeasureString(ActiveSkillUpgrade).X / 2) * 0.85f, Main.mouseY + 44, Color.OrangeRed, Color.Black, new Vector2(), 0.85f);
                 string info = StringBreak(Bismuth.Adonais, Skill141Tooltip, maxwidth);
                 Utils.DrawBorderStringFourWay(sb, Bismuth.Adonais, info, Main.mouseX + 44, Main.mouseY + 80, Color.White, Color.Black, new Vector2(), 0.9f);

@@ -7,7 +7,6 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
@@ -16,8 +15,6 @@ namespace Bismuth.Content.NPCs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Orc Defender");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Орк-защитник");
             Main.npcFrameCount[NPC.type] = 16;
         }
       
@@ -28,7 +25,7 @@ namespace Bismuth.Content.NPCs
             NPC.lifeMax = 120;
             NPC.damage = 15;
             NPC.defense = 25;
-            NPC.knockBackResist = 0.1f; //needs to be changed later
+            NPC.knockBackResist = 0.1f;
             NPC.width = 40;
             NPC.height = 48;
             NPC.npcSlots = 0.7f;

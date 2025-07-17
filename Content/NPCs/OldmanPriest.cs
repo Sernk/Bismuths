@@ -35,8 +35,7 @@ namespace Bismuth.Content.NPCs
         }
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Old Man Priest");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Старик-священник");
+            NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
         }
         public override List<string> SetNPCNameList() => new List<string>() { Main.LocalPlayer.GetModPlayer<BismuthPlayer>().oldmanname };
         public override void SetDefaults()
@@ -86,9 +85,9 @@ namespace Bismuth.Content.NPCs
         }
         public override void AddShops()
         {
-            var KilledSkeletron = new Condition("KilledSkeletron", () => Main.player[Main.myPlayer].GetModPlayer<BismuthPlayer>().KilledSkeletron);
-            var KilledWoF = new Condition("KilledWoF", () => Main.player[Main.myPlayer].GetModPlayer<BismuthPlayer>().KilledWoF);
-            var KilledPlantera = new Condition("KilledPlantera", () => Main.player[Main.myPlayer].GetModPlayer<BismuthPlayer>().KilledPlantera);
+            var KilledSkeletron = new Condition("KilledSkeletron", () => NPC.downedBoss3);
+            var KilledWoF = new Condition("KilledWoF", () => Main.hardMode);
+            var KilledPlantera = new Condition("KilledPlantera", () => NPC.downedPirates);
 
             NPCShop shop = new(Type, "OldmanPriestShop");
 
@@ -113,6 +112,8 @@ namespace Bismuth.Content.NPCs
                 shopCustomPrice = 1,
                 shopSpecialCurrency = Bismuth.OcreaID
             },  KilledSkeletron);
+
+            shop.Register();
         }
         public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {

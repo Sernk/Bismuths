@@ -14,8 +14,6 @@ namespace Bismuth.Content.NPCs
     {
         public override void SetStaticDefaults()
         {
-            // this.DisplayName.SetDefault("Swamp Wraith");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Болотный дух");
             Main.npcFrameCount[this.NPC.type] = 4;
             NPCID.Sets.TrailCacheLength[NPC.type] = 7;
             NPCID.Sets.TrailingMode[NPC.type] = 0;
