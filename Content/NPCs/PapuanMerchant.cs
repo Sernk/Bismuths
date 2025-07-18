@@ -13,8 +13,18 @@ using Terraria.ModLoader;
 namespace Bismuth.Content.NPCs
 {
     [AutoloadHead]
-    public class PapuanMerchant : ModNPC // НЕ ЗАБЫТЬ ДОБАВИТЬ ЛОКАЛИЗАЦИЮ И ПЕРЕВОДЫ
+    public class PapuanMerchant : ModNPC
     {
+        public override void Load()
+        {
+            _ = this.GetLocalization("Say").Value; // "At "
+            _ = this.GetLocalization("Say1").Value; // during Halloween you can buy fashionable Dryad's panties, but I can sell it to you always(not yet). Took the hint?
+            _ = this.GetLocalization("Say2").Value; // I think,
+            _ = this.GetLocalization("Say3").Value; // will be happy, when he will see this hammerhead fish.
+            _ = this.GetLocalization("Say4").Value; // Ones I killed 5 sharks with only one spoon.
+            _ = this.GetLocalization("Say5").Value; // I would have made you a discount, but the fish was tasteless, so no
+            _ = this.GetLocalization("Say6").Value; // I choose pointy peakes.
+        }
         public override string Texture
         {
             get
@@ -22,7 +32,6 @@ namespace Bismuth.Content.NPCs
                 return "Bismuth/Content/NPCs/PapuanMerchant";
             }
         }
-
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 25;
@@ -49,7 +58,6 @@ namespace Bismuth.Content.NPCs
             NPC.knockBackResist = 0.5f;
             AnimationType = NPCID.Demolitionist;
         }
-
         public override bool CanTownNPCSpawn(int numTownNPCs)
         {
             for (int i = 0; i < 255; i++)
@@ -124,32 +132,44 @@ namespace Bismuth.Content.NPCs
                     };
             }
         }
-
         public override string GetChat()
         {
+            string Say0 = this.GetLocalization("Say").Value;
+            string Say1 = this.GetLocalization("Say1").Value;
+            string Say2 = this.GetLocalization("Say2").Value;
+            string Say3 = this.GetLocalization("Say3").Value;
+            string Say4 = this.GetLocalization("Say4").Value;
+            string Say5 = this.GetLocalization("Say5").Value;
+            string Say6 = this.GetLocalization("Say6").Value;
+
             int Angler = NPC.FindFirstNPC(NPCID.Angler);
             int Armsdealer = NPC.FindFirstNPC(NPCID.ArmsDealer);
+
+            string armsdealerName = Armsdealer != -1 ? Main.npc[Armsdealer].GivenName : "";
+            string anglerName = Angler != -1 ? Main.npc[Angler].GivenName : "";
+
+            string SayFull = $"{Say0} {armsdealerName} {Say1}";
+            string SayFull1 = $"{Say2} {anglerName} {Say3}";
+
             if (Armsdealer >= 0 && Main.rand.Next(5) == 0)
-                return "At " + Main.npc[Armsdealer].GivenName + " during Halloween you can buy fashionable Dryad's panties, but I can sell it to you always(not yet). Took the hint?";
+            {
+                return SayFull;
+            }
             if (Angler >= 0 && Main.rand.Next(5) == 0)
             {
-                return "I think, " + Main.npc[Angler].GivenName + " will be happy, when he will see this hammerhead fish.";
+                return SayFull1;
             }
             switch (Main.rand.Next(3))
             {
-                case 0:
-                    return "Ones I killed 5 sharks with only one spoon.";
-                case 1:
-                    return "I would have made you a discount, but the fish was tasteless, so no";
-                default:
-                    return "I choose pointy peakes.";
+                case 0: return Say4;
+                case 1: return Say5;
+                default: return Say6;
             }
         }
         public override void SetChatButtons(ref string button, ref string button2)
         {
             button = Lang.inter[28].Value;
         }
-
         public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {
             if (firstButton)

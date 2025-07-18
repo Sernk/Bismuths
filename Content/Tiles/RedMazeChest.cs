@@ -34,7 +34,7 @@ namespace Bismuth.Content.Tiles
             TileID.Sets.FriendlyFairyCanLureTo[Type] = true;
             TileID.Sets.GeneralPlacementTiles[Type] = false;
             AdjTiles = new int[] { TileID.Containers };
-            AddMapEntry(new Color(200, 200, 200), this.GetLocalization("MapEntry1"), MapChestName);
+            AddMapEntry(Color.Red, this.GetLocalization("MapEntry1"), MapChestName);
             DustType = 79;
             RegisterItemDrop(ItemID.Chest);
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
@@ -143,7 +143,6 @@ namespace Bismuth.Content.Tiles
             }
 
             if (keySlot == -1 && !SavingOpenChests.RChest) return false;
-            if (keySlot != -1) player.inventory[keySlot].stack--;
 
             SavingOpenChests.RChest = true;
 

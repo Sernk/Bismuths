@@ -7,7 +7,8 @@ namespace Bismuth.Utilities
 {
     public class TempNPCs : ModSystem
     {
-        private const int Temp = 3600; // 5 минут = 300 сек * 60 тиков
+        private const int Temp = 18000; // 5 минут = 300 сек * 60 тиков
+        private const int Temp2 = 3600; // 1 минут = 60 сек  * 60 тиков
         private double LastTemp = 0;
 
         public static bool AlchemistTemp = false;
@@ -22,7 +23,7 @@ namespace Bismuth.Utilities
         {
             if (AlchemistTempStart)
             {
-                if (Main.GameUpdateCount - LastTemp >= Temp)
+                if (Main.GameUpdateCount - LastTemp >= Temp2)
                 {
                     LastTemp = Main.GameUpdateCount;
                     AlchemistTemp = true;

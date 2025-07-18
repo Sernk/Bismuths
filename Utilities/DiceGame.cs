@@ -424,6 +424,7 @@ namespace Bismuth.Utilities
                                         Player.QuickSpawnItem(Main.LocalPlayer.GetSource_FromThis(), ModContent.ItemType<MidasGlove>());
                                     if (VictoryInARow == 3 && !ThirdRow)
                                     {
+                                        Player.QuickSpawnItem(Main.LocalPlayer.GetSource_FromThis(), ModContent.ItemType<Content.Items.Other.BeggarsCasket>());
                                         Player.QuickSpawnItem(Main.LocalPlayer.GetSource_FromThis(), ModContent.ItemType<GamblersBag>());
                                         ThirdRow = true;
                                     }

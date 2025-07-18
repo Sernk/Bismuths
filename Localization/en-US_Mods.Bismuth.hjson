@@ -3042,7 +3042,14 @@ NPCs: {
 		}
 	}
 
-	Banshee.DisplayName: Banshee
+	Banshee: {
+		DisplayName: Banshee
+
+		BossChecklistIntegration: {
+			EntryName: Banshee
+			SpawnInfo: Spawns only if you enter water temple
+		}
+	}
 
 	Beggar: {
 		DisplayName: Beggar
@@ -3140,8 +3147,23 @@ NPCs: {
 		}
 	}
 
-	EvilBabaYaga.DisplayName: Swamp Witch
-	EvilNecromancer.DisplayName: Necromancer
+	EvilBabaYaga: {
+		DisplayName: Swamp Witch
+
+		BossChecklistIntegration: {
+			EntryName: Swamp Witch
+			SpawnInfo: Spawns after completing quest "Mystery of Swamp". You should keep [i:Bismuth/UnchargedElessar] to fight her.
+		}
+	}
+
+	EvilNecromancer: {
+		DisplayName: Necromancer
+
+		BossChecklistIntegration: {
+			EntryName: Necromancer
+			SpawnInfo: Spawns in his den after completing quest "Gravedigger". You need to report to consul about priest to fight him.
+		}
+	}
 
 	ImperianCommander: {
 		DisplayName: Imperian Commander
@@ -3215,7 +3237,15 @@ NPCs: {
 		}
 	}
 
-	Minotaur.DisplayName: Minotaur
+	Minotaur: {
+		DisplayName: Minotaur
+
+		BossChecklistIntegration: {
+			EntryName: Minotaur
+			SpawnInfo: Spawns only after opening red chest in maze
+		}
+	}
+
 	MinotaurDeath.DisplayName: Minotaur
 
 	NagaMerchant: {
@@ -3263,6 +3293,9 @@ NPCs: {
 			LikeNPC_Princess: Мне нравится {NPCName}.
 			Princess_LovesNPC: Мне нравится {NPCName}.
 		}
+
+		Say1: I'm ready
+		Say: It’s time. Let the ritual begin... with you.
 	}
 
 	OldmanPriest: {
@@ -3298,7 +3331,16 @@ NPCs: {
 	Papuan.DisplayName: Papuan
 	PapuanArcher.DisplayName: Papuan Archer
 	PapuanWarrior.DisplayName: Papuan Warrior
-	PapuanWizard.DisplayName: Papuan Wizard
+
+	PapuanWizard: {
+		DisplayName: Papuan Wizard
+
+		BossChecklistIntegration: {
+			EntryName: Papuan Wizard
+			SpawnInfo: Spawns in the desert town in hardmode
+		}
+	}
+
 	PapuanWizardDeath.DisplayName: Papuan Wizard
 
 	Priest: {
@@ -3366,12 +3408,20 @@ NPCs: {
 	}
 
 	RestlessSoul.DisplayName: Restless Soul
-	RhinoOrc.DisplayName: Rhino Orc
 	RunicElemental.DisplayName: Runic Elemental
 	RunicElementalDeath.DisplayName: Runic Elemental Death
 	SandWormBody.DisplayName: Sand Worm
 	SandWormHead.DisplayName: Sand Worm
 	SandWormTail.DisplayName: Sand Worm
+
+	RhinoOrc: {
+		DisplayName: Rhino Orc
+
+		BossChecklistIntegration: {
+			EntryName: Rhino Orc
+			SpawnInfo: Spawns during orcish invasion
+		}
+	}
 
 	StrangeOldman: {
 		DisplayName: Strange Oldman
@@ -3489,6 +3539,14 @@ NPCs: {
 			Chidzhenda: Chidzhenda
 			Jango: Jango
 		}
+
+		Say: At
+		Say1: during Halloween you can buy fashionable Dryad's panties, but I can sell it to you always(not yet). Took the hint?
+		Say2: I think,
+		Say3: will be happy, when he will see this hammerhead fish.
+		Say4: Ones I killed 5 sharks with only one spoon.
+		Say5: I would have made you a discount, but the fish was tasteless, so no
+		Say6: I choose pointy peakes.
 	}
 
 	Toad.DisplayName: Toad
@@ -4217,11 +4275,11 @@ CoinSystem: {
 			Ocrea: Ocrea
 			ImperianHelmet: Imperian Helmet
 			Lorica: Lorica
-			AetherRecipe: Aether Recipe
-			GalvornRecipe: Galvorn Recipe
-			PoisonRecipe: Poison Recipe
-			PanaceaRecipe: Panacea Recipe
-			PhilosopherStone: PhilosopherStone
+			AetherRecipe: Learn the recipe for ether
+			GalvornRecipe: Have a Galvorn Scroll
+			PoisonRecipe: is in a swamp
+			PanaceaRecipe: Learn the recipe for Recipe
+			PhilosopherStone: Complete the alchemist's quests
 		}
 	}
 }

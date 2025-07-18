@@ -16,10 +16,8 @@ namespace Bismuth.Content.NPCs
         }
         public override void Load()
         {
-            string Priest_10 = this.GetLocalization("Chat.Priest_10").Value; // Ru: <{0}>Ты заплатишь за это!
-                                                                             // En: <{0}> You'll pay for this!
+            string Priest_10 = this.GetLocalization("Chat.Priest_10").Value; // Ru: <{0}>Ты заплатишь за это! En: <{0}> You'll pay for this!                                                                           
         }
-
         public override void SetDefaults()
         {
             NPC.townNPC = true;
@@ -35,7 +33,6 @@ namespace Bismuth.Content.NPCs
             NPC.DeathSound = SoundID.NPCDeath1;
             NPC.knockBackResist = 0f;
         }
-
         public override List<string> SetNPCNameList() => new List<string>()
         {
             this.GetLocalizedValue("Name.Rizo"), // Language.GetTextValue("Mods.Bismuth.PriestName_1");
@@ -43,7 +40,6 @@ namespace Bismuth.Content.NPCs
             this.GetLocalizedValue("Name.Bernando"), // Language.GetTextValue("Mods.Bismuth.PriestName_3");
             this.GetLocalizedValue("Name.Seefeld") // Language.GetTextValue("Mods.Bismuth.PriestName_4");
         };
-
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
             spriteBatch.Draw(ModContent.Request<Texture2D>("Bismuth/Content/NPCs/PriestTeleportation_Glow").Value, NPC.position - Main.screenPosition + new Vector2(-14f, -22f), new Rectangle?(NPC.frame), drawColor, 0f, Vector2.Zero, 1f, NPC.direction == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None, 0f);
@@ -60,7 +56,6 @@ namespace Bismuth.Content.NPCs
 
             if (timer < 100)
                 timer++;
-           // npc.netUpdate = true;
             if (currentframe > 2 && NPC.alpha != 255)
                 Lighting.AddLight(NPC.Center, new Vector3(0.42f, 0.12f, 0.58f));
             if (NPC.ai[0] >= 3f)
@@ -80,15 +75,7 @@ namespace Bismuth.Content.NPCs
                 NPC.homeTileY = NPC.Center.ToTileCoordinates().Y;
             }
             if (NPC.ai[1] >= 30f)
-            {
-                /*foreach (Player player in Main.player)
-                {
-                    if (player.active && !player.dead)
-                    {
-                        player.GetModPlayer<BismuthPlayer>().ScreenMoveFrom = Vector2.Zero;
-                        player.GetModPlayer<BismuthPlayer>().ScreenMoveTo = Vector2.Zero;
-                    }
-                }      */        
+            {      
                 NPC.life = -1;
                 NPC.active = false;
                 NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, NPC.whoAmI, -0f, 0f, 0f, 0, 0, 0);

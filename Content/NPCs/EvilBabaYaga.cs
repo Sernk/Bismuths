@@ -1,9 +1,14 @@
-﻿using Bismuth.Content.Projectiles;
+﻿using Bismuth.Content.Items.Accessories;
+using Bismuth.Content.Items.Materials;
+using Bismuth.Content.Items.Other;
+using Bismuth.Content.Items.Weapons.Assassin;
+using Bismuth.Content.Projectiles;
 using Bismuth.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -18,11 +23,16 @@ namespace Bismuth.Content.NPCs
         public int firstphasecount = 0;
         public override void SetStaticDefaults()
         {
-            // this.DisplayName.SetDefault("Swamp Witch");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Болотная ведьма");
             Main.npcFrameCount[NPC.type] = 31;
         }
-      
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<LightPartOfArchmagesAmulet>(), 9999));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PanaceaScroll>(), 9999));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<TransmutationAmulet>(), 9999));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SnakesFang>(), 9999));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PoisonFlask>(), 9999, 5, 10));
+        }
         public override void SetDefaults()
         {
             NPC.width = 26;

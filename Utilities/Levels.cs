@@ -86,7 +86,6 @@ namespace Bismuth.Utilities
                     XP = MAXXP - 1;
             }
         }
-
         public override void OnHitNPCWithItem(Item item, NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (!Main.LocalPlayer.GetModPlayer<BismuthPlayer>().NoRPGGameplay)
@@ -110,7 +109,6 @@ namespace Bismuth.Utilities
 
             }
         }
-
         public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (!Main.LocalPlayer.GetModPlayer<BismuthPlayer>().NoRPGGameplay)
@@ -133,7 +131,6 @@ namespace Bismuth.Utilities
                 }
             }
         }
-
         public void DRAW(SpriteBatch spriteBatch)
         {
             string Level = this.GetLocalization("Levels.Level").Value;

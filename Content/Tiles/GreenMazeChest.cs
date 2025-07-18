@@ -143,7 +143,6 @@ namespace Bismuth.Content.Tiles
             }
 
             if (keySlot == -1 && !SavingOpenChests.GChest) return false;
-            if (keySlot != -1) player.inventory[keySlot].stack--;
 
             SavingOpenChests.GChest = true;
 

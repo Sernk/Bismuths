@@ -3105,7 +3105,14 @@ NPCs: {
 		}
 	}
 
-	Banshee.DisplayName: Банши
+	Banshee: {
+		DisplayName: Банши
+
+		BossChecklistIntegration: {
+			EntryName: Банши
+			SpawnInfo: Появляется только если вы войдете в водный храм.
+		}
+	}
 
 	Beggar: {
 		DisplayName: Бедняк
@@ -3203,8 +3210,23 @@ NPCs: {
 		}
 	}
 
-	EvilBabaYaga.DisplayName: Болотная ведьма
-	EvilNecromancer.DisplayName: Некромант
+	EvilBabaYaga: {
+		DisplayName: Болотная ведьма
+
+		BossChecklistIntegration: {
+			EntryName: Болотная ведьма
+			SpawnInfo: Появляется после выполнения задания «Тайна болота». Для сражения с ней следует сохранить [i:Bismuth/UnchargedElessar].
+		}
+	}
+
+	EvilNecromancer: {
+		DisplayName: Некромант
+
+		BossChecklistIntegration: {
+			EntryName: Некромант
+			SpawnInfo: Появляется в его логове после выполнения квеста «Могильщик». Чтобы сразиться с ним, нужно сообщить консулу о жреце.
+		}
+	}
 
 	ImperianCommander: {
 		DisplayName: Имперский командир
@@ -3278,7 +3300,15 @@ NPCs: {
 		}
 	}
 
-	Minotaur.DisplayName: Минотавр
+	Minotaur: {
+		DisplayName: Минотавр
+
+		BossChecklistIntegration: {
+			EntryName: Минотавр
+			SpawnInfo: Появляется только после открытия красного сундука в лабиринте.
+		}
+	}
+
 	MinotaurDeath.DisplayName: Минотавр
 
 	NagaMerchant: {
@@ -3326,6 +3356,9 @@ NPCs: {
 			// LikeNPC_Princess: Мне нравится {NPCName}.
 			// Princess_LovesNPC: Мне нравится {NPCName}.
 		}
+
+		Say1: Я готов
+		Say: Пора. Начнём ритуал... с тебя.
 	}
 
 	OldmanPriest: {
@@ -3361,7 +3394,16 @@ NPCs: {
 	Papuan.DisplayName: Папуас
 	PapuanArcher.DisplayName: Папуас-стрелок
 	PapuanWarrior.DisplayName: Папуас-воин
-	PapuanWizard.DisplayName: Папуас-шаман
+
+	PapuanWizard: {
+		DisplayName: Папуас-шаман
+
+		BossChecklistIntegration: {
+			EntryName: Папуас-шаман
+			SpawnInfo: Появляется в пустынном городе в хардмоде.
+		}
+	}
+
 	PapuanWizardDeath.DisplayName: Папуас-шаман
 
 	Priest: {
@@ -3429,12 +3471,20 @@ NPCs: {
 	}
 
 	RestlessSoul.DisplayName: Неупокоенный
-	RhinoOrc.DisplayName: Орк на носороге
 	RunicElemental.DisplayName: Рунический элементаль
 	RunicElementalDeath.DisplayName: Рунический элементаль
 	SandWormBody.DisplayName: Песчаный червь
 	SandWormHead.DisplayName: Песчаный червь
 	SandWormTail.DisplayName: Песчаный червь
+
+	RhinoOrc: {
+		DisplayName: Орк на носороге
+
+		BossChecklistIntegration: {
+			EntryName: Орк на носороге
+			SpawnInfo: Появляется во время вторжения орков.
+		}
+	}
 
 	StrangeOldman: {
 		DisplayName: Странный старик
@@ -3552,6 +3602,14 @@ NPCs: {
 			Chidzhenda: Chidzhenda
 			Jango: Jango
 		}
+
+		Say: У
+		Say1: во время Хэллоуина можно купить модные трусики Дриады, но я могу продавать их тебе всегда (пока нет). Понял намёк?
+		Say2: Я думаю,
+		Say3: будет счастлив, когда увидит эту рыбу-молот.
+		Say4: Однажды я убил 5 акул одной только ложкой.
+		Say5: Я бы сделал тебе скидку, но рыба была безвкусная, так что — нет.
+		Say6: Я выбираю острые пики.
 	}
 
 	Toad.DisplayName: Жаба
@@ -4276,11 +4334,11 @@ CoinSystem: {
 			Ocrea: Охра
 			ImperianHelmet: Императорский шлем
 			Lorica: Лорика
-			AetherRecipe: Рецепт эфира
-			GalvornRecipe: Рецепт Галворна
-			PoisonRecipe: Рецепт яда
-			PanaceaRecipe: Рецепт панацеи
-			PhilosopherStone: PhilosopherStone
+			AetherRecipe: Изучите рецепт эфира
+			GalvornRecipe: Иметь галворновый свиток
+			PoisonRecipe: находится в болоте
+			PanaceaRecipe: Изучите рецепт панацеи
+			PhilosopherStone: Выполняйте задания алхимика
 		}
 	}
 }

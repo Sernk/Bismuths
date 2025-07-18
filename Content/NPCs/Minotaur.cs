@@ -1,10 +1,14 @@
-﻿using Bismuth.Content.Projectiles;
+﻿using Bismuth.Content.Items.Other;
+using Bismuth.Content.Items.Tools;
+using Bismuth.Content.Items.Weapons.Melee;
+using Bismuth.Content.Projectiles;
 using Bismuth.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Audio;
+using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -13,6 +17,12 @@ namespace Bismuth.Content.NPCs
     [AutoloadBossHead]
     public class Minotaur : ModNPC
     {
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MinotaursWaraxe>(), 100000));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Narsil>(), 100000));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MinotaurHorn>(), 100000));
+        }
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[NPC.type] = 1;

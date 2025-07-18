@@ -1,16 +1,22 @@
-﻿using Terraria;
+﻿using Bismuth.Utilities;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Bismuth.Utilities;
 
 namespace Bismuth.Content.NPCs
 {
-   [AutoloadHead]
+    //[AutoloadHead]
     public class Necromant : ModNPC
     {
+        public override void Load()
+        {
+            _ = this.GetLocalization("Say").Value; // Ru: Пора. Начнём ритуал... с тебя. En: It’s time. Let the ritual begin... with you.
+            _ = this.GetLocalization("Say1").Value; // Ru: Я готов EN: I'm ready 
+        }
         public override void SetStaticDefaults()
         {
             NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
+            NPCID.Sets.BossHeadTextures[NPC.type] = -1;
         }
         bool dead = false;
         public override void HitEffect(NPC.HitInfo hit)
@@ -41,10 +47,14 @@ namespace Bismuth.Content.NPCs
         {
             return false;
         }
+        public override string GetChat()
+        {
+            return this.GetLocalization("Say").Value;
+        }
         public override void SetChatButtons(ref string button, ref string button2)
         {
             Quests quests = (Quests)Main.player[Main.myPlayer].GetModPlayer<Quests>();
-            button = "No more talking";          
+            button = this.GetLocalization("Say1").Value;          
         }
         public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {
@@ -66,7 +76,6 @@ namespace Bismuth.Content.NPCs
         }
         public override void AI()
         {
-            
             if (!NPC.HasGivenName)
                 NPC.GivenName = Main.LocalPlayer.GetModPlayer<BismuthPlayer>().necrosname;
             if (NPC.homeTileX == -1 || NPC.homeTileY == -1)

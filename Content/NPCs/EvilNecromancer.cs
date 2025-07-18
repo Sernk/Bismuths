@@ -1,25 +1,37 @@
-﻿using Terraria;
-using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria.Localization;
+﻿using Bismuth.Content.Buffs;
+using Bismuth.Content.Items.Accessories;
+using Bismuth.Content.Items.Armor;
+using Bismuth.Content.Items.Materials;
+using Bismuth.Content.Items.Other;
+using Bismuth.Content.Projectiles;
+using Bismuth.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Linq;
+using Terraria;
 using Terraria.Audio;
-using Bismuth.Utilities;
-using Bismuth.Content.Buffs;
-using Bismuth.Content.Projectiles;
+using Terraria.GameContent.ItemDropRules;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
     [AutoloadBossHead]
     public class EvilNecromancer : ModNPC
     {
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
+        {
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DarkPartOfArchmagesAmulet>(), 99999));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NecromancersHood>(), 99999));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NecromancersRobe>(), 99999));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<LichCrown>(), 99999));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MirrorOfUndead>(), 99999));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DarkEngraving>(), 99999));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<NecromancersRing>(), 99999));
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<DarkEssence>(), 99999, 10, 15));
+        }
         public override void SetStaticDefaults()
         {
-            // this.DisplayName.SetDefault("Necromancer");
-            //DisplayName.AddTranslation(GameCulture.Russian, "Некромант");
             Main.npcFrameCount[NPC.type] = 1;
             NPCID.Sets.MustAlwaysDraw[NPC.type] = true;
             NPCID.Sets.NoTownNPCHappiness[NPC.type] = true;
