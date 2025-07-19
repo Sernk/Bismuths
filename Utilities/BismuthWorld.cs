@@ -1689,7 +1689,7 @@ namespace Bismuth.Utilities
                 ;
             }));
             int DesertIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Full Desert"));
-            tasks.Insert(DesertIndex + 1, new PassLegacy("Desert Village", delegate (GenerationProgress progress, GameConfiguration configuration)
+            tasks.Insert(DesertIndex + 2, new PassLegacy("Desert Village", delegate (GenerationProgress progress, GameConfiguration configuration)
             {
                 var desert = GenVars.UndergroundDesertLocation;
                 int left = Math.Max(0, desert.Left - 50);
@@ -1777,7 +1777,7 @@ namespace Bismuth.Utilities
                         IsDesertSuccess = false;
                 }
             }));
-            tasks.Insert(MicroBiomesIndex + 2, new PassLegacy("Desert Village", delegate (GenerationProgress progress, GameConfiguration configuration)
+            tasks.Insert(MicroBiomesIndex + 6, new PassLegacy("Desert Village", delegate (GenerationProgress progress, GameConfiguration configuration)
             {
                 if (IsDesertSuccess)
                 {
@@ -1926,15 +1926,15 @@ namespace Bismuth.Utilities
                         MainBuildingY--;
                     MainBuildingY -= 22;
                     int n = 0;
-                    for (int i = 0; i < 24; i++)
-                    {
-                        while (!WorldMethods.CheckTile(MainBuildingX + i, MainBuildingY + n, TileID.Sand))
-                        {
-                            WorldGen.PlaceTile(MainBuildingX + i, MainBuildingY + n, TileID.Sand);
-                            n++;
-                        }
-                        n = 0;
-                    }
+                    // for (int i = 0; i < 24; i++)
+                    // {
+                        // while (!WorldMethods.CheckTile(MainBuildingX + i, MainBuildingY + n, TileID.Sand))
+                        // {
+                            // WorldGen.PlaceTile(MainBuildingX + i, MainBuildingY + n, TileID.Sand);
+                            // n++;
+                        // }
+                        // n = 0;
+                    // }
                     int[,] MainBuildingTile = new int[,]
                     {  {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0},
