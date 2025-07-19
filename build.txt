@@ -1,4 +1,4 @@
 displayName = Bismuth Mod Updated
 author = Gs_qs
 version = 0.1
-modReferences = Des
+modReferences = StructureHelper
