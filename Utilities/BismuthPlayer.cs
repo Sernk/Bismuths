@@ -60,6 +60,7 @@ namespace Bismuth.Utilities
         public bool NoRPGGameplay = false;
         public int OrcishBarTimer = 0;
         public bool extraSlotUnlocked = false;
+        public static bool InTribeTotemZone;
         #region SwampMethods
         public static bool ZoneSwamp = false;
         #endregion
@@ -364,6 +365,7 @@ namespace Bismuth.Utilities
         #endregion
         public override void ResetEffects()
         {
+            InTribeTotemZone = false;
             vampbat = false;
             BatLayer = null;
             IsEquippedBerserksRing = false;
@@ -1874,7 +1876,7 @@ namespace Bismuth.Utilities
             }
             if (Player.Center.ToTileCoordinates().X > Main.spawnTileX - 100 && Player.Center.ToTileCoordinates().X < Main.spawnTileX + 105 && Player.Center.ToTileCoordinates().Y > Main.spawnTileY - 30 && Player.Center.ToTileCoordinates().Y < Main.spawnTileY + 30)
                 Player.AddBuff(ModContent.BuffType<AuraOfEmpire>(), 2);
-            if (Player.Center.ToTileCoordinates().X > BismuthWorld.TotemX - 115 && Player.Center.ToTileCoordinates().X < BismuthWorld.TotemX + 50 && Player.Center.ToTileCoordinates().Y > BismuthWorld.TotemY - 40 && Player.Center.ToTileCoordinates().Y < BismuthWorld.TotemY + 40 && BismuthWorld.IsTotemActive)
+            if (BismuthWorld.IsTotemActive)
             {
                 Player.AddBuff(ModContent.BuffType<TribeCurse>(), 2);
                 if (Main.rand.Next(0, 1080) == 0)
@@ -1890,13 +1892,11 @@ namespace Bismuth.Utilities
                     BismuthWorld.WizardDay = true;
                     NPC.NewNPC(Player.GetSource_FromThis(), BismuthWorld.TotemX * 16, (BismuthWorld.TotemY + 2) * 16, ModContent.NPCType<PapuanWizard>());
                 }
-
             }
             if (NPC.AnyNPCs(ModContent.NPCType<PriestTeleportation>()))
             {
                 if(screenmovestep < 1f)
                     screenmovestep += 0.01f;
-
             }
             if (Player.FindBuffIndex(ModContent.BuffType<MagiciansAura>()) == -1)
                 //Buffs.MagiciansAura.timealive = 0;

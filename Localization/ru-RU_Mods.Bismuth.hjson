@@ -3750,6 +3750,11 @@ Biomes: {
 		// DisplayName: Bismuth: Swamp Sky
 		// TownNPCDialogueName: the Bismuth: Swamp Sky
 	}
+
+	TribeTotemBiome: {
+		// DisplayName: Tribe Totem Biome
+		// TownNPCDialogueName: the Tribe Totem Biome
+	}
 }
 
 BismuthPlayerSystem: {

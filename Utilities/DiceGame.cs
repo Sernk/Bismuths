@@ -1,18 +1,16 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Bismuth.Content.Buffs;
+using Bismuth.Content.Items.Accessories;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
+using Terraria.Audio;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using ReLogic.Graphics;
-using Terraria.Localization;
-using Terraria.Audio;
-using Bismuth.Content.Items.Accessories;
-using Bismuth.Content.Buffs;
 
 namespace Bismuth.Utilities
 {
@@ -427,6 +425,7 @@ namespace Bismuth.Utilities
                                         Player.QuickSpawnItem(Main.LocalPlayer.GetSource_FromThis(), ModContent.ItemType<Content.Items.Other.BeggarsCasket>());
                                         Player.QuickSpawnItem(Main.LocalPlayer.GetSource_FromThis(), ModContent.ItemType<GamblersBag>());
                                         ThirdRow = true;
+                                        TempNPCs.BueBegger = true;
                                     }
                                     if (VictoryInARow == 4 && !FourthRow)
                                     {

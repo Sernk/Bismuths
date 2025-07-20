@@ -18,7 +18,7 @@ namespace Bismuth.Utilities.Global
             }
             if (shop.NpcType == NPCID.Merchant)
             {
-                shop.Add(ModContent.ItemType<AdventurersBook>());
+                shop.Add(new Item(ModContent.ItemType<AdventurersBook>()) { value = 10000 });
                 shop.Add(225);
                 shop.Add(ModContent.ItemType<YeomansHat>());
                 shop.Add(ModContent.ItemType<YeomansShirt>());
@@ -26,7 +26,7 @@ namespace Bismuth.Utilities.Global
             }
             if (shop.NpcType == NPCID.GoblinTinkerer)
             {
-                shop.Add(ModContent.ItemType<GlamdringBlueprint>(), Quest);
+                shop.Add(new Item(ModContent.ItemType<GlamdringBlueprint>()) { value = 50000, }, Quest);
             }
         }
     }

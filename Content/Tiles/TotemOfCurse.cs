@@ -34,6 +34,11 @@ namespace Bismuth.Content.Tiles
         {
             return false;
         }
+        public override void NearbyEffects(int i, int j, bool closer)
+        {
+            BismuthWorld.TotemX = i;
+            BismuthWorld.TotemY = j;
+        }
         public override bool RightClick(int i, int j)
         {
             Player player = Main.player[Main.myPlayer];

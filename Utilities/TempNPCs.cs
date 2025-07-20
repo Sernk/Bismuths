@@ -18,6 +18,7 @@ namespace Bismuth.Utilities
         public static bool RecipePhilosopherStone = false;
         public static bool BabaYagaTemp = false;
         public static bool BabaYagaTempStart = false;
+        public static bool BueBegger = false;
 
         public override void PostUpdateWorld()
         {
@@ -59,6 +60,7 @@ namespace Bismuth.Utilities
             WaitStoneQuestsTemp = false;
             WaitStoneQuestsTempStart = false;
             RecipePhilosopherStone = false;
+            BueBegger = false;
         }
         public override void SaveWorldData(TagCompound tag)
         {
@@ -69,14 +71,15 @@ namespace Bismuth.Utilities
             if (WaitStoneQuestsTemp) tag["WaitStoneQuestsTemp"] = true;
             if (WaitStoneQuestsTempStart) tag["WaitStoneQuestsTempStart"] = true;
             if (RecipePhilosopherStone) tag["RecipePhilosopherStone"] = true;
+            if (BueBegger) tag["BueBegger"] = true;
         }
         public override void NetSend(BinaryWriter writer)
         {
-            writer.WriteFlags(AlchemistTemp, AlchemistTempStart, BabaYagaTemp, BabaYagaTempStart, WaitStoneQuestsTemp, WaitStoneQuestsTempStart, RecipePhilosopherStone);
+            writer.WriteFlags(AlchemistTemp, AlchemistTempStart, BabaYagaTemp, BabaYagaTempStart, WaitStoneQuestsTemp, WaitStoneQuestsTempStart, RecipePhilosopherStone, BueBegger);
         }
         public override void NetReceive(BinaryReader reader)
         {
-            reader.ReadFlags(out AlchemistTemp, out AlchemistTempStart, out BabaYagaTemp, out BabaYagaTempStart, out WaitStoneQuestsTemp, out WaitStoneQuestsTempStart, out RecipePhilosopherStone);
+            reader.ReadFlags(out AlchemistTemp, out AlchemistTempStart, out BabaYagaTemp, out BabaYagaTempStart, out WaitStoneQuestsTemp, out WaitStoneQuestsTempStart, out RecipePhilosopherStone, out BueBegger);
         }
         public override void LoadWorldData(TagCompound tag)
         {
@@ -87,6 +90,7 @@ namespace Bismuth.Utilities
             WaitStoneQuestsTemp = tag.ContainsKey("WaitStoneQuestsTemp");
             WaitStoneQuestsTempStart = tag.ContainsKey("WaitStoneQuestsTempStart");
             RecipePhilosopherStone = tag.ContainsKey("RecipePhilosopherStone");
+            BueBegger = tag.ContainsKey("BueBegger");
         }
         #endregion
     }

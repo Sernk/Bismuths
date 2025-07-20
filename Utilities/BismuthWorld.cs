@@ -443,8 +443,8 @@ namespace Bismuth.Utilities
             TombstoneX = 0;
             TombstoneY = 0;
             CryptIsSpawned = false;
-            //TotemX = 0;
-            //TotemY = 0;
+            TotemX = 0;
+            TotemY = 0;
             SunriseIsPlaced = false;
             OpenedRedChest = false;
             DestroyedMaze = false;
@@ -3618,8 +3618,8 @@ namespace Bismuth.Utilities
         #endregion
         public override void SaveWorldData(TagCompound tag)
         {
-            //tag["TotemX"] = TotemX;
-            //tag["TotemY"] = TotemY;
+            tag["TotemX"] = TotemX;
+            tag["TotemY"] = TotemY;
             tag["TotemCooldown"] = TotemCooldown;
             tag["IsTotemActive"] = IsTotemActive;
             tag["WitchSpawnX"] = WitchSpawnX;
@@ -3664,8 +3664,8 @@ namespace Bismuth.Utilities
         }
         public override void LoadWorldData(TagCompound tag)
         {
-            //TotemX = tag.GetInt("TotemX");
-            //TotemY = tag.GetInt("TotemY");
+            TotemX = tag.GetInt("TotemX");
+            TotemY = tag.GetInt("TotemY");
             TotemCooldown = tag.GetInt("TotemCooldown");
             IsTotemActive = tag.GetBool("IsTotemActive");
             SunriseX = tag.GetInt("SunriseX");
@@ -3747,8 +3747,8 @@ namespace Bismuth.Utilities
             writer.Write(downedAnyMechBoss);
             writer.Write(downedPlantera);
             writer.Write(downedGolem);
-            //writer.Write(TotemX);
-            //writer.Write(TotemY);
+            writer.Write(TotemX);
+            writer.Write(TotemY);
             writer.Write(SunriseX);
             writer.Write(SunriseY);
             writer.Write(WitchSpawnX);
@@ -3823,8 +3823,8 @@ namespace Bismuth.Utilities
             downedAnyMechBoss = reader.ReadBoolean();
             downedPlantera = reader.ReadBoolean();
             downedGolem = reader.ReadBoolean();
-            //TotemX = reader.ReadInt32();
-            //TotemY = reader.ReadInt32();
+            TotemX = reader.ReadInt32();
+            TotemY = reader.ReadInt32();
             SunriseX = reader.ReadInt32();
             SunriseY = reader.ReadInt32();
             WitchSpawnX = reader.ReadInt32();

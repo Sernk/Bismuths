@@ -118,10 +118,13 @@ namespace Bismuth.Content.NPCs
         }
         public override void AddShops()
         {
+            var Bue = new Condition("Bue", () => TempNPCs.BueBegger);
+
             NPCShop shop = new(Type, "BeggarShop");
 
             shop.Add(ModContent.ItemType<Picklock>());
             shop.Add(ModContent.ItemType<MirrorRim>());
+            shop.Add(ModContent.ItemType<BeggarsCasket>(), Bue);
 
             shop.Register();
         }
