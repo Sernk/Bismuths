@@ -166,6 +166,7 @@ namespace Bismuth.Utilities
         public int OneRingTimer = 0;
         public int RingsCount = 0;
         public bool IsEquippedGoldenRune = false;
+        public bool IsEquippedImperianBanner = false;
         #endregion
         public static string StringBreak(DynamicSpriteFont font, string a, float maxWidth, float startsize = 1f) //CHECK IT!
         {
@@ -365,6 +366,7 @@ namespace Bismuth.Utilities
         #endregion
         public override void ResetEffects()
         {
+            IsEquippedImperianBanner = false;
             InTribeTotemZone = false;
             vampbat = false;
             BatLayer = null;

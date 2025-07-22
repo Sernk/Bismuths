@@ -15,6 +15,7 @@ namespace Bismuth.Content.Items.Accessories
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            player.GetModPlayer<BismuthPlayer>().IsEquippedImperianBanner = true;
             int NPCsCount = 0;
             for (int i = 0; i < Main.npc.Length; i++)
             {

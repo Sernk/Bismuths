@@ -3161,7 +3161,11 @@ NPCs: {
 
 		BossChecklistIntegration: {
 			EntryName: Necromancer
-			SpawnInfo: Spawns in his den after completing quest "Gravedigger". You need to report to consul about priest to fight him.
+			SpawnInfo:
+				'''
+				Spawns in his den after completing quest "Gravedigger". You need to report to consul about priest to fight him.
+				When equipped [i:Bismuth/ImperianBanner], it will show an icon on the map
+				'''
 		}
 	}
 
@@ -4285,6 +4289,7 @@ CoinSystem: {
 			PoisonRecipe: is in a swamp
 			PanaceaRecipe: Learn the recipe for Recipe
 			PhilosopherStone: Complete the alchemist's quests
+			Necromant: Necromant
 		}
 	}
 }
