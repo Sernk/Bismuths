@@ -20,7 +20,6 @@ namespace Bismuth.Content.Items.Weapons.Assassin
             Item.UseSound = SoundID.Item1;      
             Item.autoReuse = true;
             Item.useTurn = true;
-            Item.noMelee = true; 
         }
     }
 }
