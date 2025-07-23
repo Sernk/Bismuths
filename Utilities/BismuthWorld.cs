@@ -120,6 +120,9 @@ namespace Bismuth.Utilities
         public static int BeachEndLeft = 0; // Конец левого пляжа (по иксам)
         public static int BeachEndRight = Main.maxTilesX;  // Конец правого пляжа (по иксам)
 
+        //Remnants Settings
+        int DesertPitSetting = 60;
+
         public static void CallOrcishInvasion()
         {
             var source = Main.LocalPlayer.GetSource_FromThis();
@@ -645,23 +648,30 @@ namespace Bismuth.Utilities
             int WaterTempleCleanX = 0;
             int WaterTempleCleanY = 0;
             int GravitatingSand = tasks.FindIndex(genpass => genpass.Name.Equals("Gravitating Sand"));
-            tasks.Insert(GravitatingSand + 1, new PassLegacy("Initializing", delegate (GenerationProgress progress, GameConfiguration configuration)
+            if (ModLoader.TryGetMod("Remnants", out Mod Remnants))
             {
-                int x = 0;
-                int y = 0;
-                while (!WorldMethods.CheckLiquid(x, y, 255))
-                    y++;
-                while (!WorldGen.SolidTile(x, y))
-                    x++;
-                BeachEndLeft = x;
-                x = Main.maxTilesX - 1;
-                y = 0;
-                while (!WorldMethods.CheckLiquid(x, y, 255))
-                    y++;
-                while (!WorldGen.SolidTile(x, y))
-                    x--;
-                BeachEndRight = x;
-            }));
+                DesertPitSetting = 75;
+            }
+            else
+            {
+                tasks.Insert(GravitatingSand + 1, new PassLegacy("Initializing", delegate (GenerationProgress progress, GameConfiguration configuration)
+                {
+                    int x = 0;
+                    int y = 0;
+                    while (!WorldMethods.CheckLiquid(x, y, 255))
+                        y++;
+                    while (!WorldGen.SolidTile(x, y))
+                        x++;
+                    BeachEndLeft = x;
+                    x = Main.maxTilesX - 1;
+                    y = 0;
+                    while (!WorldMethods.CheckLiquid(x, y, 255))
+                        y++;
+                    while (!WorldGen.SolidTile(x, y))
+                        x--;
+                    BeachEndRight = x;
+                }));
+            }
             int WaterTempleIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Surface Chests"));
             tasks.Insert(WaterTempleIndex + 1, new PassLegacy("Generating Water Temple", delegate (GenerationProgress progress, GameConfiguration configuration)
             {
@@ -1691,7 +1701,7 @@ namespace Bismuth.Utilities
                 ;
             }));
             int DesertIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Full Desert"));
-            tasks.Insert(DesertIndex + 1, new PassLegacy("Desert Pit Setting", delegate (GenerationProgress progress, GameConfiguration configuration)
+            tasks.Insert(DesertIndex + 1, new PassLegacy("Desert Village Setting", delegate (GenerationProgress progress, GameConfiguration configuration)
             {
                 var desert = GenVars.UndergroundDesertLocation;
                 int desertLeft = desert.Left;
@@ -1708,7 +1718,7 @@ namespace Bismuth.Utilities
                 {
                     if (WorldMethods.CheckWall(CenterX, j, WallID.HardenedSand) || WorldMethods.CheckWall(CenterX, j, WallID.Sandstone))
                     {
-                        centerY = j - 60;
+                        centerY = j - DesertPitSetting;
                         break;
                     }
                 }
@@ -1718,7 +1728,7 @@ namespace Bismuth.Utilities
                 EndBridgeX = StartBridgeX + 2;
             }));
 
-            tasks.Insert(MicroBiomesIndex + 2, new PassLegacy("Desert Clear", delegate (GenerationProgress progress, GameConfiguration configuration)
+            tasks.Insert(MicroBiomesIndex + 2, new PassLegacy("Desert Village", delegate (GenerationProgress progress, GameConfiguration configuration)
             {
                 Point16 ruin3Pos = new Point16(StartBridgeX, BridgeY);
                 GenerateStructure("Structures/Desert", ruin3Pos, Bismuth.instance);

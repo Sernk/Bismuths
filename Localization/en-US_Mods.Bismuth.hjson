@@ -4192,8 +4192,8 @@ QuestsSystem: {
 			QuestDiary1: Curiously, the last thing I remember - me talking to a guy in a white robe, almost as if I hadn’t existed before then. If I remember correctly, his name is {0}, and the place I found myself in – Imperial city. It’s pretty good here, moslty due to it’s the safest place in these lands. Looks like {0} is the leader. He told me to meet the commander and pick up my equipment. I should follow his advice, however, first I must decide which fighting style suits me the most and use class engraving.
 			Quest1Stage2: Take start equipment from commander
 			Quest1Stage1: Choose your class
-			QuestDiary2: Эти болота – гиблое место. Ядовитые топи и местные обитатели – не лучшее, что со мной случалось. Странно, но даже в таких заброшенных окраинах не угас очаг цивилизации. В центре болота я нашел избу, в которой живет старая ведьма. Она рассказала мне историю о сокровище, спрятанном где-то в недрах болота, и попросила принести ей фолиант, который поможет достать его. Эта старуха выглядит подозрительно, однако рискнуть стоит. Эта книга хранится где-то в заброшенном пустынном городе – стоит начать поиски там.
-			Quest2Stage1: Найдите фолиант в пустынном городе
+			QuestDiary2: These swamps are a rotten place. Poisonous marshes and their residents are not the best that’s happened to me. Oddly enough, even in godforsaken outskirts like these there still are some signs of civilisation. In the middle of the swamp I found a guy housing a witch. She told me a tale of a treasure, hidden somewhere deep inside the moor, and told me to bring her a time, that could help recover it. Not going to lie, she looks suspicious but I think it’s worth the risk. The time is stored somewhere in the desert city – I should begin my search there.
+			Quest2Stage1: Find the book in the desert town
 			QuestDiary3: At last, the witch is done deciphering the tome. I should read the result, before setting of to get the artifact, lest the ancient curse kill me. The hag's obviously hiding the true power of this relic – one of the pages states that with it, I could attain the powers of the water folk – for that, I should charge the stone at an altar in a temple somewhere on the  seabed. Now I must decide how to act – take it for myself or keep my promise.
 			Quest3Stage1_2: Keep it
 			Quest3Stage1_1: Bring Gaermire to witch
@@ -4203,8 +4203,8 @@ QuestsSystem: {
 			QuestDiary4: And here I thought nothing could be worse than losing your memories only to find yourself in a foreign city, today’s meeting showed me otherwise. Searching for ore underground, I heard a plea for help. Behind the rubble, I found an old man, who, by the looks of it, had been living here for a while. He told me that the door further down the corridor is an entrance to a labyrinth. Somewhere inside is a magic stone that could help him return home. He gave me a key to said door. Now it’s time to free him, as well as check out the goods kept inside.
 			QuestDiary4_2: I succeeded in recovering the man's stone. Turned out, it was a teleporting device, immediately bringing the owner to the Imperial city. The old man told me to come by, in case I want a reward for my efforts.
 			QuestDiary5: The goblins turned out to be a tough bunch, it’s clear I need something more effective against these beasts. {0} told me that with the right blueprint, I could forge a weapon specifically for that purpose. From his words, the scroll is in {1}'s – our goblin tinkerer's possession. Ironic.
-			Quest5Stage2: Mods.Bismuth.QuestsSystem.Quests.Quests.Quest5Stage2
-			Quest5Stage1: Wait for new sword
+			Quest5Stage2: Wait for new sword
+			Quest5Stage1: Buy sword blueprint from goblin tinkerer
 			Quest6Stage1: Bring minotaur horn to blacksmith
 			QuestDiary6: Today I again spoke to {0} – he told me of a labyrinth somewhere beneath the city, deep inside of which is a Minotaur. The blacksmith is interested only in its horn, out of which he could make a musical instrument, therefore, the rest of the treasure is mine. I should take some time to prepare before battling the beast.
 			Quest7Stage1: Bring remains of dwarven armor
@@ -4255,9 +4255,9 @@ QuestsSystem: {
 			MaxMinionStat: Max minion number: {0}
 			ThrownVelStat: Throwing projectiles speed: {0}%
 			ThrownCritStat: Throwing critical strike chance: {0}%
-			ThrownDmgStat: Метательный урон: {0}%
-			RangedCritStat: Шанс крита в дальнем бою: {0}%
-			RangedDmgStat: Урон в дальнем бою: {0}%
+			ThrownDmgStat: Throwing damage: {0}%
+			RangedCritStat: Ranged critical strike chance: {0}%
+			RangedDmgStat: Ranged damage: {0}%
 			SkillsTree: Skills tree:
 			CharmStat: Charm: {0}
 			CritDmgStat: Critical strike damage: {0}%
