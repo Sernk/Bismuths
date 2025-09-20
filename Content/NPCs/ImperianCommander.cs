@@ -1,7 +1,11 @@
 ﻿using Bismuth.Content.Items.Other;
+using Bismuth.Utilities;
+using Bismuth.Utilities.ModSupport;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -61,12 +65,28 @@ namespace Bismuth.Content.NPCs
         }
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            Texture2D available = ModContent.Request<Texture2D>("Bismuth/UI/AvailableQuest").Value;
-            Texture2D active = ModContent.Request<Texture2D>("Bismuth/UI/ActiveQuest").Value;
-            if (Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 30 || (Main.LocalPlayer.GetModPlayer<Quests>().ReportQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().ReportQuest < 100))
-                spriteBatch.Draw(active, NPC.position - Main.screenPosition + new Vector2(6, -44), Color.White);
-            if (Main.LocalPlayer.GetModPlayer<Quests>().ReportQuest <= 10 && Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100)
-                spriteBatch.Draw(available, NPC.position - Main.screenPosition + new Vector2(6, -44), Color.White);
+            var quests = QuestRegistry.GetAvailableQuests(Main.LocalPlayer, BaseQuest.ImperianCommander);
+            bool showAvailable = Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 30 || (Main.LocalPlayer.GetModPlayer<Quests>().ReportQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().ReportQuest < 100);
+            bool showActive = Main.LocalPlayer.GetModPlayer<Quests>().ReportQuest <= 10 && Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100;
+
+            foreach (var quest in quests)
+            {
+                quest.IsActiveQuestUIIcon(showAvailable, showActive, spriteBatch, NPC, Main.LocalPlayer);
+            }
+            if (!quests.Any())
+            {
+                Texture2D available = ModContent.Request<Texture2D>("Bismuth/UI/AvailableQuest").Value;
+                Texture2D active = ModContent.Request<Texture2D>("Bismuth/UI/ActiveQuest").Value;
+
+                if (showAvailable)
+                {
+                    spriteBatch.Draw(available, NPC.position - Main.screenPosition + new Vector2(8, -34), Color.White);
+                }
+                if (showActive)
+                {
+                    spriteBatch.Draw(active, NPC.position - Main.screenPosition + new Vector2(4, -38), Color.White);
+                }
+            }
         }
         public override void SetChatButtons(ref string button, ref string button2)
         {
@@ -79,6 +99,13 @@ namespace Bismuth.Content.NPCs
 
             string Commander_5 = this.GetLocalization("Chat.Commander_5").Value;
 
+            Player player = Main.player[Main.myPlayer];
+            var quest = QuestRegistry.GetAvailableQuests(player, BaseQuest.ImperianCommander).FirstOrDefault();
+
+            if (TempNPCs.ImperianCommanderNewQuest && quest != null)
+            {
+                button = quest.GetButtonText(player);
+            }
             Quests quests = (Quests)Main.player[Main.myPlayer].GetModPlayer<Quests>();
             if (Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 30)
                 button = CommanderAnsv_1;
@@ -102,11 +129,11 @@ namespace Bismuth.Content.NPCs
                         }
                     }
                 }
-                if(!temp && Main.npcChatText != Commander_5)
-                    button = CommanderAnsv_5;
+                if(!temp && Main.npcChatText != Commander_5) button = CommanderAnsv_5;           
             }
             if (Main.LocalPlayer.GetModPlayer<Quests>().ReportQuest == 80)
             {
+                TempNPCs.ImperianCommanderNewQuest = true;
                 button = CommanderAnsv_6;
             }
         }
@@ -132,6 +159,14 @@ namespace Bismuth.Content.NPCs
             string CommanderNQ_3 = this.GetLocalization("Chat.CommanderNQ_3").Value;
             string CommanderNQ_4 = this.GetLocalization("Chat.CommanderNQ_4").Value;
 
+            Player player = Main.player[Main.myPlayer];
+            var quest = QuestRegistry.GetAvailableQuests(player, BaseQuest.ImperianCommander).FirstOrDefault();
+
+            if (TempNPCs.ImperianCommanderNewQuest && quest != null)
+            {
+                return quest.GetChat(NPC, player, quest.CornerItem);
+            }
+
             if (Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().ReportQuest == 0)
                 return Commander_2;
             if(Main.LocalPlayer.GetModPlayer<Quests>().ReportQuest == 20 || Main.LocalPlayer.GetModPlayer<Quests>().ReportQuest == 30)
@@ -140,22 +175,24 @@ namespace Bismuth.Content.NPCs
             {
                 if (NPC.FindFirstNPC(ModContent.NPCType<DwarfBlacksmith>()) >= 0 && WorldGen.genRand.Next(0, 4) == 0)
                     return string.Format(this.GetLocalization("Chat.CommanderNQ_4").Value, Main.npc[NPC.FindFirstNPC(ModContent.NPCType<DwarfBlacksmith>())].GivenName);
-                else switch (WorldGen.genRand.Next(0, 3))
-                    {
-                        case 0:
-                            return CommanderNQ_1;
-                        case 1:
-                            return CommanderNQ_2;                       
-                        default:
-                            return CommanderNQ_3;
-                    }
+                else return WorldGen.genRand.Next(0, 3) switch
+                {
+                    0 => CommanderNQ_1,
+                    1 => CommanderNQ_2,
+                    _ => CommanderNQ_3,
+                };
             }
         }
         public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {
             Quests quests = (Quests)Main.player[Main.myPlayer].GetModPlayer<Quests>();
-            if (firstButton)
-                quests.CommanderQuests();
+            if (firstButton) quests.CommanderQuests();    
+            if (TempNPCs.ImperianCommanderNewQuest)
+            {
+                Player player = Main.LocalPlayer;
+                var quest = QuestRegistry.GetAvailableQuests(player, BaseQuest.ImperianCommander).FirstOrDefault();
+                quest?.OnChatButtonClicked(player);
+            }
         }
         public void UpdatePosition()
         {

@@ -1,18 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using Bismuth.Content.Buffs;
+using Bismuth.Content.Items.Accessories;
+using Bismuth.Content.Items.Armor;
+using Bismuth.Content.Items.Other;
+using Bismuth.Content.Items.Weapons.Assassin;
+using Bismuth.Utilities;
+using Bismuth.Utilities.ModSupport;
+using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Bismuth.Content.Items.Other;
-using Bismuth.Content.Items.Materials;
-using Microsoft.Xna.Framework.Graphics;
-using Bismuth.Utilities;
-using Bismuth.Content.Items.Accessories;
-using Bismuth.Content.Items.Placeable;
-using Bismuth.Content.Items.Weapons.Assassin;
-using Bismuth.Content.Items.Armor;
-using Bismuth.Content.Buffs;
 
 namespace Bismuth.Content.NPCs
 {
@@ -57,7 +54,17 @@ namespace Bismuth.Content.NPCs
         {
             string OldmanPriestAnsv_1 = this.GetLocalization("Chat.OldmanPriestAnsv_1").Value;
 
-            button = Lang.inter[28].Value;
+            Player player = Main.player[Main.myPlayer];
+            var quest = QuestRegistry.GetAvailableQuests(player, BaseQuest.OldmanPriest).FirstOrDefault();
+
+            if (quest != null)
+            {
+                button = quest.GetButtonText(player);
+            }
+            if(quest == null)
+            {
+                button = Lang.inter[28].Value;
+            }
             button2 = OldmanPriestAnsv_1;
         }
         public override string GetChat()
@@ -67,17 +74,21 @@ namespace Bismuth.Content.NPCs
             string OldmanPriestNQ_3 = this.GetLocalization("Chat.OldmanPriestNQ_3").Value;
             string OldmanPriestNQ_4 = this.GetLocalization("Chat.OldmanPriestNQ_4").Value;
 
-            switch (WorldGen.genRand.Next(0, 4))
-             {
-                    case 0:
-                        return OldmanPriestNQ_1;
-                    case 1:
-                        return OldmanPriestNQ_2;
-                    case 2:
-                        return OldmanPriestNQ_3;
-                    default:
-                        return OldmanPriestNQ_4;
-             }
+            Player player = Main.player[Main.myPlayer];
+            var quest = QuestRegistry.GetAvailableQuests(player, BaseQuest.OldmanPriest).FirstOrDefault();
+
+            if (quest != null)
+            {
+                return quest.GetChat(NPC, player, quest.CornerItem);
+            }
+
+            return WorldGen.genRand.Next(0, 4) switch
+            {
+                0 => OldmanPriestNQ_1,
+                1 => OldmanPriestNQ_2,
+                2 => OldmanPriestNQ_3,
+                _ => OldmanPriestNQ_4,
+            };
         }
         public override bool CheckConditions(int left, int right, int top, int bottom)
         {
@@ -120,8 +131,13 @@ namespace Bismuth.Content.NPCs
             string OldmanPriestNQ_6 = this.GetLocalization("Chat.OldmanPriestNQ_6").Value;
             string OldmanPriestNQ_7 = this.GetLocalization("Chat.OldmanPriestNQ_7").Value;
 
-            if (firstButton)
-                shopName = "OldmanPriestShop";
+            if (firstButton) shopName = "OldmanPriestShop";
+            Player player = Main.LocalPlayer;
+            var quest = QuestRegistry.GetAvailableQuests(player, BaseQuest.OldmanPriest).FirstOrDefault();
+            if (quest != null)
+            {
+                quest?.OnChatButtonClicked(player);
+            }
             else
             {
                 if (Main.player[Main.myPlayer].FindBuffIndex(ModContent.BuffType<Blessing>()) == -1)
@@ -129,10 +145,8 @@ namespace Bismuth.Content.NPCs
                     Main.npcChatText = OldmanPriestNQ_6;
                     Main.player[Main.myPlayer].AddBuff(ModContent.BuffType<Blessing>(), 18000);
                 }
-                else
-                    Main.npcChatText = OldmanPriestNQ_7;
+                else Main.npcChatText = OldmanPriestNQ_7;     
             }
-
         }
         public void UpdatePosition()
         {

@@ -1438,7 +1438,6 @@ namespace Bismuth
             string Alchemist_23 = this.GetLocalization("Quests.Alchemist_23").Value;
             string Alchemist_24 = this.GetLocalization("Quests.Alchemist_24").Value;
 
-            bool temp = false;
             for (int num66 = 0; num66 < 58; num66++)
             {
                 if (Player.inventory[num66].type == ModContent.ItemType<UnchargedTruePhilosopherStone>() && Player.inventory[num66].stack > 0)
@@ -1486,7 +1485,10 @@ namespace Bismuth
                                                                                     PhilosopherStoneCharging = 10;
                                                                                     Main.npcChatText = Alchemist_23;
                                                                                     TempNPCs.RecipePhilosopherStone = true;
-                                                                                    temp = true;
+                                                                                    TempNPCs.AlchemistNewQuest = true;
+                                                                                    CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y - 35, 10, 10), Color.LemonChiffon, "QUEST COMPLETED!");
+                                                                                    Player.QuickSpawnItem(Main.LocalPlayer.GetSource_FromThis(), ModContent.ItemType<TruePhilosopherStone>());
+                                                                                    PhilosopherStoneCharging = 0;
                                                                                     return;
                                                                                 }
                                                                             }
@@ -1504,19 +1506,6 @@ namespace Bismuth
                             }
                         }
                     }
-                }
-            }
-            if (!temp)
-                Main.npcChatText = Alchemist_22;
-
-            if (PhilosopherStoneCharging == 10)
-            {
-                if (Player.GetModPlayer<BismuthPlayer>().WaitStoneCharging >= 1800)
-                {
-                    Main.npcChatText = Alchemist_24;
-                    Player.QuickSpawnItem(Main.LocalPlayer.GetSource_FromThis(), ModContent.ItemType<TruePhilosopherStone>());
-                    PhilosopherStoneCharging = 0;
-                    CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y - 35, 10, 10), Color.LemonChiffon, "QUEST COMPLETED!");
                 }
             }
         }
@@ -1768,33 +1757,31 @@ namespace Bismuth
                         var qPlayer = Main.LocalPlayer.GetModPlayer<QuestPlayer>();
                         var activeQuests = qPlayer.ActiveQuests.Select(QuestRegistry.GetQuestByKey).Where(q => q != null).ToList();
 
-                        Vector2 mousePos = Main.MouseScreen;
-                        bool clicked = Main.mouseLeft && Main.mouseLeftRelease;
-
                         foreach (var quests in activeQuests)
                         {
-                            string Name = quests.DisplayName;
-                            string Description = quests.DisplayDescription;
-                            string NameCategory = "Mod Quest";
-
-                            Rectangle questRect = new((int)(bookcoord.X - 50), (int)(bookcoord.Y + 150), 200, 30);
-          
-                            Utils.DrawBorderStringFourWay(sb, curfont, NameCategory, bookcoord.X + 240 - curfont.MeasureString(NameCategory).X / 2, bookcoord.Y + 135, Color.White, Color.Black, Vector2.Zero);
-                            Utils.DrawBorderStringFourWay(sb, curfont, Name, bookcoord.X - 43 + curfont.MeasureString(Description).X / 2, bookcoord.Y + 155, Color.White, Color.Black, Vector2.Zero);
-
-                            if (clicked && questRect.Contains(mousePos.ToPoint()))
+                            if (quests != null)
                             {
-                                Utils.DrawBorderStringFourWay(sb, curfont, Name, bookcoord.X + 700 - curfont.MeasureString(Description).X / 2, bookcoord.Y + 30, Color.White, Color.Black, Vector2.Zero);
-                                Utils.DrawBorderStringFourWay(sb, curfont, Name, bookcoord.X + 520 + curfont.MeasureString(Description).X * 0.9f, bookcoord.Y + 30, Color.White, Color.Black, Vector2.Zero);
-                                sb.Draw(activetex, new Vector2(bookcoord.X + 520 + curfont.MeasureString(Description).X * 0.9f, bookcoord.Y + 87), Color.White);
-                                Utils.DrawBorderStringFourWay(sb, curfont, Description, bookcoord.X + 516, bookcoord.Y + 90, Color.White, Color.Black, Vector2.Zero, 0.9f);
-                                Utils.DrawBorderStringFourWay(sb, curfont, QuestOr, bookcoord.X + 516, bookcoord.Y + 110, Color.White, Color.Black, Vector2.Zero, 0.9f);
-                                sb.Draw(activetex, new Vector2(bookcoord.X + 520 + curfont.MeasureString(Description).X * 0.9f, bookcoord.Y + 127), Color.White);
-                                Utils.DrawBorderStringFourWay(sb, curfont, Description, bookcoord.X + 516, bookcoord.Y + 130, Color.White, Color.Black, Vector2.Zero, 0.9f);
+                                string Name = quests.DisplayName;
+                                string Description = quests.DisplayDescription;
+                                string NameCategory = "Mod Quest";
 
-                                string diary = BismuthPlayer.StringBreak(FontAssets.MouseText.Value, Description, 380f, size);
-                                Utils.DrawBorderStringFourWay(sb, FontAssets.MouseText.Value, diary, bookcoord.X + 510, bookcoord.Y + 210, Color.White, Color.Black, Vector2.Zero, size);
-                            }
+                                Vector2 mousePos = Main.MouseScreen;
+                                Rectangle questRect = new((int)(bookcoord.X - 50), (int)(bookcoord.Y + 150), 200, 30);
+
+                                Utils.DrawBorderStringFourWay(sb, curfont, NameCategory, bookcoord.X + 240 - curfont.MeasureString(NameCategory).X / 2, bookcoord.Y + 135, Color.White, Color.Black, Vector2.Zero);
+                                Utils.DrawBorderStringFourWay(sb, curfont, Name, bookcoord.X - 43 + curfont.MeasureString(Description).X / 2, bookcoord.Y + 155, Color.White, Color.Black, Vector2.Zero);
+                                if (questRect.Contains(mousePos.ToPoint()) && Main.mouseLeft && Main.mouseLeftRelease)
+                                {
+                                    if (quests.ISManyEndings)
+                                    {
+                                        selectedquest = 15;
+                                    }
+                                    else
+                                    {
+                                        selectedquest = 16;
+                                    }
+                                }                        
+                            }       
                         }
 
                         #region questsdescription
@@ -1999,6 +1986,39 @@ namespace Bismuth
                                     Utils.DrawBorderStringFourWay(sb, FontAssets.MouseText.Value, diary, bookcoord.X + 510, bookcoord.Y + 210, Color.White, Color.Black, Vector2.Zero, size);
                                     break;
                                 }
+                            case 15:
+                                {
+                                    foreach (var quests in activeQuests)
+                                    {
+                                        string Name = quests.DisplayName;
+                                        string Description = quests.DisplayDescription;
+                                        Utils.DrawBorderStringFourWay(sb, curfont, Name, bookcoord.X + 520 + curfont.MeasureString(Description).X * 0.9f, bookcoord.Y + 30, Color.White, Color.Black, Vector2.Zero);
+                                        sb.Draw(activetex, new Vector2(bookcoord.X + 520 + curfont.MeasureString(Description).X * 0.9f, bookcoord.Y + 87), Color.White);
+                                        Utils.DrawBorderStringFourWay(sb, curfont, Description, bookcoord.X + 516, bookcoord.Y + 90, Color.White, Color.Black, Vector2.Zero, 0.9f);
+                                        Utils.DrawBorderStringFourWay(sb, curfont, QuestOr, bookcoord.X + 516, bookcoord.Y + 110, Color.White, Color.Black, Vector2.Zero, 0.9f);
+                                        sb.Draw(activetex, new Vector2(bookcoord.X + 520 + curfont.MeasureString(Description).X * 0.9f, bookcoord.Y + 127), Color.White);
+                                        Utils.DrawBorderStringFourWay(sb, curfont, Description, bookcoord.X + 516, bookcoord.Y + 130, Color.White, Color.Black, Vector2.Zero, 0.9f);
+
+                                        string diary = BismuthPlayer.StringBreak(FontAssets.MouseText.Value, Description, 380f, size);
+                                        Utils.DrawBorderStringFourWay(sb, FontAssets.MouseText.Value, diary, bookcoord.X + 510, bookcoord.Y + 210, Color.White, Color.Black, Vector2.Zero, size);
+                                        break;
+                                    }
+                                    break;
+                                }
+                            case 16:
+                                {
+                                    foreach (var quests in activeQuests)
+                                    {
+                                        string Name = quests.DisplayName;
+                                        string Description = quests.DisplayDescription;
+                                        Utils.DrawBorderStringFourWay(sb, curfont, Name, bookcoord.X + 700 - curfont.MeasureString(Name).X / 2, bookcoord.Y + 30, Color.White, Color.Black, Vector2.Zero);
+                                        sb.Draw(activetex, new Vector2(bookcoord.X + 520 + curfont.MeasureString(quests.DisplayStage).X * 0.9f, bookcoord.Y + 87), Color.White);
+                                        Utils.DrawBorderStringFourWay(sb, curfont, quests.DisplayStage, bookcoord.X + 518, bookcoord.Y + 90, Color.White, Color.Black, Vector2.Zero, 0.9f);
+                                        string diary = BismuthPlayer.StringBreak(FontAssets.MouseText.Value, quests.DisplayStage, 380f, size);
+                                        Utils.DrawBorderStringFourWay(sb, FontAssets.MouseText.Value, Description, bookcoord.X + 510, bookcoord.Y + 210, Color.White, Color.Black, Vector2.Zero, size);
+                                        break;
+                                    }
+                                }   break;
                             default:
                                 break;
 

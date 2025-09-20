@@ -19,6 +19,13 @@ namespace Bismuth.Utilities
         public static bool BabaYagaTemp = false;
         public static bool BabaYagaTempStart = false;
         public static bool BueBegger = false;
+        public static bool AlchemistPreSkeletonNewQuest = true;
+        public static bool AlchemistNewQuest = false;
+        public static bool BeggarNewQuest = false;
+        public static bool BabaYagaNewQuest = false;
+        public static bool DwarfBlacksmithNewQuest = false;
+        public static bool ImperianCommanderNewQuest = false;
+        public static bool ImperianConsulNewQuest = false;
 
         public override void PostUpdateWorld()
         {
@@ -61,6 +68,13 @@ namespace Bismuth.Utilities
             WaitStoneQuestsTempStart = false;
             RecipePhilosopherStone = false;
             BueBegger = false;
+            BabaYagaNewQuest = false;
+            AlchemistNewQuest = false;
+            AlchemistPreSkeletonNewQuest = true;
+            BeggarNewQuest = false;
+            DwarfBlacksmithNewQuest = false;
+            ImperianCommanderNewQuest = false;
+            ImperianConsulNewQuest = false;
         }
         public override void SaveWorldData(TagCompound tag)
         {
@@ -72,14 +86,23 @@ namespace Bismuth.Utilities
             if (WaitStoneQuestsTempStart) tag["WaitStoneQuestsTempStart"] = true;
             if (RecipePhilosopherStone) tag["RecipePhilosopherStone"] = true;
             if (BueBegger) tag["BueBegger"] = true;
+            if (BabaYagaNewQuest) tag["BabaYagaNewQuest"] = true;
+            if (AlchemistNewQuest) tag["AlchemistNewQuest"] = true;
+            if (AlchemistPreSkeletonNewQuest) tag["AlchemistPreSkeletonNewQuest"] = true;
+            if (BeggarNewQuest) tag["BeggarNewQuest"] = true;
+            if (DwarfBlacksmithNewQuest) tag["DwarfBlacksmithNewQuest"] = true;
+            if (ImperianCommanderNewQuest) tag["ImperianCommanderNewQuest"] = true;
+            if(ImperianConsulNewQuest) tag["ImperianConsulNewQuest"] = true;
         }
         public override void NetSend(BinaryWriter writer)
         {
             writer.WriteFlags(AlchemistTemp, AlchemistTempStart, BabaYagaTemp, BabaYagaTempStart, WaitStoneQuestsTemp, WaitStoneQuestsTempStart, RecipePhilosopherStone, BueBegger);
+            writer.Write(BabaYagaNewQuest);
         }
         public override void NetReceive(BinaryReader reader)
         {
             reader.ReadFlags(out AlchemistTemp, out AlchemistTempStart, out BabaYagaTemp, out BabaYagaTempStart, out WaitStoneQuestsTemp, out WaitStoneQuestsTempStart, out RecipePhilosopherStone, out BueBegger);
+            BabaYagaNewQuest = reader.ReadBoolean();
         }
         public override void LoadWorldData(TagCompound tag)
         {
@@ -91,6 +114,13 @@ namespace Bismuth.Utilities
             WaitStoneQuestsTempStart = tag.ContainsKey("WaitStoneQuestsTempStart");
             RecipePhilosopherStone = tag.ContainsKey("RecipePhilosopherStone");
             BueBegger = tag.ContainsKey("BueBegger");
+            BabaYagaNewQuest = tag.ContainsKey("BabaYagaNewQuest");
+            AlchemistNewQuest = tag.ContainsKey("AlchemistNewQuest");
+            AlchemistPreSkeletonNewQuest = tag.ContainsKey("AlchemistPreSkeletonNewQuest");
+            BeggarNewQuest = tag.ContainsKey("BeggarNewQuest");
+            DwarfBlacksmithNewQuest = tag.ContainsKey("DwarfBlacksmithNewQuest");
+            ImperianCommanderNewQuest = tag.ContainsKey("ImperianCommanderNewQuest");
+            ImperianConsulNewQuest = tag.ContainsKey("ImperianConsulNewQuest");
         }
         #endregion
     }

@@ -170,7 +170,6 @@ namespace Bismuth
             ToggleExpPanelHotKey = KeybindLoader.RegisterKeybind(this, "Activate Unique Ability", "Q");
             VampireBatTurnHotKey = KeybindLoader.RegisterKeybind(this, "Turn Into Bat", "T");
             TeleportActivate = KeybindLoader.RegisterKeybind(this, "Activate Second Skill", "U");
-            QuestRegistry.Register(new BringHerbQuest());
         }
         public override void Unload()
         {

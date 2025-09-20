@@ -28,6 +28,7 @@ namespace Bismuth.Utilities
             if (npc.type == NPCID.SkeletronHead && !BismuthWorld.downedSkeletron)
             {
                 BismuthWorld.KilledBossesInWorld++;
+                TempNPCs.AlchemistPreSkeletonNewQuest = false;
                 if (Main.netMode == 0)
                     Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledSkeletron = true;
                 // BismuthWorld.downedSkeletron = true;

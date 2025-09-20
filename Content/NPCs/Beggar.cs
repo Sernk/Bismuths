@@ -1,9 +1,11 @@
 ﻿using Bismuth.Content.Items.Materials;
 using Bismuth.Content.Items.Other;
 using Bismuth.Utilities;
+using Bismuth.Utilities.ModSupport;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -69,6 +71,10 @@ namespace Bismuth.Content.NPCs
             string BeggarNQ_3 = this.GetLocalization("Chat.BeggarNQ_3").Value;
             string BeggarNQ_4 = this.GetLocalization("Chat.BeggarNQ_4").Value;
             string BeggarNQ_6 = this.GetLocalization("Chat.BeggarNQ_6").Value;
+            Player player = Main.player[Main.myPlayer];
+            var quest = QuestRegistry.GetAvailableQuests(player, BaseQuest.Beggar).FirstOrDefault();
+
+            if (TempNPCs.BeggarNewQuest && quest != null) return quest.GetChat(NPC, player, quest.CornerItem);
 
             if (Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest == 0)
             {
@@ -88,15 +94,12 @@ namespace Bismuth.Content.NPCs
                 {
                     return string.Format(this.GetLocalization("Chat.BeggarNQ_3").Value, Main.npc[NPC.FindFirstNPC(ModContent.NPCType<Priest>())].GivenName);
                 }
-                else switch (WorldGen.genRand.Next(0, 2))
-                    {
-                        case 0:
-                            return BeggarNQ_2;
-                        case 1:
-                            return BeggarNQ_4;
-                        default:
-                            return string.Format(this.GetLocalization("Chat.BeggarNQ_6").Value, Main.LocalPlayer.GetModPlayer<DiceGame>().VictoryTotal, Main.LocalPlayer.GetModPlayer<DiceGame>().VictoryInARow);
-                    }
+                else return WorldGen.genRand.Next(0, 2) switch
+                {
+                    0 => BeggarNQ_2,
+                    1 => BeggarNQ_4,
+                    _ => string.Format(this.GetLocalization("Chat.BeggarNQ_6").Value, Main.LocalPlayer.GetModPlayer<DiceGame>().VictoryTotal, Main.LocalPlayer.GetModPlayer<DiceGame>().VictoryInARow),
+                };
             }
         }
         public override bool CheckConditions(int left, int right, int top, int bottom)
@@ -105,15 +108,27 @@ namespace Bismuth.Content.NPCs
         }
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            Texture2D available = ModContent.Request<Texture2D>("Bismuth/UI/AvailableQuest").Value;
-            Texture2D active = ModContent.Request<Texture2D>("Bismuth/UI/ActiveQuest").Value;
-            if (Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest <= 10 && Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100)
+            var quests = QuestRegistry.GetAvailableQuests(Main.LocalPlayer, BaseQuest.Beggar);
+            bool showAvailable = Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest <= 10 && Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100;
+            bool showActive = Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest < 100;
+
+            foreach (var quest in quests)
             {
-                spriteBatch.Draw(available, NPC.position - Main.screenPosition + new Vector2(10, -36), Color.White);
+                quest.IsActiveQuestUIIcon(showAvailable, showActive, spriteBatch, NPC, Main.LocalPlayer);
             }
-            if (Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest < 100)
+            if (!quests.Any())
             {
-                spriteBatch.Draw(active, NPC.position - Main.screenPosition + new Vector2(6, -40), Color.White);
+                Texture2D available = ModContent.Request<Texture2D>("Bismuth/UI/AvailableQuest").Value;
+                Texture2D active = ModContent.Request<Texture2D>("Bismuth/UI/ActiveQuest").Value;
+
+                if (showAvailable)
+                {
+                    spriteBatch.Draw(available, NPC.position - Main.screenPosition + new Vector2(8, -34), Color.White);
+                }
+                if (showActive)
+                {
+                    spriteBatch.Draw(active, NPC.position - Main.screenPosition + new Vector2(4, -38), Color.White);
+                }
             }
         }
         public override void AddShops()
@@ -167,7 +182,16 @@ namespace Bismuth.Content.NPCs
                 }
                 if (Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest == 100)
                 {
-                    button = Lang.inter[28].Value;
+                    Player player = Main.player[Main.myPlayer];
+                    var quest = QuestRegistry.GetAvailableQuests(player, BaseQuest.Beggar).FirstOrDefault();
+                    if (TempNPCs.DwarfBlacksmithNewQuest && quest != null)
+                    {
+                        button = quest.GetButtonText(player);
+                    }
+                    else
+                    {
+                        button = Lang.inter[28].Value;
+                    }
                     button2 = BeggarAnsv_5;
                 }
             }
@@ -178,19 +202,31 @@ namespace Bismuth.Content.NPCs
 
             Quests quests = (Quests)Main.player[Main.myPlayer].GetModPlayer<Quests>();
             DiceGame Dicegame = (DiceGame)Main.player[Main.myPlayer].GetModPlayer<DiceGame>();
+
+            Player player = Main.player[Main.myPlayer];
+            var quest = QuestRegistry.GetAvailableQuests(player, BaseQuest.Beggar).FirstOrDefault();
+
             if (firstButton && Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest == 100)
             {
-                shopName = "BeggarShop";
+                TempNPCs.BeggarNewQuest = true;
+                if (TempNPCs.BeggarNewQuest)
+                {
+                    quest?.OnChatButtonClicked(player);
+                }
+                else
+                {
+                     shopName = "BeggarShop";
+                }
             }
             else
             {
+
                 if (Main.LocalPlayer.GetModPlayer<Quests>().FoodQuest != 100)
                 {
                     quests.BeggarQuests();
                 }
                 else
                 {
-                    Player player = Main.player[Main.myPlayer];
                     bool temp = false;
                     for (int num66 = 0; num66 < 58; num66++)
                     {

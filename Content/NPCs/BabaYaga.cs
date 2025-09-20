@@ -70,17 +70,29 @@ namespace Bismuth.Content.NPCs
         }
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            Texture2D available = ModContent.Request<Texture2D>("Bismuth/UI/AvailableQuest").Value;
-            Texture2D active = ModContent.Request<Texture2D>("Bismuth/UI/ActiveQuest").Value;
-            if (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest <= 10 || (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest == 100 && TempNPCs.BabaYagaTemp && Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest <= 10))
+            var quests = QuestRegistry.GetAvailableQuests(Main.LocalPlayer, "BabaYaga");
+            bool showAvailable = Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest <= 10 || (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest == 100 && TempNPCs.BabaYagaTemp && Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest <= 10);
+            bool showActive = (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest < 100) || (Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest < 100);
+
+            foreach (var quest in quests)
             {
-                spriteBatch.Draw(available, NPC.position - Main.screenPosition + new Vector2(8, -34), Color.White);
+                quest.IsActiveQuestUIIcon(showAvailable, showActive, spriteBatch, NPC, Main.LocalPlayer);
             }
-            if ((Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest < 100) || (Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest < 100))
+            if (!quests.Any())
             {
-                spriteBatch.Draw(active, NPC.position - Main.screenPosition + new Vector2(4, -38), Color.White);
+                Texture2D available = ModContent.Request<Texture2D>("Bismuth/UI/AvailableQuest").Value;
+                Texture2D active = ModContent.Request<Texture2D>("Bismuth/UI/ActiveQuest").Value;
+
+                if (showAvailable)
+                {
+                    spriteBatch.Draw(available, NPC.position - Main.screenPosition + new Vector2(8, -34), Color.White);
+                }
+                if (showActive)
+                {
+                    spriteBatch.Draw(active, NPC.position - Main.screenPosition + new Vector2(4, -38), Color.White);
+                }
             }
-        }     
+        }
         public override string GetChat()
         {
             Player player = Main.LocalPlayer;
@@ -114,7 +126,7 @@ namespace Bismuth.Content.NPCs
             {
                 var quest = QuestRegistry.GetAvailableQuests(player, "BabaYaga").FirstOrDefault();
 
-                if (quest != null) return quest.GetChat(NPC, player);
+                if (TempNPCs.BabaYagaNewQuest && quest != null) return quest.GetChat(NPC, player, quest.CornerItem);
 
                 if (NPC.FindFirstNPC(ModContent.NPCType<Priest>()) >= 0 && WorldGen.genRand.Next(0, 4) == 0)
                 {
@@ -210,21 +222,27 @@ namespace Bismuth.Content.NPCs
                 {
                     if (Main.player[Main.myPlayer].inventory[num66].type == ModContent.ItemType<UnchargedElessar>() && Main.player[Main.myPlayer].inventory[num66].stack > 0 && Main.npcChatText != SwampWitch_10)
                     {
-                          button = SwampWitchAnsv_7;
-                          button2 = SwampWitchAnsv_9;
-                          temp = true;
+                        button = SwampWitchAnsv_7;
+                        button2 = SwampWitchAnsv_9;
+                        temp = true;
                     }
                 }
                 if (!temp)
                 {
                     button = Lang.inter[28].Value;
-                    if (Main.npcChatText != SwampWitch_10)
-                        button2 = SwampWitchAnsv_8;
+                    if (Main.npcChatText != SwampWitch_10) button2 = SwampWitchAnsv_8;
                 }
             }
-            else if (Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest != 200) button = Lang.inter[28].Value;
+            else if (Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest != 200)
+            {   
+                button = Lang.inter[28].Value;
+            }
+            if (Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest >= 90)
+            {
+                TempNPCs.BabaYagaNewQuest = true;
+            }
             var quest = QuestRegistry.GetAvailableQuests(player, "BabaYaga").FirstOrDefault();
-            if (quest != null)
+            if (TempNPCs.BabaYagaNewQuest && quest != null)
             {
                 button2 = quest.GetButtonText(player);
             }
@@ -255,14 +273,17 @@ namespace Bismuth.Content.NPCs
                     NPC.NewNPC(NPC.GetSource_FromThis(), BismuthWorld.WitchSpawnX, BismuthWorld.WitchSpawnY, ModContent.NPCType<EvilBabaYaga>());
                     NPC.active = false;
                 }
-                else
+                else 
                     shopName = "BabaYagaShop";
             }
             else
             {
                 quests.BabaYagaQuests();
-                var quest = QuestRegistry.GetAvailableQuests(player, "BabaYaga").FirstOrDefault();
-                quest?.OnChatButtonClicked(player);
+                if (TempNPCs.BabaYagaNewQuest)
+                {
+                    var quest = QuestRegistry.GetAvailableQuests(player, BaseQuest.BabaYaga).FirstOrDefault();
+                    quest?.OnChatButtonClicked(player);
+                }
             }
         }
         public void UpdatePosition()

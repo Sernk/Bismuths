@@ -3090,6 +3090,7 @@ NPCs: {
 			Beggar_4: You have the food yet?
 			Beggar_3: I know a valiant warrior such as yourself wouldn’t refuse to aid a helpless old man. Bring me a snack, and then, perhaps I’ll reward you… A joke, obviously.
 			Beggar_1: E-he-he, you’re that newbie, aren’t you! I have a job for you, young’un!
+			BeggarAnsv_6: Mods.Bismuth.NPCs.Beggar.Chat.BeggarAnsv_6
 		}
 
 		Census.SpawnCondition: Conditions unknown

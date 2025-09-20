@@ -8,9 +8,11 @@ using Bismuth.Content.Items.Weapons.Melee;
 using Bismuth.Content.Items.Weapons.Ranged;
 using Bismuth.Content.Items.Weapons.Throwing;
 using Bismuth.Utilities;
+using Bismuth.Utilities.ModSupport;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -73,9 +75,17 @@ namespace Bismuth.Content.NPCs
             string BlacksmithNQ_2 = this.GetLocalization("Chat.BlacksmithNQ_2").Value;
             string BlacksmithNQ_3 = this.GetLocalization("Chat.BlacksmithNQ_3").Value;
             string BlacksmithNQ_4 = this.GetLocalization("Chat.BlacksmithNQ_4").Value;
+            Player player = Main.player[Main.myPlayer];
+            var quest = QuestRegistry.GetAvailableQuests(player, "DwarfBlacksmith").FirstOrDefault();
 
             if (NPC.AnyNPCs(NPCID.GoblinTinkerer) && Main.LocalPlayer.GetModPlayer<Quests>().GlamdringQuest == 0 && Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100)
                 return string.Format(this.GetLocalization("Chat.Blacksmith_1").Value, Main.LocalPlayer.name);
+
+            if (TempNPCs.DwarfBlacksmithNewQuest && quest != null)
+            {
+                return quest.GetChat(NPC, player, quest.CornerItem);
+            }
+
             else if (Main.LocalPlayer.GetModPlayer<Quests>().GlamdringQuest == 20)
                 return Blacksmith_3;
             else if (Main.LocalPlayer.GetModPlayer<Quests>().MinotaurHornQuest == 0 && Main.LocalPlayer.GetModPlayer<Quests>().GlamdringQuest == 100 && Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledEoC)
@@ -90,15 +100,12 @@ namespace Bismuth.Content.NPCs
             {
                 if (NPC.FindFirstNPC(NPCID.Demolitionist) >= 0 && WorldGen.genRand.Next(0, 4) == 0)
                     return string.Format(this.GetLocalization("Chat.BlacksmithNQ_2").Value, Main.npc[NPC.FindFirstNPC(NPCID.Demolitionist)].GivenName);
-                else switch (WorldGen.genRand.Next(0, 3))
-                    {
-                        case 0:
-                            return BlacksmithNQ_1;
-                        case 1:
-                            return BlacksmithNQ_3;
-                        default:
-                            return BlacksmithNQ_4;                      
-                    }
+                else return WorldGen.genRand.Next(0, 3) switch
+                {
+                    0 => BlacksmithNQ_1,
+                    1 => BlacksmithNQ_3,
+                    _ => BlacksmithNQ_4,
+                };
             }
         }
         public override void SetDefaults()
@@ -127,12 +134,28 @@ namespace Bismuth.Content.NPCs
         };
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            Texture2D available = ModContent.Request<Texture2D>("Bismuth/UI/AvailableQuest").Value;
-            Texture2D active = ModContent.Request<Texture2D>("Bismuth/UI/ActiveQuest").Value;
-            if ((Main.LocalPlayer.GetModPlayer<Quests>().GlamdringQuest <= 10 && Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100 && NPC.AnyNPCs(NPCID.GoblinTinkerer)) || (Main.LocalPlayer.GetModPlayer<Quests>().GlamdringQuest == 100 && Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledEoC && Main.LocalPlayer.GetModPlayer<Quests>().MinotaurHornQuest <= 10) || (Main.LocalPlayer.GetModPlayer<Quests>().MinotaurHornQuest == 100 && Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledWoF && Main.LocalPlayer.GetModPlayer<Quests>().ArmorPlateQuest <= 10))
-                spriteBatch.Draw(available, NPC.position - Main.screenPosition + new Vector2(20, -36), Color.White);
-            if ((Main.LocalPlayer.GetModPlayer<Quests>().GlamdringQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().GlamdringQuest < 100) || (Main.LocalPlayer.GetModPlayer<Quests>().MinotaurHornQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().MinotaurHornQuest < 100) || (Main.LocalPlayer.GetModPlayer<Quests>().ArmorPlateQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().ArmorPlateQuest < 100))
-                spriteBatch.Draw(active, NPC.position - Main.screenPosition + new Vector2(16, -44), Color.White);
+            var quests = QuestRegistry.GetAvailableQuests(Main.LocalPlayer, BaseQuest.DwarfBlacksmith);
+            bool showAvailable = ((Main.LocalPlayer.GetModPlayer<Quests>().GlamdringQuest <= 10 && Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100 && NPC.AnyNPCs(NPCID.GoblinTinkerer)) || (Main.LocalPlayer.GetModPlayer<Quests>().GlamdringQuest == 100 && Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledEoC && Main.LocalPlayer.GetModPlayer<Quests>().MinotaurHornQuest <= 10) || (Main.LocalPlayer.GetModPlayer<Quests>().MinotaurHornQuest == 100 && Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledWoF && Main.LocalPlayer.GetModPlayer<Quests>().ArmorPlateQuest <= 10));
+            bool showActive = ((Main.LocalPlayer.GetModPlayer<Quests>().GlamdringQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().GlamdringQuest < 100) || (Main.LocalPlayer.GetModPlayer<Quests>().MinotaurHornQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().MinotaurHornQuest < 100) || (Main.LocalPlayer.GetModPlayer<Quests>().ArmorPlateQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().ArmorPlateQuest < 100));
+
+            foreach (var quest in quests)
+            {
+                quest.IsActiveQuestUIIcon(showAvailable, showActive, spriteBatch, NPC, Main.LocalPlayer);
+            }
+            if (!quests.Any())
+            {
+                Texture2D available = ModContent.Request<Texture2D>("Bismuth/UI/AvailableQuest").Value;
+                Texture2D active = ModContent.Request<Texture2D>("Bismuth/UI/ActiveQuest").Value;
+
+                if (showAvailable)
+                {
+                    spriteBatch.Draw(available, NPC.position - Main.screenPosition + new Vector2(8, -34), Color.White);
+                }
+                if (showActive)
+                {
+                    spriteBatch.Draw(active, NPC.position - Main.screenPosition + new Vector2(4, -38), Color.White);
+                }
+            }
             spriteBatch.Draw(ModContent.Request<Texture2D>("Bismuth/Content/NPCs/DwarfBlacksmith_Glow").Value, NPC.position - Main.screenPosition + new Vector2(-18f, -4f), new Rectangle?(NPC.frame), Color.White, NPC.rotation, Vector2.Zero, 1f, SpriteEffects.None, 0.0f);
         }
         public override void AddShops()
@@ -248,7 +271,9 @@ namespace Bismuth.Content.NPCs
                 button2 = BlacksmithAnsv_5;
             }
             if (Main.LocalPlayer.GetModPlayer<Quests>().MinotaurHornQuest == 0 && Main.LocalPlayer.GetModPlayer<Quests>().GlamdringQuest == 100 && Main.LocalPlayer.GetModPlayer<BismuthPlayer>().KilledEoC)
+            {
                 button2 = BlacksmithAnsv_6;
+            }
             if (Main.LocalPlayer.GetModPlayer<Quests>().MinotaurHornQuest == 5)
                 button2 = BlacksmithAnsv_7;
             if (Main.LocalPlayer.GetModPlayer<Quests>().MinotaurHornQuest == 20)
@@ -285,28 +310,44 @@ namespace Bismuth.Content.NPCs
                 else if (!temp && Main.npcChatText != Blacksmith_15)
                     button2 = BlacksmithAnsv_12;
             }
-            if (Main.LocalPlayer.GetModPlayer<Quests>().ArmorPlateQuest == 100)
+            if (Main.LocalPlayer.GetModPlayer<Quests>().ArmorPlateQuest <= 80)
             {
-                for (int num66 = 0; num66 < 58; num66++)
+                TempNPCs.DwarfBlacksmithNewQuest = true;
+            }
+            if (TempNPCs.DwarfBlacksmithNewQuest)
+            {
+                Player player = Main.player[Main.myPlayer];
+                var quest = QuestRegistry.GetAvailableQuests(player, "DwarfBlacksmith").FirstOrDefault();
+                if (quest == null)
                 {
-                    if (Main.player[Main.myPlayer].inventory[num66].type == ModContent.ItemType<DwarvenBrokenArmor>() && Main.player[Main.myPlayer].inventory[num66].stack > 0)
+                    for (int num66 = 0; num66 < 58; num66++)
                     {
-                        button2 = BlacksmithAnsv_14;
+                        if (Main.player[Main.myPlayer].inventory[num66].type == ModContent.ItemType<DwarvenBrokenArmor>() && Main.player[Main.myPlayer].inventory[num66].stack > 0)
+                        {
+                            button2 = BlacksmithAnsv_14;
+                        }
                     }
+                }
+                if (TempNPCs.DwarfBlacksmithNewQuest && quest != null)
+                {
+                    button2 = quest.GetButtonText(player);
                 }
             }
         }
         public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {
             Quests quests = (Quests)Main.player[Main.myPlayer].GetModPlayer<Quests>();
-            if (firstButton)
-                shopName = "DwarfShop";
+            if (firstButton) shopName = "DwarfShop";    
             else
             {
-                if (Main.LocalPlayer.GetModPlayer<Quests>().ArmorPlateQuest != 100)
-                    quests.BlacksmithQuests();
-                else
-                    quests.BrokenArmorExchange();
+                if (Main.LocalPlayer.GetModPlayer<Quests>().ArmorPlateQuest != 100) quests.BlacksmithQuests();
+                else quests.BrokenArmorExchange();     
+                if (TempNPCs.DwarfBlacksmithNewQuest)
+                {
+                    Player player = Main.LocalPlayer;
+                    var quest = QuestRegistry.GetAvailableQuests(player, "DwarfBlacksmith").FirstOrDefault();
+                    quest?.OnChatButtonClicked(player);
+                }
             }
         }
         public override void AI()

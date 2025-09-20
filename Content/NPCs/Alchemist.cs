@@ -3,9 +3,11 @@ using Bismuth.Content.Items.Materials;
 using Bismuth.Content.Items.Other;
 using Bismuth.Content.Items.Placeable;
 using Bismuth.Utilities;
+using Bismuth.Utilities.ModSupport;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -81,15 +83,27 @@ namespace Bismuth.Content.NPCs
         };
         public override void PostDraw(SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
         {
-            Texture2D available = ModContent.Request<Texture2D>("Bismuth/UI/AvailableQuest").Value;
-            Texture2D active = ModContent.Request<Texture2D>("Bismuth/UI/ActiveQuest").Value;
-            if ((Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest <= 10 && BismuthWorld.downedSkeletron) || (TempNPCs.AlchemistTemp && Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest <= 10) || (TempNPCs.AlchemistTemp && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest <= 10))
+            var quests = QuestRegistry.GetAvailableQuests(Main.LocalPlayer, BaseQuest.Alchemist);
+            bool showAvailable = ((Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest <= 10 && BismuthWorld.downedSkeletron) || (TempNPCs.AlchemistTemp && Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest <= 10) || (TempNPCs.AlchemistTemp && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest <= 10));
+            bool showActive = (Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest < 100) || (TempNPCs.AlchemistTemp && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest < 100) || (TempNPCs.AlchemistTemp && Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest < 100);
+
+            foreach (var quest in quests)
             {
-                spriteBatch.Draw(available, NPC.position - Main.screenPosition + new Vector2(12, -36), Color.White);
-            }          
-            if ((Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest < 100) || (TempNPCs.AlchemistTemp && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest < 100) || (TempNPCs.AlchemistTemp && Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest > 10 && Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest < 100))
+                quest.IsActiveQuestUIIcon(showAvailable, showActive, spriteBatch, NPC, Main.LocalPlayer);
+            }
+            if (!quests.Any())
             {
-                spriteBatch.Draw(active, NPC.position - Main.screenPosition + new Vector2(8, -40), Color.White);
+                Texture2D available = ModContent.Request<Texture2D>("Bismuth/UI/AvailableQuest").Value;
+                Texture2D active = ModContent.Request<Texture2D>("Bismuth/UI/ActiveQuest").Value;
+
+                if (showAvailable)
+                {
+                    spriteBatch.Draw(available, NPC.position - Main.screenPosition + new Vector2(8, -34), Color.White);
+                }
+                if (showActive)
+                {
+                    spriteBatch.Draw(active, NPC.position - Main.screenPosition + new Vector2(4, -38), Color.White);
+                }
             }
         }
         public override void SetChatButtons(ref string button, ref string button2)
@@ -235,6 +249,24 @@ namespace Bismuth.Content.NPCs
                 {
                     button2 = AlchemistButton_18;
                 }
+                if (TempNPCs.AlchemistPreSkeletonNewQuest)
+                {
+                    Player player = Main.player[Main.myPlayer];
+                    var quest = QuestRegistry.GetAvailableQuests(player, BaseQuest.Alchemist).FirstOrDefault();
+                    if (TempNPCs.AlchemistPreSkeletonNewQuest && quest != null)
+                    {
+                        button2 = quest.GetButtonText(player);
+                    }
+                }
+                else if (TempNPCs.AlchemistNewQuest)
+                {
+                    Player player = Main.player[Main.myPlayer];
+                    var quest = QuestRegistry.GetAvailableQuests(player, BaseQuest.Alchemist).FirstOrDefault();
+                    if (TempNPCs.AlchemistPreSkeletonNewQuest && quest != null)
+                    {
+                        button2 = quest.GetButtonText(player);
+                    }
+                }
             }
         }
         public override void AddShops()
@@ -256,6 +288,7 @@ namespace Bismuth.Content.NPCs
         {
             string Alchemist_11 = this.GetLocalization("Chat.Alchemist_11").Value;
             string Alchemist_12 = this.GetLocalization("Chat.Alchemist_12").Value;
+            Player player = Main.player[Main.myPlayer];
             Quests quests = (Quests)Main.player[Main.myPlayer].GetModPlayer<Quests>();
             if (firstButton)
             {
@@ -276,11 +309,21 @@ namespace Bismuth.Content.NPCs
                     Main.LocalPlayer.GetModPlayer<Quests>().PotionQuest = 190;
                     Main.npcChatText = Alchemist_11;
                 }
-                else if (Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest == 100)
+                if (TempNPCs.AlchemistPreSkeletonNewQuest)
+                {
+                    var quest = QuestRegistry.GetAvailableQuests(player, BaseQuest.Alchemist).FirstOrDefault();
+                    quest?.OnChatButtonClicked(player);
+                }
+                if (TempNPCs.AlchemistNewQuest)
+                {
+                    var quest = QuestRegistry.GetAvailableQuests(player, BaseQuest.Alchemist).FirstOrDefault();
+                    quest?.OnChatButtonClicked(player);
+                }
+                if (Main.LocalPlayer.GetModPlayer<Quests>().PhilosopherStoneQuest == 100)
                 {
                     quests.PholosopherStoneCharging();
                 }
-                else
+                if(TempNPCs.AlchemistPreSkeletonNewQuest == false)
                 {
                     quests.AlchemistQuests();
                 }
@@ -297,7 +340,19 @@ namespace Bismuth.Content.NPCs
             string AlchemistNQ_2 = this.GetLocalization("Chat.AlchemistNQ_2").Value; 
             string AlchemistNQ_3 = this.GetLocalization("Chat.AlchemistNQ_3").Value; 
             string AlchemistNQ_4 = this.GetLocalization("Chat.AlchemistNQ_4").Value;
-
+            Player player = Main.player[Main.myPlayer];
+            var quest = QuestRegistry.GetAvailableQuests(player, BaseQuest.Alchemist).FirstOrDefault();
+            if (quest != null)
+            {
+                if (TempNPCs.AlchemistPreSkeletonNewQuest)
+                {
+                    return quest.GetChat(NPC, player, quest.CornerItem);
+                }
+                else if (TempNPCs.AlchemistNewQuest)
+                {
+                    return quest.GetChat(NPC, player, quest.CornerItem);
+                }
+            }
             if (Main.LocalPlayer.GetModPlayer<Quests>().EquipmentQuest == 100 && Main.LocalPlayer.GetModPlayer<Quests>().SunriseQuest == 0 && BismuthWorld.downedSkeletron)
             {
                 return Alchemist_1;
