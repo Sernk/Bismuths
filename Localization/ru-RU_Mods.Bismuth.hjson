@@ -3055,6 +3055,8 @@ NPCs: {
 			AlchemistNQ_2: Не покупай зелий у {0}, вся его магия - детские фокусы.
 			AlchemistNQ_1: Хорошие новости, народ, слизь снова потекла!
 		}
+
+		// Census.SpawnCondition: Conditions unknown
 	}
 
 	AlchemistDeath.DisplayName: Алхимик
@@ -3152,6 +3154,8 @@ NPCs: {
 			Beggar_3: Я знаю, что такой смелый и отважный воин, как ты, не откажет в помощи старому больному человеку. Принеси мне чего-нибудь пожевать, и тогда, возможно, я награжу тебя... Шучу, конечно
 			Beggar_1: Э-ге-ге, да ты же тот самый новенький! У меня есть к тебе дело, юнец!
 		}
+
+		// Census.SpawnCondition: Conditions unknown
 	}
 
 	BoneHand.DisplayName: Костяная рука
@@ -3208,6 +3212,8 @@ NPCs: {
 			BlacksmithAnsv_13: Вот твои нагрудники
 			BlacksmithAnsv_14: Обменять нагрудники
 		}
+
+		// Census.SpawnCondition: Conditions unknown
 	}
 
 	EvilBabaYaga: {
@@ -3268,6 +3274,8 @@ NPCs: {
 			CommanderAnsv_2: Ради Империи я готов на всё!
 			CommanderAnsv_1: Вы можете выдать мне экипировку?
 		}
+
+		// Census.SpawnCondition: Conditions unknown
 	}
 
 	ImperianConsul: {
@@ -3302,6 +3310,8 @@ NPCs: {
 			ConsulNQ_1: Пришёл, увидел, сдал квест!
 			Consul_1: О, у нас пополнение! Добро пожаловать, боец, ты находишься в единственном оплоте спокойствия на многие километры вокруг - в Имперском городе! Я уверен, ты послужишь на благо Империи, а пока осмотрись вокруг. Гравировка класса поможет тебе выбрать свой путь, после наведайся к главнокомандующему за экипировкой
 		}
+
+		// Census.SpawnCondition: Conditions unknown
 	}
 
 	Minotaur: {
@@ -3342,6 +3352,8 @@ NPCs: {
 			NagaNQ_2: Я рада, что ты предпочел кровоссоссам нашу великую рас-с-су.
 			NagaNQ_1: Запомни, главное - никогда не прикуссывай с-с-свой язык.
 		}
+
+		// Census.SpawnCondition: Conditions unknown
 	}
 
 	NecromancerDeath.DisplayName: Некромант
@@ -3388,6 +3400,8 @@ NPCs: {
 			OldmanPriestNQ_6: Я благословляю тебя
 			OldmanPriestNQ_7: Извини, но ты можешь получить благословение лишь раз в сутки
 		}
+
+		// Census.SpawnCondition: Conditions unknown
 	}
 
 	Orc.DisplayName: Орк
@@ -3448,6 +3462,8 @@ NPCs: {
 			Priest_2: Желаешь ли ты заполучить в свои руки оружие невиданной силы? Умеешь ли ты хранить тайны? Если да - готовься слушать, ибо у меня есть задание для тебя. Я щедро награжу тебя, ведь ничто в нашем подлунном мире не должно делаться даром...
 			Priest_1: Мне нужен человек, который не будет задавать лишних вопросов. Приходи, когда покров тьмы сокроет нас - и ты не пожалеешь
 		}
+
+		// Census.SpawnCondition: Conditions unknown
 	}
 
 	PriestTeleportation: {
@@ -3472,6 +3488,7 @@ NPCs: {
 		}
 
 		Chat.Priest_10: <{0}> Ты заплатишь за это!
+		// Census.SpawnCondition: Conditions unknown
 	}
 
 	RestlessSoul.DisplayName: Неупокоенный
@@ -3571,6 +3588,8 @@ NPCs: {
 			TravelingVampireNQ_2: Кто сказал тебе, что обязательно становится Стражем Болота?
 			TravelingVampireNQ_1: Не объяснишь ли ты, почему черепаха живет дольше, нежели целые поколения людей; почему слон переживает целые династии и почему попугай умирает лишь от укуса кошки или собаки, а не от других недугов?
 		}
+
+		// Census.SpawnCondition: Conditions unknown
 	}
 
 	SwampWitchDeath.DisplayName: Болотная ведьма
@@ -3614,6 +3633,7 @@ NPCs: {
 		Say4: Однажды я убил 5 акул одной только ложкой.
 		Say5: Я бы сделал тебе скидку, но рыба была безвкусная, так что — нет.
 		Say6: Я выбираю острые пики.
+		// Census.SpawnCondition: Conditions unknown
 	}
 
 	Toad.DisplayName: Жаба
@@ -4383,3 +4403,9 @@ BonusArmor: {
 DeadGolems.Golem.BismuthumText: Ваш мир был благословлен висмутом
 DeadSkeletron.Skeletron.HeliosText: Вы слышите отголоски хора, прославляющего древнее божество Солнца
 DeadEoC.EyeofCthulhu.MazeText: Странный голос говорит вам о таинственной постройке в пещерах
+
+QUEST: {
+	// QUESTCOMPLETED: QUEST COMPLETED!
+	// QUESTFAILED: QUEST FAILED!
+	// QUESTACCEPTED: QUEST ACCEPTED!
+}

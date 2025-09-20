@@ -11,9 +11,9 @@ namespace Bismuth.Content.Items.Weapons.Magical
         public override void SetDefaults()
         {
 
-            Item.damage = 6;
+            Item.damage = 10;
             Item.DamageType = DamageClass.Magic;
-            Item.mana = 8;
+            Item.mana = 3;
             Item.width = 40;
             Item.height = 40;
             Item.useTime = 25;

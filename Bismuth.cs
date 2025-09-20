@@ -1,6 +1,7 @@
 ﻿using Bismuth.Content.Items.Armor;
 using Bismuth.Content.Items.Other;
 using Bismuth.Utilities;
+using Bismuth.Utilities.ModSupport;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
@@ -169,6 +170,7 @@ namespace Bismuth
             ToggleExpPanelHotKey = KeybindLoader.RegisterKeybind(this, "Activate Unique Ability", "Q");
             VampireBatTurnHotKey = KeybindLoader.RegisterKeybind(this, "Turn Into Bat", "T");
             TeleportActivate = KeybindLoader.RegisterKeybind(this, "Activate Second Skill", "U");
+            QuestRegistry.Register(new BringHerbQuest());
         }
         public override void Unload()
         {

@@ -2992,6 +2992,8 @@ NPCs: {
 			AlchemistNQ_2: Don’t buy potions from {0}, his magic’s cheap tricks.
 			AlchemistNQ_1: Good news, everyone, the slime’s oozing again!
 		}
+
+		Census.SpawnCondition: Conditions unknown
 	}
 
 	AlchemistDeath.DisplayName: Alchemist
@@ -3089,6 +3091,8 @@ NPCs: {
 			Beggar_3: I know a valiant warrior such as yourself wouldn’t refuse to aid a helpless old man. Bring me a snack, and then, perhaps I’ll reward you… A joke, obviously.
 			Beggar_1: E-he-he, you’re that newbie, aren’t you! I have a job for you, young’un!
 		}
+
+		Census.SpawnCondition: Conditions unknown
 	}
 
 	BoneHand.DisplayName: Bone Hand
@@ -3145,6 +3149,8 @@ NPCs: {
 			BlacksmithAnsv_13: Here are breastplates
 			BlacksmithAnsv_14: Exchange breastplates
 		}
+
+		Census.SpawnCondition: Conditions unknown
 	}
 
 	EvilBabaYaga: {
@@ -3205,6 +3211,8 @@ NPCs: {
 			CommanderAnsv_2: I'll do my best for Empire!
 			CommanderAnsv_1: Can you give me equipment?
 		}
+
+		Census.SpawnCondition: Conditions unknown
 	}
 
 	ImperianConsul: {
@@ -3239,6 +3247,8 @@ NPCs: {
 			ConsulNQ_1: You came, you saw, you completed the quest!
 			Consul_1: Oh, we have a rookie! Welcome, fighter. You’re standing in the only safe haven for miles away – the Imperial city! I’m sure you’ll serve the Empire well, for now, take a look around. The class engraving will help you choose your path, visit the Commander to get your equipment once you’re done.
 		}
+
+		Census.SpawnCondition: Conditions unknown
 	}
 
 	Minotaur: {
@@ -3279,6 +3289,8 @@ NPCs: {
 			NagaNQ_2: I’m glad you chos-s-se our great rac-c-ce over those bloods-s-suckers.
 			NagaNQ_1: Remember – never bite your t-t-tongue.
 		}
+
+		Census.SpawnCondition: Conditions unknown
 	}
 
 	NecromancerDeath.DisplayName: Necromancer
@@ -3325,6 +3337,8 @@ NPCs: {
 			OldmanPriestNQ_6: I'm blessing you
 			OldmanPriestNQ_7: Sorry, but you can't be blessed more than once a day
 		}
+
+		Census.SpawnCondition: Conditions unknown
 	}
 
 	Orc.DisplayName: Orc
@@ -3385,6 +3399,8 @@ NPCs: {
 			Priest_2: Do you wish to lay your hands on a weapon of unseen power? Do you know how to keep secrets? If so – prepare to listen, for I have a task for you. You’ll, of course, be given a generous reward – nothing in this world should be done for free…
 			Priest_1: I need a person that won’t ask any questions. Come here when night falls upon this city – and you’ll not regret it
 		}
+
+		Census.SpawnCondition: Conditions unknown
 	}
 
 	PriestTeleportation: {
@@ -3409,6 +3425,7 @@ NPCs: {
 		}
 
 		Chat.Priest_10: <{0}> You'll pay for this!
+		Census.SpawnCondition: Conditions unknown
 	}
 
 	RestlessSoul.DisplayName: Restless Soul
@@ -3508,6 +3525,8 @@ NPCs: {
 			TravelingVampireNQ_2: Who told you that he must become a guard of the swamp?
 			TravelingVampireNQ_1: Can you tell me why the tortoise lives more long than generations of men, why the elephant goes on and on till he have sees dynasties, and why the parrot never die only of bite of cat of dog or other complaint?
 		}
+
+		Census.SpawnCondition: Conditions unknown
 	}
 
 	SwampWitchDeath.DisplayName: Swamp Witch Death
@@ -3551,6 +3570,7 @@ NPCs: {
 		Say4: Ones I killed 5 sharks with only one spoon.
 		Say5: I would have made you a discount, but the fish was tasteless, so no
 		Say6: I choose pointy peakes.
+		Census.SpawnCondition: Conditions unknown
 	}
 
 	Toad.DisplayName: Toad
@@ -4324,3 +4344,9 @@ BonusArmor: {
 DeadGolems.Golem.BismuthumText: Your world has been blessed with Bismuthums
 DeadSkeletron.Skeletron.HeliosText: You hear hymns praising the ancient Lord of Sunlight
 DeadEoC.EyeofCthulhu.MazeText: Strange voice tells you about a mysterious building in caves...
+
+QUEST: {
+	QUESTCOMPLETED: QUEST COMPLETED!
+	QUESTFAILED: QUEST FAILED!
+	QUESTACCEPTED: QUEST ACCEPTED!
+}

@@ -1,12 +1,14 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Bismuth.Utilities;
-using Bismuth.Content.Items.Armor;
+﻿using Bismuth.Content.Items.Armor;
 using Bismuth.Content.Items.Other;
 using Bismuth.Content.Items.Placeable;
+using Bismuth.Utilities;
+using Bismuth.Utilities.ModSupport;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System.Linq;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace Bismuth.Content.NPCs
 {
@@ -81,6 +83,8 @@ namespace Bismuth.Content.NPCs
         }     
         public override string GetChat()
         {
+            Player player = Main.LocalPlayer;
+            var quests = player.GetModPlayer<Quests>();
             string SwampWitch_1 = this.GetLocalization("Chat.SwampWitch_1").Value; 
             string SwampWitch_3 = this.GetLocalization("Chat.SwampWitch_3").Value; 
             string SwampWitch_7 = this.GetLocalization("Chat.SwampWitch_7").Value; 
@@ -88,7 +92,7 @@ namespace Bismuth.Content.NPCs
             string SwampWitchNQ_1 = this.GetLocalization("Chat.SwampWitchNQ_1").Value; 
             string SwampWitchNQ_2 = this.GetLocalization("Chat.SwampWitchNQ_2").Value; 
             string SwampWitchNQ_3 = this.GetLocalization("Chat.SwampWitchNQ_3").Value; 
-            string SwampWitchNQ_4 = this.GetLocalization("Chat.SwampWitchNQ_4").Value; 
+            string SwampWitchNQ_4 = this.GetLocalization("Chat.SwampWitchNQ_4").Value;
 
             if (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest == 0)
             {
@@ -108,17 +112,23 @@ namespace Bismuth.Content.NPCs
             }
             else
             {
+                var quest = QuestRegistry.GetAvailableQuests(player, "BabaYaga").FirstOrDefault();
+
+                if (quest != null) return quest.GetChat(NPC, player);
+
                 if (NPC.FindFirstNPC(ModContent.NPCType<Priest>()) >= 0 && WorldGen.genRand.Next(0, 4) == 0)
+                {
                     return string.Format(this.GetLocalization("Chat.SwampWitchNQ_3").Value, Main.npc[NPC.FindFirstNPC(ModContent.NPCType<Priest>())].GivenName);
-                else switch (WorldGen.genRand.Next(0, 3))
+                }
+                else
+                {
+                    return WorldGen.genRand.Next(0, 3) switch
                     {
-                        case 0:
-                            return SwampWitchNQ_1;
-                        case 1:
-                            return SwampWitchNQ_2;
-                        default:
-                            return SwampWitchNQ_4;
-                    }
+                        0 => SwampWitchNQ_1,
+                        1 => SwampWitchNQ_2,
+                        _ => SwampWitchNQ_4,
+                    };
+                }
             }
         }
         public override void AddShops()
@@ -152,6 +162,7 @@ namespace Bismuth.Content.NPCs
             string SwampWitch_4 = this.GetLocalization("Chat.SwampWitch_4").Value;
             string SwampWitch_6 = this.GetLocalization("Chat.SwampWitch_6").Value;
             string SwampWitch_10 = this.GetLocalization("Chat.SwampWitch_10").Value;
+            Player player = Main.player[Main.myPlayer];
             if (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest == 0)
             {
                 button2 = SwampWitchAnsv_1;
@@ -162,7 +173,6 @@ namespace Bismuth.Content.NPCs
             }
             if (Main.LocalPlayer.GetModPlayer<Quests>().BookOfSecretsQuest == 20 && Main.npcChatText != SwampWitch_4)
             {
-                Player player = Main.player[Main.myPlayer];
                 bool temp = false;
                 for (int num66 = 0; num66 < 58; num66++)
                 {
@@ -212,14 +222,18 @@ namespace Bismuth.Content.NPCs
                         button2 = SwampWitchAnsv_8;
                 }
             }
-            else if (Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest != 200)
-                button = Lang.inter[28].Value;
-
+            else if (Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest != 200) button = Lang.inter[28].Value;
+            var quest = QuestRegistry.GetAvailableQuests(player, "BabaYaga").FirstOrDefault();
+            if (quest != null)
+            {
+                button2 = quest.GetButtonText(player);
+            }
         }
         public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {
             string SwampWitch_12 = this.GetLocalization("Chat.SwampWitch_12").Value;
             Quests quests = (Quests)Main.player[Main.myPlayer].GetModPlayer<Quests>();
+            Player player = Main.LocalPlayer;
             if (firstButton)
             {
                 if (Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest == 20)
@@ -229,10 +243,10 @@ namespace Bismuth.Content.NPCs
                     {
                         if (Main.player[Main.myPlayer].inventory[num66].type == ModContent.ItemType<UnchargedElessar>() && Main.player[Main.myPlayer].inventory[num66].stack > 0)
                         {
-                              temp = true;
-                              Main.LocalPlayer.inventory[num66].stack--;
-                              Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest = 90;
-                              Main.npcChatText = SwampWitch_12;
+                            temp = true;
+                            Main.LocalPlayer.inventory[num66].stack--;
+                            Main.LocalPlayer.GetModPlayer<Quests>().ElessarQuest = 90;
+                            Main.npcChatText = SwampWitch_12;
                         }
                     }
                 }
@@ -242,10 +256,14 @@ namespace Bismuth.Content.NPCs
                     NPC.active = false;
                 }
                 else
-                  shopName = "BabaYagaShop";
+                    shopName = "BabaYagaShop";
             }
             else
-              quests.BabaYagaQuests();
+            {
+                quests.BabaYagaQuests();
+                var quest = QuestRegistry.GetAvailableQuests(player, "BabaYaga").FirstOrDefault();
+                quest?.OnChatButtonClicked(player);
+            }
         }
         public void UpdatePosition()
         {

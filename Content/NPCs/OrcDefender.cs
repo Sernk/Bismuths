@@ -120,7 +120,6 @@ namespace Bismuth.Content.NPCs
         }
         public override void HitEffect(NPC.HitInfo hit)
         {
-
             if (NPC.life <= 0)
             {
                 for (int k = 0; k < 20; k++)

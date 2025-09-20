@@ -11,11 +11,13 @@ using Bismuth.Content.Items.Weapons.Ranged;
 using Bismuth.Content.Items.Weapons.Throwing;
 using Bismuth.Content.NPCs;
 using Bismuth.Utilities;
+using Bismuth.Utilities.ModSupport;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.GameContent;
@@ -1530,9 +1532,9 @@ namespace Bismuth
         Texture2D statstex = ModContent.Request<Texture2D>("Bismuth/UI/PlayerStatsSign").Value;
         Texture2D linetex = ModContent.Request<Texture2D>("Bismuth/UI/QuestsLine").Value;
         Texture2D line2tex = ModContent.Request<Texture2D>("Bismuth/UI/QuestsLine2").Value;
-        bool treeflag;
-        int currentpage = 0;
-        int completedpage = 1;
+        public bool treeflag;
+        public static int currentpage = 0;
+        public int completedpage = 1;
         public static int FrameWidth = 390;
         public static int FrameHeight = 474;
         public static Vector2 FrameStart = new Vector2(bookcoord.X + 510, bookcoord.Y + 60);
@@ -1763,12 +1765,43 @@ namespace Bismuth
                     if (currentpage == 2)
                     {
                         Utils.DrawBorderStringFourWay(sb, curfont, ActiveQuests, bookcoord.X + 240 - curfont.MeasureString(ActiveQuests).X / 2, bookcoord.Y + 30, Color.White, Color.Black, Vector2.Zero);
+                        var qPlayer = Main.LocalPlayer.GetModPlayer<QuestPlayer>();
+                        var activeQuests = qPlayer.ActiveQuests.Select(QuestRegistry.GetQuestByKey).Where(q => q != null).ToList();
+
+                        Vector2 mousePos = Main.MouseScreen;
+                        bool clicked = Main.mouseLeft && Main.mouseLeftRelease;
+
+                        foreach (var quests in activeQuests)
+                        {
+                            string Name = quests.DisplayName;
+                            string Description = quests.DisplayDescription;
+                            string NameCategory = "Mod Quest";
+
+                            Rectangle questRect = new((int)(bookcoord.X - 50), (int)(bookcoord.Y + 150), 200, 30);
+          
+                            Utils.DrawBorderStringFourWay(sb, curfont, NameCategory, bookcoord.X + 240 - curfont.MeasureString(NameCategory).X / 2, bookcoord.Y + 135, Color.White, Color.Black, Vector2.Zero);
+                            Utils.DrawBorderStringFourWay(sb, curfont, Name, bookcoord.X - 43 + curfont.MeasureString(Description).X / 2, bookcoord.Y + 155, Color.White, Color.Black, Vector2.Zero);
+
+                            if (clicked && questRect.Contains(mousePos.ToPoint()))
+                            {
+                                Utils.DrawBorderStringFourWay(sb, curfont, Name, bookcoord.X + 700 - curfont.MeasureString(Description).X / 2, bookcoord.Y + 30, Color.White, Color.Black, Vector2.Zero);
+                                Utils.DrawBorderStringFourWay(sb, curfont, Name, bookcoord.X + 520 + curfont.MeasureString(Description).X * 0.9f, bookcoord.Y + 30, Color.White, Color.Black, Vector2.Zero);
+                                sb.Draw(activetex, new Vector2(bookcoord.X + 520 + curfont.MeasureString(Description).X * 0.9f, bookcoord.Y + 87), Color.White);
+                                Utils.DrawBorderStringFourWay(sb, curfont, Description, bookcoord.X + 516, bookcoord.Y + 90, Color.White, Color.Black, Vector2.Zero, 0.9f);
+                                Utils.DrawBorderStringFourWay(sb, curfont, QuestOr, bookcoord.X + 516, bookcoord.Y + 110, Color.White, Color.Black, Vector2.Zero, 0.9f);
+                                sb.Draw(activetex, new Vector2(bookcoord.X + 520 + curfont.MeasureString(Description).X * 0.9f, bookcoord.Y + 127), Color.White);
+                                Utils.DrawBorderStringFourWay(sb, curfont, Description, bookcoord.X + 516, bookcoord.Y + 130, Color.White, Color.Black, Vector2.Zero, 0.9f);
+
+                                string diary = BismuthPlayer.StringBreak(FontAssets.MouseText.Value, Description, 380f, size);
+                                Utils.DrawBorderStringFourWay(sb, FontAssets.MouseText.Value, diary, bookcoord.X + 510, bookcoord.Y + 210, Color.White, Color.Black, Vector2.Zero, size);
+                            }
+                        }
+
                         #region questsdescription
-                        if(selectedquest != 0 && selectedquest != -1)
+                        if (selectedquest != 0 && selectedquest != -1)
                         Utils.DrawBorderStringFourWay(sb, curfont, Stages, bookcoord.X + 700 - curfont.MeasureString(Stages).X / 2, bookcoord.Y + 60, Color.White, Color.Black, Vector2.Zero);
                         switch (selectedquest)
-                        {
-                            
+                        {                   
                             case 1:
                                 {
                                     Utils.DrawBorderStringFourWay(sb, curfont, desc1, bookcoord.X + 700 - curfont.MeasureString(desc1).X / 2, bookcoord.Y + 30, Color.White, Color.Black, Vector2.Zero);
