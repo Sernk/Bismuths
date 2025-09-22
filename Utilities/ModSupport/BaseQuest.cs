@@ -50,10 +50,31 @@ namespace Bismuth.Utilities.ModSupport
             else if (isAvailableQuest) spriteBatch.Draw(available, npc.position - Main.screenPosition + new Vector2(IsActiveQuestUIIconPositionX, IsActiveQuestUIIconPositionY), Color.White);
         }
         public virtual void OnChatButtonClicked(Player player) { }
+        public virtual void CheckItem(Player player, int item_id, int need_an_item = 1, int how_many_items_to_spend = 1, string text = "", string textF = "", int itemID = 0, int stack = 0, bool IsNotification = true, bool IsQuestcompleted = true, int progres = 0)
+        {
+            var q = player.GetModPlayer<QuestPlayer>();
+
+            for (int i = 0; i < player.inventory.Length; i++)
+            {
+                if (player.inventory[i].type == item_id && player.inventory[i].stack >= need_an_item)
+                {
+                    player.inventory[i].stack -= how_many_items_to_spend;
+                    if(IsQuestcompleted) q.CompletedQuests.Add(UniqueKey);
+                    Main.npcChatText = text;
+                    if(IsNotification) Notification(player, true, false);
+                    Progress = progres;
+                    CompletedQuickSpawnItem(player, itemID, stack);
+                    return;
+                }
+                else
+                {
+                    Main.npcChatText = textF;
+                }
+            }
+        }
         public void Notification(Player player, bool ISCompletedSuccessfully, bool ISQUESTACCEPTED)
         {
             Rectangle rect = new((int)player.position.X, (int)player.position.Y - 35, 10, 10);
-
             if (ISCompletedSuccessfully) CombatText.NewText(rect, ColorCompleted, QUESTCOMPLETED);
             else if (!ISCompletedSuccessfully && !ISQUESTACCEPTED)CombatText.NewText(rect, ColorFailed, QUESTFAILED);
             if (ISQUESTACCEPTED) CombatText.NewText(rect, ColorAccepted, QUESTACCEPTED);
@@ -83,6 +104,10 @@ namespace Bismuth.Utilities.ModSupport
                 PostBossQuest.PostMoonLord => NPC.downedMoonlord,
                 _ => false
             };
+        }
+        public int CompletedQuickSpawnItem(Player player, int Id, int quantity)
+        {
+            return player.QuickSpawnItem(player.GetSource_FromThis(), Id, quantity);
         }
     }
 }
